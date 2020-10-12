@@ -6,10 +6,14 @@ public class PlayerController : MonoBehaviour
 {
 	public Transform eyes;
 	public SphereCollider groundcheck;
+
 	public float movementGround;
 	public float movementAir;
 	public float topSpeed;
 	public float jumpForce;
+
+	public Vector2 mouseSensitivity = Vector2.one;
+	public Vector2 pitchLimits = new Vector2(-80, 80);
 	
 	Vector2 input;
 	Vector2 mousePos;
@@ -30,7 +34,7 @@ public class PlayerController : MonoBehaviour
 	void Update()
     {
 		input = PollWASD();
-		mouseDelta = PollMouseDelta();
+		mouseDelta += PollMouseDelta();
 		if (!jump) jump = PollJump(); // required due to timing between Update/FixedUpdate
 		grounded = IsGrounded();
     }
@@ -42,10 +46,12 @@ public class PlayerController : MonoBehaviour
 		flatDirection.y = 0;
 		float flatMagnitude = flatDirection.magnitude;
 
-		eyesPitch += mouseDelta.y;
-		bodyYaw -= mouseDelta.x;
+		eyesPitch += mouseDelta.y * mouseSensitivity.y;
+		eyesPitch = Mathf.Clamp(eyesPitch, pitchLimits.x, pitchLimits.y);
+		bodyYaw -= mouseDelta.x * mouseSensitivity.x;
 		eyes.localEulerAngles = new Vector3(eyesPitch, 0, 0);
 		transform.localEulerAngles = new Vector3(0, bodyYaw, 0);
+		mouseDelta = Vector2.zero;
 		
 		if (Vector3.Dot(forceVec, flatDirection) > 0)
 		{
