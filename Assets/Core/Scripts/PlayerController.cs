@@ -4,25 +4,33 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+	public Transform eyes;
 	public SphereCollider groundcheck;
 	public float movementGround;
 	public float movementAir;
 	public float topSpeed;
 	public float jumpForce;
-
-	Rigidbody rb;
+	
 	Vector2 input;
+	Vector2 mousePos;
+	Vector2 mouseDelta;
+	float eyesPitch;
+	float bodyYaw;
 	bool grounded;
 	bool jump;
+
+	Rigidbody rb;
 
 	private void Awake()
 	{
 		rb = GetComponent<Rigidbody>() ?? gameObject.AddComponent<Rigidbody>();
+		mousePos = Input.mousePosition;
 	}
 	
 	void Update()
     {
 		input = PollWASD();
+		mouseDelta = PollMouseDelta();
 		if (!jump) jump = PollJump(); // required due to timing between Update/FixedUpdate
 		grounded = IsGrounded();
     }
@@ -34,7 +42,10 @@ public class PlayerController : MonoBehaviour
 		flatDirection.y = 0;
 		float flatMagnitude = flatDirection.magnitude;
 
-		
+		eyesPitch += mouseDelta.y;
+		bodyYaw -= mouseDelta.x;
+		eyes.localEulerAngles = new Vector3(eyesPitch, 0, 0);
+		transform.localEulerAngles = new Vector3(0, bodyYaw, 0);
 		
 		if (Vector3.Dot(forceVec, flatDirection) > 0)
 		{
@@ -76,6 +87,13 @@ public class PlayerController : MonoBehaviour
 	public bool PollJump()
 	{
 		return Input.GetKeyDown(KeyCode.Space);
+	}
+
+	public Vector2 PollMouseDelta()
+	{
+		Vector2 returnVal = mousePos - (Vector2)Input.mousePosition;
+		mousePos = Input.mousePosition;
+		return returnVal;
 	}
 
 	public bool IsGrounded()
