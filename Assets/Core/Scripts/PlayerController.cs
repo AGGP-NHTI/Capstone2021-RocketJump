@@ -108,4 +108,12 @@ public class PlayerController : NetworkedBehaviour
 	{
 		return Physics.OverlapSphere(groundcheck.transform.position, groundcheck.radius, ~(1 << LayerMask.NameToLayer("LocalPlayer"))).Length > 0;
 	}
+
+	public void PossesssPawn(Pawn p)
+    {
+		if(ControlledPawn)
+        {
+
+        }
+    }
 }
