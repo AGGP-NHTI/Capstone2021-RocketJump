@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿using MLAPI;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
-{
+public class PlayerController : NetworkedBehaviour
+{ 
 	public Transform eyes;
 	public SphereCollider groundcheck;
+	public Pawn ControlledPawn;
 
 	public float movementGround;
 	public float movementAir;
