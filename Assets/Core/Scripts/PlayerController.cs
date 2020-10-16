@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : NetworkedBehaviour
-{ 
+{
+	public Transform body;
 	public Transform eyes;
 	public SphereCollider groundcheck;
 	public Pawn ControlledPawn;
@@ -18,57 +19,70 @@ public class PlayerController : NetworkedBehaviour
 	public Vector2 pitchLimits = new Vector2(-80, 80);
 	
 	Vector2 input;
-	Vector2 mousePos;
-	Vector2 mouseDelta;
 	float eyesPitch;
 	float bodyYaw;
 	bool grounded;
 	bool jump;
+
+	Vector3 surfaceNormal = Vector3.zero;
 
 	Rigidbody rb;
 
 	private void Awake()
 	{
 		rb = GetComponent<Rigidbody>() ?? gameObject.AddComponent<Rigidbody>();
-		mousePos = Input.mousePosition;
+		Cursor.lockState = CursorLockMode.Locked;
 	}
 	
 	void Update()
     {
+		DoMouseLook();
+
 		input = PollWASD();
-		mouseDelta += PollMouseDelta();
 		if (!jump) jump = PollJump(); // required due to timing between Update/FixedUpdate
-		grounded = IsGrounded();
+		
+
+		Debug.DrawRay(groundcheck.transform.position, surfaceNormal * 10f, Color.red);
     }
 
 	private void FixedUpdate()
 	{
-		Vector3 forceVec = (transform.forward * input.y + transform.right * input.x);
-		Vector3 flatDirection = rb.velocity;
-		flatDirection.y = 0;
-		float flatMagnitude = flatDirection.magnitude;
+		Vector3 forceVec;
+		Vector3 flatDirection;
+		float flatMagnitude;
 
-		eyesPitch += mouseDelta.y * mouseSensitivity.y;
-		eyesPitch = Mathf.Clamp(eyesPitch, pitchLimits.x, pitchLimits.y);
-		bodyYaw -= mouseDelta.x * mouseSensitivity.x;
-		eyes.localEulerAngles = new Vector3(eyesPitch, 0, 0);
-		transform.localEulerAngles = new Vector3(0, bodyYaw, 0);
-		mouseDelta = Vector2.zero;
-		
+		grounded = IsGrounded();
+
+		if (surfaceNormal == Vector3.zero)
+		{
+			transform.up = Vector3.Slerp(transform.up, Vector3.up, 0.1f);
+		}
+		else
+		{
+			transform.up = Vector3.Slerp(transform.up, surfaceNormal, 0.1f);
+		}
+
+		forceVec = (body.forward * input.y + body.right * input.x);
+		flatDirection = rb.velocity;
+		flatDirection.y = 0;
+		flatMagnitude = flatDirection.magnitude;
+
+		float moveSpeed = grounded ? movementGround : movementAir;
+
 		if (Vector3.Dot(forceVec, flatDirection) > 0)
 		{
-			rb.AddForce(Mathf.Max(0, topSpeed - flatMagnitude) * (forceVec * movementGround));
+			rb.AddForce(Mathf.Max(0, topSpeed - flatMagnitude) * (forceVec * moveSpeed));
 
 		}
 		else
 		{
-			rb.AddForce(forceVec * movementGround);
+			rb.AddForce(forceVec * moveSpeed);
 		}
 		
 		if (jump && grounded)
 		{
 			jump = false;
-			rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+			rb.AddForce(body.up * jumpForce, ForceMode.Impulse);
 		}
 	}
 
@@ -97,16 +111,31 @@ public class PlayerController : NetworkedBehaviour
 		return Input.GetKeyDown(KeyCode.Space);
 	}
 
-	public Vector2 PollMouseDelta()
+	void DoMouseLook()
 	{
-		Vector2 returnVal = mousePos - (Vector2)Input.mousePosition;
-		mousePos = Input.mousePosition;
-		return returnVal;
+		eyesPitch -= Input.GetAxisRaw("Mouse Y");
+		bodyYaw += Input.GetAxisRaw("Mouse X");
+
+		eyes.localEulerAngles = new Vector3(eyesPitch, 0, 0);
+		body.localEulerAngles = new Vector3(0, bodyYaw, 0);
 	}
 
 	public bool IsGrounded()
 	{
-		return Physics.OverlapSphere(groundcheck.transform.position, groundcheck.radius, ~(1 << LayerMask.NameToLayer("LocalPlayer"))).Length > 0;
+		Collider[] colliders = Physics.OverlapSphere(groundcheck.transform.position, groundcheck.radius, ~(1 << LayerMask.NameToLayer("LocalPlayer")));
+
+		surfaceNormal = Vector3.zero;
+		if (colliders.Length > 0)
+		{
+			foreach (Collider col in colliders)
+			{
+				surfaceNormal += groundcheck.transform.position - col.ClosestPoint(groundcheck.transform.position);
+			}
+			surfaceNormal.Normalize();
+
+			return true;
+		}
+		return false;
 	}
 
 	public void PossesssPawn(Pawn p)
