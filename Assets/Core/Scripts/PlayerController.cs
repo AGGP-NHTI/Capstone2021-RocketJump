@@ -15,6 +15,9 @@ public class PlayerController : NetworkedBehaviour
 	public float topSpeed;
 	public float jumpForce;
 
+	
+	public float decelFactorGround;
+
 	public Vector2 mouseSensitivity = Vector2.one;
 	public Vector2 pitchLimits = new Vector2(-80, 80);
 	
@@ -51,7 +54,7 @@ public class PlayerController : NetworkedBehaviour
 		Vector3 flatDirection;
 		float flatMagnitude;
 
-		grounded = IsGrounded();
+		grounded = GroundTest();
 
 		if (surfaceNormal == Vector3.zero)
 		{
@@ -67,18 +70,17 @@ public class PlayerController : NetworkedBehaviour
 		flatDirection.y = 0;
 		flatMagnitude = flatDirection.magnitude;
 
-		float moveSpeed = grounded ? movementGround : movementAir;
-
-		if (Vector3.Dot(forceVec, flatDirection) > 0)
+		if (grounded)
 		{
-			rb.AddForce(Mathf.Max(0, topSpeed - flatMagnitude) * (forceVec * moveSpeed));
-
+			rb.AddForce(-rb.velocity * decelFactorGround, ForceMode.Impulse);
+			rb.AddForce(forceVec * movementGround, ForceMode.Impulse);
 		}
 		else
 		{
-			rb.AddForce(forceVec * moveSpeed);
+			rb.AddForce(forceVec * movementAir, ForceMode.Force);
 		}
 		
+
 		if (jump && grounded)
 		{
 			jump = false;
@@ -113,14 +115,16 @@ public class PlayerController : NetworkedBehaviour
 
 	void DoMouseLook()
 	{
-		eyesPitch -= Input.GetAxisRaw("Mouse Y");
-		bodyYaw += Input.GetAxisRaw("Mouse X");
+		eyesPitch -= Input.GetAxisRaw("Mouse Y") * mouseSensitivity.y;
+		bodyYaw += Input.GetAxisRaw("Mouse X") * mouseSensitivity.x;
+
+		eyesPitch = Mathf.Clamp(eyesPitch, pitchLimits.x, pitchLimits.y);
 
 		eyes.localEulerAngles = new Vector3(eyesPitch, 0, 0);
 		body.localEulerAngles = new Vector3(0, bodyYaw, 0);
 	}
 
-	public bool IsGrounded()
+	public bool GroundTest()
 	{
 		Collider[] colliders = Physics.OverlapSphere(groundcheck.transform.position, groundcheck.radius, ~(1 << LayerMask.NameToLayer("LocalPlayer")));
 
@@ -133,7 +137,10 @@ public class PlayerController : NetworkedBehaviour
 			}
 			surfaceNormal.Normalize();
 
-			return true;
+			if (Vector3.Dot(surfaceNormal, Vector3.up) > 0.5f)
+				return true;
+			else
+				return false;
 		}
 		return false;
 	}

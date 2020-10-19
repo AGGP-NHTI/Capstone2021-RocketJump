@@ -178,11 +178,12 @@ MonoBehaviour:
   eyes: {fileID: 1629868686}
   groundcheck: {fileID: 2096464448355696063}
   ControlledPawn: {fileID: 0}
-  movementGround: 5
+  movementGround: 1
   movementAir: 10
   topSpeed: 10
-  jumpForce: 8
-  mouseSensitivity: {x: 0.15, y: 0.15}
+  jumpForce: 6
+  decelFactorGround: 0.1
+  mouseSensitivity: {x: 2, y: 2}
   pitchLimits: {x: -80, y: 80}
 --- !u!54 &2096464447327900003
 Rigidbody:
