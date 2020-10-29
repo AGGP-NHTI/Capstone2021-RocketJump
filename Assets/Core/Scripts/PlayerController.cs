@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : NetworkedBehaviour
+public class PlayerController : Controller
 {
 	public Transform body;
 	public Transform eyes;
 	public SphereCollider groundcheck;
-	public Pawn ControlledPawn;
+	//public Pawn ControlledPawn;
 
 	public float movementGround;
 	public float movementAir;

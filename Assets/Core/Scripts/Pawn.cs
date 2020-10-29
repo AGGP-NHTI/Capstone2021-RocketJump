@@ -5,9 +5,9 @@ using MLAPI;
 using MLAPI.Messaging;
 public class Pawn : Actor
 {
-    PlayerController controller;
+    Controller controller;
 
-    public void Possesed(PlayerController c)
+    public void Possesed(Controller c)
     {
         controller = c;
 
