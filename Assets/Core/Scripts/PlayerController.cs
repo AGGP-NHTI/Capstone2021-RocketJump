@@ -145,6 +145,11 @@ public class PlayerController : Controller
 		return false;
 	}
 
+	public float GetSpeedometer()
+	{
+		return rb.velocity.magnitude / topSpeed;
+	}
+
 	public void PossesssPawn(Pawn p)
     {
 		if(ControlledPawn)

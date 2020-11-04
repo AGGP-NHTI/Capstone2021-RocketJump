@@ -6,14 +6,19 @@ public class TitleAnim : MonoBehaviour
 {
     public GameObject parent;
     public TitleAnim previous;
+    [HideInInspector]
     public bool finished = false;
-    public float rate = 1f;
+    public float rate = 0.05f;
     public float delay = 0;
     public float dc;
+    [HideInInspector]
     public bool xreached = false;
+    [HideInInspector]
     public bool yreached = false;
+    [HideInInspector]
     public Vector3 endscale;
-    public Vector3 startscale;
+    public Vector3 startscale = new Vector3(0, 0.5f, 0);
+    [HideInInspector]
     public Vector3 localscale;
     bool go = false;
 
