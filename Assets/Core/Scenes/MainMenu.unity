@@ -3061,8 +3061,8 @@ MonoBehaviour:
   centerpoint: {fileID: 295577885}
   offset: {fileID: 997670847}
   speed: 0
-  distancex: 10
-  distancey: 10
+  distancex: 30
+  distancey: -50
 --- !u!1 &1049375661
 GameObject:
   m_ObjectHideFlags: 0

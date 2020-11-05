@@ -13,7 +13,7 @@ public class LogoSpin : MonoBehaviour
     
     void Start()
     {
-        offset.transform.position = new Vector3(centerpoint.transform.position.x + distancex, centerpoint.transform.position.y, centerpoint.transform.position.z);
+        offset.transform.position = new Vector3(centerpoint.transform.position.x + distancex, centerpoint.transform.position.y + distancey, centerpoint.transform.position.z);
     }
 
     
