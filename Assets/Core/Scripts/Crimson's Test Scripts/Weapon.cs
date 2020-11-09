@@ -1,18 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public abstract class Weapon : Actor
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject projectilePrefab;
+    public Transform projectileSpawn;
+
+    [Header("Stats")]
+    public float reloadSpeed;
+    public float fireRate;
+
+    public int currentClip;
+    public int clipSize;
+
+    GameObject weaponModel;
+
+    public abstract void Fire();
+    public abstract void AltFire();
 }
+
