@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4904503435686725676}
   - component: {fileID: -6862132185585334810}
   - component: {fileID: 533669471489735897}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Crimson'sTestGrenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,8 +89,8 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6819187397120872736}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: a203478674d9ce3449042d24b3b5e3f5, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.6
@@ -107,9 +107,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51ed8f2a4a9d2c4a9d0eb59a6d4a406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosiveForce: 10
-  explosiveDistance: 1000
-  projectileForce: 10
+  IsActive: 1
+  IgnoreDamage: 0
+  lifeTime: 10
+  contactLifetime: 2
+  explosiveForce: 1000
+  explosiveDistance: 10
+  projectileForce: 500
 --- !u!54 &533669471489735897
 Rigidbody:
   m_ObjectHideFlags: 0
