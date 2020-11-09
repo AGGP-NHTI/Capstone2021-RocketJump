@@ -32,7 +32,13 @@ public class TitleAnim : MonoBehaviour
         localscale = startscale;
     }
 
-    // Update is called once per frame
+    void Update()
+    {
+        if (!finished)
+        {
+            gameObject.transform.localScale = localscale;
+        }
+    }
     void FixedUpdate()
     {
         if (previous != null)
@@ -54,7 +60,7 @@ public class TitleAnim : MonoBehaviour
         {
             localscale = startscale;
         }
-        gameObject.transform.localScale = localscale;
+        
         if (go)
         {
             delay -= Time.deltaTime;
