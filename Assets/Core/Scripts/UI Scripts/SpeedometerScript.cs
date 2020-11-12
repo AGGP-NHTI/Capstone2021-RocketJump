@@ -13,6 +13,7 @@ public class SpeedometerScript : MonoBehaviour
     private Transform speed_trans; // the images transform
     private float max_rotation; // the maximum rotation the needle can have (max speed)
     private float min_rotation; // the minumum rotation the needle can have (no speed)
+    public PlayerController player;
 
     //FOR TESTING (until actual player is hooked up)//
     public float speed; // current speed
@@ -20,7 +21,7 @@ public class SpeedometerScript : MonoBehaviour
     // Once the actual player is ready to be hooked up, the "speed" and "maxSpeed" can probably just be retied to the respective variables in the player script
 
     public float speedPerc; // the percentage of speed on its way to max speed;
-    
+
     // ((value - min) / (max - min)) * 100 = percentage;
     // -((min * perc) / 100) + min + ((max * perc) / 100) = value;
 
