@@ -108,6 +108,6 @@ public class MainMenu : MonoBehaviour
     }
     public void HostGame()
     {
-
+        SceneManager.LoadScene(1);
     }
 }
