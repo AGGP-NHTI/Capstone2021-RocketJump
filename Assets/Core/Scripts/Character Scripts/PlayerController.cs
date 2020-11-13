@@ -40,7 +40,7 @@ public class PlayerController : Controller
 
         UI = Instantiate(UI);
 
-        //UI.GetComponent<SpeedometerScript>().player = this;
+        UI.GetComponentInChildren<SpeedometerScript>().player = this;
 	}
 	
 	void Update()
