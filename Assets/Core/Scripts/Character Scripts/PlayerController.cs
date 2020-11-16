@@ -39,7 +39,10 @@ public class PlayerController : Controller
 		rb = GetComponent<Rigidbody>() ?? gameObject.AddComponent<Rigidbody>();
 		Cursor.lockState = CursorLockMode.Locked;
 
-        UI = Instantiate(UI);
+		cam.enabled = false;
+		cam.GetComponent<AudioListener>().enabled = false;
+
+		UI = Instantiate(UI);
 
         UI.GetComponentInChildren<SpeedometerScript>().player = this;
 	}
@@ -51,9 +54,9 @@ public class PlayerController : Controller
 		input = PollWASD();
 		if (!jump) jump = PollJump(); // required due to timing between Update/FixedUpdate
 
-		if (!isLocalPlayer)
+		if (IsLocalPlayer)
 		{
-			cam.enabled = false;
+			cam.enabled = true;
 			return;
 		}
 
