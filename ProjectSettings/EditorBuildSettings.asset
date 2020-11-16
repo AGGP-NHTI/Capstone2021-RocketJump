@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Core/Scenes/MainMenu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
+  - enabled: 1
     path: Assets/Core/Scenes/TestPlayerScene.unity
     guid: c20022f3def56c2409208a2c8195a858
-  - enabled: 1
+  - enabled: 0
     path: Assets/Core/Scenes/Crimson's Testing Ground.unity
     guid: 796921cd26ab2c746ab5484210e7efe6
   m_configObjects: {}

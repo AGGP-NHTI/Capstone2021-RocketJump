@@ -33,6 +33,13 @@ public class SpeedometerScript : MonoBehaviour
         max_rotation = 190; // dont mess with
         min_rotation = 0; // leave at 0
         playerLoaded = false;
+        player = gameObject.transform.root.GetComponent<PlayerController>();
+
+        if(!player)
+        {
+            Debug.Log("Player could not be found; " + gameObject.name);
+        }
+
     }
 
     

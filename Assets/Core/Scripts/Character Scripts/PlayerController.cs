@@ -8,6 +8,7 @@ public class PlayerController : Controller
 	public Transform body;
 	public Transform eyes;
 	public SphereCollider groundcheck;
+	public Camera cam;
 	//public Pawn ControlledPawn;
 
 	public float movementGround;
@@ -33,14 +34,19 @@ public class PlayerController : Controller
 
     public GameObject UI;
 
-	private void Awake()
+
+    private void Awake()
 	{
 		rb = GetComponent<Rigidbody>() ?? gameObject.AddComponent<Rigidbody>();
 		Cursor.lockState = CursorLockMode.Locked;
 
-        UI = Instantiate(UI);
 
-        UI.GetComponentInChildren<SpeedometerScript>().player = this;
+        UI = Instantiate(UI, gameObject.transform);
+
+		cam.enabled = false;
+		cam.GetComponent<AudioListener>().enabled = false;
+
+
 	}
 	
 	void Update()
@@ -49,7 +55,12 @@ public class PlayerController : Controller
 
 		input = PollWASD();
 		if (!jump) jump = PollJump(); // required due to timing between Update/FixedUpdate
-		
+
+		if (IsLocalPlayer)
+		{
+			cam.enabled = true;
+			return;
+		}
 
 		Debug.DrawRay(groundcheck.transform.position, surfaceNormal * 10f, Color.red);
     }
