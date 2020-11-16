@@ -8,7 +8,8 @@ public class PlayerController : Controller
 	public Transform body;
 	public Transform eyes;
 	public SphereCollider groundcheck;
-	public Camera cam;
+	public GameObject cam;
+	private GameObject newCam;
 	//public Pawn ControlledPawn;
 
 	public float movementGround;
@@ -40,11 +41,11 @@ public class PlayerController : Controller
 		rb = GetComponent<Rigidbody>() ?? gameObject.AddComponent<Rigidbody>();
 		Cursor.lockState = CursorLockMode.Locked;
 
-
         UI = Instantiate(UI, gameObject.transform);
 
-		cam.enabled = false;
-		cam.GetComponent<AudioListener>().enabled = false;
+		newCam = Instantiate(cam, eyes);
+		newCam.transform.parent = eyes;
+	
 
 
 	}
@@ -56,9 +57,9 @@ public class PlayerController : Controller
 		input = PollWASD();
 		if (!jump) jump = PollJump(); // required due to timing between Update/FixedUpdate
 
-		if (IsLocalPlayer)
+		if (!IsLocalPlayer)
 		{
-			cam.enabled = true;
+			newCam.SetActive(false);
 			return;
 		}
 
