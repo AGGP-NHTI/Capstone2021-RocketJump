@@ -8,6 +8,7 @@ public class PlayerController : Controller
 	public Transform body;
 	public Transform eyes;
 	public SphereCollider groundcheck;
+	public Camera cam;
 	//public Pawn ControlledPawn;
 
 	public float movementGround;
@@ -49,7 +50,12 @@ public class PlayerController : Controller
 
 		input = PollWASD();
 		if (!jump) jump = PollJump(); // required due to timing between Update/FixedUpdate
-		
+
+		if (!isLocalPlayer)
+		{
+			cam.enabled = false;
+			return;
+		}
 
 		Debug.DrawRay(groundcheck.transform.position, surfaceNormal * 10f, Color.red);
     }
