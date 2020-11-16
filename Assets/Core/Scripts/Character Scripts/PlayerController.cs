@@ -40,7 +40,6 @@ public class PlayerController : Controller
 		rb = GetComponent<Rigidbody>() ?? gameObject.AddComponent<Rigidbody>();
 		Cursor.lockState = CursorLockMode.Locked;
 
-
         UI = Instantiate(UI, gameObject.transform);
 
 		cam.enabled = false;
