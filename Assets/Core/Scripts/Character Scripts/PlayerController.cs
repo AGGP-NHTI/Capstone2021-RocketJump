@@ -34,14 +34,14 @@ public class PlayerController : Controller
 
     public GameObject UI;
 
-	private void Awake()
+
+    private void Awake()
 	{
 		rb = GetComponent<Rigidbody>() ?? gameObject.AddComponent<Rigidbody>();
 		Cursor.lockState = CursorLockMode.Locked;
 
-        UI = Instantiate(UI);
+        UI = Instantiate(UI, gameObject.transform);
 
-        UI.GetComponentInChildren<SpeedometerScript>().player = this;
 	}
 	
 	void Update()
