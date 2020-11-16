@@ -618,7 +618,7 @@ GameObject:
   - component: {fileID: 1029583136}
   - component: {fileID: 1029583135}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -631,7 +631,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029583134}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1029583136
 Camera:
   m_ObjectHideFlags: 0
@@ -2139,6 +2139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   track: {fileID: 1666151586}
+  positionNodes: []
 --- !u!4 &1666151588
 Transform:
   m_ObjectHideFlags: 0
