@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     public GameObject main;
     public GameObject settings;
     public GameObject games;
+    public GameObject all;
 
     public Slider volume;
     public Slider MS;
@@ -21,7 +22,8 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        Back();
+        
+        
         PlayerPrefs.GetFloat("Volume", volume.maxValue / 2);
         PlayerPrefs.GetFloat("MouseSensitivity", MS.maxValue / 2);
         PlayerPrefs.GetInt("InvertHorizontal", 1);
@@ -29,23 +31,28 @@ public class MainMenu : MonoBehaviour
 
         volume.value = PlayerPrefs.GetFloat("Volume", 20f);
         MS.value = PlayerPrefs.GetFloat("MouseSensitivity", 20f);
+        if (main != null)
+        {
 
-        if (PlayerPrefs.GetInt("InvertHorizontal", 1) == 1)
-        {
-            horizontal.isOn = true;
-        }
-        else
-        {
-            horizontal.isOn = false;
-        }
 
-        if (PlayerPrefs.GetInt("InvertVertical", 1) == 1)
-        {
-            vertical.isOn = true;
-        }
-        else
-        {
-            vertical.isOn = false;
+            Back();
+            if (PlayerPrefs.GetInt("InvertHorizontal", 1) == 1)
+            {
+                horizontal.isOn = true;
+            }
+            else
+            {
+                horizontal.isOn = false;
+            }
+
+            if (PlayerPrefs.GetInt("InvertVertical", 1) == 1)
+            {
+                vertical.isOn = true;
+            }
+            else
+            {
+                vertical.isOn = false;
+            }
         }
     }
     public void QuitGame()
@@ -69,7 +76,7 @@ public class MainMenu : MonoBehaviour
     }
     public void ToGames()
     {
-        main.SetActive(false);        
+        main.SetActive(false);
         games.SetActive(true);
     }
     public void ChangeVolume()
@@ -109,5 +116,22 @@ public class MainMenu : MonoBehaviour
     public void HostGame()
     {
         SceneManager.LoadScene(1);
+    }
+    public void ToTutorial()
+    {
+        SceneManager.LoadScene(0);
+    }
+   
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void CloseMenu()
+    {
+        all.SetActive(false);
+    }
+    public void OpenMenu()
+    {
+        all.SetActive(true);
     }
 }
