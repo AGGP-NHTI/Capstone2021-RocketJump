@@ -35,7 +35,7 @@ public class MainMenu : MonoBehaviour
         {
             Back();
 
-            if (PlayerPrefs.GetInt("InvertHorizontal", 1) == 1)
+            if (PlayerPrefs.GetInt("InvertHorizontal", 1) == -1)
             {
                 horizontal.isOn = true;
             }
@@ -44,7 +44,7 @@ public class MainMenu : MonoBehaviour
                 horizontal.isOn = false;
             }
 
-            if (PlayerPrefs.GetInt("InvertVertical", 1) == 1)
+            if (PlayerPrefs.GetInt("InvertVertical", 1) == -1)
             {
                 vertical.isOn = true;
             }
