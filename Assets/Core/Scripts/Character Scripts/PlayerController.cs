@@ -17,6 +17,9 @@ public class PlayerController : Controller
 	public float topSpeed;
 	public float jumpForce;
 
+	float plprSen; //playerprefs sensetivity
+	int invhor; //playerprefs invert horizontal
+	int invvert; //playerprefs invert vertical
 	
 	public float decelFactorGround;
 
@@ -45,9 +48,10 @@ public class PlayerController : Controller
 
 		newCam = Instantiate(cam, eyes);
 		newCam.transform.parent = eyes;
-	
 
-
+		plprSen = PlayerPrefs.GetFloat("MouseSensitivity", mouseSensitivity.y);
+		invhor = PlayerPrefs.GetInt("InvertHorizontal", 1);
+		invvert = PlayerPrefs.GetInt("InvertVertical", 1);
 	}
 	
 	void Update()
@@ -133,8 +137,10 @@ public class PlayerController : Controller
 
 	void DoMouseLook()
 	{
-		eyesPitch -= Input.GetAxisRaw("Mouse Y") * mouseSensitivity.y;
-		bodyYaw += Input.GetAxisRaw("Mouse X") * mouseSensitivity.x;
+		//eyesPitch -= Input.GetAxisRaw("Mouse Y") * mouseSensitivity.y;
+		//bodyYaw += Input.GetAxisRaw("Mouse X") * mouseSensitivity.x;
+		eyesPitch -= Input.GetAxisRaw("Mouse Y") * plprSen * invvert;
+		bodyYaw += Input.GetAxisRaw("Mouse X") * plprSen * invhor;
 
 		eyesPitch = Mathf.Clamp(eyesPitch, pitchLimits.x, pitchLimits.y);
 

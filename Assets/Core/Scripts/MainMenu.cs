@@ -20,10 +20,10 @@ public class MainMenu : MonoBehaviour
     public Toggle horizontal;
     public Toggle vertical;
 
+    public TextMeshProUGUI SenNum;
+    public TextMeshProUGUI VolNum;
     void Start()
-    {
-        
-        
+    {       
         PlayerPrefs.GetFloat("Volume", volume.maxValue / 2);
         PlayerPrefs.GetFloat("MouseSensitivity", MS.maxValue / 2);
         PlayerPrefs.GetInt("InvertHorizontal", 1);
@@ -33,9 +33,8 @@ public class MainMenu : MonoBehaviour
         MS.value = PlayerPrefs.GetFloat("MouseSensitivity", 20f);
         if (main != null)
         {
-
-
             Back();
+
             if (PlayerPrefs.GetInt("InvertHorizontal", 1) == 1)
             {
                 horizontal.isOn = true;
@@ -53,6 +52,14 @@ public class MainMenu : MonoBehaviour
             {
                 vertical.isOn = false;
             }
+        }
+    }
+    private void Update()
+    {
+        if (MS != null && volume != null)
+        {
+            SenNum.text = "" + MS.value;
+            VolNum.text = "" + volume.value;
         }
     }
     public void QuitGame()
@@ -91,22 +98,22 @@ public class MainMenu : MonoBehaviour
     {
         if (horizontal.isOn)
         {
-            PlayerPrefs.SetInt("InvertHorizontal", 1);
+            PlayerPrefs.SetInt("InvertHorizontal", -1);
         }
         else
         {
-            PlayerPrefs.SetInt("InvertHorizontal", -1);
+            PlayerPrefs.SetInt("InvertHorizontal", 1);
         }
     }
     public void ChangeInvertMouseVertical()
     {
         if (vertical.isOn)
         {
-            PlayerPrefs.SetInt("InvertVertical", 1);
+            PlayerPrefs.SetInt("InvertVertical", -1);
         }
         else
         {
-            PlayerPrefs.SetInt("InvertVertical", -1);
+            PlayerPrefs.SetInt("InvertVertical", 1);
         }
     }
     public void JoinGame(TMP_InputField game)
