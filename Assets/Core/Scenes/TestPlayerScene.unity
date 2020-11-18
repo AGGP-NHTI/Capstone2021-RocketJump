@@ -945,6 +945,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 38609699313791902, guid: 4183c1645cda77c449f551b5b4b2f3cd,
+        type: 3}
+      propertyPath: connectAddress
+      value: 
+      objectReference: {fileID: 4180930}
     - target: {fileID: 38609699313791903, guid: 4183c1645cda77c449f551b5b4b2f3cd,
         type: 3}
       propertyPath: m_LocalRotation.x
