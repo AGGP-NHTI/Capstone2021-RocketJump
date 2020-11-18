@@ -25,6 +25,7 @@ public class ButtonPannel : MonoBehaviour
     public void StartasClient()
     {
         NetworkingManager.Singleton.gameObject.GetComponent<UnetTransport>().ConnectAddress = connectAddress.text;
+        NetworkingManager.Singleton.GetComponent<UnetTransport>().ConnectPort = 7777;
         NetworkingManager.Singleton.StartClient();
         Pannel.SetActive(false);
     }
