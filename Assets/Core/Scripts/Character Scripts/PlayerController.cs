@@ -38,6 +38,8 @@ public class PlayerController : Controller
 
     public GameObject UI;
 
+    private PositionManager positionManager;
+
 
     private void Awake()
 	{
@@ -52,6 +54,9 @@ public class PlayerController : Controller
 		plprSen = PlayerPrefs.GetFloat("MouseSensitivity", mouseSensitivity.y);
 		invhor = PlayerPrefs.GetInt("InvertHorizontal", 1);
 		invvert = PlayerPrefs.GetInt("InvertVertical", 1);
+
+        positionManager = GameObject.Find("track").GetComponent<PositionManager>(); // this is bad, i know. Its temporary
+        positionManager.updatePlayerList(gameObject);
 	}
 	
 	void Update()

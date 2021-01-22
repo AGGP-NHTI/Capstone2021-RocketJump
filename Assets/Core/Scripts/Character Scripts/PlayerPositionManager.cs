@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPositionManager : MonoBehaviour
+[System.Serializable]
+public class PlayerPositionManager
 {
     public int nodePosition;
     public int lap;
+    public GameObject player;
 
-    private void Awake()
+    public PlayerPositionManager(GameObject plr)
     {
         nodePosition = 0;
+        lap = 0;
+        player = plr;
     }
 }
