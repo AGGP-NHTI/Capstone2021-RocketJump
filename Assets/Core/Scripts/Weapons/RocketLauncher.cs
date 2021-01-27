@@ -34,7 +34,7 @@ public class RocketLauncher : Weapon
 
     public override void Fire() 
     {
-        if (isReloading || clipEmpty()) return;
+        if (isReloading || clipEmpty() || isCooling) return;
 
         Debug.Log("FIRE");
         Instantiate(projectilePrefab, projectileSpawn.position, projectileSpawn.rotation);
@@ -42,6 +42,8 @@ public class RocketLauncher : Weapon
         currentClip--;
         ammo.text = currentClip.ToString();
         Debug.Log(currentClip);
+
+        waitForFireRate();
 
     }
     public override void AltFire() 
