@@ -8,11 +8,28 @@ public class PlayerPositionManager
     public int nodePosition;
     public int lap;
     public GameObject player;
+    public PositionManager positionManager;
 
-    public PlayerPositionManager(GameObject plr)
+    public PlayerPositionManager(GameObject plr, PositionManager owner)
     {
         nodePosition = 0;
-        lap = 0;
+        lap = 1;
         player = plr;
+        positionManager = owner;
+    }
+
+    public void updatePosition()
+    {
+        player.GetComponent<PlayerController>().updateLap(lap);
+    }
+
+    public void updatePosition(int nodeNum)
+    {
+        if(nodeNum > nodePosition) { nodePosition = nodeNum; }
+        else if(nodeNum == 0 && nodePosition == positionManager.lastNode - 1) { nodePosition = nodeNum; lap++; }
+
+        Debug.Log(nodePosition + ", " + lap);
+
+        player.GetComponent<PlayerController>().updateLap(lap);
     }
 }

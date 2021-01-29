@@ -66,9 +66,11 @@ public abstract class Weapon : Actor
         isCooling = false;
     }
     
+    /* 
     Vector3 calculateBulletSpread(float amnt)
-    { 
-    
+    {
+        -- was causing an error in unity because this isn't returning anything, commenting out so i can compile - Jake
     }
+    */
 }
 
