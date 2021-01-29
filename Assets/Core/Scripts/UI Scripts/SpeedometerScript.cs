@@ -34,9 +34,7 @@ public class SpeedometerScript : MonoBehaviour
     void Start()
     {
         speed_trans = speedometer.transform;
-        //max_rotation = 190; // dont mess with
-        //min_rotation = 0; // leave at 0
-        //playerLoaded = false;
+        
         player = gameObject.transform.root.GetComponent<PlayerController>();
         rb = player.GetComponent<Rigidbody>();
 
@@ -44,13 +42,10 @@ public class SpeedometerScript : MonoBehaviour
         {
             Debug.Log("Player could not be found; " + gameObject.name);
         }
-
     }
-
     
     void Update()
     {
-
         if(player == null) { return; }
         else
         {
@@ -59,8 +54,7 @@ public class SpeedometerScript : MonoBehaviour
                 maxSpeed = player.topSpeed;
             }
         }
-
-        //speed = player.GetSpeedometer();
+        
         speed = rb.velocity.magnitude;
 
         //speedPerc = ((speed - 0) / (maxSpeed - 0)) * 100; // get the speed percentage
