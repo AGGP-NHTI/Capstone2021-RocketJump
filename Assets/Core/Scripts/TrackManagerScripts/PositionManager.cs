@@ -19,6 +19,8 @@ public class PositionManager : MonoBehaviour
 {
 
     public GameObject track; // Point a reference to the track
+    public int lastNode;
+    public List<GameObject> players;
     [SerializeField] List<Transform> positionNodes;
     [SerializeField] List<PlayerPositionManager> playerPositions;
 
@@ -38,6 +40,9 @@ public class PositionManager : MonoBehaviour
             positionNodes.Sort((x, y) => x.GetComponent<PositionNodeScript>().nodeNumber.CompareTo(y.GetComponent<PositionNodeScript>().nodeNumber));
 
             playerPositions = new List<PlayerPositionManager>();
+            players = new List<GameObject>();
+
+            lastNode = positionNodes.Count;
 
         }
     }
@@ -50,7 +55,33 @@ public class PositionManager : MonoBehaviour
     public void updatePlayerList(GameObject player)
     {
 
-        playerPositions.Add(new PlayerPositionManager(player));
+        playerPositions.Add(new PlayerPositionManager(player, this));
+        players.Add(player);
 
+        updatePlayerPosition(player);
+    }
+
+    public void updatePlayerPosition(GameObject player)
+    {
+
+        foreach (PlayerPositionManager p in playerPositions)
+        {
+            if (p.player == player)
+            {
+                p.updatePosition();
+            }
+        }
+    }
+
+    public void updatePlayerPosition(GameObject player, int nodeNum)
+    {
+
+        foreach (PlayerPositionManager p in playerPositions)
+        {
+            if(p.player == player)
+            {
+                p.updatePosition(nodeNum);
+            }
+        }
     }
 }

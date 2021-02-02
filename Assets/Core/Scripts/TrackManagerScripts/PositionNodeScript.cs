@@ -7,15 +7,19 @@ public class PositionNodeScript : MonoBehaviour
     public int nodeNumber;
     public PositionManager positionManager;
 
+    private void Awake()
+    {
+        positionManager = GameObject.Find("track").GetComponent<PositionManager>(); // this is bad, i know. Its temporary
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "TestPlayer(Clone)") // Hacky for testing. Will be better handled later
+        foreach(GameObject player in positionManager.players)
         {
-
-            //other.GetComponent<PlayerController>().positionManager.nodePosition = nodeNumber;
-
-            //print(other.GetComponent<PlayerController>().positionManager.nodePosition);
-
+            if(other.gameObject.name == player.gameObject.name)
+            {
+                positionManager.updatePlayerPosition(player, nodeNumber);
+            }
         }
     }
 

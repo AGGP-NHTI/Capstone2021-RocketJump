@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : Controller
 {
@@ -185,5 +186,15 @@ public class PlayerController : Controller
         {
 
         }
+    }
+
+    public void updateLap(int lap)
+    {
+
+        UIManager uman = UI.GetComponent<UIManager>();
+        uman.lapText.text = lap.ToString();
+
+        
+
     }
 }
