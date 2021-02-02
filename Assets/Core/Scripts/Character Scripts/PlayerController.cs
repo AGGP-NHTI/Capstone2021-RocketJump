@@ -35,7 +35,7 @@ public class PlayerController : Controller
 
 	Vector3 surfaceNormal = Vector3.zero;
 
-	Rigidbody rb;
+	public Rigidbody rb;
 
     public GameObject UI;
 
@@ -197,4 +197,5 @@ public class PlayerController : Controller
         
 
     }
+
 }

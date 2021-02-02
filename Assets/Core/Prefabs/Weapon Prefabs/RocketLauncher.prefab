@@ -47,16 +47,18 @@ MonoBehaviour:
   IsActive: 1
   IgnoreDamage: 0
   weaponModel: {fileID: 0}
-  playerReference: {fileID: 0}
   UI: {fileID: 0}
   projectilePrefab: {fileID: 3434827112916319614, guid: 831b29f1ffb0257458f1a4dca83b352d,
     type: 3}
   projectileSpawn: {fileID: 3340697923363904619}
-  reloadSpeed: 0
-  fireRate: 0
+  playerReference: {fileID: 0}
+  AmmoReference: {fileID: 0}
+  reloadSpeed: 3
+  fireRate: 4
   bulletSpread: 0
-  currentClip: 0
-  clipSize: 0
+  knockBackForce: 5
+  currentClip: 2
+  clipSize: 2
   isReloading: 0
   isCooling: 0
 --- !u!1 &7404699758865076275

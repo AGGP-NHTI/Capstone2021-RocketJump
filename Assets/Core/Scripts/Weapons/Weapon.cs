@@ -7,13 +7,13 @@ using TMPro;
 
 public class Weapon : Actor
 {
+    private GameObject UI;
+    private PlayerController playerReference;
 
     [Header("Dependencies")] 
-    public GameObject weaponModel;
-    public GameObject UI;
+    //public GameObject weaponModel;
     public GameObject projectilePrefab;
     public Transform projectileSpawn;
-    public PlayerController playerReference;
     public Ammo_UI_Script AmmoReference;
 
     [Header("Stats")]
@@ -36,8 +36,8 @@ public class Weapon : Actor
     {
         currentClip--;
         AmmoReference.SetMagazine(currentClip);
+        KnockBack(transform.rotation.eulerAngles, knockBackForce);
         waitForFireRate();
-        KnockBack();
     }
     public virtual void AltFire() 
     { 
@@ -88,13 +88,7 @@ public class Weapon : Actor
         isCooling = false;
     }
     
-    protected Quaternion BulletSpread(Quaternion input)
-    {
-        input.x += Random.Range(-bulletSpread, bulletSpread);
-        input.y += Random.Range(-bulletSpread, bulletSpread);
-
-        return input;
-    }
+    
 
     void setPlayerReference()
     {
@@ -122,10 +116,20 @@ public class Weapon : Actor
             Debug.Log("AMMO REFERENCE SET");    
         }
     }
-    void KnockBack()
-    { 
-        //Apply force opposite the projectile spawn rotation
+
+    protected Quaternion BulletSpread(Quaternion input)
+    {
+        input.x += Random.Range(-bulletSpread, bulletSpread);
+        input.y += Random.Range(-bulletSpread, bulletSpread);
+
+        return input;
     }
+    void KnockBack(Vector3 direction, float magnitude)
+    {
+        playerReference.rb.AddForce(-direction.normalized * magnitude, ForceMode.Impulse);
+        
+    }
+
 
 
 }
