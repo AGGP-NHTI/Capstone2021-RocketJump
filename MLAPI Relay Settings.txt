@@ -1,0 +1,7 @@
+In the UNET transport on the Network Manager:
+
+Make sure the Connect Address is: 69.161.66.111
+Make sure the Connect Port is: 1234
+Make sure the Use MLAPI Relay boolean is checked
+Make sure the MLAPI Relay Address is 3.94.107.19
+The MLAPI Relay Port should be on the default 8888
