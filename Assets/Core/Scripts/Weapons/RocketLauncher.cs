@@ -7,16 +7,16 @@ public class RocketLauncher : Weapon
 {
     
 
-    private void Start()
+    protected override void Start()
     {
-
+        base.Start();
         reloadSpeed = 2f;
         clipSize = 2;
         
         currentClip = clipSize;
 
-        ammo.text = currentClip.ToString();
-        maxAmmo.text = ammo.text;
+        AmmoReference.SetMagazine(currentClip);
+        AmmoReference.SetReserve(clipSize);
     }
 
     private void Update()
@@ -36,14 +36,8 @@ public class RocketLauncher : Weapon
     {
         if (isReloading || clipEmpty() || isCooling) return;
 
-        Debug.Log("FIRE");
-        Instantiate(projectilePrefab, projectileSpawn.position, projectileSpawn.rotation);
-
-        currentClip--;
-        ammo.text = currentClip.ToString();
-        Debug.Log(currentClip);
-
-        waitForFireRate();
+        Instantiate(projectilePrefab, projectileSpawn.position,BulletSpread(projectileSpawn.rotation));
+        base.Fire();
 
     }
     public override void AltFire() 

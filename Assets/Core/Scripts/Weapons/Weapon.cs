@@ -5,30 +5,52 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public abstract class Weapon : Actor
+public class Weapon : Actor
 {
 
-    [Header("Dependencies")]
-    public TextMeshProUGUI ammo;
-    public TextMeshProUGUI maxAmmo;
+    [Header("Dependencies")] 
+    public GameObject weaponModel;
+    public GameObject UI;
     public GameObject projectilePrefab;
     public Transform projectileSpawn;
+    public PlayerController playerReference;
+    public Ammo_UI_Script AmmoReference;
 
     [Header("Stats")]
-    public float reloadSpeed;
-    public float fireRate;
-    public float bulletSpread;
-    public int currentClip;
-    public int clipSize;
+    public float    reloadSpeed;
+    public float    fireRate;
+    public float    bulletSpread;
+    public float    knockBackForce;
+    public int      currentClip;
+    public int      clipSize;
+    
     
     [Header("Info")]
-    public bool isReloading = false;
+    public bool isReloading = false; 
     public bool isCooling = false;
 
-    GameObject weaponModel;
 
-    public abstract void Fire();
-    public abstract void AltFire();
+
+
+    public virtual void Fire() 
+    {
+        currentClip--;
+        AmmoReference.SetMagazine(currentClip);
+        waitForFireRate();
+        KnockBack();
+    }
+    public virtual void AltFire() 
+    { 
+        
+    }
+
+    protected virtual void Start()
+    {
+        Debug.Log("Start--");
+        setPlayerReference();
+        setUIObj();
+        setAmmoReference();
+    }
 
     public virtual bool clipEmpty() 
     {
@@ -38,7 +60,7 @@ public abstract class Weapon : Actor
         }
         return false;
     }
-
+    
     public virtual void reload()
     {
         StartCoroutine(reloadTimer(reloadSpeed));
@@ -50,7 +72,7 @@ public abstract class Weapon : Actor
         yield return new WaitForSeconds(input);
         isReloading = false;
         currentClip = clipSize;
-        ammo.text = currentClip.ToString();
+        AmmoReference.SetMagazine(currentClip);
     }
 
     public virtual void waitForFireRate()
@@ -66,9 +88,45 @@ public abstract class Weapon : Actor
         isCooling = false;
     }
     
-    Vector3 calculateBulletSpread(float amnt)
-    { 
-    
+    protected Quaternion BulletSpread(Quaternion input)
+    {
+        input.x += Random.Range(-bulletSpread, bulletSpread);
+        input.y += Random.Range(-bulletSpread, bulletSpread);
+
+        return input;
     }
+
+    void setPlayerReference()
+    {
+        PlayerController player = transform.root.GetComponent<PlayerController>();
+        Debug.Log("NAME: " + player.name);
+        if (player)
+        {
+            playerReference = player;
+            Debug.Log("PLAYER SET"); 
+        }
+        
+    }
+    void setUIObj()
+    {
+        UI = playerReference.UI;
+        
+    }
+
+    void setAmmoReference()
+    {
+        Ammo_UI_Script ammo = UI.transform.GetComponentInChildren<Ammo_UI_Script>();
+        if(ammo)
+        {
+            AmmoReference = ammo;
+            Debug.Log("AMMO REFERENCE SET");    
+        }
+    }
+    void KnockBack()
+    { 
+        //Apply force opposite the projectile spawn rotation
+    }
+
+
 }
 

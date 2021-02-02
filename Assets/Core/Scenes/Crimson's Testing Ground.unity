@@ -788,9 +788,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedometer: {fileID: 2133601203}
+  background: {fileID: 0}
   speed: 0
   maxSpeed: 0
   speedPerc: 0
+  player: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -7254,6 +7256,7 @@ MonoBehaviour:
   body: {fileID: 7627723621099226281}
   eyes: {fileID: 336782453}
   groundcheck: {fileID: 2096464447094573892}
+  cam: {fileID: 0}
   movementGround: 1
   movementAir: 10
   topSpeed: 10
@@ -7261,6 +7264,7 @@ MonoBehaviour:
   decelFactorGround: 0.1
   mouseSensitivity: {x: 4, y: 4}
   pitchLimits: {x: -80, y: 80}
+  UI: {fileID: 999236688}
 --- !u!4 &2096464448179939231
 Transform:
   m_ObjectHideFlags: 0
@@ -7400,6 +7404,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7980266181206381410, guid: 7713d27125b7735459e8694d56cd812b,
+        type: 3}
+      propertyPath: ammo
+      value: 
+      objectReference: {fileID: 1206168902}
+    - target: {fileID: 7980266181206381410, guid: 7713d27125b7735459e8694d56cd812b,
+        type: 3}
+      propertyPath: maxAmmo
+      value: 
+      objectReference: {fileID: 269367241}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7713d27125b7735459e8694d56cd812b, type: 3}
 --- !u!1001 &7220437828354467937
