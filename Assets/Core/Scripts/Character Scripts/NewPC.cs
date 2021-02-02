@@ -6,15 +6,15 @@ using UnityEngine;
 public class NewPC : MonoBehaviour
 {
 	[Header("Character Traits")]
-	public float moveSpeed = 10;
-	public float jumpForce = 10;
+	public float moveSpeed = 15;
+	public float jumpForce = 15;
 
 	[Header("Input")]
 	public float lookSpeed = 5;
 
 	[Header("Physics")]
 	public float gravityConstant = 9.81f;
-	public float groundingForce = 1f;
+	public float groundingForce = 5f;
 
 	float gravForce = 0;
 	float pitch = 0;
@@ -37,6 +37,9 @@ public class NewPC : MonoBehaviour
 
 	void Update()
     {
+		wasGrounded = cc.isGrounded;
+		
+
 		float lat = Input.GetAxis("Horizontal");
 		float fwd = Input.GetAxis("Vertical");
 		bool jump = Input.GetKey(KeyCode.Space);
@@ -50,12 +53,6 @@ public class NewPC : MonoBehaviour
 			gravForce = groundingForce;
 			if (jump) gravForce -= jumpForce;
 		}
-		// for triggering for some reason
-		if (wasGrounded && !cc.isGrounded)
-		{
-			Debug.Log("Fell off ledge");
-			gravForce = 0;
-		}
 		gravForce += gravityConstant * Time.deltaTime;
 
 		Vector3 bodyRot = transform.localEulerAngles;
@@ -67,6 +64,14 @@ public class NewPC : MonoBehaviour
 		cam.transform.localEulerAngles = camRot;
 		cc.Move(transform.TransformDirection(new Vector3(lat * moveSpeed, -gravForce, fwd * moveSpeed) * Time.deltaTime));
 
-		wasGrounded = cc.isGrounded;
+		if (wasGrounded == true && cc.isGrounded == false)
+		{
+			// left the ground
+			if (gravForce > 0) gravForce = 0;
+		}
+		else if (wasGrounded == false && cc.isGrounded == true)
+		{
+			// landed
+		}
 	}
 }
