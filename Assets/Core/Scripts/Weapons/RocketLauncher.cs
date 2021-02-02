@@ -35,7 +35,7 @@ public class RocketLauncher : Weapon
     public override void Fire() 
     {
         if (isReloading || clipEmpty() || isCooling) return;
-
+        
         Instantiate(projectilePrefab, projectileSpawn.position,BulletSpread(projectileSpawn.rotation));
         base.Fire();
 

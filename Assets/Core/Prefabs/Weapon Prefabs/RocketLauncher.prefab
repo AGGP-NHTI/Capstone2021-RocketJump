@@ -46,12 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 0
-  weaponModel: {fileID: 0}
-  UI: {fileID: 0}
   projectilePrefab: {fileID: 3434827112916319614, guid: 831b29f1ffb0257458f1a4dca83b352d,
     type: 3}
   projectileSpawn: {fileID: 3340697923363904619}
-  playerReference: {fileID: 0}
   AmmoReference: {fileID: 0}
   reloadSpeed: 3
   fireRate: 4
@@ -85,7 +82,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7404699758865076275}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.782}
+  m_LocalPosition: {x: 0, y: 0, z: -1.083}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4332921322688432001}
