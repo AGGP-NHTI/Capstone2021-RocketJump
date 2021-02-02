@@ -43,7 +43,7 @@ public class Weapon : Actor
     { 
         
     }
-
+    
     protected virtual void Start()
     {
         Debug.Log("Start--");
