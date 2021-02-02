@@ -1985,14 +1985,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MessageBufferSize: 5120
   MaxConnections: 100
-  ConnectAddress: 127.0.0.1
-  ConnectPort: 7777
+  ConnectAddress: 69.161.66.111
+  ConnectPort: 1234
   ServerListenPort: 7777
   ServerWebsocketListenPort: 8887
   SupportWebsocket: 0
   Channels: []
-  UseMLAPIRelay: 0
-  MLAPIRelayAddress: 184.72.104.138
+  UseMLAPIRelay: 1
+  MLAPIRelayAddress: 3.94.107.19
   MLAPIRelayPort: 8888
 --- !u!114 &1418486267
 MonoBehaviour:
@@ -2019,6 +2019,9 @@ MonoBehaviour:
     - Prefab: {fileID: 2096464447327900002, guid: 85aa84dbfcc565c4e9085aece2294804,
         type: 3}
       PlayerPrefab: 1
+    - Prefab: {fileID: 3434827112916319614, guid: 831b29f1ffb0257458f1a4dca83b352d,
+        type: 3}
+      PlayerPrefab: 0
     PlayerPrefabHash:
       Value: 11182408945722765662
     CreatePlayerPrefab: 1
