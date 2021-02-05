@@ -1869,7 +1869,17 @@ PrefabInstance:
     - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
       propertyPath: NetworkConfig.RegisteredScenes.Array.data[2]
-      value: RaceTrack
+      value: PPP
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214381284232303377, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
+      propertyPath: ServerListenPort
+      value: 1234
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214381284232303377, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
+      propertyPath: ServerWebsocketListenPort
+      value: 1234
       objectReference: {fileID: 0}
     - target: {fileID: 5214381284232303378, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
