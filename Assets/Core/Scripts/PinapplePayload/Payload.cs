@@ -30,6 +30,12 @@ public class Payload : NetworkedBehaviour
 
     public void SwapPlayer()
     {
+        GameObject p;
+        p = logic.RandomPlayer();
+    }
 
+    public void NewPlayer(GameObject player)
+    {
+        gameObject.transform.SetParent(player.transform);
     }
 }
