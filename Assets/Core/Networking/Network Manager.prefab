@@ -52,6 +52,8 @@ MonoBehaviour:
     NetworkTransport: {fileID: 5214381284232303377}
     RegisteredScenes:
     - TestPlayerScene
+    - RaceTrack
+    - PPP
     AllowRuntimeSceneChanges: 0
     NetworkedPrefabs:
     - Prefab: {fileID: 2096464447327900002, guid: 85aa84dbfcc565c4e9085aece2294804,
@@ -104,8 +106,8 @@ MonoBehaviour:
   MaxConnections: 100
   ConnectAddress: 69.161.66.111
   ConnectPort: 1234
-  ServerListenPort: 7777
-  ServerWebsocketListenPort: 8887
+  ServerListenPort: 1234
+  ServerWebsocketListenPort: 1234
   SupportWebsocket: 0
   Channels: []
   UseMLAPIRelay: 1
