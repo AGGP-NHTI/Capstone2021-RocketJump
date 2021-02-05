@@ -1784,7 +1784,7 @@ GameObject:
   - component: {fileID: 280371557}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1875,6 +1875,16 @@ PrefabInstance:
         type: 3}
       propertyPath: NetworkConfig.RegisteredScenes.Array.data[1]
       value: RaceTrack
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
+      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[0].PlayerPrefab
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
+      propertyPath: NetworkConfig.PlayerPrefabHash.Value
+      value: 11182408945722765662
       objectReference: {fileID: 0}
     - target: {fileID: 5214381284232303377, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
