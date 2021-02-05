@@ -82,9 +82,9 @@ MonoBehaviour:
   rb: {fileID: 0}
   lifeTime: 3
   contactLifetime: 0
-  explosiveForce: 50
+  explosiveForce: 564
   explosiveDistance: 10
-  projectileForce: 200
+  projectileLaunchForce: 853
 --- !u!114 &1045386885418444622
 MonoBehaviour:
   m_ObjectHideFlags: 0

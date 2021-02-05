@@ -11,9 +11,14 @@ public abstract class Projectile : Actor
     public float lifeTime = 3;
     public float contactLifetime = 0;
 
+    [Range(0f, 750f)]
     public float explosiveForce = 10;
+
+    [Range(0f,20f)]
     public float explosiveDistance = 10;
-    public float projectileForce = 10;
+
+    [Range(0f,1000f)]
+    public float projectileLaunchForce = 10;
 
 
     protected virtual void Start()
@@ -22,7 +27,7 @@ public abstract class Projectile : Actor
 
         if (rb)
         {
-            rb.AddForce(transform.forward * projectileForce);
+            rb.AddForce(transform.forward * projectileLaunchForce);
         }
     }
     protected virtual void Update()
