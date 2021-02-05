@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3687598767694696029}
-  - component: {fileID: 7980266181206381410}
+  - component: {fileID: -4540858852309122935}
   m_Layer: 0
   m_Name: RocketLauncher
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7980266181206381410
+--- !u!114 &-4540858852309122935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2673255171855170882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ab7f1b3fc14cc74ca3def45018a1622, type: 3}
+  m_Script: {fileID: 11500000, guid: da9de88ef89cfc7409198fe2bbd6472d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsActive: 1
@@ -50,7 +50,7 @@ MonoBehaviour:
     type: 3}
   projectileSpawn: {fileID: 3340697923363904619}
   AmmoReference: {fileID: 0}
-  reloadSpeed: 3
+  reloadSpeed: 2
   fireRate: 4
   bulletSpread: 0
   knockBackForce: 2
@@ -58,6 +58,7 @@ MonoBehaviour:
   clipSize: 2
   isReloading: 0
   isCooling: 0
+  isRapidFire: 0
 --- !u!1 &7404699758865076275
 GameObject:
   m_ObjectHideFlags: 0

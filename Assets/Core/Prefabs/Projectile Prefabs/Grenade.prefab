@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 533669471489735897}
   - component: {fileID: -8723777074195885637}
   m_Layer: 8
-  m_Name: Crimson'sTestGrenade
+  m_Name: Grenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   IgnoreDamage: 0
   rb: {fileID: 533669471489735897}
   lifeTime: 15
-  contactLifetime: 3
-  explosiveForce: 1000
+  contactLifetime: 1.5
+  explosiveForce: 750
   explosiveDistance: 10
-  projectileForce: 1000
+  projectileLaunchForce: 767
