@@ -53,7 +53,7 @@ MonoBehaviour:
   reloadSpeed: 3
   fireRate: 4
   bulletSpread: 0
-  knockBackForce: 5
+  knockBackForce: 30
   currentClip: 2
   clipSize: 2
   isReloading: 0

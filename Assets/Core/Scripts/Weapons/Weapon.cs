@@ -29,15 +29,16 @@ public class Weapon : Actor
     public bool isReloading = false; 
     public bool isCooling = false;
 
-
+    protected KeyCode reloadBinding = KeyCode.R;
 
 
     public virtual void Fire() 
     {
         currentClip--;
         AmmoReference.SetMagazine(currentClip);
-        KnockBack(transform.rotation.eulerAngles, knockBackForce);
+        KnockBack(Quaternion.Inverse(transform.parent.rotation).eulerAngles, knockBackForce);
         waitForFireRate();
+       
     }
     public virtual void AltFire() 
     { 
@@ -56,6 +57,11 @@ public class Weapon : Actor
     {
         if (currentClip <= 0)
         {
+            UIManager UiMan = UI.GetComponent<UIManager>();
+            if (UiMan)
+            {
+                UiMan.sendMessage("Press \'" + reloadBinding + "\' to reload you weapon.");
+            }
             return true;
         }
         return false;
@@ -126,7 +132,7 @@ public class Weapon : Actor
     }
     void KnockBack(Vector3 direction, float magnitude)
     {
-        playerReference.rb.AddForce(-direction.normalized * magnitude, ForceMode.Impulse);
+        playerReference.rb.AddForce(direction.normalized * magnitude, ForceMode.Impulse);
         
     }
 

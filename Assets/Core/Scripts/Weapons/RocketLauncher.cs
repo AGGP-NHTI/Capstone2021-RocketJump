@@ -26,7 +26,7 @@ public class RocketLauncher : Weapon
             
             Fire();
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(reloadBinding))
         {
             reload();
         }
@@ -35,8 +35,10 @@ public class RocketLauncher : Weapon
     public override void Fire() 
     {
         if (isReloading || clipEmpty() || isCooling) return;
+
+        GameObject go = Instantiate(projectilePrefab, projectileSpawn.position,BulletSpread(projectileSpawn.rotation));
         
-        Instantiate(projectilePrefab, projectileSpawn.position,BulletSpread(projectileSpawn.rotation));
+        go.GetComponent<MLAPI.NetworkedObject>().Spawn();
         base.Fire();
 
     }
