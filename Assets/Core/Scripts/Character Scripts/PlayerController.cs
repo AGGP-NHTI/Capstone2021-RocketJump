@@ -11,7 +11,9 @@ public class PlayerController : Controller
 	public SphereCollider groundcheck;
 	public GameObject cam;
 	private GameObject newCam;
-	//public Pawn ControlledPawn;
+    //public Pawn ControlledPawn;
+
+    public GameObject localPlayer;
 
 	public float movementGround;
 	public float movementAir;
@@ -47,7 +49,11 @@ public class PlayerController : Controller
 		rb = GetComponent<Rigidbody>() ?? gameObject.AddComponent<Rigidbody>();
 		Cursor.lockState = CursorLockMode.Locked;
 
-        UI = Instantiate(UI, gameObject.transform);
+        localPlayer = Instantiate(localPlayer);
+        localPlayer.name = "Local Player";
+
+        UI = Instantiate(UI, localPlayer.transform);
+        UI.GetComponentInChildren<SpeedometerScript>().player = this; // Fix speedometer bug. Temporary fix, could probably be implimented better.
 
 		newCam = Instantiate(cam, eyes);
 		newCam.transform.parent = eyes;
@@ -70,6 +76,7 @@ public class PlayerController : Controller
 		if (!IsLocalPlayer)
 		{
 			newCam.SetActive(false);
+            localPlayer.SetActive(false);
 			return;
 		}
 
@@ -191,8 +198,8 @@ public class PlayerController : Controller
     public void updateLap(int lap)
     {
 
-        UIManager uman = UI.GetComponent<UIManager>();
-        uman.lapText.text = lap.ToString();
+        //UIManager uman = UI.GetComponent<UIManager>();
+        //uman.lapText.text = lap.ToString();
 
         
 
