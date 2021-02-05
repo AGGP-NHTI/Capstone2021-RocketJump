@@ -1783,7 +1783,7 @@ GameObject:
   - component: {fileID: 280371558}
   - component: {fileID: 280371557}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1852,7 +1852,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &397570438
 PrefabInstance:
@@ -10871,7 +10871,7 @@ PrefabInstance:
     - target: {fileID: 8634192934066932589, guid: f0d2205b476433f4ebb28af87829c883,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8634192934066932589, guid: f0d2205b476433f4ebb28af87829c883,
         type: 3}

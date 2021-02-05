@@ -52,6 +52,8 @@ MonoBehaviour:
     NetworkTransport: {fileID: 5214381284232303377}
     RegisteredScenes:
     - TestPlayerScene
+    - RaceTrack
+    - PPP
     AllowRuntimeSceneChanges: 0
     NetworkedPrefabs:
     - Prefab: {fileID: 2096464447327900002, guid: 85aa84dbfcc565c4e9085aece2294804,
