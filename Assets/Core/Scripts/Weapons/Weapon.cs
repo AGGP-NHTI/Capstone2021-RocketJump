@@ -36,7 +36,7 @@ public class Weapon : Actor
     {
         currentClip--;
         AmmoReference.SetMagazine(currentClip);
-        KnockBack(Quaternion.Inverse(transform.parent.rotation).eulerAngles, knockBackForce);
+        KnockBack(-transform.parent.rotation.eulerAngles, knockBackForce);
         waitForFireRate();
        
     }

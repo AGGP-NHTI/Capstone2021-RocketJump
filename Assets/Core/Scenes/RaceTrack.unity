@@ -21093,7 +21093,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21448
+  m_Name: pb_Mesh15972
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21257,6 +21257,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
+      propertyPath: NetworkConfig.RegisteredScenes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
+      propertyPath: NetworkConfig.RegisteredScenes.Array.data[1]
+      value: RaceTrack
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214381284232303377, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
+      propertyPath: ServerListenPort
+      value: 1234
+      objectReference: {fileID: 0}
     - target: {fileID: 5214381284232303378, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
       propertyPath: m_Name
@@ -25871,7 +25886,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21432
+  m_Name: pb_Mesh15954
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
