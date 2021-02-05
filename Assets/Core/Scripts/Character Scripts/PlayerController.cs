@@ -198,8 +198,8 @@ public class PlayerController : Controller
     public void updateLap(int lap)
     {
 
-        //UIManager uman = UI.GetComponent<UIManager>();
-        //uman.lapText.text = lap.ToString();
+        UIManager uman = UI.GetComponent<UIManager>();
+        uman.lapText.text = lap.ToString();
 
         
 

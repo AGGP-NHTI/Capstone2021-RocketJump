@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MLAPI;
+using MLAPI.Messaging;
 
-public class Payload : MonoBehaviour
+public class Payload : NetworkedBehaviour
 {
     public GameObject CurrentOwner;
     public PPLogic logic;
