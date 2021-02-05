@@ -35,7 +35,7 @@ public class SpeedometerScript : MonoBehaviour
     {
         speed_trans = speedometer.transform;
         
-        player = gameObject.transform.root.GetComponent<PlayerController>();
+        //player = gameObject.transform.root.GetComponent<PlayerController>();
         rb = player.GetComponent<Rigidbody>();
 
         if(!player)

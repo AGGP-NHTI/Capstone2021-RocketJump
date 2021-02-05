@@ -49,7 +49,11 @@ public class PlayerController : Controller
 		rb = GetComponent<Rigidbody>() ?? gameObject.AddComponent<Rigidbody>();
 		Cursor.lockState = CursorLockMode.Locked;
 
-        UI = Instantiate(UI, gameObject.transform);
+        localPlayer = Instantiate(localPlayer);
+        localPlayer.name = "LocalPlayer";
+
+        UI = Instantiate(UI, localPlayer.transform);
+        UI.GetComponentInChildren<SpeedometerScript>().player = this; // Fix speedometer bug. Temporary fix, could probably be implimented better.
 
 		newCam = Instantiate(cam, eyes);
 		newCam.transform.parent = eyes;
