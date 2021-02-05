@@ -50,7 +50,7 @@ public class PlayerController : Controller
 		Cursor.lockState = CursorLockMode.Locked;
 
         localPlayer = Instantiate(localPlayer);
-        localPlayer.name = "LocalPlayer";
+        localPlayer.name = "Local Player";
 
         UI = Instantiate(UI, localPlayer.transform);
         UI.GetComponentInChildren<SpeedometerScript>().player = this; // Fix speedometer bug. Temporary fix, could probably be implimented better.
@@ -76,6 +76,7 @@ public class PlayerController : Controller
 		if (!IsLocalPlayer)
 		{
 			newCam.SetActive(false);
+            localPlayer.SetActive(false);
 			return;
 		}
 
@@ -197,8 +198,8 @@ public class PlayerController : Controller
     public void updateLap(int lap)
     {
 
-        UIManager uman = UI.GetComponent<UIManager>();
-        uman.lapText.text = lap.ToString();
+        //UIManager uman = UI.GetComponent<UIManager>();
+        //uman.lapText.text = lap.ToString();
 
         
 
