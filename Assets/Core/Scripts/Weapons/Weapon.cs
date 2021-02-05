@@ -89,7 +89,7 @@ public class Weapon : Actor
             UIManager UiMan = UI.GetComponent<UIManager>();
             if (UiMan)
             {
-                UiMan.sendMessage("Press \'" + reloadBinding + "\' to reload you weapon.");
+                UiMan.sendMessage("Press \'" + reloadBinding + "\' to reload your weapon.");
             }
             return true;
         }

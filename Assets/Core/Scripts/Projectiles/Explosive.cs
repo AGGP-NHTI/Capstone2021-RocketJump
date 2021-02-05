@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Explosive : Projectile
 {
-
+    public GameObject particles;
     protected override void OnCollisionEnter(Collision other)
     {
 
@@ -18,6 +18,7 @@ public class Explosive : Projectile
 
     protected override void explode()
     {
+        Instantiate(particles, transform.position, Quaternion.identity);
         Vector3 origin = transform.position;
 
         Collider[] hits = Physics.OverlapSphere(origin,
