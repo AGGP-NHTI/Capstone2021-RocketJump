@@ -24,16 +24,16 @@ public class Explosive : Projectile
                                                 explosiveDistance);
         foreach (Collider hit in hits)
         {
-            Vector3 dir = origin - hit.transform.position;
             Rigidbody rb = hit.GetComponent<Rigidbody>();
 
             if (rb)
             {
 
                 Debug.Log("BAM on " + hit.gameObject.name);
+
                 rb.AddExplosionForce(explosiveForce,
-                                    origin,
-                                    explosiveDistance);
+                                     origin,
+                                     explosiveDistance);
 
                 Destroy(gameObject);
             }

@@ -38,7 +38,7 @@ public class RocketLauncher : Weapon
 
         GameObject go = Instantiate(projectilePrefab, projectileSpawn.position,BulletSpread(projectileSpawn.rotation));
         
-        go.GetComponent<MLAPI.NetworkedObject>().Spawn();
+        //go.GetComponent<MLAPI.NetworkedObject>().Spawn();
         base.Fire();
 
     }
