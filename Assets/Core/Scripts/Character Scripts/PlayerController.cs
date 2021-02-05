@@ -11,7 +11,9 @@ public class PlayerController : Controller
 	public SphereCollider groundcheck;
 	public GameObject cam;
 	private GameObject newCam;
-	//public Pawn ControlledPawn;
+    //public Pawn ControlledPawn;
+
+    public GameObject localPlayer;
 
 	public float movementGround;
 	public float movementAir;

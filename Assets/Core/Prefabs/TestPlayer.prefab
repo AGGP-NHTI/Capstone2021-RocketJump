@@ -97,6 +97,8 @@ MonoBehaviour:
   eyes: {fileID: 1629868686}
   groundcheck: {fileID: 2096464448355696063}
   cam: {fileID: 3388073768536932029, guid: 5dfba613b3f5f0546b51dfa729f3e1e1, type: 3}
+  localPlayer: {fileID: 6767019984687975682, guid: 891704d6fea6f334990aa9b1d3a11457,
+    type: 3}
   movementGround: 1
   movementAir: 10
   topSpeed: 10
@@ -104,6 +106,7 @@ MonoBehaviour:
   decelFactorGround: 0.1
   mouseSensitivity: {x: 2, y: 2}
   pitchLimits: {x: -80, y: 80}
+  rb: {fileID: 0}
   UI: {fileID: 6645590173705267851, guid: feced328edd1f4f45a8098423dbc2157, type: 3}
 --- !u!54 &2096464447327900003
 Rigidbody:
