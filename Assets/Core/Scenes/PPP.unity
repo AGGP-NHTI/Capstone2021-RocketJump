@@ -1871,6 +1871,11 @@ PrefabInstance:
       propertyPath: NetworkConfig.RegisteredScenes.Array.data[2]
       value: PPP
       objectReference: {fileID: 0}
+    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
+      propertyPath: NetworkConfig.RegisteredScenes.Array.data[1]
+      value: RaceTrack
+      objectReference: {fileID: 0}
     - target: {fileID: 5214381284232303377, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
       propertyPath: ServerListenPort
