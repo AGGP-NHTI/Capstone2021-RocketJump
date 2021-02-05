@@ -106,8 +106,8 @@ MonoBehaviour:
   MaxConnections: 100
   ConnectAddress: 69.161.66.111
   ConnectPort: 1234
-  ServerListenPort: 7777
-  ServerWebsocketListenPort: 8887
+  ServerListenPort: 1234
+  ServerWebsocketListenPort: 1234
   SupportWebsocket: 0
   Channels: []
   UseMLAPIRelay: 1
