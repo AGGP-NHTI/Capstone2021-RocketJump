@@ -96,6 +96,7 @@ public class PlayerController : Controller
 		{
 			newCam.SetActive(false);
             localPlayer.SetActive(false);
+            gameObject.GetComponent<PlayerController>().enabled = false;
 			return;
 		}
 
