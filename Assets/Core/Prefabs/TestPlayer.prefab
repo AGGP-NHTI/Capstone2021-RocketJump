@@ -139,7 +139,7 @@ MonoBehaviour:
   NetworkedInstanceId: 0
   PrefabHash: 11182408945722765662
   PrefabHashGenerator: TestPlayer
-  AlwaysReplicateAsRoot: 0
+  AlwaysReplicateAsRoot: 1
   DontDestroyWithOwner: 0
 --- !u!114 &-286484482282343181
 MonoBehaviour:
