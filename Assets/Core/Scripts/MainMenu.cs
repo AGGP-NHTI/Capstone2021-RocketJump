@@ -141,4 +141,9 @@ public class MainMenu : MonoBehaviour
     {
         all.SetActive(true);
     }
+
+    public void ToScene(int num)
+    {
+        SceneManager.LoadScene(num);
+    }
 }
