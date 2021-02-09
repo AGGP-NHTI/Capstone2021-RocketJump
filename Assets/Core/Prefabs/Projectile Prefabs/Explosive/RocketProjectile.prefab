@@ -48,7 +48,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.16846883
-  m_Center: {x: 0, y: 0, z: 0.28}
+  m_Center: {x: 0, y: 0, z: 0.7}
 --- !u!54 &7875149066726323191
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &2649177605219872647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,14 +79,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 0
-  rb: {fileID: 0}
   lifeTime: 3
-  contactLifetime: 0
-  explosiveForce: 564
-  explosiveDistance: 10
-  projectileLaunchForce: 853
+  projectileLaunchForce: 28.8
   particles: {fileID: 5213506594273380121, guid: 86cff0f46e932774ca66c367e11a1d7d,
     type: 3}
+  explosiveForce: 564
+  explosiveDistance: 10
+  contactLifetime: 0
 --- !u!114 &1045386885418444622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +192,7 @@ PrefabInstance:
     - target: {fileID: 9004572377725120139, guid: 24315ed313edc9043876a9e5ddc80690,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9004572377725120139, guid: 24315ed313edc9043876a9e5ddc80690,
         type: 3}
@@ -203,7 +202,7 @@ PrefabInstance:
     - target: {fileID: 9004572377725120139, guid: 24315ed313edc9043876a9e5ddc80690,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.344
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9004572377725120139, guid: 24315ed313edc9043876a9e5ddc80690,
         type: 3}

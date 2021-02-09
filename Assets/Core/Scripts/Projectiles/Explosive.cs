@@ -20,6 +20,8 @@ public class Explosive : Projectile
 
     public override void Start()
     {
+        base.Start();
+
         rb = gameObject.GetComponent<Rigidbody>() ?? gameObject.AddComponent<Rigidbody>();
 
         if (rb)
@@ -45,7 +47,7 @@ public class Explosive : Projectile
 
     protected void OnCollisionEnter(Collision other)
     {
-        
+        Debug.Log("COLLIDED WITH: "+ other.transform.name);
         hitSomething();
     }
 

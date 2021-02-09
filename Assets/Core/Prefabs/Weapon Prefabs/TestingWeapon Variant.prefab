@@ -62,6 +62,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3537596853974922853, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537596853974922853, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537596853974922853, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537596853974922853, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537596853974922853, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537596853974922853, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.11
+      objectReference: {fileID: 0}
     - target: {fileID: 4205752912056178508, guid: 5bcff3bd1819c5042a0cf7570c1704da,
         type: 3}
       propertyPath: m_Name
@@ -70,12 +100,29 @@ PrefabInstance:
     - target: {fileID: 5686044786967499585, guid: 5bcff3bd1819c5042a0cf7570c1704da,
         type: 3}
       propertyPath: bulletsPerShot
-      value: 15
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5686044786967499585, guid: 5bcff3bd1819c5042a0cf7570c1704da,
         type: 3}
       propertyPath: fireRate
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5686044786967499585, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+        type: 3}
+      propertyPath: projectileSpawn
+      value: 
+      objectReference: {fileID: 7343253744613404069}
+    - target: {fileID: 5686044786967499585, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+        type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 3434827112916319614, guid: 831b29f1ffb0257458f1a4dca83b352d,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bcff3bd1819c5042a0cf7570c1704da, type: 3}
+--- !u!4 &7343253744613404069 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3537596853974922853, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+    type: 3}
+  m_PrefabInstance: {fileID: 6120510398732688320}
+  m_PrefabAsset: {fileID: 0}

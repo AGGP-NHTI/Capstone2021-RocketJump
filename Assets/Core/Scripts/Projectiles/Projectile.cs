@@ -14,7 +14,10 @@ public abstract class Projectile : Actor
     public float projectileLaunchForce = 10;
 
 
-    public virtual void Start(){}
+    public virtual void Start()
+    {
+        Destroy(gameObject, lifeTime);
+    }
     public virtual void Update(){}
     protected virtual void OnDrawGizmos(){}
     protected abstract void hitSomething();
