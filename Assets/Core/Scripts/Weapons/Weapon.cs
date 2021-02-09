@@ -58,6 +58,8 @@ public class Weapon : Actor
     }
     private void Update()
     {
+        if (!IsLocalPlayer) { return; }
+
         if (isRapidFire)
         {
             if (Input.GetMouseButton(0)) { Fire(); }
