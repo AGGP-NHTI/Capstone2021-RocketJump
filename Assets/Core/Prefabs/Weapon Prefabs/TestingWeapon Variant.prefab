@@ -116,8 +116,38 @@ PrefabInstance:
         type: 3}
       propertyPath: projectilePrefab
       value: 
-      objectReference: {fileID: 3434827112916319614, guid: 831b29f1ffb0257458f1a4dca83b352d,
+      objectReference: {fileID: 8312057916266656668, guid: 1c9c2b7cfcf07db419a130c6a7f31e1e,
         type: 3}
+    - target: {fileID: 5686044786967499585, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+        type: 3}
+      propertyPath: knockBackForce
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686044786967499585, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+        type: 3}
+      propertyPath: bulletSpread
+      value: 0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686044786967499585, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+        type: 3}
+      propertyPath: reloadSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686044786967499585, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+        type: 3}
+      propertyPath: clipSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686044786967499585, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+        type: 3}
+      propertyPath: currentClip
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686044786967499585, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+        type: 3}
+      propertyPath: isRapidFire
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bcff3bd1819c5042a0cf7570c1704da, type: 3}
 --- !u!4 &7343253744613404069 stripped

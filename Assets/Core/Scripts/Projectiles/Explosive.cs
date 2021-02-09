@@ -75,7 +75,8 @@ public class Explosive : Projectile
 
                 rb.AddExplosionForce(explosiveForce,
                                      origin,
-                                     explosiveDistance);
+                                     explosiveDistance
+                                     );
 
                 Destroy(gameObject);
             }
