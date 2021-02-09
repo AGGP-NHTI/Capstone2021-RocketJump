@@ -80,6 +80,7 @@ public class Weapon : Actor
 
         if (IsServer)
         {
+            Debug.Log("---------------Position: " + projectileSpawn.position);
             spawnNetworkedProjectile();
         }
         else 
@@ -107,6 +108,7 @@ public class Weapon : Actor
     {
         for (int i = 0; i < bulletsPerShot; i++)
         {
+            //Debug.Log("---------------Position: " + projectileSpawn.position);
             NetSpawn(projectilePrefab,
                      projectileSpawn.position,
                      Quaternion.LookRotation(BulletSpread(projectileSpawn.forward))
