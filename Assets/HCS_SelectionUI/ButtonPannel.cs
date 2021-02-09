@@ -47,13 +47,17 @@ public class ButtonPannel : MonoBehaviour
 		NetworkingManager.Singleton.gameObject.GetComponent<UnetTransport>().ConnectAddress = connectAddress.text;
 		//Debug.Log("ca");
 		//int i = Convert.ToInt32(connectPort.text);
+		int i;
+		int.TryParse(connectPort.text, out i);
 		
-		//NetworkingManager.Singleton.gameObject.GetComponent<UnetTransport>().ConnectPort = i;
+		NetworkingManager.Singleton.gameObject.GetComponent<UnetTransport>().ConnectPort = i;
 		//Debug.Log("cp");
 
 		NetworkingManager.Singleton.gameObject.GetComponent<UnetTransport>().MLAPIRelayAddress = relayAddress.text;
 		//Debug.Log("ra");
-		//NetworkingManager.Singleton.gameObject.GetComponent<UnetTransport>().MLAPIRelayPort = Convert.ToInt32(relayPort.text);
+		int l;
+		int.TryParse(relayPort.text, out l);
+		NetworkingManager.Singleton.gameObject.GetComponent<UnetTransport>().MLAPIRelayPort = l;
 		//Debug.Log("rp");
 		
 		StartCoroutine(TaskStatus(NetworkingManager.Singleton.StartClient()));  
