@@ -57,7 +57,7 @@ public class Explosive : Projectile
     protected virtual void explode()
     {
         GameObject part = Instantiate(particles, transform.position, Quaternion.identity);
-        Destroy(part, 3f);
+        //Destroy(part, 3f);
         Vector3 origin = transform.position;
 
         Collider[] hits = Physics.OverlapSphere(origin,
