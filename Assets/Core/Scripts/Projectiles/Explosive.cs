@@ -5,9 +5,47 @@ using UnityEngine;
 public class Explosive : Projectile
 {
     public GameObject particles;
-    protected override void OnCollisionEnter(Collision other)
-    {
 
+
+    [Range(0f, 750f)]
+    public float explosiveForce = 10;
+
+    [Range(0f, 20f)]
+    public float explosiveDistance = 10;
+
+    [Range(0f,10f)]
+    public float contactLifetime = 0;
+
+    float timeAlive = 0;
+
+    public override void Start()
+    {
+        rb = gameObject.GetComponent<Rigidbody>() ?? gameObject.AddComponent<Rigidbody>();
+
+        if (rb)
+        {
+            rb.AddForce(transform.forward * projectileLaunchForce*100);
+        }
+    }
+    public override void Update()
+    {
+        timeAlive += Time.deltaTime;
+        if (timeAlive >= lifeTime)
+        {
+            explode();
+            lifeTime = 0;
+        }
+    }
+    protected override void OnDrawGizmos()
+    {
+        // Draw a yellow sphere at the transform's position
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, explosiveDistance);
+    }
+
+    protected void OnCollisionEnter(Collision other)
+    {
+        
         hitSomething();
     }
 
@@ -16,9 +54,10 @@ public class Explosive : Projectile
         StartCoroutine(waitForExplode());
     }
 
-    protected override void explode()
+    protected virtual void explode()
     {
-        Instantiate(particles, transform.position, Quaternion.identity);
+        GameObject part = Instantiate(particles, transform.position, Quaternion.identity);
+        Destroy(part, 3f);
         Vector3 origin = transform.position;
 
         Collider[] hits = Physics.OverlapSphere(origin,
@@ -41,7 +80,7 @@ public class Explosive : Projectile
         }
     }
 
-    protected override IEnumerator waitForExplode()
+    protected virtual IEnumerator waitForExplode()
     {
         yield return new WaitForSeconds(contactLifetime);
         explode();

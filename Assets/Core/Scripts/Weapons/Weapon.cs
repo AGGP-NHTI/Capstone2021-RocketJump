@@ -4,6 +4,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using MLAPI;
+using MLAPI.Messaging;
 
 public class Weapon : Actor
 {
@@ -15,22 +17,30 @@ public class Weapon : Actor
     private bool isCooling = false;
 
     [Header("Dependencies")] 
-    //public GameObject weaponModel;
     public GameObject projectilePrefab;
     public Transform projectileSpawn;
 
     [Header("Stats")]
+
+    [Range(0.5f, 10f)]
     public float    reloadSpeed;
+    [Range(1f, 50f)]
     public float    fireRate;
-    [Range(0f,100f)]
+    [Range(1,50)]
+    public int      bulletsPerShot;
+    [Range(0f,10f)]
     public float    bulletSpread;
+    [Range(0f,100f)]
     public float    knockBackForce;
+    [Range(1f,1000f)]
     public int      currentClip;
+    [Range(1f, 1000f)]
     public int      clipSize;
-    
-    
+
+
     [Header("Info")]
     public bool isRapidFire = false;
+
 
     protected KeyCode reloadBinding = KeyCode.R;
 
@@ -66,20 +76,40 @@ public class Weapon : Actor
     {
         if (isReloading || clipEmpty() || isCooling) { return; }
 
-        GameObject go = Instantiate(projectilePrefab,
-                                    projectileSpawn.position,
-                                    Quaternion.LookRotation(BulletSpread(projectileSpawn.forward))
-                                    );
-
+        if (IsServer)
+        {
+            spawnNetworkedProjectile();
+        }
+        else 
+        {
+            InvokeServerRpc(spawnNetworkedProjectile);
+        }
         currentClip--;
         AmmoReference.SetMagazine(currentClip);
+
+        //pushes the player back 
         KnockBack(-transform.parent.forward, knockBackForce);
+
+        //pauses for firerate cooldown
         waitForFireRate();
        
     }
+
     public virtual void AltFire() 
     { 
         
+    }
+
+    [ServerRPC(RequireOwnership =false)]
+    public virtual void spawnNetworkedProjectile()
+    {
+        for (int i = 0; i < bulletsPerShot; i++)
+        {
+            NetSpawn(projectilePrefab,
+                     projectileSpawn.position,
+                     Quaternion.LookRotation(BulletSpread(projectileSpawn.forward))
+                     );
+        }
     }
 
     public virtual bool clipEmpty() 
@@ -117,13 +147,25 @@ public class Weapon : Actor
 
     IEnumerator waitFireRateTimer(float input)
     {
-        float delay = 1/input ;
+        float delay = 1 / input;
         isCooling = true;
         yield return new WaitForSeconds(delay);
         isCooling = false;
     }
-    
-    
+
+    protected Vector3 BulletSpread(Vector3 input)
+    {
+        input += Random.insideUnitSphere * bulletSpread/100;
+        return input.normalized;
+    }
+
+
+
+    void KnockBack(Vector3 direction, float magnitude)
+    {
+        playerReference.rb.AddForce(direction.normalized * magnitude, ForceMode.Impulse);       
+    }
+
 
     void setPlayerReference()
     {
@@ -132,39 +174,24 @@ public class Weapon : Actor
         if (player)
         {
             playerReference = player;
-            Debug.Log("PLAYER SET"); 
+            Debug.Log("PLAYER SET");
         }
-        
+
+    }
+    void setAmmoReference()
+    {
+        Ammo_UI_Script ammo = UI.transform.GetComponentInChildren<Ammo_UI_Script>();
+        if (ammo)
+        {
+            AmmoReference = ammo;
+            Debug.Log("AMMO REFERENCE SET");
+        }
     }
     void setUIObj()
     {
         UI = playerReference.UI;
-        
+
     }
-
-    void setAmmoReference()
-    {
-        Ammo_UI_Script ammo = UI.transform.GetComponentInChildren<Ammo_UI_Script>();
-        if(ammo)
-        {
-            AmmoReference = ammo;
-            Debug.Log("AMMO REFERENCE SET");    
-        }
-    }
-
-    protected Vector3 BulletSpread(Vector3 input)
-    {
-        input += Random.insideUnitSphere * bulletSpread/100;
-
-        return input.normalized;
-    }
-    void KnockBack(Vector3 direction, float magnitude)
-    {
-        playerReference.rb.AddForce(direction.normalized * magnitude, ForceMode.Impulse);
-        
-    }
-
-
 
 }
 
