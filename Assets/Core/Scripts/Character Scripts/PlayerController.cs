@@ -68,25 +68,27 @@ public class PlayerController : Controller
 		invvert = PlayerPrefs.GetInt("InvertVertical", 1);
 
         
-        if(!IsLocalPlayer)
-        {
-            this.enabled = false;
-        }
+	}
 
-        if(IsHost && IsLocalPlayer)
-        {
+    private void Start()
+    {
 
+        if(!IsLocalPlayer) { this.enabled = false; }
+
+        if (IsHost && IsLocalPlayer)
+        {
+            print("!!!");
             track = GameObject.Find("track");
             positionManager = track.AddComponent<PositionManager>();
             positionManager.track = track;
-            
+
 
         }
-        else if(IsClient && IsLocalPlayer)
+        else if (IsClient && IsLocalPlayer)
         {
             clientAddPlayer(gameObject);
         }
-	}
+    }
 
     void Update()
     {
@@ -100,6 +102,7 @@ public class PlayerController : Controller
 			newCam.SetActive(false);
             localPlayer.SetActive(false);
             //gameObject.GetComponent<PlayerController>().enabled = false;
+            this.enabled = false;
 			return;
 		}
 
