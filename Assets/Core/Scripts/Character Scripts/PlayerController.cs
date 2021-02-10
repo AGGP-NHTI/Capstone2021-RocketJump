@@ -1,8 +1,10 @@
 ﻿using MLAPI;
+using MLAPI.Messaging;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 public class PlayerController : Controller
 {
@@ -42,6 +44,9 @@ public class PlayerController : Controller
     public GameObject UI;
 
     private PositionManager positionManager;
+    private GameObject track;
+
+    private bool loadPlayer = false;
 
 
     private void Awake()
@@ -62,11 +67,30 @@ public class PlayerController : Controller
 		invhor = PlayerPrefs.GetInt("InvertHorizontal", 1);
 		invvert = PlayerPrefs.GetInt("InvertVertical", 1);
 
-        positionManager = GameObject.Find("track").GetComponent<PositionManager>(); // this is bad, i know. Its temporary
-        positionManager.updatePlayerList(gameObject);
+        
 	}
-	
-	void Update()
+
+    private void Start()
+    {
+
+        if(!IsLocalPlayer) { this.enabled = false; }
+
+        if (IsHost && IsLocalPlayer)
+        {
+            print("!!!");
+            track = GameObject.Find("track");
+            positionManager = track.AddComponent<PositionManager>();
+            positionManager.track = track;
+
+
+        }
+        else if (IsClient && IsLocalPlayer)
+        {
+            clientAddPlayer(gameObject);
+        }
+    }
+
+    void Update()
     {
 		DoMouseLook();
 
@@ -77,8 +101,16 @@ public class PlayerController : Controller
 		{
 			newCam.SetActive(false);
             localPlayer.SetActive(false);
+            //gameObject.GetComponent<PlayerController>().enabled = false;
+            this.enabled = false;
 			return;
 		}
+
+        if(!loadPlayer)
+        {
+            positionManager.updatePlayerList(gameObject);
+            loadPlayer = true;
+        }
 
 		Debug.DrawRay(groundcheck.transform.position, surfaceNormal * 10f, Color.red);
     }
@@ -201,6 +233,34 @@ public class PlayerController : Controller
         UIManager uman = UI.GetComponent<UIManager>();
         uman.lapText.text = lap.ToString();
 
+        
+
+    }
+
+    
+    public void updateNodePosition(PositionNodeScript node)
+    {
+        if(IsHost)
+        {
+            positionManager.updatePlayerPosition(gameObject, node.nodeNumber);
+        }
+        else if(IsClient)
+        {
+            clientUpdateNodePosition(node, gameObject);
+        }
+    }
+
+    [ServerRPC(RequireOwnership = false)]
+    private void clientAddPlayer(GameObject player)
+    {
+        positionManager.updatePlayerList(player);
+    }
+
+    [ServerRPC(RequireOwnership = false)]
+    private void clientUpdateNodePosition(PositionNodeScript node, GameObject player)
+    {
+        positionManager.updatePlayerPosition(player, node.nodeNumber);
+    }
     }
 
 	public GameObject giveItem(GameObject item)

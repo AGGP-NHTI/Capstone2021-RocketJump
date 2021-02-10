@@ -1,19 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MLAPI;
 
 public class PositionNodeScript : MonoBehaviour
 {
     public int nodeNumber;
-    public PositionManager positionManager;
-
-    private void Awake()
-    {
-        positionManager = GameObject.Find("track").GetComponent<PositionManager>(); // this is bad, i know. Its temporary
-    }
 
     private void OnTriggerEnter(Collider other)
     {
+
+        other.gameObject.GetComponent<PlayerController>().updateNodePosition(this);
+
+        /*
+
         foreach(GameObject player in positionManager.players)
         {
             if(other.gameObject.name == player.gameObject.name)
@@ -21,6 +21,8 @@ public class PositionNodeScript : MonoBehaviour
                 positionManager.updatePlayerPosition(player, nodeNumber);
             }
         }
+
+        */
     }
 
 }

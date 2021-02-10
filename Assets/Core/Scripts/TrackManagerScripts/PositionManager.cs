@@ -24,15 +24,18 @@ public class PositionManager : MonoBehaviour
     [SerializeField] List<Transform> positionNodes;
     [SerializeField] List<PlayerPositionManager> playerPositions;
 
-    private void Awake()
+    private void Start()
     {
-        if(!track)
+        if (!track)
         {
             Debug.Log("Track not found; " + gameObject.name);
         }
         else
         {
-            foreach(Transform node in track.transform.Find("positionNodes"))
+
+            positionNodes = new List<Transform>();
+
+            foreach (Transform node in track.transform.Find("positionNodes"))
             {
                 positionNodes.Add(node);
             }
@@ -47,6 +50,11 @@ public class PositionManager : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        
+    }
+
     void Update()
     {
         
@@ -54,7 +62,6 @@ public class PositionManager : MonoBehaviour
 
     public void updatePlayerList(GameObject player)
     {
-
         playerPositions.Add(new PlayerPositionManager(player, this));
         players.Add(player);
 
