@@ -261,7 +261,6 @@ public class PlayerController : Controller
     {
         positionManager.updatePlayerPosition(player, node.nodeNumber);
     }
-    }
 
 	public GameObject giveItem(GameObject item)
 	{
@@ -271,3 +270,6 @@ public class PlayerController : Controller
 	}
 
 }
+
+	
+
