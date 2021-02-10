@@ -201,8 +201,13 @@ public class PlayerController : Controller
         UIManager uman = UI.GetComponent<UIManager>();
         uman.lapText.text = lap.ToString();
 
-        
-
     }
+
+	public GameObject giveItem(GameObject item)
+	{
+		GameObject go = Instantiate(item, eyes);
+		go.transform.position = eyes.transform.position;
+		return go;
+	}
 
 }

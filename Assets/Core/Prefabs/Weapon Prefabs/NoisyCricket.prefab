@@ -54,7 +54,7 @@ MonoBehaviour:
   fireRate: 10
   bulletsPerShot: 1
   bulletSpread: 0.74
-  knockBackForce: 46
+  knockBackForce: 13
   currentClip: 1
   clipSize: 1
   isRapidFire: 0

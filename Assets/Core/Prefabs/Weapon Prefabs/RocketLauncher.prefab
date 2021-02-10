@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3687598767694696029}
-  - component: {fileID: -4540858852309122935}
+  - component: {fileID: 2749190139513107624}
   m_Layer: 0
   m_Name: RocketLauncher
   m_TagString: Untagged
@@ -28,11 +28,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 3340697923363904619}
   - {fileID: 5071376331569095491}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4540858852309122935
+--- !u!114 &2749190139513107624
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +42,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2673255171855170882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da9de88ef89cfc7409198fe2bbd6472d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f24199370b2e2b44b577e3d0e5cb910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsActive: 1
@@ -49,16 +50,15 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3434827112916319614, guid: 831b29f1ffb0257458f1a4dca83b352d,
     type: 3}
   projectileSpawn: {fileID: 3340697923363904619}
-  AmmoReference: {fileID: 0}
   reloadSpeed: 2
-  fireRate: 4
+  bulletsPerShot: 1
   bulletSpread: 0
-  knockBackForce: 2
   currentClip: 2
   clipSize: 2
-  isReloading: 0
-  isCooling: 0
   isRapidFire: 0
+  knockBackForce: 1
+  fireRate: 2
+  reloadBinding: 0
 --- !u!1 &7404699758865076275
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,11 +82,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7404699758865076275}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -1.083}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
+  m_LocalPosition: {x: 0.26, y: -0.17, z: 1.409}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4332921322688432001}
+  m_Father: {fileID: 3687598767694696029}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &8468547221461542420
@@ -113,12 +113,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8468547221461542420}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.26, y: -0.17295362, z: 0.3260001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4332921322688432003}
   m_Father: {fileID: 3687598767694696029}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4332921322688044289
 PrefabInstance:
@@ -180,12 +180,6 @@ PrefabInstance:
 --- !u!4 &4332921322688432003 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 4e5ce0b6f97fdbc40b7bc818b06b80ba,
-    type: 3}
-  m_PrefabInstance: {fileID: 4332921322688044289}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4332921322688432001 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 4e5ce0b6f97fdbc40b7bc818b06b80ba,
     type: 3}
   m_PrefabInstance: {fileID: 4332921322688044289}
   m_PrefabAsset: {fileID: 0}

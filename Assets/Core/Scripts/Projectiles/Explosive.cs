@@ -7,7 +7,7 @@ public class Explosive : Projectile
     public GameObject particles;
 
 
-    [Range(0f, 750f)]
+    [Range(0f, 5000f)]
     public float explosiveForce = 10;
 
     [Range(0f, 20f)]
