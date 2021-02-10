@@ -13,7 +13,7 @@ public class Powerup : MonoBehaviour
     {
         PlayerController player = collision.transform.GetComponent<PlayerController>();
 
-        if (player)
+        if (player && !player.ownedItem)
         {
             player.giveItem(itemToGive);
             StartCoroutine(destroyAtEndofFrame());

@@ -18,6 +18,13 @@ public class Guns : Weapon
     {
         base.Start();
 
+
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
         if (Input.GetKeyDown(reloadBinding))
         {
             reload();

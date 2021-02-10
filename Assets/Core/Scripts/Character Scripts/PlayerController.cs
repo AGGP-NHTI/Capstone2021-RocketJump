@@ -13,6 +13,7 @@ public class PlayerController : Controller
 	public SphereCollider groundcheck;
 	public GameObject cam;
 	private GameObject newCam;
+	public GameObject ownedItem;
     //public Pawn ControlledPawn;
 
     public GameObject localPlayer;
@@ -264,9 +265,13 @@ public class PlayerController : Controller
 
 	public GameObject giveItem(GameObject item)
 	{
-		GameObject go = Instantiate(item, eyes);
-		go.transform.position = eyes.transform.position;
-		return go;
+		if (!ownedItem)
+		{
+			ownedItem = Instantiate(item, eyes);
+			ownedItem.transform.position = eyes.transform.position;
+			return ownedItem;
+		}
+		return null;
 	}
 
 }
