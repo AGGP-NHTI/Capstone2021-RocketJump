@@ -91,10 +91,16 @@ public class Weapon : Actor
         for (int i = 0; i < bulletsPerShot; i++)
         {
             //Debug.Log("---------------Position: " + projectileSpawn.position);
-            NetSpawn(projectilePrefab,
-                     projectileSpawn.position,
-                     Quaternion.LookRotation(BulletSpread(projectileSpawn.forward))
-                     );
+            GameObject bullet = NetSpawn(projectilePrefab,
+                                         projectileSpawn.position,
+                                         Quaternion.LookRotation(BulletSpread(projectileSpawn.forward))
+                                         );
+
+            Projectile projectile = bullet.GetComponent<Projectile>();
+            if (projectile)
+            {
+                projectile.setPlayer(playerReference);
+            }
         }
     }
 

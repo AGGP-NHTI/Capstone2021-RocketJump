@@ -14,12 +14,6 @@ public class Guns : Weapon
 
     
     KeyCode reloadBinding = KeyCode.R;
-    protected override void Start()
-    {
-        base.Start();
-
-
-    }
 
     protected override void Update()
     {
