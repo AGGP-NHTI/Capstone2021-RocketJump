@@ -224,7 +224,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8423181384058319878}
-  - component: {fileID: 518615116750240466}
   m_Layer: 0
   m_Name: RocketLauncher
   m_TagString: Untagged
@@ -247,29 +246,6 @@ Transform:
   m_Father: {fileID: 8753732513249571762}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &518615116750240466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7120351778167703321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da9de88ef89cfc7409198fe2bbd6472d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsActive: 1
-  IgnoreDamage: 0
-  projectilePrefab: {fileID: 3434827112916319614, guid: 831b29f1ffb0257458f1a4dca83b352d,
-    type: 3}
-  projectileSpawn: {fileID: 0}
-  reloadSpeed: 2
-  bulletsPerShot: 0
-  bulletSpread: 0
-  currentClip: 2
-  clipSize: 2
-  isRapidFire: 0
 --- !u!1 &7378674581369476593
 GameObject:
   m_ObjectHideFlags: 0
