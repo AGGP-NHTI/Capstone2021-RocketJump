@@ -53,7 +53,6 @@ MonoBehaviour:
     RegisteredScenes:
     - TestPlayerScene
     - RaceTrack
-    - PPP
     AllowRuntimeSceneChanges: 0
     NetworkedPrefabs:
     - Prefab: {fileID: 2096464447327900002, guid: 85aa84dbfcc565c4e9085aece2294804,
@@ -62,7 +61,8 @@ MonoBehaviour:
     - Prefab: {fileID: 3434827112916319614, guid: 831b29f1ffb0257458f1a4dca83b352d,
         type: 3}
       PlayerPrefab: 0
-    - Prefab: {fileID: 0}
+    - Prefab: {fileID: 8208262432346140861, guid: b42c3f996d2fc4d4f83669f53d1538d5,
+        type: 3}
       PlayerPrefab: 0
     - Prefab: {fileID: 6819187397120872736, guid: 2c38d2b355f57cc408786bfce346410c,
         type: 3}
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MessageBufferSize: 5120
   MaxConnections: 100
-  ConnectAddress: 69.161.66.111
+  ConnectAddress: 74.75.81.133
   ConnectPort: 1234
   ServerListenPort: 1234
   ServerWebsocketListenPort: 1234

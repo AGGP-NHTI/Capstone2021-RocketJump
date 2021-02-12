@@ -7,6 +7,7 @@ public class PlayerPositionManager
 {
     public int nodePosition;
     public int lap;
+    public int position;
     public GameObject player;
     public PositionManager positionManager;
 
@@ -14,6 +15,7 @@ public class PlayerPositionManager
     {
         nodePosition = 0;
         lap = 1;
+        position = 0;
         player = plr;
         positionManager = owner;
     }

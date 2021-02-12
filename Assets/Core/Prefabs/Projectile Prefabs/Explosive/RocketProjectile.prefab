@@ -80,12 +80,12 @@ MonoBehaviour:
   IsActive: 1
   IgnoreDamage: 0
   lifeTime: 3
+  contactLifetime: 0
   projectileLaunchForce: 28.8
   particles: {fileID: 5213506594273380121, guid: 86cff0f46e932774ca66c367e11a1d7d,
     type: 3}
   explosiveForce: 564
   explosiveDistance: 10
-  contactLifetime: 0
 --- !u!114 &1045386885418444622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkedInstanceId: 0
-  PrefabHash: 17233530354594016956
-  PrefabHashGenerator: RocketProjectile
+  PrefabHash: 1262465489714271165
+  PrefabHashGenerator: Rocket_Projectile
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
 --- !u!114 &9102596293752183442
