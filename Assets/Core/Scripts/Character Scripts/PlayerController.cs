@@ -90,7 +90,7 @@ public class PlayerController : Controller
         }
         else if (IsClient && IsLocalPlayer)
         {
-            clientAddPlayer(gameObject);
+            InvokeServerRpc(clientAddPlayer, gameObject);
         }
 
 		startLocation = transform.position;
