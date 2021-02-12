@@ -6712,57 +6712,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
-      propertyPath: NetworkConfig.RegisteredScenes.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.RegisteredScenes.Array.data[1]
-      value: RaceTrack
-      objectReference: {fileID: 0}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.RegisteredScenes.Array.data[2]
-      value: PPP
-      objectReference: {fileID: 0}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
       propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[2].Prefab
       value: 
       objectReference: {fileID: 762435924800294854}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[3].Prefab
-      value: 
-      objectReference: {fileID: 6819187397120872736, guid: 2c38d2b355f57cc408786bfce346410c,
-        type: 3}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[4].Prefab
-      value: 
-      objectReference: {fileID: 3029368864375060408, guid: 74e5da6a7038e7b4f9275b4df6c83f32,
-        type: 3}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[5].Prefab
-      value: 
-      objectReference: {fileID: 8312057916266656668, guid: 1c9c2b7cfcf07db419a130c6a7f31e1e,
-        type: 3}
-    - target: {fileID: 5214381284232303377, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: ServerListenPort
-      value: 1234
-      objectReference: {fileID: 0}
-    - target: {fileID: 5214381284232303377, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: ServerWebsocketListenPort
-      value: 1234
-      objectReference: {fileID: 0}
     - target: {fileID: 5214381284232303378, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
       propertyPath: m_Name
