@@ -58,15 +58,6 @@ public class PlayerController : Controller
 		rb = GetComponent<Rigidbody>() ?? gameObject.AddComponent<Rigidbody>();
 		Cursor.lockState = CursorLockMode.Locked;
 
-        localPlayer = Instantiate(localPlayer);
-        localPlayer.name = "Local Player";
-
-        UI = Instantiate(UI, localPlayer.transform);
-        UI.GetComponentInChildren<SpeedometerScript>().player = this; // Fix speedometer bug. Temporary fix, could probably be implimented better.
-
-		newCam = Instantiate(cam, eyes);
-		newCam.transform.parent = eyes;
-
 		plprSen = PlayerPrefs.GetFloat("MouseSensitivity", mouseSensitivity.y);
 		invhor = PlayerPrefs.GetInt("InvertHorizontal", 1);
 		invvert = PlayerPrefs.GetInt("InvertVertical", 1);
@@ -79,19 +70,31 @@ public class PlayerController : Controller
 
         if(!IsLocalPlayer) { this.enabled = false; }
 
-        if (IsHost && IsLocalPlayer)
+        if (IsLocalPlayer)
         {
-            print("!!!");
-            track = GameObject.Find("track");
-            positionManager = track.AddComponent<PositionManager>();
-            positionManager.track = track;
+            localPlayer = Instantiate(localPlayer);
+            localPlayer.name = "Local Player";
+
+            UI = Instantiate(UI, localPlayer.transform);
+            UI.GetComponentInChildren<SpeedometerScript>().player = this; // Fix speedometer bug. Temporary fix, could probably be implimented better.
+
+            newCam = Instantiate(cam, localPlayer.transform);
+            newCam.GetComponent<MimicTransform>().target = eyes;
+
+            if (IsHost)
+            {
+                print("!!!");
+                track = GameObject.Find("track");
+                positionManager = track.AddComponent<PositionManager>();
+                positionManager.track = track;
 
 
-        }
-        else if (IsClient && IsLocalPlayer)
-        {
-            loadPlayer = true;
-            InvokeServerRpc(clientAddPlayer, gameObject);
+            }
+            else if (IsClient)
+            {
+                loadPlayer = true;
+                InvokeServerRpc(clientAddPlayer, gameObject);
+            }
         }
 
 		startLocation = transform.position;
@@ -106,9 +109,8 @@ public class PlayerController : Controller
 
 		if (!IsLocalPlayer)
 		{
-			newCam.SetActive(false);
-            localPlayer.SetActive(false);
-            //gameObject.GetComponent<PlayerController>().enabled = false;
+			//newCam.SetActive(false);
+            //localPlayer.SetActive(false);
             this.enabled = false;
 			return;
 		}
