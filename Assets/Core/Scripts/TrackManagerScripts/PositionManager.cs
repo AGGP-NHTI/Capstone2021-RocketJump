@@ -91,4 +91,19 @@ public class PositionManager : MonoBehaviour
             }
         }
     }
+
+    public void comparePlayerPositions()
+    {
+
+        //positionNodes.Sort((x, y) => x.GetComponent<PositionNodeScript>().nodeNumber.CompareTo(y.GetComponent<PositionNodeScript>().nodeNumber));
+
+        playerPositions.Sort((x, y) => x.lap.CompareTo(y.lap));
+
+        var prevPlayer = playerPositions[0];
+
+        foreach (PlayerPositionManager p in playerPositions)
+        {
+            
+        }
+    }
 }
