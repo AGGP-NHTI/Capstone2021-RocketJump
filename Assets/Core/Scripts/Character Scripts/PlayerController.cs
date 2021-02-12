@@ -90,6 +90,7 @@ public class PlayerController : Controller
         }
         else if (IsClient && IsLocalPlayer)
         {
+            loadPlayer = true;
             InvokeServerRpc(clientAddPlayer, gameObject);
         }
 
