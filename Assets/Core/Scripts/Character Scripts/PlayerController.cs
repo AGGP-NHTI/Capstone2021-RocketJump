@@ -274,6 +274,11 @@ public class PlayerController : Controller
 		return null;
 	}
 
+	public void moveTo(Vector3 location, float time = 0)
+	{
+		transform.position = location;
+	}
+
 }
 
 	

@@ -128,12 +128,12 @@ MonoBehaviour:
   IsActive: 1
   IgnoreDamage: 0
   lifeTime: 15
+  contactLifetime: 1.5
   projectileLaunchForce: 6.1
   particles: {fileID: 5213506594273380121, guid: 86cff0f46e932774ca66c367e11a1d7d,
     type: 3}
   explosiveForce: 750
   explosiveDistance: 10
-  contactLifetime: 1.5
 --- !u!114 &428007616987991723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkedInstanceId: 0
-  PrefabHash: 1994517016994259141
-  PrefabHashGenerator: Grenade
+  PrefabHash: 15312491308094389437
+  PrefabHashGenerator: Grenade_Projectile
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0

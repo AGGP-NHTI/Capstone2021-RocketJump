@@ -21267,10 +21267,21 @@ PrefabInstance:
       propertyPath: NetworkConfig.RegisteredScenes.Array.data[1]
       value: RaceTrack
       objectReference: {fileID: 0}
+    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
+      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[2].Prefab
+      value: 
+      objectReference: {fileID: 8208262432346140861, guid: b42c3f996d2fc4d4f83669f53d1538d5,
+        type: 3}
     - target: {fileID: 5214381284232303377, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
       propertyPath: ServerListenPort
       value: 1234
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214381284232303377, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
+      propertyPath: ConnectAddress
+      value: 74.75.81.133
       objectReference: {fileID: 0}
     - target: {fileID: 5214381284232303378, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}

@@ -159,12 +159,12 @@ MonoBehaviour:
   IsActive: 1
   IgnoreDamage: 0
   lifeTime: 3000
+  contactLifetime: 0
   projectileLaunchForce: 100
   particles: {fileID: 5507913867735878743, guid: adbbee6e4c1a997479d2da0850529735,
     type: 3}
   explosiveForce: 44
   explosiveDistance: 0.5
-  contactLifetime: 0
 --- !u!114 &-1357876308092823615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkedInstanceId: 0
-  PrefabHash: 10916124556347274926
-  PrefabHashGenerator: Shotgun_Explosive_Pellet
+  PrefabHash: 2601771401913198668
+  PrefabHashGenerator: Shotgun_Explosive_Pellet_Projectile
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
 --- !u!1 &3691248636642158467
