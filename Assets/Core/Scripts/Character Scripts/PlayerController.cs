@@ -8,6 +8,9 @@ using UnityEngine.Networking;
 
 public class PlayerController : Controller
 {
+	Vector3 startLocation;
+
+
 	public Transform body;
 	public Transform eyes;
 	public SphereCollider groundcheck;
@@ -89,6 +92,8 @@ public class PlayerController : Controller
         {
             clientAddPlayer(gameObject);
         }
+
+		startLocation = transform.position;
     }
 
     void Update()
@@ -112,7 +117,7 @@ public class PlayerController : Controller
             positionManager.updatePlayerList(gameObject);
             loadPlayer = true;
         }
-
+		if (Input.GetKeyDown(KeyCode.Tab)) transform.position = startLocation;
 		Debug.DrawRay(groundcheck.transform.position, surfaceNormal * 10f, Color.red);
     }
 
