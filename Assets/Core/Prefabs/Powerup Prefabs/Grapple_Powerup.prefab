@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46acba487c2077c4c8c8f45bde2507f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToGive: {fileID: 2673255171855170882, guid: 7713d27125b7735459e8694d56cd812b,
+  itemToGive: {fileID: 4352009852908437713, guid: b9a39402626b1574186bfe96e99b8567,
     type: 3}
 --- !u!1 &4994312064416107133
 GameObject:
@@ -161,7 +161,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6837677255292796630}
-  - component: {fileID: 3256969324783448066}
   m_Layer: 0
   m_Name: RocketLauncher
   m_TagString: Untagged
@@ -184,29 +183,6 @@ Transform:
   m_Father: {fileID: 6015376148035484002}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &3256969324783448066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5247251966337600969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da9de88ef89cfc7409198fe2bbd6472d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsActive: 1
-  IgnoreDamage: 0
-  projectilePrefab: {fileID: 3434827112916319614, guid: 831b29f1ffb0257458f1a4dca83b352d,
-    type: 3}
-  projectileSpawn: {fileID: 4869587162290416864}
-  reloadSpeed: 2
-  bulletsPerShot: 0
-  bulletSpread: 0
-  currentClip: 2
-  clipSize: 2
-  isRapidFire: 0
 --- !u!1 &5902271097296530216
 GameObject:
   m_ObjectHideFlags: 0

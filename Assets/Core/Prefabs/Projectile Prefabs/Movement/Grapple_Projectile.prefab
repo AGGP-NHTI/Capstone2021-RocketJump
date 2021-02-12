@@ -711,7 +711,7 @@ MonoBehaviour:
   IgnoreDamage: 1
   lifeTime: 10
   contactLifetime: 0
-  projectileLaunchForce: 42
+  projectileLaunchForce: 30
   moveSpeed: 5
   distanceBuffer: 1
 --- !u!135 &1746349513676646805
