@@ -56,8 +56,9 @@ public class PlayerController : Controller
     private void Awake()
 	{
 		rb = GetComponent<Rigidbody>() ?? gameObject.AddComponent<Rigidbody>();
-		Cursor.lockState = CursorLockMode.Locked;
 
+		if (!IsLocalPlayer) { return; }
+		Cursor.lockState = CursorLockMode.Locked;
 		plprSen = PlayerPrefs.GetFloat("MouseSensitivity", mouseSensitivity.y);
 		invhor = PlayerPrefs.GetInt("InvertHorizontal", 1);
 		invvert = PlayerPrefs.GetInt("InvertVertical", 1);
@@ -102,6 +103,8 @@ public class PlayerController : Controller
 
     void Update()
     {
+		if (!IsLocalPlayer) { return; }
+
 		DoMouseLook();
 
 		input = PollWASD();
@@ -126,6 +129,8 @@ public class PlayerController : Controller
 
 	private void FixedUpdate()
 	{
+		if (!IsLocalPlayer) { return; }
+
 		Vector3 forceVec;
 		Vector3 flatDirection;
 		float flatMagnitude;
