@@ -262,7 +262,13 @@ public class PlayerController : Controller
     [ServerRPC(RequireOwnership = false)]
     private void clientAddPlayer(GameObject player)
     {
-        positionManager.updatePlayerList(player);
+        //positionManager.updatePlayerList(player);
+        var pm = GameObject.Find("track").GetComponent<PositionManager>();
+
+        print(player);
+        print(pm);
+
+        pm.updatePlayerList(player);
     }
 
     [ServerRPC(RequireOwnership = false)]
