@@ -270,17 +270,15 @@ public class PlayerController : Controller
     {
         //positionManager.updatePlayerList(player);
         var pm = GameObject.Find("track").GetComponent<PositionManager>();
-
-        print(player);
-        print(pm);
-
         pm.updatePlayerList(player);
     }
 
     [ServerRPC(RequireOwnership = false)]
     private void clientUpdateNodePosition(int nodeNumber, GameObject player)
     {
-        positionManager.updatePlayerPosition(player, nodeNumber);
+        //positionManager.updatePlayerPosition(player, nodeNumber);
+        var pm = GameObject.Find("track").GetComponent<PositionManager>();
+        pm.updatePlayerPosition(player, nodeNumber);
     }
 
 	public GameObject giveItem(GameObject item)
