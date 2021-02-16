@@ -5,22 +5,14 @@ using UnityEngine.UI;
 using MLAPI;
 using MLAPI.Messaging;
 
-public class PPLogic : MonoBehaviour
+public class PPLogic : NetworkedBehaviour
 {
     public List<GameObject> players = new List<GameObject>();
 
     public Payload payloadprefab;
     public Payload payload;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
+   
     
     public void BeginGame()
     {

@@ -24,6 +24,7 @@ public class Payload : NetworkedBehaviour
         {
             // set player to spectate and destroy the pawn
             CurrentOwner = logic.RandomPlayer();
+            NewPlayer(CurrentOwner);
             timeleft = MaxTime;
         }
     }
@@ -32,10 +33,14 @@ public class Payload : NetworkedBehaviour
     {
         GameObject p;
         p = logic.RandomPlayer();
+        CurrentOwner = p;
+        NewPlayer(CurrentOwner);
     }
 
     public void NewPlayer(GameObject player)
     {
+        gameObject.transform.position = player.transform.position;
         gameObject.transform.SetParent(player.transform);
+        
     }
 }

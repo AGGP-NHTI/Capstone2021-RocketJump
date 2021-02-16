@@ -14,10 +14,9 @@ public class SpectatorCam : Pawn
     
     void Awake()
     {
-        if (IsLocalPlayer)
-        {
+        
             Cursor.lockState = CursorLockMode.Locked;
-        }
+        
     }
 
     void Update()
