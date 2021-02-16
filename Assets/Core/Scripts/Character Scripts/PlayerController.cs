@@ -262,7 +262,7 @@ public class PlayerController : Controller
     [ServerRPC(RequireOwnership = false)]
     private void clientAddPlayer(GameObject player)
     {
-        
+        positionManager.updatePlayerList(player);
     }
 
     [ServerRPC(RequireOwnership = false)]
