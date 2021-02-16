@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MLAPI;
 
 public class PositionNodeScript : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class PositionNodeScript : MonoBehaviour
 
         PlayerController obj = other.gameObject.GetComponent<PlayerController>();
 
-        if (obj)
+        if (obj && obj.enabled == true)
         { 
          obj.updateNodePosition(this);
         }
