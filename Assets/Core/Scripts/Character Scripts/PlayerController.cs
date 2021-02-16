@@ -47,7 +47,7 @@ public class PlayerController : Controller
 
     public GameObject UI;
 
-    private PositionManager positionManager;
+    public PositionManager positionManager;
     private GameObject track;
 
     private bool loadPlayer = false;
@@ -262,9 +262,7 @@ public class PlayerController : Controller
     [ServerRPC(RequireOwnership = false)]
     private void clientAddPlayer(GameObject player)
     {
-        print(positionManager);
-        print(player);
-        positionManager.updatePlayerList(player);
+        
     }
 
     [ServerRPC(RequireOwnership = false)]
