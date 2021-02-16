@@ -11,7 +11,7 @@ public class CamManager : MonoBehaviour
     {
         foreach (CamPan i in cams)
         {
-            i.EndCam();
+            i.gameObject.SetActive(false);
         }
         cams[0].gameObject.SetActive(true);
     }
