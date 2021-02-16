@@ -261,7 +261,7 @@ public class PlayerController : Controller
         else if(IsClient)
         {
             //clientUpdateNodePosition(node, gameObject);
-            InvokeServerRpc(clientUpdateNodePosition, node, gameObject);
+            InvokeServerRpc(clientUpdateNodePosition, node.nodeNumber, gameObject);
         }
     }
 
@@ -278,9 +278,9 @@ public class PlayerController : Controller
     }
 
     [ServerRPC(RequireOwnership = false)]
-    private void clientUpdateNodePosition(PositionNodeScript node, GameObject player)
+    private void clientUpdateNodePosition(int nodeNumber, GameObject player)
     {
-        positionManager.updatePlayerPosition(player, node.nodeNumber);
+        positionManager.updatePlayerPosition(player, nodeNumber);
     }
 
 	public GameObject giveItem(GameObject item)
