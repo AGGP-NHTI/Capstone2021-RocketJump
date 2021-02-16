@@ -10,7 +10,12 @@ public class PositionNodeScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        other.gameObject.GetComponent<PlayerController>().updateNodePosition(this);
+        PlayerController obj = other.gameObject.GetComponent<PlayerController>();
+
+        if (obj)
+        { 
+         obj.updateNodePosition(this);
+        }
 
         /*
 
