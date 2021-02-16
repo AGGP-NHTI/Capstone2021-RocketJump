@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class NewPC : MonoBehaviour
+public class NewPC : Controller
 {
 	public Transform eyes;
 
