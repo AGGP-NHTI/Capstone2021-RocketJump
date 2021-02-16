@@ -53,6 +53,7 @@ MonoBehaviour:
     RegisteredScenes:
     - TestPlayerScene
     - RaceTrack
+    - PP Arena
     AllowRuntimeSceneChanges: 0
     NetworkedPrefabs:
     - Prefab: {fileID: 2096464447327900002, guid: 85aa84dbfcc565c4e9085aece2294804,
@@ -68,6 +69,9 @@ MonoBehaviour:
         type: 3}
       PlayerPrefab: 0
     - Prefab: {fileID: 6439842749649940268, guid: 63d62362a1b63114589e3fb91e5e903b,
+        type: 3}
+      PlayerPrefab: 0
+    - Prefab: {fileID: 6187004778564048221, guid: 40f9758c556299f4694fba35f973fe6b,
         type: 3}
       PlayerPrefab: 0
     PlayerPrefabHash:
