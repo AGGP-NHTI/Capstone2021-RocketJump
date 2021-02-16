@@ -141,7 +141,6 @@ public class Weapon : Actor
             playerReference = player;
             Debug.Log("PLAYER SET");
         }
-
     }
     void setAmmoReference()
     {
