@@ -255,7 +255,8 @@ public class PlayerController : Controller
         }
         else if(IsClient)
         {
-            clientUpdateNodePosition(node, gameObject);
+            //clientUpdateNodePosition(node, gameObject);
+            InvokeServerRpc(clientUpdateNodePosition, node, gameObject);
         }
     }
 
