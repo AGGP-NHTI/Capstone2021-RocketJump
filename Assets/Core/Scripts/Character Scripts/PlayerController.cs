@@ -57,7 +57,7 @@ public class PlayerController : Controller
 	{
 		rb = GetComponent<Rigidbody>() ?? gameObject.AddComponent<Rigidbody>();
 
-		if (!IsLocalPlayer) { return; }
+		//if (!IsLocalPlayer) { return; }
 		Cursor.lockState = CursorLockMode.Locked;
 		plprSen = PlayerPrefs.GetFloat("MouseSensitivity", mouseSensitivity.y);
 		invhor = PlayerPrefs.GetInt("InvertHorizontal", 1);
