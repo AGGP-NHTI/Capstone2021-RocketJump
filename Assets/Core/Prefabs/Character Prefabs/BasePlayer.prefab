@@ -203,6 +203,7 @@ MonoBehaviour:
   pitchLimits: {x: -80, y: 80}
   rb: {fileID: 2740718061490925853}
   UI: {fileID: 6645590173705267851, guid: feced328edd1f4f45a8098423dbc2157, type: 3}
+  positionManager: {fileID: 0}
 --- !u!54 &2740718061490925853
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -232,8 +233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkedInstanceId: 0
-  PrefabHash: 11182408945722765662
-  PrefabHashGenerator: TestPlayer
+  PrefabHash: 7014709041972841081
+  PrefabHashGenerator: BasePlayer
   AlwaysReplicateAsRoot: 1
   DontDestroyWithOwner: 0
 --- !u!114 &5122541254411342989

@@ -65,6 +65,16 @@ PrefabInstance:
     - target: {fileID: 2740718061490925852, guid: 15f57b1a751d92546805447364949d62,
         type: 3}
       propertyPath: m_Name
+      value: Dic-tater Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692932254774156620, guid: 15f57b1a751d92546805447364949d62,
+        type: 3}
+      propertyPath: PrefabHash
+      value: 5435868857824088322
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692932254774156620, guid: 15f57b1a751d92546805447364949d62,
+        type: 3}
+      propertyPath: PrefabHashGenerator
       value: Dic-tater
       objectReference: {fileID: 0}
     m_RemovedComponents: []
