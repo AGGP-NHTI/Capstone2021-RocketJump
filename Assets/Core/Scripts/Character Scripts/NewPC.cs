@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class NewPC : MonoBehaviour
 {
+	public Transform eyes;
+
 	[Header("Character Traits")]
 	public float groundAcceleration = 20;
 	public float groundDeceleration = 15;
@@ -22,17 +24,15 @@ public class NewPC : MonoBehaviour
 
 	(float x, float y) movement = (0,0);
 	float downForce = 0;
-	float camPitch = 0;
+	float eyePitch = 0;
 
 	bool wasGrounded = false;
 
 	CharacterController cc;
-	Camera cam;
 
 	private void Awake()
 	{
 		cc = GetComponent<CharacterController>();
-		cam = GetComponentInChildren<Camera>();
 	}
 
 	private void Start()
@@ -44,14 +44,14 @@ public class NewPC : MonoBehaviour
     {
 		wasGrounded = cc.isGrounded;
 		
-
+		// TODO: handle input via controller, not internally
 		float lat = Input.GetAxis("Horizontal");
 		float fwd = Input.GetAxis("Vertical");
 		bool jump = Input.GetKey(KeyCode.Space);
 		float yaw = Input.GetAxis("Mouse X");
 
-		camPitch -= Input.GetAxis("Mouse Y") * lookSpeed;
-		camPitch = Mathf.Clamp(camPitch, -85, 85);
+		eyePitch -= Input.GetAxis("Mouse Y") * lookSpeed;
+		eyePitch = Mathf.Clamp(eyePitch, -85, 85);
 
 
 		float accel = cc.isGrounded ? groundAcceleration : airAcceleration;
@@ -107,14 +107,26 @@ public class NewPC : MonoBehaviour
 		Vector3 bodyRot = transform.localEulerAngles;
 		bodyRot.y += yaw * lookSpeed;
 
-		Vector3 camRot = new Vector3(camPitch, 0, 0);
+		Vector3 eyeRot = new Vector3(eyePitch, 0, 0);
 
-		// ------------------------------- TODO: degrade & deflect movement based on yaw
+		// movement deflection
+		if (cc.isGrounded == false && (movement.x > 0.01f || movement.y > 0.01f))
+		{
+			float len = Mathf.Sqrt(movement.x * movement.x + movement.y * movement.y);
+			movement = (movement.x - (movement.y / len) * (yaw),
+				movement.y + (movement.x / len) * (yaw));
 
+			float newlen = Mathf.Sqrt(movement.x * movement.x + movement.y * movement.y);
+			movement = (movement.x / newlen * len,
+				movement.y / newlen * len);
+		}
+
+		// apply rotation
 		transform.localEulerAngles = bodyRot;
-		cam.transform.localEulerAngles = camRot;
+		eyes.transform.localEulerAngles = eyeRot;
+
+		// apply motion
 		cc.Move(transform.TransformDirection(new Vector3(movement.x, -downForce, movement.y) * Time.deltaTime));
-		Debug.Log(movement);
 
 		if (wasGrounded == true && cc.isGrounded == false)
 		{
@@ -132,10 +144,15 @@ public class NewPC : MonoBehaviour
 		if (cleanReset)
 		{
 			downForce = 0;
-			camPitch = 0;
+			eyePitch = 0;
 			movement = (0, 0);
 			
 		}
+		// TODO
+	}
+
+	public void AddForce(Vector3 force)
+	{
 		// TODO
 	}
 }
