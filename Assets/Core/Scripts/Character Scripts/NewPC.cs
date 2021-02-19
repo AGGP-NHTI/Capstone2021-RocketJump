@@ -23,6 +23,8 @@ public class NewPC : Controller
 	[Header("Physics")]
 	public float gravityConstant = 9.81f;
 	public float groundingForce = 5f;
+	public float groundFriction = 3f;
+	public float airFriction = 0.5f;
 
 	[Header("Objects")]
 	public GameObject cameraPrefab;
@@ -33,6 +35,7 @@ public class NewPC : Controller
 	public bool loadPlayer = true;
 
 	(float x, float y) movement = (0,0);
+	Vector3 externalForce = Vector3.zero;
 	float downForce = 0;
 	float eyePitch = 0;
 
@@ -168,7 +171,38 @@ public class NewPC : Controller
 		eyes.transform.localEulerAngles = eyeRot;
 
 		// apply motion
-		cc.Move(transform.TransformDirection(new Vector3(movement.x, -downForce, movement.y) * Time.deltaTime));
+		cc.Move(transform.TransformDirection(new Vector3(externalForce.x + movement.x, externalForce.y - downForce, externalForce.z + movement.y) * Time.deltaTime));
+
+		// degrade external forces
+		float friction = (cc.isGrounded ? groundFriction : airFriction) * Time.deltaTime;
+		int sign;
+
+		if (externalForce.x != 0)
+		{
+			sign = externalForce.x < 0 ? -1 : 1;
+			externalForce.x *= sign;
+			externalForce.x -= friction;
+			if (externalForce.x < 0) { externalForce.x = 0; }
+			else { externalForce.x *= sign; }
+		}
+
+		if (externalForce.y != 0)
+		{
+			sign = externalForce.y < 0 ? -1 : 1;
+			externalForce.y *= sign;
+			externalForce.y -= friction;
+			if (externalForce.y < 0) { externalForce.y = 0; }
+			else { externalForce.y *= sign; }
+		}
+
+		if (externalForce.z != 0)
+		{
+			sign = externalForce.z < 0 ? -1 : 1;
+			externalForce.z *= sign;
+			externalForce.z -= friction;
+			if (externalForce.z < 0) { externalForce.z = 0; }
+			else { externalForce.z *= sign; }
+		}
 
 		if (wasGrounded == true && cc.isGrounded == false)
 		{
@@ -200,7 +234,7 @@ public class NewPC : Controller
 
 	public void AddForce(Vector3 force)
 	{
-		
+		externalForce += force;
 	}
 
 	public float getVelocity()
