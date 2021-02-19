@@ -30,7 +30,6 @@ public class Weapon : Actor
     [Range(1f, 1000f)]
     public int      clipSize;
 
-
     [Header("Info")]
     public bool isRapidFire = false;
 

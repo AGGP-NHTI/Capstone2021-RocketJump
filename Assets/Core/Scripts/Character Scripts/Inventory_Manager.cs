@@ -5,9 +5,10 @@ using UnityEngine;
 public class Inventory_Manager : MonoBehaviour
 {
     public NewPC player;
-    List<GameObject> items = new List<GameObject>();
+    public int currentItem = 0;
+    public List<GameObject> items = new List<GameObject>();
 
-    int currentItem = 0;
+    
 
     private void Update()
     {
@@ -25,15 +26,18 @@ public class Inventory_Manager : MonoBehaviour
 
     public void addItem(GameObject itemToAdd, bool setToCurrentActiveItem = false)
     {
-        itemToAdd.transform.parent = player.eyes;
-        items.Add(itemToAdd);
-
-        if (setToCurrentActiveItem)
+        if (!items.Contains(itemToAdd))
         {
-            currentItem = (items.Count - 1);
-        }
+            itemToAdd.transform.parent = player.eyes;
+            items.Add(itemToAdd);
 
-        checkActiveItems();
+            if (setToCurrentActiveItem)
+            {
+                currentItem = (items.Count - 1);
+            }
+
+            checkActiveItems();
+        }
     }
 
     public void dropItem(int whichIndex)
@@ -53,6 +57,16 @@ public class Inventory_Manager : MonoBehaviour
     {
         for (int i = 0; i < items.Count-1; i++)
         {
+            if (!items[i])
+            {
+                if (i <= currentItem)
+                {
+                    currentItem--;
+                }
+                items.RemoveAt(i);
+                
+            }
+
             if (i != currentItem)
             {
                 items[i].SetActive(false);
