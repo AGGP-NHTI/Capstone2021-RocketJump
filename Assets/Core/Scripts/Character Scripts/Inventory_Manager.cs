@@ -29,6 +29,7 @@ public class Inventory_Manager : MonoBehaviour
         if (!items.Contains(itemToAdd))
         {
             itemToAdd.transform.parent = player.eyes;
+            itemToAdd.transform.localPosition = Vector3.zero;
             items.Add(itemToAdd);
 
             if (setToCurrentActiveItem)
