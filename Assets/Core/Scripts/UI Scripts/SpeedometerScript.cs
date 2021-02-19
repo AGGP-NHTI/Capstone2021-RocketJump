@@ -26,7 +26,7 @@ public class SpeedometerScript : MonoBehaviour
 
     private bool playerLoaded = false;
 
-    Rigidbody rb;
+    CharacterController cc;
 
     // ((value - min) / (max - min)) * 100 = percentage;
     // -((min * perc) / 100) + min + ((max * perc) / 100) = value;
@@ -36,7 +36,7 @@ public class SpeedometerScript : MonoBehaviour
         speed_trans = speedometer.transform;
         
         //player = gameObject.transform.root.GetComponent<PlayerController>();
-        rb = player.GetComponent<Rigidbody>();
+        cc = player.GetComponent<CharacterController>();
 
         if(!player)
         {
@@ -54,8 +54,8 @@ public class SpeedometerScript : MonoBehaviour
                 maxSpeed = player.moveSpeed * 3;
             }
         }
-        
-        speed = rb.velocity.magnitude;
+
+        speed = player.getVelocity();
 
         //speedPerc = ((speed - 0) / (maxSpeed - 0)) * 100; // get the speed percentage
         speedPerc = (speed / maxSpeed) * 100; // get the speed percentage

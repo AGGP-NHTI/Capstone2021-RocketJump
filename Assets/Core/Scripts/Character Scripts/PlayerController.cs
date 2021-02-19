@@ -73,7 +73,7 @@ public class PlayerController : Controller
 
 		if (IsLocalPlayer)
         {
-            localPlayer = Instantiate(localPlayer);
+			localPlayer = new GameObject();
             localPlayer.name = "Local Player";
 
             UI = Instantiate(UI, localPlayer.transform);

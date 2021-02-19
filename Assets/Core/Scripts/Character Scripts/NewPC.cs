@@ -26,12 +26,13 @@ public class NewPC : Controller
 
 	[Header("Objects")]
 	public GameObject cameraPrefab;
+	public GameObject UI;
+
 
 	[Header("Network Settings")]
 	public bool loadPlayer = true;
 
-	[HideInInspector]
-	public GameObject UI;
+	
 
 
 	(float x, float y) movement = (0,0);
@@ -62,8 +63,9 @@ public class NewPC : Controller
 		else 
 		{
 			setLocalPlayer();
-			setUI();
+			
 			setCamera();
+			setUI();
 			Cursor.lockState = CursorLockMode.Locked;
 		}
 
@@ -217,7 +219,7 @@ public class NewPC : Controller
 
 	public void setCamera()
 	{
-		localCamera = Instantiate(cameraPrefab);
+		localCamera = Instantiate(cameraPrefab, localPlayer.transform);
 		MimicTransform cameraTransform = localCamera.GetComponent<MimicTransform>();
 		if (cameraTransform)
 		{
@@ -227,7 +229,7 @@ public class NewPC : Controller
 
 	public void setLocalPlayer()
 	{
-		localPlayer = Instantiate(localPlayer);
+		localPlayer = new GameObject();
 		localPlayer.name = "Local Player";
 	}
 
