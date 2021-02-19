@@ -11,6 +11,7 @@ public class Payload : NetworkedBehaviour
     public PPLogic logic;
     public float MaxTime = 30f;
     public float timeleft;
+    public bool IsOn = false;
 
     void Start()
     {
@@ -19,28 +20,33 @@ public class Payload : NetworkedBehaviour
 
     void FixedUpdate()
     {
-        timeleft -= Time.fixedDeltaTime;
-        if (timeleft <= 0)
+        if (IsOn)
         {
-            // set player to spectate and destroy the pawn
-            CurrentOwner = logic.RandomPlayer();
-            NewPlayer(CurrentOwner);
-            timeleft = MaxTime;
+            timeleft -= Time.fixedDeltaTime;
+            if (timeleft <= 0)
+            {
+                // set player to spectate and destroy the pawn
+
+                InvokeServerRpc(ChoosePlayer);
+            }
         }
     }
 
-    public void SwapPlayer()
+    //chooses a random player for the payload to swap to, used when the payload runs out of time and when the round first starts
+    [ServerRPC(RequireOwnership = false)]
+    public void ChoosePlayer()
     {
-        GameObject p;
-        p = logic.RandomPlayer();
-        CurrentOwner = p;
-        NewPlayer(CurrentOwner);
+        IsOn = true;
+        InvokeServerRpc(NewPlayer, logic.RandomPlayer());
+        timeleft = MaxTime;
     }
 
+    //changes the player the payload is attached to, also called by the projectile to swap it to the hit player
+    [ServerRPC(RequireOwnership = false)]
     public void NewPlayer(GameObject player)
-    {
+    {      
         gameObject.transform.position = player.transform.position;
         gameObject.transform.SetParent(player.transform);
-        
+        CurrentOwner = player;
     }
 }
