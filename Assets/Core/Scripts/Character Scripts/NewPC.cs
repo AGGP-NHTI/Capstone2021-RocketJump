@@ -171,7 +171,7 @@ public class NewPC : Controller
 		eyes.transform.localEulerAngles = eyeRot;
 
 		// apply motion
-		cc.Move(transform.TransformDirection(new Vector3(externalForce.x + movement.x, externalForce.y - downForce, externalForce.z + movement.y) * Time.deltaTime));
+		cc.Move(externalForce * Time.deltaTime + transform.TransformDirection(new Vector3(movement.x, -downForce, movement.y) * Time.deltaTime));
 
 		// degrade external forces
 		float friction = (cc.isGrounded ? groundFriction : airFriction) * Time.deltaTime;
