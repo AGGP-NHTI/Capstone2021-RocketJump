@@ -9,19 +9,27 @@ public class CustomButton : Button
     public AudioClip clip;
     bool pressed = false;
 
-    void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         if (IsHighlighted() == true && !pressed)
-        {           
-            source.PlayOneShot(clip);
-            pressed = true;
-            
-            //Debug.Log("Highlighted");
+        {
+            OnHighlight();           
         }
 
         if (IsHighlighted() == false)
         {
-            pressed = false;
+            OnHighlightEnd();
         }
+    }
+
+    public virtual void OnHighlight()
+    {
+        source.PlayOneShot(clip);
+        pressed = true;
+    }
+
+    public virtual void OnHighlightEnd()
+    {
+        pressed = false;
     }
 }
