@@ -49,10 +49,10 @@ public class Explosive : Projectile
             {
 
                 Debug.Log("BAM on " + hit.gameObject.name);
+ 
+                Vector3 dir = hit.transform.position - origin;
 
-                Vector3 dir = origin - hit.transform.position;
-
-                playerController.AddForce(dir.normalized * explosiveForce);
+                playerController.AddForce(dir.normalized * explosiveForce/100);
             }
         }
 
