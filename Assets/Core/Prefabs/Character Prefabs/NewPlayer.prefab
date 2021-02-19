@@ -76,11 +76,12 @@ MonoBehaviour:
   lookSpeed: 5
   gravityConstant: 9.81
   groundingForce: 5
+  groundFriction: 10
+  airFriction: 0.5
   cameraPrefab: {fileID: 6476323804535610174, guid: 5dfba613b3f5f0546b51dfa729f3e1e1,
     type: 3}
   UI: {fileID: 6645590173705267851, guid: feced328edd1f4f45a8098423dbc2157, type: 3}
   loadPlayer: 1
-  ownedItem: {fileID: 0}
 --- !u!114 &8804898545013548059
 MonoBehaviour:
   m_ObjectHideFlags: 0

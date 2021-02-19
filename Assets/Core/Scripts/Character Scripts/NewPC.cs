@@ -23,7 +23,7 @@ public class NewPC : Controller
 	[Header("Physics")]
 	public float gravityConstant = 9.81f;
 	public float groundingForce = 5f;
-	public float groundFriction = 3f;
+	public float groundFriction = 10f;
 	public float airFriction = 0.5f;
 
 	[Header("Objects")]
