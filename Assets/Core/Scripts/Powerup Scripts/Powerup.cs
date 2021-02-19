@@ -7,11 +7,24 @@ public class Powerup : MonoBehaviour
 
     public GameObject itemToGive;
 
-   
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider obj)
     {
-        PlayerController player = collision.transform.GetComponent<PlayerController>();
+        Debug.Log("PLAYER ENTERED");
+
+        NewPC player = obj.transform.GetComponent<NewPC>();
+
+        if (player && !player.ownedItem)
+        {
+            player.giveItem(itemToGive);
+            StartCoroutine(destroyAtEndofFrame());
+        }
+    }
+    public void OnCollisionEnter(Collision obj)
+    {
+        Debug.Log("PLAYER ENTERED");
+
+        NewPC player = obj.transform.GetComponent<NewPC>();
 
         if (player && !player.ownedItem)
         {

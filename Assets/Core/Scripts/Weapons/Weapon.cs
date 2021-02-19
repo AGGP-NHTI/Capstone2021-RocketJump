@@ -10,7 +10,7 @@ using MLAPI.Messaging;
 public class Weapon : Actor
 {
     protected GameObject UI;
-    protected PlayerController playerReference;
+    protected NewPC playerReference;
     protected Ammo_UI_Script AmmoReference;
 
     protected bool isCooling = false;
@@ -128,13 +128,13 @@ public class Weapon : Actor
 
     protected void KnockBack(Vector3 direction, float magnitude)
     {
-        playerReference.rb.AddForce(direction.normalized * magnitude, ForceMode.Impulse);       
+        //playerReference.rb.AddForce(direction.normalized * magnitude, ForceMode.Impulse);       
     }
 
 
     void setPlayerReference()
     {
-        PlayerController player = transform.root.GetComponent<PlayerController>();
+        NewPC player = transform.root.GetComponent<NewPC>();
         Debug.Log("NAME: " + player.name);
         if (player)
         {

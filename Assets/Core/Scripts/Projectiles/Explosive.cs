@@ -30,21 +30,33 @@ public class Explosive : Projectile
                                                 explosiveDistance);
         foreach (Collider hit in hits)
         {
-            Rigidbody rb = hit.GetComponent<Rigidbody>();
+            Rigidbody rbObj = hit.GetComponent<Rigidbody>();
+            CharacterController cc = hit.GetComponent<CharacterController>();
 
-            if (rb)
+            //For other projectiles
+            if (rbObj)
             {
 
                 Debug.Log("BAM on " + hit.gameObject.name);
 
-                rb.AddExplosionForce(explosiveForce,
+                rbObj.AddExplosionForce(explosiveForce,
                                      origin,
                                      explosiveDistance
                                      );
+            }
+            //for players
+            else if (cc)
+            {
 
-                Destroy(gameObject);
+                Debug.Log("BAM on " + hit.gameObject.name);
+
+                Vector3 dir = origin - hit.transform.position;
+
+                
             }
         }
+
+        Destroy(gameObject);
     }
 
 

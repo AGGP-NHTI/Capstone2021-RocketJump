@@ -23,7 +23,7 @@ public class Movement : Projectile
         if (hasTriggered)
         {
             //player.transform.position = Vector3.Lerp(player.transform.position, lerpDestination, moveSpeed * Time.deltaTime);
-            player.moveTo(lerpDestination);
+            //player.moveTo(lerpDestination);
 
             if (Vector3.Distance(player.transform.position, lerpDestination) < distanceBuffer)
             {

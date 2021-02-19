@@ -32,7 +32,8 @@ public class NewPC : Controller
 	[Header("Network Settings")]
 	public bool loadPlayer = true;
 
-	
+	[HideInInspector]
+	public GameObject ownedItem = null;
 
 
 	(float x, float y) movement = (0,0);
@@ -46,6 +47,7 @@ public class NewPC : Controller
 	GameObject localPlayer;
 	GameObject localCamera;
 	GameObject track;
+	
 	PositionManager positionManager;
 
 	private void Awake()
@@ -193,14 +195,30 @@ public class NewPC : Controller
 		// TODO
 	}
 
+	public void lerpTo(Vector3 destination)
+	{ 
+	
+	}
+
 	public void AddForce(Vector3 force)
 	{
-		// TODO
+		
 	}
 
 	public float getVelocity()
 	{
 		return cc.velocity.magnitude;
+	}
+
+	public GameObject giveItem(GameObject item)
+	{
+		if (!ownedItem)
+		{
+			ownedItem = Instantiate(item, eyes);
+			ownedItem.transform.position = eyes.transform.position;
+			return ownedItem;
+		}
+		return null;
 	}
 
 	//INITIALIZATION FUNCTIONS

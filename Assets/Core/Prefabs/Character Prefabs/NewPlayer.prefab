@@ -80,6 +80,7 @@ MonoBehaviour:
     type: 3}
   UI: {fileID: 6645590173705267851, guid: feced328edd1f4f45a8098423dbc2157, type: 3}
   loadPlayer: 1
+  ownedItem: {fileID: 0}
 --- !u!114 &8804898545013548059
 MonoBehaviour:
   m_ObjectHideFlags: 0
