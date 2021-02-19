@@ -127,7 +127,7 @@ public class Weapon : Actor
 
     protected void KnockBack(Vector3 direction, float magnitude)
     {
-        //playerReference.rb.AddForce(direction.normalized * magnitude, ForceMode.Impulse);       
+        playerReference.AddForce(direction.normalized * magnitude);    
     }
 
 
