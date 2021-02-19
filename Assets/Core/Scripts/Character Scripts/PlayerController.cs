@@ -69,15 +69,15 @@ public class PlayerController : Controller
     private void Start()
     {
 
-        if(!IsLocalPlayer) { this.enabled = false; }
+		if (!IsLocalPlayer) { this.enabled = false; }
 
-        if (IsLocalPlayer)
+		if (IsLocalPlayer)
         {
             localPlayer = Instantiate(localPlayer);
             localPlayer.name = "Local Player";
 
             UI = Instantiate(UI, localPlayer.transform);
-            UI.GetComponentInChildren<SpeedometerScript>().player = this; // Fix speedometer bug. Temporary fix, could probably be implimented better.
+            //UI.GetComponentInChildren<SpeedometerScript>().player = this; // Fix speedometer bug. Temporary fix, could probably be implimented better.
 
             newCam = Instantiate(cam, localPlayer.transform);
             newCam.GetComponent<MimicTransform>().target = eyes;
@@ -273,13 +273,13 @@ public class PlayerController : Controller
         pm.updatePlayerList(player);
     }
 
-    [ServerRPC(RequireOwnership = false)]
-    private void clientUpdateNodePosition(int nodeNumber, GameObject player)
-    {
-        //positionManager.updatePlayerPosition(player, nodeNumber);
-        var pm = GameObject.Find("track").GetComponent<PositionManager>();
-        pm.updatePlayerPosition(player, nodeNumber);
-    }
+	[ServerRPC(RequireOwnership = false)]
+	private void clientUpdateNodePosition(int nodeNumber, GameObject player)
+	{
+		//positionManager.updatePlayerPosition(player, nodeNumber);
+		var pm = GameObject.Find("track").GetComponent<PositionManager>();
+		pm.updatePlayerPosition(player, nodeNumber);
+	}
 
 	public GameObject giveItem(GameObject item)
 	{

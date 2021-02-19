@@ -22,7 +22,7 @@ public class SpeedometerScript : MonoBehaviour
 
     float velocity;
 
-    public PlayerController player;
+    public NewPC player;
 
     private bool playerLoaded = false;
 
@@ -51,7 +51,7 @@ public class SpeedometerScript : MonoBehaviour
         {
             if(!playerLoaded)
             {
-                maxSpeed = player.topSpeed;
+                maxSpeed = player.moveSpeed * 3;
             }
         }
         
@@ -65,6 +65,6 @@ public class SpeedometerScript : MonoBehaviour
 
         speed_trans.rotation = Quaternion.Euler(new Vector3(180, 0, (((min_rotation * speedPerc) / 100) + min_rotation + ((max_rotation * speedPerc) / 100)))); // disgusting math
 
-        background.fillAmount = Mathf.SmoothDamp(background.fillAmount, player.GetSpeedometer(), ref velocity, 0.1f);
+        background.fillAmount = Mathf.SmoothDamp(background.fillAmount, player.getVelocity(), ref velocity, 0.1f);
     }
 }

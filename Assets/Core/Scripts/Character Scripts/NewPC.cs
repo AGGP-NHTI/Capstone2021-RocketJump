@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MLAPI;
+using MLAPI.Messaging;
 
 [RequireComponent(typeof(CharacterController))]
 public class NewPC : Controller
@@ -22,6 +24,16 @@ public class NewPC : Controller
 	public float gravityConstant = 9.81f;
 	public float groundingForce = 5f;
 
+	[Header("Objects")]
+	public GameObject cameraPrefab;
+
+	[Header("Network Settings")]
+	public bool loadPlayer = true;
+
+	[HideInInspector]
+	public GameObject UI;
+
+
 	(float x, float y) movement = (0,0);
 	float downForce = 0;
 	float eyePitch = 0;
@@ -30,6 +42,11 @@ public class NewPC : Controller
 
 	CharacterController cc;
 
+	GameObject localPlayer;
+	GameObject localCamera;
+	GameObject track;
+	PositionManager positionManager;
+
 	private void Awake()
 	{
 		cc = GetComponent<CharacterController>();
@@ -37,7 +54,30 @@ public class NewPC : Controller
 
 	private void Start()
 	{
-		Cursor.lockState = CursorLockMode.Locked;
+		if (!IsLocalPlayer)
+		{
+			this.enabled = false;
+
+		}
+		else 
+		{
+			setLocalPlayer();
+			setUI();
+			setCamera();
+			Cursor.lockState = CursorLockMode.Locked;
+		}
+
+		if (IsHost)
+		{
+			setTrack();
+			setPositionManager();
+		}
+		else if (IsClient)
+		{
+			loadPlayer = true;
+			InvokeServerRpc(clientAddPlayer, gameObject);
+		}
+
 	}
 
 	void Update()
@@ -154,5 +194,73 @@ public class NewPC : Controller
 	public void AddForce(Vector3 force)
 	{
 		// TODO
+	}
+
+	public float getVelocity()
+	{
+		return cc.velocity.magnitude;
+	}
+
+	//INITIALIZATION FUNCTIONS
+	public void setUI()
+	{
+		UI = Instantiate(UI, localPlayer.transform);
+		if (UI)
+		{
+			SpeedometerScript speedometer = UI.GetComponentInChildren<SpeedometerScript>();
+			if (speedometer)
+			{
+				speedometer.player = this;
+			}
+		}
+	}
+
+	public void setCamera()
+	{
+		localCamera = Instantiate(cameraPrefab);
+		MimicTransform cameraTransform = localCamera.GetComponent<MimicTransform>();
+		if (cameraTransform)
+		{
+			cameraTransform.target = eyes;
+		}
+	}
+
+	public void setLocalPlayer()
+	{
+		localPlayer = Instantiate(localPlayer);
+		localPlayer.name = "Local Player";
+	}
+
+	public void setPositionManager()
+	{
+		positionManager = track.AddComponent<PositionManager>();
+		if (positionManager && track)
+		{
+			positionManager.track = track;
+		}
+	}
+
+	public void setTrack()
+	{
+		track = GameObject.Find("track");
+	}
+
+	//NETWORK FUNCTIONS
+
+
+	[ServerRPC(RequireOwnership = false)]
+	private void clientAddPlayer(GameObject player)
+	{
+		//positionManager.updatePlayerList(player);
+		var pm = GameObject.Find("track").GetComponent<PositionManager>();
+		pm.updatePlayerList(player);
+	}
+
+	[ServerRPC(RequireOwnership = false)]
+	private void clientUpdateNodePosition(int nodeNumber, GameObject player)
+	{
+		//positionManager.updatePlayerPosition(player, nodeNumber);
+		var pm = GameObject.Find("track").GetComponent<PositionManager>();
+		pm.updatePlayerPosition(player, nodeNumber);
 	}
 }
