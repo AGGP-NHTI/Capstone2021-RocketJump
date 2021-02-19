@@ -14,7 +14,7 @@ public class Powerup : MonoBehaviour
 
         NewPC player = obj.transform.GetComponent<NewPC>();
 
-        if (player && !player.ownedItem)
+        if (player)
         {
             player.giveItem(itemToGive);
             StartCoroutine(destroyAtEndofFrame());
@@ -26,7 +26,7 @@ public class Powerup : MonoBehaviour
 
         NewPC player = obj.transform.GetComponent<NewPC>();
 
-        if (player && !player.ownedItem)
+        if (player)
         {
             player.giveItem(itemToGive);
             StartCoroutine(destroyAtEndofFrame());

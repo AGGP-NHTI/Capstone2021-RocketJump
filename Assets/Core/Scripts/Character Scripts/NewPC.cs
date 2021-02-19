@@ -32,10 +32,6 @@ public class NewPC : Controller
 	[Header("Network Settings")]
 	public bool loadPlayer = true;
 
-	[HideInInspector]
-	public GameObject ownedItem = null;
-
-
 	(float x, float y) movement = (0,0);
 	float downForce = 0;
 	float eyePitch = 0;
@@ -49,6 +45,7 @@ public class NewPC : Controller
 	GameObject track;
 	
 	PositionManager positionManager;
+	Inventory_Manager inventoryManager;
 
 	private void Awake()
 	{
@@ -64,10 +61,11 @@ public class NewPC : Controller
 		}
 		else 
 		{
-			setLocalPlayer();
 			
+			setLocalPlayer();
 			setCamera();
 			setUI();
+			setInvetoryManager();
 			Cursor.lockState = CursorLockMode.Locked;
 		}
 
@@ -197,7 +195,7 @@ public class NewPC : Controller
 
 	public void lerpTo(Vector3 destination)
 	{ 
-	
+		
 	}
 
 	public void AddForce(Vector3 force)
@@ -210,18 +208,26 @@ public class NewPC : Controller
 		return cc.velocity.magnitude;
 	}
 
-	public GameObject giveItem(GameObject item)
+	public void giveItem(GameObject item)
 	{
-		if (!ownedItem)
+		
+
+		GameObject itemToGive = Instantiate(item);
+		Debug.Log("GIVING ITEM: " + itemToGive.name);
+
+		if (itemToGive)
 		{
-			ownedItem = Instantiate(item, eyes);
-			ownedItem.transform.position = eyes.transform.position;
-			return ownedItem;
+			inventoryManager.addItem(itemToGive, true);
 		}
-		return null;
 	}
 
 	//INITIALIZATION FUNCTIONS
+	public void setInvetoryManager()
+	{
+		inventoryManager = gameObject.AddComponent<Inventory_Manager>();
+		inventoryManager.player = this;
+	}
+
 	public void setUI()
 	{
 		UI = Instantiate(UI, localPlayer.transform);

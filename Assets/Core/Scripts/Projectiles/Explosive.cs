@@ -31,7 +31,7 @@ public class Explosive : Projectile
         foreach (Collider hit in hits)
         {
             Rigidbody rbObj = hit.GetComponent<Rigidbody>();
-            CharacterController cc = hit.GetComponent<CharacterController>();
+            NewPC playerController = hit.GetComponent<NewPC>();
 
             //For other projectiles
             if (rbObj)
@@ -44,15 +44,15 @@ public class Explosive : Projectile
                                      explosiveDistance
                                      );
             }
-            //for players
-            else if (cc)
+            //forplayers
+            else if (playerController)
             {
 
                 Debug.Log("BAM on " + hit.gameObject.name);
 
                 Vector3 dir = origin - hit.transform.position;
 
-                
+                playerController.AddForce(dir.normalized * explosiveForce);
             }
         }
 
