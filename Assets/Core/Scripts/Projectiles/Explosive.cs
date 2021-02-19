@@ -7,7 +7,7 @@ public class Explosive : Projectile
     public GameObject particles;
 
 
-    [Range(0f, 5000f)]
+    [Range(0f, 500f)]
     public float explosiveForce = 10;
 
     [Range(0f, 20f)]
@@ -52,7 +52,7 @@ public class Explosive : Projectile
  
                 Vector3 dir = hit.transform.position - origin;
 
-                playerController.AddForce(dir.normalized * explosiveForce/100);
+                playerController.AddForce(dir.normalized * explosiveForce);
             }
         }
 

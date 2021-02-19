@@ -12,15 +12,14 @@ public class Inventory_Manager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) { currentItem = 1; }
-        if (Input.GetKeyDown(KeyCode.Alpha2)) { currentItem = 2; }
-        if (Input.GetKeyDown(KeyCode.Alpha3)) { currentItem = 3; }
-        if (Input.GetKeyDown(KeyCode.Alpha4)) { currentItem = 4; }
-        if (Input.GetKeyDown(KeyCode.Alpha5)) { currentItem = 5; }
-        if (Input.GetKeyDown(KeyCode.Alpha6)) { currentItem = 6; }
-        if (Input.GetKeyDown(KeyCode.Alpha7)) { currentItem = 7; }
-        if (Input.GetKeyDown(KeyCode.Alpha8)) { currentItem = 8; }
-        if (Input.GetKeyDown(KeyCode.Alpha9)) { currentItem = 9; }
+        for (int i = 1; i < 10; i++)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha0 + i))
+            {
+                currentItem = i-1;
+                checkActiveItems();
+            }
+        }
     }
 
 
@@ -30,6 +29,7 @@ public class Inventory_Manager : MonoBehaviour
         {
             itemToAdd.transform.parent = player.eyes;
             itemToAdd.transform.localPosition = Vector3.zero;
+            itemToAdd.transform.localRotation = Quaternion.identity;
             items.Add(itemToAdd);
 
             if (setToCurrentActiveItem)
@@ -58,6 +58,8 @@ public class Inventory_Manager : MonoBehaviour
     {
         for (int i = 0; i < items.Count-1; i++)
         {
+
+            //Check if the item exists
             if (!items[i])
             {
                 if (i <= currentItem)
@@ -68,6 +70,7 @@ public class Inventory_Manager : MonoBehaviour
                 
             }
 
+            //
             if (i != currentItem)
             {
                 items[i].SetActive(false);

@@ -209,7 +209,7 @@ MonoBehaviour:
   projectileLaunchForce: 0
   particles: {fileID: 2010310339161898737, guid: 2926eaa083d07934a8be91583fa79a42,
     type: 3}
-  explosiveForce: 300
+  explosiveForce: 30
   explosiveDistance: 20
 --- !u!114 &3553348678043243725
 MonoBehaviour:
