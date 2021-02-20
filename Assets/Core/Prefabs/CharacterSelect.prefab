@@ -892,6 +892,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dictator
       objectReference: {fileID: 0}
+    - target: {fileID: 3230120134462677352, guid: 6c1ea097a7330644c90b210aa3cacbbc,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4551008710518879481, guid: 6c1ea097a7330644c90b210aa3cacbbc,
         type: 3}
       propertyPath: m_text
@@ -1124,7 +1129,7 @@ PrefabInstance:
     - target: {fileID: 5890425446777592066, guid: 6c1ea097a7330644c90b210aa3cacbbc,
         type: 3}
       propertyPath: m_text
-      value: Noisy Boi
+      value: Loud Grasshopper
       objectReference: {fileID: 0}
     - target: {fileID: 6999914616854639300, guid: 6c1ea097a7330644c90b210aa3cacbbc,
         type: 3}
@@ -1368,7 +1373,7 @@ PrefabInstance:
     - target: {fileID: 5890425446777592066, guid: 6c1ea097a7330644c90b210aa3cacbbc,
         type: 3}
       propertyPath: m_text
-      value: Pineapple Rocket Launcher
+      value: Blunderbuss
       objectReference: {fileID: 0}
     - target: {fileID: 6999914616854639300, guid: 6c1ea097a7330644c90b210aa3cacbbc,
         type: 3}
