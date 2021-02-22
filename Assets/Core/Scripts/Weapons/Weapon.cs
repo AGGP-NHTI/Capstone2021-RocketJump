@@ -10,6 +10,7 @@ using MLAPI.Messaging;
 public class Weapon : Actor
 {
     protected GameObject UI;
+    protected UIManager UIMan;
     protected NewPC playerReference;
     protected Ammo_UI_Script AmmoReference;
 
@@ -153,7 +154,7 @@ public class Weapon : Actor
     void setUIObj()
     {
         UI = playerReference.UI;
-
+        if (UI) { UIMan = UI.GetComponent<UIManager>(); }
     }
 
 }

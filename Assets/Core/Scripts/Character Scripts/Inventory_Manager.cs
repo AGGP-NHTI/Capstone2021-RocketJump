@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Inventory_Manager : MonoBehaviour
 {
-    public NewPC player;
-    public int currentItem = 0;
     public List<GameObject> items = new List<GameObject>();
 
-    
+    [HideInInspector]
+    public NewPC player;
+    public int currentItem = 0;
 
     private void Update()
     {
@@ -25,16 +25,24 @@ public class Inventory_Manager : MonoBehaviour
 
     public void addItem(GameObject itemToAdd, bool setToCurrentActiveItem = false)
     {
+        
+
         if (!items.Contains(itemToAdd))
         {
+            itemToAdd = Instantiate(itemToAdd, player.eyes);
             itemToAdd.transform.parent = player.eyes;
             itemToAdd.transform.localPosition = Vector3.zero;
             itemToAdd.transform.localRotation = Quaternion.identity;
+            
             items.Add(itemToAdd);
 
             if (setToCurrentActiveItem)
             {
                 currentItem = (items.Count - 1);
+            }
+            else 
+            {
+                itemToAdd.SetActive(false);
             }
 
             checkActiveItems();
@@ -56,6 +64,11 @@ public class Inventory_Manager : MonoBehaviour
 
     public void checkActiveItems()
     {
+        if (items.Count == 1)
+        {
+            items[0].SetActive(true);
+        }
+
         for (int i = 0; i < items.Count-1; i++)
         {
 
@@ -73,13 +86,11 @@ public class Inventory_Manager : MonoBehaviour
             //
             if (i != currentItem)
             {
-                items[i].SetActive(false);
+               
             }
-            else
-            {
-                items[currentItem].SetActive(true);
-            }
+            items[i].SetActive(false);
         }
+        items[currentItem].SetActive(true);
 
     }
 }

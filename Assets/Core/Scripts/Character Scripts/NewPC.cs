@@ -34,6 +34,9 @@ public class NewPC : Controller
 	[Header("Network Settings")]
 	public bool loadPlayer = true;
 
+	[Header("Stats")]
+	public float maxVelocity = 20;
+
 	(float x, float y) movement = (0,0);
 	Vector3 externalForce = Vector3.zero;
 	float downForce = 0;
@@ -87,6 +90,10 @@ public class NewPC : Controller
 
 	void Update()
     {
+		//UI.GetComponent<UIManager>().sendMessage(("Speed: " + getHorizontalVelocity()), new Vector3(0,-100,0), 0.1f);
+
+		//Debug.Log("VELOCITY: " + getVelocity());
+
 		wasGrounded = cc.isGrounded;
 		
 		// TODO: handle input via controller, not internally
@@ -241,17 +248,25 @@ public class NewPC : Controller
 	{
 		return cc.velocity.magnitude;
 	}
+	public float getHorizontalVelocity()
+	{
+		Vector3 horizontalVelocity = new Vector3(cc.velocity.x, 0, cc.velocity.z);
+		return horizontalVelocity.magnitude;
+	}
+	public float getLocalForwardVelocity()
+	{ 
+		
+		return cc.velocity.x;
+	}
 
 	public void giveItem(GameObject item)
 	{
-		
+		//GameObject itemToGive = Instantiate(item);
+		//Debug.Log("GIVING ITEM: " + itemToGive.name);
 
-		GameObject itemToGive = Instantiate(item);
-		Debug.Log("GIVING ITEM: " + itemToGive.name);
-
-		if (itemToGive)
+		if (item)
 		{
-			inventoryManager.addItem(itemToGive, true);
+			inventoryManager.addItem(item, true);
 		}
 	}
 
@@ -279,9 +294,14 @@ public class NewPC : Controller
 	{
 		localCamera = Instantiate(cameraPrefab, localPlayer.transform);
 		MimicTransform cameraTransform = localCamera.GetComponent<MimicTransform>();
+		CameraManager manager = localCamera.GetComponent<CameraManager>();
 		if (cameraTransform)
 		{
 			cameraTransform.target = eyes;
+		}
+		if (manager)
+		{
+			manager.player = this;
 		}
 	}
 

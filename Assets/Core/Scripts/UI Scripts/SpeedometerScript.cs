@@ -51,7 +51,7 @@ public class SpeedometerScript : MonoBehaviour
         {
             if(!playerLoaded)
             {
-                maxSpeed = player.moveSpeed * 3;
+                maxSpeed = player.maxVelocity;
             }
         }
 

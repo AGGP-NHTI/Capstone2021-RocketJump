@@ -12,11 +12,10 @@ public class Powerup : MonoBehaviour
     {
         Debug.Log("PLAYER ENTERED");
 
-        NewPC player = obj.transform.GetComponent<NewPC>();
-
+        Inventory_Manager player = obj.gameObject.GetComponent<Inventory_Manager>();
         if (player)
         {
-            player.giveItem(itemToGive);
+            player.addItem(itemToGive);
             StartCoroutine(destroyAtEndofFrame());
         }
     }
@@ -24,11 +23,10 @@ public class Powerup : MonoBehaviour
     {
         Debug.Log("PLAYER ENTERED");
 
-        NewPC player = obj.transform.GetComponent<NewPC>();
-
+        Inventory_Manager player = obj.gameObject.GetComponent<Inventory_Manager>();
         if (player)
         {
-            player.giveItem(itemToGive);
+            player.addItem(itemToGive);
             StartCoroutine(destroyAtEndofFrame());
         }
     }

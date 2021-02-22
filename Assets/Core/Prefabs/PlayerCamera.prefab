@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6476323804535610112}
   - component: {fileID: 6476323804535610175}
   - component: {fileID: 9049800901870361722}
+  - component: {fileID: -7617063709102728762}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -97,3 +98,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!114 &-7617063709102728762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476323804535610174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f0f9759113bc14a88dc5547b45cccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  minFOV: 70
+  minVelocityThreshhold: 0
+  maxFOV: 80
+  superSpeedFOV: 100
+  maxVelocityThreshhold: 5
+  FOVChangeSpeed: 7.5
+  timeNeededToBeInSuperSpeed: 1
+  timeNeededToBeOutOfSuperSpeed: 0.75

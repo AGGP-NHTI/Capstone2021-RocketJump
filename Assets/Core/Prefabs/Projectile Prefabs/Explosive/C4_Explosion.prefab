@@ -84,7 +84,7 @@ MonoBehaviour:
   projectileLaunchForce: 0
   particles: {fileID: 5213506594273380121, guid: 86cff0f46e932774ca66c367e11a1d7d,
     type: 3}
-  explosiveForce: 5
+  explosiveForce: 10
   explosiveDistance: 8.8
 --- !u!114 &6935349554714223525
 MonoBehaviour:

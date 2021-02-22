@@ -1346,6 +1346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lapText: {fileID: 7757557734242735317}
   captionText: {fileID: 3571226131097688632}
+  captionFadeRate: 1.4
+  captionMoveRate: 1.64
 --- !u!1 &6645590173726143341
 GameObject:
   m_ObjectHideFlags: 0

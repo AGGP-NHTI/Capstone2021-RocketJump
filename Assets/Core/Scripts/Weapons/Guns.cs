@@ -5,7 +5,7 @@ using UnityEngine;
 public class Guns : Weapon
 {
     private bool isReloading = false;
-
+    
 
     [Range(0f, 100f)]
     public float knockBackForce;
@@ -26,8 +26,9 @@ public class Guns : Weapon
     }
     public override void Fire()
     {
-        if(isReloading || clipEmpty() || isCooling) { return; }
-           base.Fire();
+        if (skipFire()) return;
+        
+        base.Fire();
 
         //pushes the player back 
         KnockBack(-transform.parent.forward, knockBackForce);
@@ -39,11 +40,6 @@ public class Guns : Weapon
     {
         if (currentClip <= 0)
         {
-            UIManager UiMan = UI.GetComponent<UIManager>();
-            if (UiMan)
-            {
-                UiMan.sendMessage("Press \'" + reloadBinding + "\' to reload your weapon.");
-            }
             return true;
         }
         return false;
@@ -64,5 +60,28 @@ public class Guns : Weapon
         isReloading = false;
         currentClip = clipSize;
         AmmoReference.SetMagazine(currentClip);
+    }
+
+    bool skipFire()
+    {
+        if (isReloading) 
+        {
+            UIMan.sendMessage("Reloading...", new Vector3(0, -100, 0));
+            return true;
+        }
+        if (clipEmpty()) 
+        {
+            UIMan.sendMessage("Press \'" + reloadBinding + "\' to reload your weapon.", new Vector3(0, -100, 0));
+            return true;
+        }
+        if (isCooling)
+        {
+            UIMan.sendMessage("Gun is cooling...",new Vector3(0,-100,0));
+            return true;
+        }
+
+        if (isReloading || clipEmpty() || isCooling) { return true; }
+
+        return false;
     }
 }
