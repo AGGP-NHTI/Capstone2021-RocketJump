@@ -6,6 +6,7 @@ public class CharacterIcons : CustomButton
 {
     public GameObject endpoint;
     public GameObject bigPic;
+    public GameObject backing;
     Vector3 target;
 
     Vector3 startpos;
@@ -30,6 +31,7 @@ public class CharacterIcons : CustomButton
     public override void OnHighlight()
     {
         bigPic.SetActive(true);
+        backing.SetActive(true);
         target = endpoint.transform.position;
         base.OnHighlight();
     }
@@ -37,6 +39,7 @@ public class CharacterIcons : CustomButton
     public override void OnHighlightEnd()
     {
         bigPic.SetActive(false);
+        backing.SetActive(false);
         target = startpos;
         base.OnHighlightEnd();
     }
