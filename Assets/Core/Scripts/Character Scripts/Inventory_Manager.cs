@@ -38,7 +38,7 @@ public class Inventory_Manager : Actor
 
         if (!items.Contains(itemToAdd))
         {
-            itemToAdd = Instantiate(itemToAdd, player.eyes);
+            itemToAdd = NetSpawn(itemToAdd, Vector3.zero, Quaternion.identity);
             itemToAdd.transform.parent = player.eyes;
             itemToAdd.transform.localPosition = Vector3.zero;
             itemToAdd.transform.localRotation = Quaternion.identity;
