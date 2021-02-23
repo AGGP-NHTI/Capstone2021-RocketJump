@@ -31,7 +31,7 @@ public abstract class Projectile : Actor
     }
     protected void OnCollisionEnter(Collision other)
     {
-        Debug.Log("COLLIDED WITH: " + other.transform.name);
+        //Debug.Log("COLLIDED WITH: " + other.transform.name);
         hitSomething();
     }
     public virtual void Update()
