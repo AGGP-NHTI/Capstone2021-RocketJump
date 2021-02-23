@@ -32,6 +32,6 @@ public class PlayerPositionManager
 
         Debug.Log(nodePosition + ", " + lap);
 
-        player.GetComponent<PlayerController>().updateLap(lap);
+        //player.GetComponent<PlayerController>().updateLap(lap);
     }
 }
