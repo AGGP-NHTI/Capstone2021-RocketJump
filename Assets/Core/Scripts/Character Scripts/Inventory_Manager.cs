@@ -14,6 +14,7 @@ public class Inventory_Manager : MonoBehaviour
     {
         for (int i = 1; i < 10; i++)
         {
+
             if (Input.GetKeyDown(KeyCode.Alpha0 + i))
             {
                 int select = i - 1;

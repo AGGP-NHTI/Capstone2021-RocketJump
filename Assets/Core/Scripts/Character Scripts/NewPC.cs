@@ -8,6 +8,8 @@ using MLAPI.Messaging;
 public class NewPC : Controller
 {
 	public Transform eyes;
+	public GameObject startingWeapon;
+
 
 	[Header("Character Traits")]
 	public float groundAcceleration = 20;
@@ -60,6 +62,9 @@ public class NewPC : Controller
 
 	private void Start()
 	{
+		
+		//giveItem(startingWeapon);
+
 		if (!IsLocalPlayer)
 		{
 			this.enabled = false;
@@ -67,11 +72,12 @@ public class NewPC : Controller
 		}
 		else 
 		{
-			
+
+			setInvetoryManager();
 			setLocalPlayer();
 			setCamera();
 			setUI();
-			setInvetoryManager();
+			
 			Cursor.lockState = CursorLockMode.Locked;
 		}
 
