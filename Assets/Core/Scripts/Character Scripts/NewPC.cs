@@ -333,10 +333,22 @@ public class NewPC : Controller
 		track = GameObject.Find("track");
 	}
 
-	//NETWORK FUNCTIONS
+    //NETWORK FUNCTIONS
 
+    public void updateNodePosition(PositionNodeScript node)
+    {
+        if (IsHost)
+        {
+            positionManager.updatePlayerPosition(gameObject, node.nodeNumber);
+        }
+        else if (IsClient)
+        {
+            //clientUpdateNodePosition(node, gameObject);
+            InvokeServerRpc(clientUpdateNodePosition, node.nodeNumber, gameObject);
+        }
+    }
 
-	[ServerRPC(RequireOwnership = false)]
+    [ServerRPC(RequireOwnership = false)]
 	private void clientAddPlayer(GameObject player)
 	{
 		//positionManager.updatePlayerList(player);
