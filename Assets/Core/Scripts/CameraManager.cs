@@ -63,9 +63,7 @@ public class CameraManager : MonoBehaviour
     }
     private void Update()
     {
-        
         SetSuperSpeed();
-        Debug.Log("IN SUPER SPEED: " + inSuperSpeed + " for: " + timeInSuperSpeed);
         SetWantedFOV();
         UpdateFOV();
     }
@@ -75,14 +73,14 @@ public class CameraManager : MonoBehaviour
 
         
 
-        if (player.getHorizontalVelocity() <= minVelocityThreshhold)
+        if (player.getLocalForwardVelocity() <= minVelocityThreshhold)
         {
             wantedFOV = minFOV;
         }
         else 
         {
             float fovDifference = maxFOV - minFOV;
-            float percentSpeed = player.getHorizontalVelocity() / player.maxVelocity;
+            float percentSpeed = player.getLocalForwardVelocity() / player.maxVelocity;
             //Debug.Log(player.getHorizontalVelocity() +" / " + player.maxVelocity);
             //Debug.Log("Percent: " + percentSpeed);
 
@@ -170,11 +168,6 @@ public class CameraManager : MonoBehaviour
 
     bool InSuperSpeed()
     {
-        if ((player.getHorizontalVelocity() > (player.maxVelocity - maxVelocityThreshhold)))
-        {
-            return true;
-        }
-
-        return false;
+		return player.getLocalForwardVelocity() > (player.maxVelocity - maxVelocityThreshhold);
     }
 }

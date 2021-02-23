@@ -256,9 +256,8 @@ public class NewPC : Controller
 		return horizontalVelocity.magnitude;
 	}
 	public float getLocalForwardVelocity()
-	{ 
-		
-		return cc.velocity.x;
+	{
+		return eyes.InverseTransformDirection(cc.velocity).z;
 	}
 
 	public void giveItem(GameObject item)
