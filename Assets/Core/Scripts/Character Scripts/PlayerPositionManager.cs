@@ -22,7 +22,7 @@ public class PlayerPositionManager
 
     public void updatePosition()
     {
-        player.GetComponent<PlayerController>().updateLap(lap);
+        //player.GetComponent<PlayerController>().updateLap(lap);
     }
 
     public void updatePosition(int nodeNum)
