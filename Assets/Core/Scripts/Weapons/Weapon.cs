@@ -88,6 +88,8 @@ public class Weapon : Actor
     [ServerRPC(RequireOwnership =false)]
     public virtual void spawnNetworkedProjectile()
     {
+        Debug.Log("I AM SHOOTING A " + gameObject.name);
+
         for (int i = 0; i < bulletsPerShot; i++)
         {
             //Debug.Log("---------------Position: " + projectileSpawn.position);
