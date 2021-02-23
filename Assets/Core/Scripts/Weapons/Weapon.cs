@@ -88,9 +88,10 @@ public class Weapon : Actor
         
     }
 
-    [ServerRPC(RequireOwnership =false)]
-    public virtual void spawnNetworkedProjectile()
+    [ServerRPC]
+    public void spawnNetworkedProjectile()
     {
+        //CANNOT GET HERE
         Debug.Log($"I AM SHOOTING A {gameObject.name} AM Server {IsServer}");
 
         for (int i = 0; i < bulletsPerShot; i++)
@@ -100,6 +101,7 @@ public class Weapon : Actor
                                          projectileSpawn.position,
                                          Quaternion.LookRotation(BulletSpread(projectileSpawn.forward))
                                          );
+
 
             Projectile projectile = bullet.GetComponent<Projectile>();
             if (projectile)
