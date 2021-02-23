@@ -45,19 +45,20 @@ public class Actor : NetworkedBehaviour
         }
     }
 
-    public GameObject NetSpawn(GameObject prefab, Vector3 location, Quaternion rotation)
+    public void NetSpawn(GameObject prefab, Vector3 location, Quaternion rotation)
     {
         GameObject projectile = Instantiate(prefab, location, rotation);
+
         Debug.Log(projectile.name);
         if (projectile)
         { 
             projectile.GetComponent<NetworkedObject>().Spawn();
 
-            return projectile;
+            //return projectile;
         }
 
         
-        return null;
+        //return null;
     }
 }
 

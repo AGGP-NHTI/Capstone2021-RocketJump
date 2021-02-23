@@ -14,7 +14,7 @@ public class Droppable : Weapon
         }
         else if(Input.GetKeyDown(UseDropBinding))// && IsLocalPlayer
         {
-            Debug.Log("EXPLODE THE: " + transform.name);
+            //Debug.Log("EXPLODE THE: " + transform.name);
             Fire();
             Destroy(gameObject);
         }
