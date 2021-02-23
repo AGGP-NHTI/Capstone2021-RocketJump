@@ -21533,22 +21533,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.RegisteredScenes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[0].Prefab
-      value: 
-      objectReference: {fileID: 3235445507439764840, guid: 1b4c678489acbda4fafd33fd93b14b86,
-        type: 3}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.PlayerPrefabHash.Value
-      value: 4420613670956966666
-      objectReference: {fileID: 0}
     - target: {fileID: 5214381284232303378, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
       propertyPath: m_Name

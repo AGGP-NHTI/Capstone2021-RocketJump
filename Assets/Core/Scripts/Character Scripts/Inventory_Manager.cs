@@ -16,8 +16,14 @@ public class Inventory_Manager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha0 + i))
             {
-                currentItem = i-1;
-                checkActiveItems();
+                int select = i - 1;
+
+
+                if (select >= 0 && select < items.Count)
+                {
+                    currentItem = select;
+                    checkActiveItems();
+                }
             }
         }
     }
@@ -69,7 +75,7 @@ public class Inventory_Manager : MonoBehaviour
             items[0].SetActive(true);
         }
 
-        for (int i = 0; i < items.Count-1; i++)
+        for (int i = 0; i < items.Count; i++)
         {
 
             //Check if the item exists
@@ -80,14 +86,9 @@ public class Inventory_Manager : MonoBehaviour
                     currentItem--;
                 }
                 items.RemoveAt(i);
-                
             }
 
-            //
-            if (i != currentItem)
-            {
-               
-            }
+            
             items[i].SetActive(false);
         }
         items[currentItem].SetActive(true);
