@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MLAPI;
+using MLAPI.Messaging;
 
-public class Inventory_Manager : MonoBehaviour
+public class Inventory_Manager : Actor
 {
     public List<GameObject> items = new List<GameObject>();
 
@@ -14,7 +16,8 @@ public class Inventory_Manager : MonoBehaviour
     {
         for (int i = 1; i < 10; i++)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha0 + i))
+
+            if (Input.GetKeyDown(KeyCode.Alpha0 + i) && IsLocalPlayer)
             {
                 int select = i - 1;
 
@@ -28,25 +31,25 @@ public class Inventory_Manager : MonoBehaviour
         }
     }
 
-
+    [ServerRPC(RequireOwnership  = false)]
     public void addItem(GameObject itemToAdd, bool setToCurrentActiveItem = false)
     {
-        
+
 
         if (!items.Contains(itemToAdd))
         {
-            itemToAdd = Instantiate(itemToAdd, player.eyes);
+            itemToAdd = NetSpawn(itemToAdd, Vector3.zero, Quaternion.identity);
             itemToAdd.transform.parent = player.eyes;
             itemToAdd.transform.localPosition = Vector3.zero;
             itemToAdd.transform.localRotation = Quaternion.identity;
-            
+
             items.Add(itemToAdd);
 
             if (setToCurrentActiveItem)
             {
                 currentItem = (items.Count - 1);
             }
-            else 
+            else
             {
                 itemToAdd.SetActive(false);
             }
@@ -88,7 +91,7 @@ public class Inventory_Manager : MonoBehaviour
                 items.RemoveAt(i);
             }
 
-            
+
             items[i].SetActive(false);
         }
         items[currentItem].SetActive(true);

@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MLAPI;
+using MLAPI.Messaging;
 
-public class Powerup : MonoBehaviour
+
+public class Powerup : Actor
 {
 
     public GameObject itemToGive;
@@ -12,11 +15,21 @@ public class Powerup : MonoBehaviour
     {
         //Debug.Log("PLAYER ENTERED Trigger");
 
-        Inventory_Manager player = obj.gameObject.GetComponent<Inventory_Manager>();
-        if (player)
+        Inventory_Manager inventoryManager = obj.gameObject.GetComponent<Inventory_Manager>();
+        if (inventoryManager)
         {
-            player.addItem(itemToGive);
-            StartCoroutine(destroyAtEndofFrame());
+            if (IsServer)
+            {
+                inventoryManager.addItem(itemToGive, true);
+            }
+            else
+            {
+                InvokeServerRpc(inventoryManager.addItem, itemToGive, true);
+            }
+
+
+            //player.giveItem(itemToGive);
+            //StartCoroutine(destroyAtEndofFrame());
         }
     }
 

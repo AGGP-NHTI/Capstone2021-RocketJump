@@ -67,6 +67,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyes: {fileID: 3235445508818435331}
+  startingWeapon: {fileID: 6977513548457193487, guid: 4bb857ebe0f92a64a96ef26c67e75c47,
+    type: 3}
+  altWeapon: {fileID: 0}
   groundAcceleration: 20
   groundDeceleration: 15
   airAcceleration: 5

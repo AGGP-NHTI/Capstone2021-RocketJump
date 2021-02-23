@@ -71,6 +71,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8566039431285261072}
   - component: {fileID: 198923169443287335}
+  - component: {fileID: 3011826169084912719}
   m_Layer: 0
   m_Name: SpudGun
   m_TagString: Untagged
@@ -119,7 +120,23 @@ MonoBehaviour:
   isRapidFire: 0
   knockBackForce: 1
   fireRate: 2
-  reloadBinding: 0
+--- !u!114 &3011826169084912719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6977513548457193487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 209037615, guid: 01701b64234b4d523d8045142cbc73fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkedInstanceId: 0
+  PrefabHash: 3105618469258670159
+  PrefabHashGenerator: SpudGun
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
 --- !u!1001 &4450459570814140243
 PrefabInstance:
   m_ObjectHideFlags: 0

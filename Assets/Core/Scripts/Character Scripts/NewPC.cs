@@ -8,6 +8,8 @@ using MLAPI.Messaging;
 public class NewPC : Controller
 {
 	public Transform eyes;
+	public GameObject startingWeapon;
+	public GameObject altWeapon;
 
 	[Header("Character Traits")]
 	public float groundAcceleration = 20;
@@ -60,6 +62,11 @@ public class NewPC : Controller
 
 	private void Start()
 	{
+		setInvetoryManager();
+		setItems();
+
+		//giveItem(startingWeapon);
+
 		if (!IsLocalPlayer)
 		{
 			this.enabled = false;
@@ -67,11 +74,12 @@ public class NewPC : Controller
 		}
 		else 
 		{
+
 			
 			setLocalPlayer();
 			setCamera();
 			setUI();
-			setInvetoryManager();
+			
 			Cursor.lockState = CursorLockMode.Locked;
 		}
 
@@ -264,14 +272,24 @@ public class NewPC : Controller
 	{
 		//GameObject itemToGive = Instantiate(item);
 		//Debug.Log("GIVING ITEM: " + itemToGive.name);
-
-		if (item)
+		if (IsServer)
 		{
 			inventoryManager.addItem(item, true);
 		}
+		else
+		{
+			InvokeServerRpc(inventoryManager.addItem, item, true);
+		}
 	}
 
+
+
 	//INITIALIZATION FUNCTIONS
+	public void setItems()
+	{
+		giveItem(startingWeapon);
+	}
+
 	public void setInvetoryManager()
 	{
 		inventoryManager = gameObject.AddComponent<Inventory_Manager>();
