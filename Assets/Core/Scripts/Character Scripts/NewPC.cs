@@ -8,7 +8,6 @@ using MLAPI.Messaging;
 public class NewPC : Controller
 {
 	public Transform eyes;
-	public GameObject startingWeapon;
 
 
 	[Header("Character Traits")]
@@ -270,10 +269,13 @@ public class NewPC : Controller
 	{
 		//GameObject itemToGive = Instantiate(item);
 		//Debug.Log("GIVING ITEM: " + itemToGive.name);
-
-		if (item)
+		if (IsServer)
 		{
 			inventoryManager.addItem(item, true);
+		}
+		else
+		{
+			InvokeServerRpc(inventoryManager.addItem, item, true);
 		}
 	}
 

@@ -12,10 +12,10 @@ public class Powerup : MonoBehaviour
     {
         //Debug.Log("PLAYER ENTERED Trigger");
 
-        Inventory_Manager player = obj.gameObject.GetComponent<Inventory_Manager>();
+        NewPC player = obj.gameObject.GetComponent<NewPC>();
         if (player)
         {
-            player.addItem(itemToGive);
+            player.giveItem(itemToGive);
             StartCoroutine(destroyAtEndofFrame());
         }
     }
