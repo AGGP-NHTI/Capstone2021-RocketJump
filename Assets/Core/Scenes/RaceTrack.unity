@@ -21223,7 +21223,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpudGun_Powerup
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -3006694075566540473, guid: 32f351b58b0c986498b58ba8225c2529, type: 3}
+    - {fileID: 2891066306094249257, guid: 32f351b58b0c986498b58ba8225c2529, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 32f351b58b0c986498b58ba8225c2529, type: 3}
 --- !u!43 &625634910
 Mesh:

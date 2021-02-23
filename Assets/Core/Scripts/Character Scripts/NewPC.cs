@@ -8,7 +8,8 @@ using MLAPI.Messaging;
 public class NewPC : Controller
 {
 	public Transform eyes;
-
+	public GameObject startingWeapon;
+	public GameObject altWeapon;
 
 	[Header("Character Traits")]
 	public float groundAcceleration = 20;
@@ -61,7 +62,9 @@ public class NewPC : Controller
 
 	private void Start()
 	{
-		
+		setInvetoryManager();
+		setItems();
+
 		//giveItem(startingWeapon);
 
 		if (!IsLocalPlayer)
@@ -72,7 +75,7 @@ public class NewPC : Controller
 		else 
 		{
 
-			setInvetoryManager();
+			
 			setLocalPlayer();
 			setCamera();
 			setUI();
@@ -279,7 +282,14 @@ public class NewPC : Controller
 		}
 	}
 
+
+
 	//INITIALIZATION FUNCTIONS
+	public void setItems()
+	{
+		giveItem(startingWeapon);
+	}
+
 	public void setInvetoryManager()
 	{
 		inventoryManager = gameObject.AddComponent<Inventory_Manager>();
