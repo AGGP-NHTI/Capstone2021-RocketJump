@@ -39,7 +39,7 @@ public class Weapon : Actor
 
     protected virtual void Start()
     {
-        Debug.Log("Start--");
+        //Debug.Log("Start--");
         setPlayerReference();
         setUIObj();
         setAmmoReference();
@@ -88,7 +88,7 @@ public class Weapon : Actor
         
     }
 
-    [ServerRPC]
+    [ServerRPC(RequireOwnership = false)]
     public void spawnNetworkedProjectile()
     {
         //CANNOT GET HERE
