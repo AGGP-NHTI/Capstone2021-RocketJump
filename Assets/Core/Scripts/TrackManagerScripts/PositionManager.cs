@@ -103,7 +103,18 @@ public class PositionManager : MonoBehaviour
 
         foreach (PlayerPositionManager p in playerPositions)
         {
-            
+            if(p == prevPlayer) { break; }
+
+            if(p.lap == prevPlayer.lap)
+            {
+                if(p.nodePosition > prevPlayer.nodePosition)
+                {
+                    p.position = prevPlayer.position;
+                    prevPlayer.position -= 1;
+                }
+            }
+
+            prevPlayer = p;
         }
     }
 }

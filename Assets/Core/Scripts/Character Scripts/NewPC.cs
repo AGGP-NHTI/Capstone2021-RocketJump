@@ -94,6 +94,8 @@ public class NewPC : Controller
 
 		//Debug.Log("VELOCITY: " + getVelocity());
 
+        if(!loadPlayer) { initializePositionManager(); }
+
 		wasGrounded = cc.isGrounded;
 		
 		// TODO: handle input via controller, not internally
@@ -319,6 +321,12 @@ public class NewPC : Controller
 			positionManager.track = track;
 		}
 	}
+
+    public void initializePositionManager()
+    {
+        positionManager.updatePlayerList(gameObject);
+        loadPlayer = true;
+    }
 
 	public void setTrack()
 	{
