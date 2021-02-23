@@ -75,9 +75,12 @@ public class Weapon : Actor
         {
             InvokeServerRpc(spawnNetworkedProjectile);
         }
-        currentClip--;
-        AmmoReference.SetMagazine(currentClip);
 
+        if (IsLocalPlayer)
+        {
+            currentClip--;
+            AmmoReference.SetMagazine(currentClip);
+        }
     }
 
     public virtual void AltFire() 
@@ -88,7 +91,7 @@ public class Weapon : Actor
     [ServerRPC(RequireOwnership =false)]
     public virtual void spawnNetworkedProjectile()
     {
-        Debug.Log("I AM SHOOTING A " + gameObject.name);
+        Debug.Log($"I AM SHOOTING A {gameObject.name} AM Server {IsServer}");
 
         for (int i = 0; i < bulletsPerShot; i++)
         {
