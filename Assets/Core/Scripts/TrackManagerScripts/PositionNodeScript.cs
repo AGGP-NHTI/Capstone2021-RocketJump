@@ -8,8 +8,8 @@ public class PositionNodeScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-        PlayerController obj = other.gameObject.GetComponent<PlayerController>();
+
+        NewPC obj = other.gameObject.GetComponent<NewPC>();
 
         if (obj)
         {

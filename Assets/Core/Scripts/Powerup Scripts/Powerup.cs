@@ -10,18 +10,7 @@ public class Powerup : MonoBehaviour
 
     public void OnTriggerEnter(Collider obj)
     {
-        Debug.Log("PLAYER ENTERED");
-
-        Inventory_Manager player = obj.gameObject.GetComponent<Inventory_Manager>();
-        if (player)
-        {
-            player.addItem(itemToGive);
-            StartCoroutine(destroyAtEndofFrame());
-        }
-    }
-    public void OnCollisionEnter(Collision obj)
-    {
-        Debug.Log("PLAYER ENTERED");
+        Debug.Log("PLAYER ENTERED Trigger");
 
         Inventory_Manager player = obj.gameObject.GetComponent<Inventory_Manager>();
         if (player)

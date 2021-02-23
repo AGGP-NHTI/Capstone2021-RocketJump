@@ -90,6 +90,8 @@ public class PositionManager : MonoBehaviour
                 p.updatePosition(nodeNum);
             }
         }
+
+        //comparePlayerPositions();
     }
 
     public void comparePlayerPositions()
