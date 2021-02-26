@@ -11,11 +11,18 @@ public class SpectatorCam : Pawn
     public float freeLookSens = 2.5f;
     public Transform playerBody;
     public float XRotate = 0f;
+    public GameObject CharSel;
     
     void Awake()
     {
-        
+        if (!IsLocalPlayer)
+        {
+            GetComponent<Camera>().enabled = false;
+        }
+        else
+        {
             Cursor.lockState = CursorLockMode.Locked;
+        }
         
     }
 
@@ -33,6 +40,8 @@ public class SpectatorCam : Pawn
     {
         if (IsLocalPlayer)
         {
+            GetComponent<Camera>().enabled = true;
+
             if (Input.GetKey(KeyCode.W))
             {
                 forward(speed);                
@@ -83,6 +92,12 @@ public class SpectatorCam : Pawn
                 {
                     Vertical(speed);
                 }
+            }
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                GetComponent<AudioListener>().enabled = false;
+                CharSel.SetActive(true);
+                //gameObject.SetActive(false);
             }
         }
     }

@@ -135,8 +135,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
+      propertyPath: NetworkConfig.NetworkedPrefabs.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
       propertyPath: NetworkConfig.RegisteredScenes.Array.data[2]
       value: PP Arena
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
+      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[6].Prefab
+      value: 
+      objectReference: {fileID: 6187004778564048221, guid: 40f9758c556299f4694fba35f973fe6b,
+        type: 3}
+    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
+      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[0].PlayerPrefab
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
+      propertyPath: NetworkConfig.PlayerPrefabHash.Value
+      value: 11374044282181877456
+      objectReference: {fileID: 0}
+    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
+      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[6].PlayerPrefab
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5214381284232303378, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
@@ -22444,7 +22470,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1364
+  m_Name: pb_Mesh-7680
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22619,7 +22645,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &449328866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22799,7 +22825,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1422
+  m_Name: pb_Mesh-7738
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22962,7 +22988,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1358
+  m_Name: pb_Mesh-7674
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -23723,7 +23749,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1029583135
 AudioListener:
   m_ObjectHideFlags: 0
@@ -23795,7 +23821,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1344
+  m_Name: pb_Mesh-7660
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -23958,7 +23984,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1342
+  m_Name: pb_Mesh-7658
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -25060,7 +25086,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1360
+  m_Name: pb_Mesh-7676
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -25421,7 +25447,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1352
+  m_Name: pb_Mesh-7668
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -29727,7 +29753,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1362
+  m_Name: pb_Mesh-7678
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -30053,7 +30079,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1354
+  m_Name: pb_Mesh-7670
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -30396,6 +30422,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterSelect
       objectReference: {fileID: 0}
+    - target: {fileID: 6463207314882377419, guid: c1c1502222574da4ab252022bf7e3a93,
+        type: 3}
+      propertyPath: characters.Array.data[0]
+      value: 
+      objectReference: {fileID: 3235445507439764840, guid: 1b4c678489acbda4fafd33fd93b14b86,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1c1502222574da4ab252022bf7e3a93, type: 3}
 --- !u!1001 &8600744901005845302
