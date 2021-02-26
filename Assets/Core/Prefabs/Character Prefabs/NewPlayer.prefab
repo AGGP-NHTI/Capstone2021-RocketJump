@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3235445507439764845}
   - component: {fileID: 3235445507439764846}
   - component: {fileID: 3235445507439764847}
+  - component: {fileID: -3867775076951691905}
   - component: {fileID: 8804898545013548059}
   - component: {fileID: -8245679497219693218}
   m_Layer: 0
@@ -67,9 +68,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyes: {fileID: 3235445508818435331}
-  startingWeapon: {fileID: 6977513548457193487, guid: 4bb857ebe0f92a64a96ef26c67e75c47,
-    type: 3}
-  altWeapon: {fileID: 0}
   groundAcceleration: 20
   groundDeceleration: 15
   airAcceleration: 5
@@ -86,6 +84,28 @@ MonoBehaviour:
   UI: {fileID: 6645590173705267851, guid: feced328edd1f4f45a8098423dbc2157, type: 3}
   loadPlayer: 1
   maxVelocity: 15
+  startingTest: {fileID: 6977513548457193487, guid: 4bb857ebe0f92a64a96ef26c67e75c47,
+    type: 3}
+--- !u!114 &-3867775076951691905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3235445507439764840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13129d35144da54296f299122511cf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsActive: 1
+  IgnoreDamage: 0
+  selectedWeapon: 1
+  startingWeaponPrefab: {fileID: 4205752912056178508, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+    type: 3}
+  altWeaponPrefab: {fileID: 2673255171855170882, guid: 7713d27125b7735459e8694d56cd812b,
+    type: 3}
+  powerUpWeapon: {fileID: 0}
 --- !u!114 &8804898545013548059
 MonoBehaviour:
   m_ObjectHideFlags: 0

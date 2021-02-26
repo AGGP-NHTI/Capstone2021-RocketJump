@@ -58,7 +58,6 @@ MonoBehaviour:
   isRapidFire: 0
   knockBackForce: 1
   fireRate: 2
-  reloadBinding: 0
 --- !u!1 &7404699758865076275
 GameObject:
   m_ObjectHideFlags: 0

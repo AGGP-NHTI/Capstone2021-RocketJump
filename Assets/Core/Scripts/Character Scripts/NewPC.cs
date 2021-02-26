@@ -8,8 +8,6 @@ using MLAPI.Messaging;
 public class NewPC : Controller
 {
 	public Transform eyes;
-	public GameObject startingWeapon;
-	public GameObject altWeapon;
 
 	[Header("Character Traits")]
 	public float groundAcceleration = 20;
@@ -55,6 +53,8 @@ public class NewPC : Controller
 	PositionManager positionManager;
 	Inventory_Manager inventoryManager;
 
+	//public GameObject startingTest;
+
 	private void Awake()
 	{
 		cc = GetComponent<CharacterController>();
@@ -62,10 +62,9 @@ public class NewPC : Controller
 
 	private void Start()
 	{
-		setInvetoryManager();
-		setItems();
+;
 
-		//giveItem(startingWeapon);
+		//giveItem(startingTest);
 
 		if (!IsLocalPlayer)
 		{
@@ -265,37 +264,20 @@ public class NewPC : Controller
 	}
 	public float getLocalForwardVelocity()
 	{
-		return eyes.InverseTransformDirection(cc.velocity).z;
+		return Mathf.Abs(eyes.InverseTransformDirection(cc.velocity).z);
 	}
 
 	public void giveItem(GameObject item)
 	{
-		//GameObject itemToGive = Instantiate(item);
-		//Debug.Log("GIVING ITEM: " + itemToGive.name);
-		if (IsServer)
+		Inventory_Manager inv = gameObject.GetComponent<Inventory_Manager>();
+		if (inv)
 		{
-			inventoryManager.addItem(item, true);
-		}
-		else
-		{
-			InvokeServerRpc(inventoryManager.addItem, item, true);
+			inv.GiveExtraWeapon(item);
 		}
 	}
-
 
 
 	//INITIALIZATION FUNCTIONS
-	public void setItems()
-	{
-		giveItem(startingWeapon);
-	}
-
-	public void setInvetoryManager()
-	{
-		inventoryManager = gameObject.AddComponent<Inventory_Manager>();
-		inventoryManager.player = this;
-	}
-
 	public void setUI()
 	{
 		UI = Instantiate(UI, localPlayer.transform);

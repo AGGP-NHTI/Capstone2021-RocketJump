@@ -21535,22 +21535,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.RegisteredScenes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[5].Prefab
-      value: 
-      objectReference: {fileID: 6977513548457193487, guid: 4bb857ebe0f92a64a96ef26c67e75c47,
-        type: 3}
     - target: {fileID: 5214381284232303378, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
       propertyPath: m_Name

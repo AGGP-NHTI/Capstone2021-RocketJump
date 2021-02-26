@@ -6,95 +6,98 @@ using MLAPI.Messaging;
 
 public class Inventory_Manager : Actor
 {
-    public List<GameObject> items = new List<GameObject>();
+    NewPC player;
 
-    [HideInInspector]
-    public NewPC player;
-    public int currentItem = 0;
+    public int selectedWeapon = 1;
+    enum currentWeapon {
+        main = 1,
+        alt = 2,
+    }
+
+    
+
+    [Header("Weapons")]
+    public GameObject startingWeaponPrefab;
+    public GameObject altWeaponPrefab;
+
+
+
+    //[HideInInspector]
+    public GameObject powerUpWeapon;
+
+    private void Awake()
+    {
+        player = gameObject.GetComponent<NewPC>() ?? gameObject.AddComponent<NewPC>();
+    }
+
+    private void Start()
+    {
+        spawnWeapons();
+        
+    }
 
     private void Update()
     {
-        for (int i = 1; i < 10; i++)
-        {
-
-            if (Input.GetKeyDown(KeyCode.Alpha0 + i) && IsLocalPlayer)
-            {
-                int select = i - 1;
-
-
-                if (select >= 0 && select < items.Count)
-                {
-                    currentItem = select;
-                    checkActiveItems();
-                }
-            }
-        }
+        setSelectedWeapon();
     }
 
-    [ServerRPC(RequireOwnership  = false)]
-    public void addItem(GameObject itemToAdd, bool setToCurrentActiveItem = false)
+    void spawnWeapons()
+    {
+        spawnWeapon(startingWeaponPrefab);
+        spawnWeapon(altWeaponPrefab);
+    }
+
+    void spawnWeapon(GameObject weapon)
     {
 
-
-        if (!items.Contains(itemToAdd))
+        if (IsServer)
         {
-            itemToAdd = NetSpawn(itemToAdd, Vector3.zero, Quaternion.identity);
-            itemToAdd.transform.parent = player.eyes;
-            itemToAdd.transform.localPosition = Vector3.zero;
-            itemToAdd.transform.localRotation = Quaternion.identity;
-
-            items.Add(itemToAdd);
-
-            if (setToCurrentActiveItem)
-            {
-                currentItem = (items.Count - 1);
-            }
-            else
-            {
-                itemToAdd.SetActive(false);
-            }
-
-            checkActiveItems();
+            networkSpawnWeapon(weapon);
+        }
+        else
+        {
+            InvokeServerRpc(networkSpawnWeapon, weapon);
         }
     }
 
-    public void dropItem(int whichIndex)
+    void setSelectedWeapon()
     {
-        if (whichIndex >= items.Count) { return; }
+        startingWeaponPrefab.SetActive(false);
+        altWeaponPrefab.SetActive(false);
 
-        if (whichIndex <= currentItem)
+        if (powerUpWeapon)
         {
-            currentItem--;
+            powerUpWeapon.SetActive(true);
         }
-        items.RemoveAt(whichIndex);
-
-        checkActiveItems();
-    }
-
-    public void checkActiveItems()
-    {
-        if (items.Count == 1)
+        else 
         {
-            items[0].SetActive(true);
-        }
-
-        for (int i = 0; i < items.Count; i++)
-        {
-
-            //Check if the item exists
-            if (!items[i])
+            if (selectedWeapon == 1)
             {
-                if (i <= currentItem)
-                {
-                    currentItem--;
-                }
-                items.RemoveAt(i);
+                if (startingWeaponPrefab) { startingWeaponPrefab.SetActive(true); }
             }
-
-
-            items[i].SetActive(false);
+            else if (selectedWeapon == 2)
+            {
+                if (altWeaponPrefab) { altWeaponPrefab.SetActive(true); }
+            }
         }
-        items[currentItem].SetActive(true);
+    }
+
+    [ServerRPC(RequireOwnership = false)]
+    void networkSpawnWeapon(GameObject weapon)
+    {
+        weapon = NetSpawn(weapon, Vector3.zero, Quaternion.identity);
+
+        weapon.transform.parent = player.eyes;
+        weapon.transform.localPosition = Vector3.zero;
+        weapon.transform.rotation = Quaternion.identity;
+    }
+
+    public void GiveExtraWeapon(GameObject item, float lifeTime = 5)
+    {
+        powerUpWeapon = item;
+        spawnWeapon(powerUpWeapon);
 
     }
+
+
 }

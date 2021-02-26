@@ -20,11 +20,11 @@ public class Powerup : Actor
         {
             if (IsServer)
             {
-                inventoryManager.addItem(itemToGive, true);
+                //inventoryManager.addItem(itemToGive, true);
             }
             else
             {
-                InvokeServerRpc(inventoryManager.addItem, itemToGive, true);
+                //InvokeServerRpc(inventoryManager.addItem, itemToGive, true);
             }
 
 
