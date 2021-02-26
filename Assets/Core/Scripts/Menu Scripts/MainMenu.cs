@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
     public GameObject settings;
     public GameObject games;
     public GameObject credits;
+    public GameObject lobby;
     public GameObject all;
 
     public Slider volume;
@@ -78,6 +79,11 @@ public class MainMenu : MonoBehaviour
         games.SetActive(false);
         credits.SetActive(false);
     }
+    public void BackFromLobby()
+    {
+        lobby.SetActive(false);
+        games.SetActive(true);
+    }
     public void ToSettings()
     {
         main.SetActive(false);
@@ -92,6 +98,11 @@ public class MainMenu : MonoBehaviour
     {
         main.SetActive(false);
         credits.SetActive(true);
+    }
+    public void ToLobby()
+    {
+        games.SetActive(false);
+        lobby.SetActive(true);
     }
     public void ChangeVolume()
     {
