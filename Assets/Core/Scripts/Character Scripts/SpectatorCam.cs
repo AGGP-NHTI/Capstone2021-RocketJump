@@ -4,35 +4,58 @@ using UnityEngine;
 
 public class SpectatorCam : Pawn
 {
-    Camera cam;
     public float speed = 5f;
     public float MouseSen = 300f;
 
     public float freeLookSens = 2.5f;
     public Transform playerBody;
     public float XRotate = 0f;
+    public GameObject CharSel;
     
     void Awake()
     {
         
+        if (!IsOwner)
+        {
+            
+            GetComponent<Camera>().enabled = false;
+        }
+        else
+        {
+           
             Cursor.lockState = CursorLockMode.Locked;
+            foreach (SpawnManager s in FindObjectsOfType<SpawnManager>())
+            {
+                this.gameObject.transform.position = s.CamSpawn.transform.position;
+            }
+        }
         
     }
 
     void Update()
     {
-        if (IsLocalPlayer)
+        if (IsOwner)
         {
             float nRotX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * freeLookSens;
             float nRotY = transform.localEulerAngles.x + Input.GetAxis("Mouse Y") * -freeLookSens;
             transform.localEulerAngles = new Vector3(nRotY, nRotX, 0f);
+
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                GetComponent<AudioListener>().enabled = false;
+                CharSel.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                //gameObject.SetActive(false);
+            }
         }       
     }
 
     void FixedUpdate()
     {
-        if (IsLocalPlayer)
+        if (IsOwner)
         {
+            GetComponent<Camera>().enabled = true;
+
             if (Input.GetKey(KeyCode.W))
             {
                 forward(speed);                
@@ -83,9 +106,10 @@ public class SpectatorCam : Pawn
                 {
                     Vertical(speed);
                 }
-            }
+            }           
         }
     }
+
     public void forward(float speed)
     {
         Vector3 location = gameObject.transform.position;
@@ -93,6 +117,7 @@ public class SpectatorCam : Pawn
         location += (speed * Time.fixedDeltaTime * transform.forward);
         gameObject.transform.position = location;
     }
+
     public void sideways(float speed)
     {
         Vector3 location = gameObject.transform.position;
@@ -100,6 +125,7 @@ public class SpectatorCam : Pawn
         location += (speed * Time.fixedDeltaTime * transform.right);
         gameObject.transform.position = location;
     }
+
     public void Vertical(float speed)
     {
         Vector3 location = gameObject.transform.position;
