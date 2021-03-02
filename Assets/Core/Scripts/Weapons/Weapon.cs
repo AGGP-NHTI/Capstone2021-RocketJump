@@ -35,24 +35,34 @@ public class Weapon : Actor
     public bool isRapidFire = false;
 
 
-    
+
 
     protected virtual void Start()
     {
         //Debug.Log("Start--");
         setPlayerReference();
+        
         setUIObj();
         setAmmoReference();
 
+        if (playerReference.IsLocalPlayer)
+        {
+            currentClip = clipSize;
+        }
+    }
 
-        currentClip = clipSize;
-        AmmoReference.SetMagazine(currentClip);
-        AmmoReference.SetReserve(clipSize);
+    private void OnEnable()
+    {
+        if (playerReference && playerReference.IsLocalPlayer)
+        {
+            Debug.Log("SETTING UI-----");
+
+            AmmoReference.SetMagazine(currentClip);
+            AmmoReference.SetReserve(clipSize);
+        }
     }
     protected virtual void Update()
     {
-        if (!IsLocalPlayer) { return; }
-
         if (isRapidFire)
         {
             if (Input.GetMouseButton(0)) { Fire(); }
@@ -76,7 +86,7 @@ public class Weapon : Actor
             InvokeServerRpc(spawnNetworkedProjectile);
         }
 
-        if (IsLocalPlayer)
+        if (playerReference.IsLocalPlayer)
         {
             currentClip--;
             AmmoReference.SetMagazine(currentClip);
@@ -92,7 +102,7 @@ public class Weapon : Actor
     public void spawnNetworkedProjectile()
     {
         //CANNOT GET HERE
-        Debug.Log($"I AM SHOOTING A {gameObject.name} AM Server {IsServer}");
+       // Debug.Log($"I AM SHOOTING A {gameObject.name} AM Server {IsServer}");
 
         for (int i = 0; i < bulletsPerShot; i++)
         {
@@ -142,12 +152,12 @@ public class Weapon : Actor
     void setPlayerReference()
     {
         NewPC player = transform.root.GetComponent<NewPC>();
-        Debug.Log("NAME: " + player.name);
         if (player)
         {
+            if (!player.IsLocalPlayer) { Destroy(this); }
             playerReference = player;
-            Debug.Log("PLAYER SET");
         }
+        
     }
     void setAmmoReference()
     {
@@ -155,7 +165,6 @@ public class Weapon : Actor
         if (ammo)
         {
             AmmoReference = ammo;
-            Debug.Log("AMMO REFERENCE SET");
         }
     }
     void setUIObj()

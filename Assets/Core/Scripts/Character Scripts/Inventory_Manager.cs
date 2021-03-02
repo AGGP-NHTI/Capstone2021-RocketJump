@@ -8,19 +8,20 @@ public class Inventory_Manager : Actor
 {
     NewPC player;
 
-    public int selectedWeapon = 1;
-    enum currentWeapon {
-        main = 1,
-        alt = 2,
-    }
 
-    
+
+
+
+
+    bool isHoldingPrime = true;    
 
     [Header("Weapons")]
     public GameObject startingWeaponPrefab;
     public GameObject altWeaponPrefab;
+    public GameObject testPowerUpWeaponPrefab;
 
-
+    GameObject primeWeapon;
+    GameObject altWeapon;
 
     //[HideInInspector]
     public GameObject powerUpWeapon;
@@ -38,66 +39,128 @@ public class Inventory_Manager : Actor
 
     private void Update()
     {
+        checkPowerUpWeapon();
         setSelectedWeapon();
+
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            spawnPowerWeapon(testPowerUpWeaponPrefab);
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            isHoldingPrime = !isHoldingPrime;
+        }
     }
 
     void spawnWeapons()
     {
-        spawnWeapon(startingWeaponPrefab);
-        spawnWeapon(altWeaponPrefab);
+        spawnPrimeWeapon(startingWeaponPrefab);
+        spawnAltWeapon(altWeaponPrefab);
     }
 
-    void spawnWeapon(GameObject weapon)
+    void spawnPrimeWeapon(GameObject weaponPrefab)
     {
 
         if (IsServer)
         {
-            networkSpawnWeapon(weapon);
+            networkSpawnPrimeWeapon(weaponPrefab);
         }
         else
         {
-            InvokeServerRpc(networkSpawnWeapon, weapon);
+            InvokeServerRpc(networkSpawnPrimeWeapon, weaponPrefab);
         }
     }
-
-    void setSelectedWeapon()
+    void spawnAltWeapon(GameObject weaponPrefab)
     {
-        startingWeaponPrefab.SetActive(false);
-        altWeaponPrefab.SetActive(false);
 
-        if (powerUpWeapon)
+        if (IsServer)
         {
-            powerUpWeapon.SetActive(true);
+            networkSpawnAltWeapon(weaponPrefab);
         }
-        else 
+        else
         {
-            if (selectedWeapon == 1)
-            {
-                if (startingWeaponPrefab) { startingWeaponPrefab.SetActive(true); }
-            }
-            else if (selectedWeapon == 2)
-            {
-                if (altWeaponPrefab) { altWeaponPrefab.SetActive(true); }
-            }
+            InvokeServerRpc(networkSpawnAltWeapon, weaponPrefab);
+        }
+    }
+    void spawnPowerWeapon(GameObject weaponPrefab)
+    {
+
+        if (IsServer)
+        {
+            networkSpawnPowerWeapon(weaponPrefab);
+        }
+        else
+        {
+            InvokeServerRpc(networkSpawnPowerWeapon, weaponPrefab);
         }
     }
 
     [ServerRPC(RequireOwnership = false)]
-    void networkSpawnWeapon(GameObject weapon)
+    void networkSpawnPrimeWeapon(GameObject weaponPrefab)
     {
-        weapon = NetSpawn(weapon, Vector3.zero, Quaternion.identity);
+        primeWeapon = NetSpawn(weaponPrefab, Vector3.zero, Quaternion.identity);
 
-        weapon.transform.parent = player.eyes;
-        weapon.transform.localPosition = Vector3.zero;
-        weapon.transform.rotation = Quaternion.identity;
+        primeWeapon.transform.parent = player.eyes;
+        primeWeapon.transform.localPosition = Vector3.zero;
+        primeWeapon.transform.rotation = Quaternion.identity;
+    }
+    [ServerRPC(RequireOwnership = false)]
+    void networkSpawnAltWeapon(GameObject weaponPrefab)
+    {
+        altWeapon = NetSpawn(weaponPrefab, Vector3.zero, Quaternion.identity);
+
+        altWeapon.transform.parent = player.eyes;
+        altWeapon.transform.localPosition = Vector3.zero;
+        altWeapon.transform.rotation = Quaternion.identity;
+    }
+    [ServerRPC(RequireOwnership = false)]
+    void networkSpawnPowerWeapon(GameObject weaponPrefab)
+    {
+        powerUpWeapon = NetSpawn(weaponPrefab, Vector3.zero, Quaternion.identity);
+
+        powerUpWeapon.transform.parent = player.eyes;
+        powerUpWeapon.transform.localPosition = Vector3.zero;
+        powerUpWeapon.transform.rotation = Quaternion.identity;
     }
 
-    public void GiveExtraWeapon(GameObject item, float lifeTime = 5)
+
+    void checkPowerUpWeapon()
     {
-        powerUpWeapon = item;
-        spawnWeapon(powerUpWeapon);
+        if (powerUpWeapon && powerUpWeapon.transform.parent != player.eyes)
+        {
+            powerUpWeapon = null; 
+        }
+    }
+    void setSelectedWeapon()
+    {
+
+        if (powerUpWeapon && primeWeapon && altWeapon)
+        {
+            powerUpWeapon.SetActive(true);
+            primeWeapon.SetActive(false);
+            altWeapon.SetActive(false);
+        }
+        else
+        {
+            if (isHoldingPrime && primeWeapon && altWeapon)
+            {
+                primeWeapon.SetActive(true);
+                altWeapon.SetActive(false);
+            }
+            else if (primeWeapon && altWeapon)
+            {
+                altWeapon.SetActive(true);
+                primeWeapon.SetActive(false);
+            }
+        }
 
     }
+
+    public void GiveExtraWeapon(GameObject item)
+    {
+        spawnPowerWeapon(item);
+    }
+
 
 
 }

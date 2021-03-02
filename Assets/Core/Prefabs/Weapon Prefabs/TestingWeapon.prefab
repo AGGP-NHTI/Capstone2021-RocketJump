@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1252919583175885565}
   - component: {fileID: 2256840978522189051}
+  - component: {fileID: 8993077735980247289}
   m_Layer: 0
   m_Name: TestingWeapon
   m_TagString: Untagged
@@ -58,6 +59,23 @@ MonoBehaviour:
   isRapidFire: 1
   knockBackForce: 30
   fireRate: 50
+--- !u!114 &8993077735980247289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528881964425359842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 209037615, guid: 01701b64234b4d523d8045142cbc73fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkedInstanceId: 0
+  PrefabHash: 10316449236050136659
+  PrefabHashGenerator: TestingWeapon
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
 --- !u!1 &4939744006593240211
 GameObject:
   m_ObjectHideFlags: 0

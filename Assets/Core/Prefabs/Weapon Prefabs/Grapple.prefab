@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3049153585668486094}
   - component: {fileID: 4565290273496877371}
+  - component: {fileID: 6437824629471728031}
   m_Layer: 0
   m_Name: Grapple
   m_TagString: Untagged
@@ -58,6 +59,23 @@ MonoBehaviour:
   isRapidFire: 0
   knockBackForce: 1
   fireRate: 2
+--- !u!114 &6437824629471728031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4352009852908437713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 209037615, guid: 01701b64234b4d523d8045142cbc73fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkedInstanceId: 0
+  PrefabHash: 16964222844905723886
+  PrefabHashGenerator: Grapple
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
 --- !u!1 &7852708030036220807
 GameObject:
   m_ObjectHideFlags: 0

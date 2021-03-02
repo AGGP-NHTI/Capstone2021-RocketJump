@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3681300473010549136}
   - component: {fileID: -2839028136581770509}
+  - component: {fileID: -7961704689611357775}
   m_Layer: 0
   m_Name: NoisyCricket
   m_TagString: Untagged
@@ -58,6 +59,23 @@ MonoBehaviour:
   isRapidFire: 0
   knockBackForce: 7
   fireRate: 10
+--- !u!114 &-7961704689611357775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676034995004244623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 209037615, guid: 01701b64234b4d523d8045142cbc73fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkedInstanceId: 0
+  PrefabHash: 784636170543990194
+  PrefabHashGenerator: NoisyCricket
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
 --- !u!1 &7419865099353714686
 GameObject:
   m_ObjectHideFlags: 0

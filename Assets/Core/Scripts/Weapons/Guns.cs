@@ -38,6 +38,9 @@ public class Guns : Weapon
     }
     public virtual bool clipEmpty()
     {
+
+        //Debug.Log("CURRENT CLIP: " + currentClip);
+
         if (currentClip <= 0)
         {
             return true;

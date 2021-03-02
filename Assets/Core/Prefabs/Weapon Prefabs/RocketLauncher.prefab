@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3687598767694696029}
   - component: {fileID: 2749190139513107624}
+  - component: {fileID: -3777178072735125179}
   m_Layer: 0
   m_Name: RocketLauncher
   m_TagString: Untagged
@@ -58,6 +59,23 @@ MonoBehaviour:
   isRapidFire: 0
   knockBackForce: 1
   fireRate: 2
+--- !u!114 &-3777178072735125179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2673255171855170882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 209037615, guid: 01701b64234b4d523d8045142cbc73fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkedInstanceId: 0
+  PrefabHash: 18107564937290249677
+  PrefabHashGenerator: RocketLauncher
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
 --- !u!1 &7404699758865076275
 GameObject:
   m_ObjectHideFlags: 0
