@@ -15,7 +15,7 @@ public class SpectatorCam : Pawn
     void Awake()
     {
         
-        if (!IsOwner)
+        if (!IsLocalPlayer)
         {
             
             GetComponent<Camera>().enabled = false;
@@ -34,7 +34,7 @@ public class SpectatorCam : Pawn
 
     void Update()
     {
-        if (IsOwner)
+        if (IsLocalPlayer)
         {
             float nRotX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * freeLookSens;
             float nRotY = transform.localEulerAngles.x + Input.GetAxis("Mouse Y") * -freeLookSens;
@@ -52,7 +52,7 @@ public class SpectatorCam : Pawn
 
     void FixedUpdate()
     {
-        if (IsOwner)
+        if (IsLocalPlayer)
         {
             GetComponent<Camera>().enabled = true;
 
