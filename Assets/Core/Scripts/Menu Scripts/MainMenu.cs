@@ -78,6 +78,7 @@ public class MainMenu : MonoBehaviour
         settings.SetActive(false);
         games.SetActive(false);
         credits.SetActive(false);
+        lobby.SetActive(false);
     }
     public void BackFromLobby()
     {

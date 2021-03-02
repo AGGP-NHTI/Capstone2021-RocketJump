@@ -826,6 +826,7 @@ MonoBehaviour:
   - {fileID: 2096464447327900002, guid: 85aa84dbfcc565c4e9085aece2294804, type: 3}
   CSMenu: {fileID: 3206436834134206014}
   cam: {fileID: 0}
+  sm: {fileID: 0}
 --- !u!1 &4483413580007262699
 GameObject:
   m_ObjectHideFlags: 0

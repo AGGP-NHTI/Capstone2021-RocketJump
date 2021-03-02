@@ -9,6 +9,7 @@ public class CharacterSelection : NetworkedBehaviour
     public List<GameObject> characters = new List<GameObject>();
     public GameObject CSMenu;
     public GameObject cam;
+    public SpawnManager sm;
 
     public void choice(int c)
     {
@@ -19,8 +20,14 @@ public class CharacterSelection : NetworkedBehaviour
     [ServerRPC(RequireOwnership = false)]
     public void Selection(int c)
     {
+        foreach (SpawnManager s in FindObjectsOfType<SpawnManager>())
+        {
+            sm = s; 
+        }
+
         CSMenu.SetActive(false);
-        GameObject go = Instantiate(characters[c], new Vector3(0, 0, 0), Quaternion.identity);
+
+        GameObject go = Instantiate(characters[c], sm.RequestSpawn(), Quaternion.identity);
         NetworkedObject netObj = go.GetComponent<NetworkedObject>();
         netObj.SpawnWithOwnership(OwnerClientId);
     }
