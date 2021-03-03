@@ -14191,7 +14191,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14712
+  m_Name: pb_Mesh14710
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -40897,6 +40897,12 @@ MonoBehaviour:
     apparently.
   - Press Alt-F4 to instantly win the game.
   - ?sdrawkcab txet siht si yhw
+  - If it doesn't work, it's probably Crimson's fault somehow.
+  - Evan once got mad at a piece of code that he hadn't written yet wasn't working.
+  - Not to insult your intellegence, but your intellegence is dumb.
+  - That moment when you realize you are nothing but text on a screen :(
+  - How long will this take to load? Only time will tell, which it did. It told me
+    42.
   loadtext: {fileID: 1792295702}
 --- !u!114 &2138240889
 MonoBehaviour:
