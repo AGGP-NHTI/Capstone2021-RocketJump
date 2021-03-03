@@ -9,6 +9,7 @@ using MLAPI.Messaging;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("Menus")]
     public GameObject main;
     public GameObject settings;
     public GameObject games;
@@ -16,6 +17,13 @@ public class MainMenu : MonoBehaviour
     public GameObject lobby;
     public GameObject all;
 
+    [Header("Loading Screen")]
+    public GameObject LoadingScreen;
+    public AudioSource source;
+    public Slider progress;
+    public TextMeshProUGUI percent;
+
+    [Header("Settings")]
     public Slider volume;
     public Slider MS;
 
@@ -24,6 +32,7 @@ public class MainMenu : MonoBehaviour
 
     public TextMeshProUGUI SenNum;
     public TextMeshProUGUI VolNum;
+
     void Start()
     {       
         PlayerPrefs.GetFloat("Volume", volume.maxValue / 2);
@@ -79,6 +88,7 @@ public class MainMenu : MonoBehaviour
         games.SetActive(false);
         credits.SetActive(false);
         lobby.SetActive(false);
+        LoadingScreen.SetActive(false);
     }
     public void BackFromLobby()
     {
@@ -163,6 +173,23 @@ public class MainMenu : MonoBehaviour
 
     public void ToScene(int num)
     {
-        SceneManager.LoadScene(num);
+        LoadingScreen.SetActive(true);
+        source.Stop();
+        StartCoroutine(Loader(num));
+
+    }
+
+    IEnumerator Loader(int num)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(num);
+
+        while (!operation.isDone)
+        {
+            float p = Mathf.Clamp01(operation.progress / .9f);
+            progress.value = p;
+            percent.text = "" + (p * 100) + "%";
+
+            yield return null;
+        }
     }
 }
