@@ -9,7 +9,7 @@ public class CharacterSelection : NetworkedBehaviour
     public List<GameObject> characters = new List<GameObject>();
     public GameObject CSMenu;
     public GameObject cam;
-    public SpawnManager sm;
+    public SpawnPointManager sm;
 
     public void choice(int c)
     {
@@ -20,7 +20,7 @@ public class CharacterSelection : NetworkedBehaviour
     [ServerRPC(RequireOwnership = false)]
     public void Selection(int c)
     {
-        foreach (SpawnManager s in FindObjectsOfType<SpawnManager>())
+        foreach (SpawnPointManager s in FindObjectsOfType<SpawnPointManager>())
         {
             sm = s; 
         }

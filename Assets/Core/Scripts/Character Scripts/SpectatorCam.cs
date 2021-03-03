@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MLAPI.Spawning;
 
 public class SpectatorCam : Pawn
 {
@@ -11,20 +12,29 @@ public class SpectatorCam : Pawn
     public Transform playerBody;
     public float XRotate = 0f;
     public GameObject CharSel;
+    public GameObject text;
     
     void Awake()
     {
-        
-        if (!IsLocalPlayer)
+        Debug.Log("awake");
+        /*
+        if (SpawnManager.GetLocalPlayerObject() == this.gameObject)
         {
-            
+            Debug.Log("here");
+        }
+        
+        Debug.Log(SpawnManager.GetLocalPlayerObject().name);
+        */
+        if (!IsOwner)
+        {
+            Debug.Log("not local");
             GetComponent<Camera>().enabled = false;
         }
         else
         {
-           
+            Debug.Log("local");
             Cursor.lockState = CursorLockMode.Locked;
-            foreach (SpawnManager s in FindObjectsOfType<SpawnManager>())
+            foreach (SpawnPointManager s in FindObjectsOfType<SpawnPointManager>())
             {
                 this.gameObject.transform.position = s.CamSpawn.transform.position;
             }
@@ -34,7 +44,7 @@ public class SpectatorCam : Pawn
 
     void Update()
     {
-        if (IsLocalPlayer)
+        if (IsOwner)
         {
             float nRotX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * freeLookSens;
             float nRotY = transform.localEulerAngles.x + Input.GetAxis("Mouse Y") * -freeLookSens;
@@ -43,6 +53,7 @@ public class SpectatorCam : Pawn
             if (Input.GetKeyDown(KeyCode.Y))
             {
                 GetComponent<AudioListener>().enabled = false;
+                text.SetActive(false);
                 CharSel.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
                 //gameObject.SetActive(false);
@@ -52,7 +63,7 @@ public class SpectatorCam : Pawn
 
     void FixedUpdate()
     {
-        if (IsLocalPlayer)
+        if (IsOwner)
         {
             GetComponent<Camera>().enabled = true;
 

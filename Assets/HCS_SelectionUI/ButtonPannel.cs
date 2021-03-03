@@ -80,7 +80,17 @@ public class ButtonPannel : MonoBehaviour
         //Pannel.SetActive(false);
     }
 
+	public void HostNormal()
+	{
+		NetworkingManager.Singleton.StartHost();
+		Pannel.SetActive(false);
+	}
 
+	public void JoinNormal()
+	{
+		NetworkingManager.Singleton.StartClient();
+		Pannel.SetActive(false);
+	}
    
    
 }
