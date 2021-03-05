@@ -24,14 +24,21 @@ public class CharacterSelection : NetworkedBehaviour
         {
             sm = s; 
         }
+        if (IsOwner)
+        {
+            InvokeServerRpc(NetSpawn, c);
+        }
+    }
 
+    [ServerRPC(RequireOwnership = false)]
+    public void NetSpawn(int c)
+    {
         CSMenu.SetActive(false);
 
         GameObject go = Instantiate(characters[c], sm.RequestSpawn(), Quaternion.identity);
         NetworkedObject netObj = go.GetComponent<NetworkedObject>();
         netObj.SpawnWithOwnership(OwnerClientId);
     }
-
     public void Rand()
     {
         int i = Random.Range(0, characters.Capacity);

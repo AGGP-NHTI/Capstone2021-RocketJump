@@ -13002,7 +13002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 1
-  speed: 50
+  speed: 20
   MouseSen: 300
   freeLookSens: 2.5
   playerBody: {fileID: 6187004777027759585}

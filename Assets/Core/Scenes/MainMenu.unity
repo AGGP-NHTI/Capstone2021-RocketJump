@@ -10370,11 +10370,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a859209c22b0564a82bb084dca8708d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centerpoint: {fileID: 2018731744}
-  offset: {fileID: 17791032}
-  speed: 110
-  distancex: -10
-  distancey: -10
+  centerpoint: {fileID: 1100203765}
+  offset: {fileID: 1552126099}
+  speed: -50
+  distancex: 20
+  distancey: 5
 --- !u!114 &649825884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10668,8 +10668,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a859209c22b0564a82bb084dca8708d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centerpoint: {fileID: 2018731744}
-  offset: {fileID: 17791032}
+  centerpoint: {fileID: 121520479}
+  offset: {fileID: 68134600}
   speed: 110
   distancex: -10
   distancey: -10
@@ -13603,10 +13603,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a859209c22b0564a82bb084dca8708d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centerpoint: {fileID: 2018731744}
-  offset: {fileID: 17791032}
-  speed: 110
-  distancex: -10
+  centerpoint: {fileID: 2059366365}
+  offset: {fileID: 270460336}
+  speed: 100
+  distancex: 10
   distancey: -10
 --- !u!114 &972881839
 MonoBehaviour:
@@ -14634,8 +14634,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerpoint: {fileID: 2018731744}
   offset: {fileID: 17791032}
-  speed: 110
-  distancex: -10
+  speed: 80
+  distancex: 0
   distancey: -10
 --- !u!114 &1065492957
 MonoBehaviour:
@@ -15856,6 +15856,7 @@ RectTransform:
   - {fileID: 121520480}
   - {fileID: 1100203766}
   - {fileID: 2059366366}
+  - {fileID: 2122052629}
   m_Father: {fileID: 1415624061}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15997,6 +15998,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237130667}
   m_CullTransparentMesh: 0
+--- !u!1 &1237167883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1237167884}
+  m_Layer: 5
+  m_Name: offset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1237167884
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237167883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2122052629}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1241972369
 GameObject:
   m_ObjectHideFlags: 0
@@ -17276,10 +17312,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a859209c22b0564a82bb084dca8708d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centerpoint: {fileID: 2018731744}
-  offset: {fileID: 17791032}
-  speed: 110
-  distancex: -10
+  centerpoint: {fileID: 2122052628}
+  offset: {fileID: 1237167883}
+  speed: 90
+  distancex: 10
   distancey: -10
 --- !u!222 &1390514313
 CanvasRenderer:
@@ -38679,11 +38715,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a859209c22b0564a82bb084dca8708d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centerpoint: {fileID: 2018731744}
-  offset: {fileID: 17791032}
-  speed: 110
-  distancex: -10
-  distancey: -10
+  centerpoint: {fileID: 2127497518}
+  offset: {fileID: 2134485362}
+  speed: 130
+  distancex: 12
+  distancey: 0
 --- !u!114 &1448665626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43586,7 +43622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2059366366
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44228,6 +44264,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120512710}
   m_CullTransparentMesh: 0
+--- !u!1 &2122052628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2122052629}
+  m_Layer: 5
+  m_Name: spinpoint (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2122052629
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122052628}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1237167884}
+  m_Father: {fileID: 1212816331}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -39, y: 511}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2122905134
 GameObject:
   m_ObjectHideFlags: 0
@@ -44665,7 +44737,7 @@ MonoBehaviour:
   - ?sdrawkcab txet siht si yhw
   - If it doesn't work, it's probably Crimson's fault somehow.
   - Evan once got mad at a piece of code that he hadn't written yet wasn't working.
-  - Not to insult your intellegence, but your intellegence is dumb.
+  - Not to insult your intelligence, but your intelligence is dumb.
   - That moment when you realize you are nothing but text on a screen :(
   - How long will this take to load? Only time will tell, which it did. It told me
     42.
