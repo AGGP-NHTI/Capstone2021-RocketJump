@@ -29,6 +29,7 @@ public class SpectatorCam : Pawn
         {
             Debug.Log("not local");
             GetComponent<Camera>().enabled = false;
+            GetComponent<AudioListener>().enabled = false;
         }
         else
         {
