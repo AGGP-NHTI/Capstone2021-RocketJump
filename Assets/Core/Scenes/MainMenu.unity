@@ -202,8 +202,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2007862439}
   m_HandleRect: {fileID: 2007862438}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.6666667
+  m_Value: -0.39274657
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -9811,7 +9811,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15472
+  m_Name: pb_Mesh15470
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14612,7 +14612,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000006896713, y: 100}
+  m_AnchoredPosition: {x: -0.000006896713, y: 139.27466}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1083868937
@@ -16873,7 +16873,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14810
+  m_Name: pb_Mesh14808
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -38728,7 +38728,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -73.806725, y: 0, z: -88.59601, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -44522,7 +44522,7 @@ MonoBehaviour:
   - Dying sucks. Trust me I've done it before.
   - Back in the year 2XXX, The United Nations unanimously decided to eject the entirety
     of Idaho into orbit. Ya know, for giggles.
-  - EVAN YOU MORON, THERE'S SUPPOSED TO BE A META JOKE HERE!
+  - EVAN YOU MORON! THERE'S SUPPOSED TO BE A META JOKE HERE!
   - '""'
   - Sometimes I can't spell corectly.
   - Hah some people are illiterate, lets laugh at them behind their backs.
@@ -44536,6 +44536,9 @@ MonoBehaviour:
     how fast I'm saying this so... Your game will be done loading...Now!
   - Someone replaced the J with an H...
   - I will pay you 10 bucks to give me 10 bucks right now. Do it, you won't.
+  - Ymzx jsix ymj fwl (5) Thus begins the ARG.
+  - We use a base 8 counting system and got rid of 1 and 2. This game has been translated
+    for your convenience.
   loadtext: {fileID: 1792295702}
 --- !u!114 &2138240889
 MonoBehaviour:
