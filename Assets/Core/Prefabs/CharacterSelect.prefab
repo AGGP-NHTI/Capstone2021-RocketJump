@@ -1527,8 +1527,8 @@ PrefabInstance:
     - target: {fileID: 5105072659333192889, guid: 6c1ea097a7330644c90b210aa3cacbbc,
         type: 3}
       propertyPath: m_text
-      value: "Our favorite Intergalactic Russian Non-binary Rhinocerus. \r\n\nHoding
-        from poachers in Rocket Jump Racing "
+      value: "Our favorite Intergalactic Russian Non-binary Rhinocerus. \r\n\nCurrently
+        hiding from poachers in Rocket Jump Racing "
       objectReference: {fileID: 0}
     - target: {fileID: 5890425446777592066, guid: 6c1ea097a7330644c90b210aa3cacbbc,
         type: 3}
