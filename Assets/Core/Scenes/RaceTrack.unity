@@ -21720,17 +21720,17 @@ PrefabInstance:
     - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
       propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[0].PlayerPrefab
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
       propertyPath: NetworkConfig.PlayerPrefabHash.Value
-      value: 11374044282181877456
+      value: 4420613670956966666
       objectReference: {fileID: 0}
     - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
       propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[13].PlayerPrefab
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5214381284232303377, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
