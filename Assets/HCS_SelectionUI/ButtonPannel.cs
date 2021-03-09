@@ -49,6 +49,8 @@ public class ButtonPannel : MonoBehaviour
 		//int i = Convert.ToInt32(connectPort.text);
 		int i;
 		int.TryParse(connectPort.text, out i);
+
+        //NetworkingManager.Singleton.gameObject.GetComponent<NetworkingManager>().network
 		
 		NetworkingManager.Singleton.gameObject.GetComponent<UnetTransport>().ConnectPort = i;
 		//Debug.Log("cp");
