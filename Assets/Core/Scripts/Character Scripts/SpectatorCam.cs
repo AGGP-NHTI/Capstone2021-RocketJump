@@ -17,6 +17,14 @@ public class SpectatorCam : Pawn
     void Awake()
     {
         Debug.Log("awake");
+        if (IsLocalPlayer)
+        {
+            Debug.Log("local");
+        }
+        else
+        {
+            Debug.Log("not local");
+        }
         /*
         if (SpawnManager.GetLocalPlayerObject() == this.gameObject)
         {
@@ -27,12 +35,13 @@ public class SpectatorCam : Pawn
         */
         if (!IsOwner)
         {
-            Debug.Log("not local");
+            Debug.Log("not owner");
             GetComponent<Camera>().enabled = false;
+            GetComponent<AudioListener>().enabled = false;
         }
         else
         {
-            Debug.Log("local");
+            Debug.Log("owner");
             Cursor.lockState = CursorLockMode.Locked;
             foreach (SpawnPointManager s in FindObjectsOfType<SpawnPointManager>())
             {

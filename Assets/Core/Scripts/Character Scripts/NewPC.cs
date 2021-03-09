@@ -66,7 +66,7 @@ public class NewPC : Controller
 
 		//giveItem(startingTest);
 
-		if (!IsLocalPlayer)
+		if (!IsOwner)
 		{
 			this.enabled = false;
 

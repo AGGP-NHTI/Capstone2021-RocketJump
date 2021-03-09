@@ -21732,6 +21732,11 @@ PrefabInstance:
       propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[13].PlayerPrefab
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5214381284232303377, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
+      propertyPath: ConnectAddress
+      value: 69.161.66.111
+      objectReference: {fileID: 0}
     - target: {fileID: 5214381284232303378, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
       propertyPath: m_Name

@@ -42,6 +42,7 @@ public class MainMenu : MonoBehaviour
 
         volume.value = PlayerPrefs.GetFloat("Volume", 20f);
         MS.value = PlayerPrefs.GetFloat("MouseSensitivity", 20f);
+
         if (main != null)
         {
             Back();
@@ -65,6 +66,7 @@ public class MainMenu : MonoBehaviour
             }
         }
     }
+
     private void Update()
     {
         if (MS != null && volume != null)
@@ -73,6 +75,7 @@ public class MainMenu : MonoBehaviour
             VolNum.text = "" + volume.value;
         }
     }
+
     public void QuitGame()
     {
 #if UNITY_EDITOR
@@ -81,6 +84,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Quit");
         Application.Quit();
     }
+
     public void Back()
     {
         main.SetActive(true);
@@ -90,39 +94,47 @@ public class MainMenu : MonoBehaviour
         lobby.SetActive(false);
         LoadingScreen.SetActive(false);
     }
+
     public void BackFromLobby()
     {
         lobby.SetActive(false);
         games.SetActive(true);
     }
+
     public void ToSettings()
     {
         main.SetActive(false);
         settings.SetActive(true);
     }
+
     public void ToGames()
     {
         main.SetActive(false);
         games.SetActive(true);
     }
+
     public void ToCredits()
     {
         main.SetActive(false);
         credits.SetActive(true);
     }
+
     public void ToLobby()
     {
         games.SetActive(false);
         lobby.SetActive(true);
     }
+
     public void ChangeVolume()
     {
         PlayerPrefs.SetFloat("Volume", volume.value);
     }
+
     public void ChangeMS()
     {
         PlayerPrefs.SetFloat("MouseSensitivity", MS.value);
     }
+
     public void ChangeInvertMouseHorizontal()
     {
         if (horizontal.isOn)
@@ -134,6 +146,7 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.SetInt("InvertHorizontal", 1);
         }
     }
+
     public void ChangeInvertMouseVertical()
     {
         if (vertical.isOn)
@@ -145,14 +158,17 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.SetInt("InvertVertical", 1);
         }
     }
+
     public void JoinGame(TMP_InputField game)
     {
 
     }
+
     public void HostGame()
     {
         SceneManager.LoadScene(1);
     }
+
     public void ToTutorial()
     {
         SceneManager.LoadScene(0);
@@ -162,10 +178,12 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
     public void CloseMenu()
     {
         all.SetActive(false);
     }
+
     public void OpenMenu()
     {
         all.SetActive(true);
@@ -176,7 +194,6 @@ public class MainMenu : MonoBehaviour
         LoadingScreen.SetActive(true);
         source.Stop();
         StartCoroutine(Loader(num));
-
     }
 
     IEnumerator Loader(int num)
@@ -185,11 +202,12 @@ public class MainMenu : MonoBehaviour
 
         while (!operation.isDone)
         {
+            
             float p = Mathf.Clamp01(operation.progress / .9f);
             progress.value = p;
             percent.text = "" + (p * 100) + "%";
 
-            yield return null;
+            yield return null;            
         }
     }
 }
