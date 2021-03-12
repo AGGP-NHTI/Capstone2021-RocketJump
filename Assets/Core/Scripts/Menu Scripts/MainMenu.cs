@@ -71,8 +71,14 @@ public class MainMenu : MonoBehaviour
     {
         if (MS != null && volume != null)
         {
-            SenNum.text = "" + MS.value;
-            VolNum.text = "" + volume.value;
+            float m = MS.value * 100f;
+            float v = volume.value * 100f;
+
+            m = Mathf.RoundToInt(m);
+            v = Mathf.RoundToInt(v);
+
+            SenNum.text = "" + m;
+            VolNum.text = "" + v;
         }
     }
 

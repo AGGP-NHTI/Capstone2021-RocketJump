@@ -13,8 +13,7 @@ public class Hints : MonoBehaviour
     
     void Start()
     {
-        Randomize();
-       
+        Randomize();     
     }
 
     public void Randomize()
@@ -30,7 +29,5 @@ public class Hints : MonoBehaviour
             
             loadtext.text = other.hints[i];
         }       
-    }
-
-    
+    }    
 }
