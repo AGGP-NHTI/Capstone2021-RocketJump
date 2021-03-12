@@ -202,8 +202,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2007862439}
   m_HandleRect: {fileID: 2007862438}
   m_Direction: 2
-  m_Value: -0.000004272461
-  m_Size: 0.6666667
+  m_Value: -0.000006408691
+  m_Size: 0.49641237
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14743,7 +14743,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000006896713, y: 100.00041}
+  m_AnchoredPosition: {x: -0.000006896713, y: 100.00064}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1083868937
@@ -45344,7 +45344,7 @@ MonoBehaviour:
   - Refering to Sasha as "Thicc" will result in 20 years prison time. No Trial.
   - Never show respect towards people who pronounce gif as gif.
   - If you get 6 of your friends together, you may only be 7 people, but you have
-    the dtrength of the entire mongolian navy!
+    the strength of the entire mongolian navy!
   - Dying sucks. Trust me I've done it before.
   - Back in the year 2XXX, The United Nations unanimously decided to eject the entirety
     of Idaho into orbit. Ya know, for giggles.
@@ -45359,7 +45359,8 @@ MonoBehaviour:
     ..--.. / ..- ... .. -. --. / --- .-.. -.. / -- --- .-. ... . -.-.--
   - 1 out of every 10 explosions are named Jeff.
   - Since I have no concept of time and I'm just text on a screen, you have now idea
-    how fast I'm saying this so... Your game will be done loading...Now!
+    how fast I'm saying this so... Your game will be done loading...Now! Unless you're
+    on the settings menu. Then you should disregard this message.
   - Someone replaced the J with an H...
   - I will pay you 10 bucks to give me 10 bucks right now. Do it, you won't.
   - Ymzx jsix ymj fwl (5) Thus begins the ARG.
@@ -45367,7 +45368,7 @@ MonoBehaviour:
     for your convenience.
   - This hint is sponsored by out sponsor, the sponser.
   - Someone talked about Dictator's eyebrows once.  It's a shame that decided to
-    skydive without a parachute the next day.
+    skydive without a parachute. Repeatedly.
   loadtext: {fileID: 1792295702}
   IsSource: 1
   other: {fileID: 0}

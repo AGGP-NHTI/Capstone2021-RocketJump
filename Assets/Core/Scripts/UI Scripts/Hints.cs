@@ -6,6 +6,7 @@ using TMPro;
 public class Hints : MonoBehaviour
 {
     public List<string> hints = new List<string>();
+   
     public TextMeshProUGUI loadtext;
     public bool IsSource = true;
     public Hints other;
@@ -26,7 +27,10 @@ public class Hints : MonoBehaviour
         else
         {
             int i = Random.Range(0, other.hints.Capacity);
+            
             loadtext.text = other.hints[i];
         }       
     }
+
+    
 }
