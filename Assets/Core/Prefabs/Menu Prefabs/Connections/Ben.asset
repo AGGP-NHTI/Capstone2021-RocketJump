@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5fd1645808039947844307861676e40, type: 3}
   m_Name: Ben
   m_EditorClassIdentifier: 
-  connectAddress: 
-  connectPort: 
-  relayAddress: 
-  relayPort: 
+  serverName: Ben's Server
+  connectAddress: 69.161.66.111
+  connectPort: 1234
+  relayAddress: 3.94.107.19
+  relayPort: 8888

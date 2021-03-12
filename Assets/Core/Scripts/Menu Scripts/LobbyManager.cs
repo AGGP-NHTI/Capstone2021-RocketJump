@@ -12,15 +12,28 @@ public class LobbyManager : MonoBehaviour
 {
 
     public List<serverInfo_SO> connectionList;
+    public GameObject scrollMenuContent;
+    public GameObject serverSlotPrefab;
+    public List<GameObject> serverSlots;
 
-    void Start()
+    private void Start()
     {
-        connectionList = new List<serverInfo_SO>();
+        serverSlots = new List<GameObject>();
+        findServers();
     }
 
-    
-    void Update()
+    public void findServers()
     {
-        
+
+        var spacing = 0;
+
+        foreach(var connection in connectionList)
+        {
+            var tempServer = Instantiate(serverSlotPrefab, scrollMenuContent.transform);
+            var serverInfo = tempServer.GetComponent<ServerSlotScript>();
+            serverInfo.info = connection;
+            tempServer.transform.position = new Vector2(tempServer.transform.position.x, tempServer.transform.position.y - spacing);
+            spacing += 175;
+        }
     }
 }
