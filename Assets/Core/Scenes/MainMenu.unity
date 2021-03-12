@@ -370,8 +370,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2007862439}
   m_HandleRect: {fileID: 2007862438}
   m_Direction: 2
-  m_Value: -0.000006713867
-  m_Size: 0.53533924
+  m_Value: 0
+  m_Size: 0.665448
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15385,7 +15385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000006896713, y: 100.00069}
+  m_AnchoredPosition: {x: -0.000006896713, y: 100.000015}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1083868937
@@ -46902,7 +46902,7 @@ MonoBehaviour:
   - Ymzx jsix ymj fwl (5) Thus begins the ARG.
   - In the Rocket Jump Racing Universe, we use a base 8 counting system and got rid
     of 1 and 2. This game has been translated for your convenience.
-  - This hint is sponsored by out sponsor, the sponser.
+  - ponsor, the sponser.ed by out sponsor, the sponser. Win.
   - Someone talked about Dictator's eyebrows once.  It's a shame that decided to
     skydive without a parachute. Repeatedly.
   - Wanna play kickball with an atomic bomb?
