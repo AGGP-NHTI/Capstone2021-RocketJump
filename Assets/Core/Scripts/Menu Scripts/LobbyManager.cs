@@ -10,13 +10,15 @@ using System;
 
 public class LobbyManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public List<serverInfo_SO> connectionList;
+
     void Start()
     {
-        
+        connectionList = new List<serverInfo_SO>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
