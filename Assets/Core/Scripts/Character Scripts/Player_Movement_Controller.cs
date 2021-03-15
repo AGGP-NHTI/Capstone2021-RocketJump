@@ -69,21 +69,19 @@ public class Player_Movement_Controller : Pawn
 
 		//giveItem(startingTest);
 
-		if (!IsLocalPlayer)
+		if (IsClient)
 		{
-			this.enabled = false;
-
-		}
-		else 
-		{
-
-			
 			setLocalPlayer();
 			setCamera();
 			setUI();
-			
-			Cursor.lockState = CursorLockMode.Locked;
 		}
+		else 
+		{
+			this.enabled = false;
+		}
+			
+		Cursor.lockState = CursorLockMode.Locked;
+	
 
 		if (IsHost)
 		{
@@ -100,19 +98,21 @@ public class Player_Movement_Controller : Pawn
 
 	void Update()
     {
-		//UI.GetComponent<UIManager>().sendMessage(("Speed: " + getHorizontalVelocity()), new Vector3(0,-100,0), 0.1f);
+	
+		
 
-		//Debug.Log("VELOCITY: " + getVelocity());
+			//UI.GetComponent<UIManager>().sendMessage(("Speed: " + getHorizontalVelocity()), new Vector3(0,-100,0), 0.1f);
+
+			//Debug.Log("VELOCITY: " + getVelocity());
 
 
-		if (!IsLocalPlayer)
-		{ return; }
 
 
-		//if (!ControlledPawn)
-		//{ return; }
 
-		if (!loadPlayer) { initializePositionManager(); }
+			//if (!ControlledPawn)
+			//{ return; }
+
+			if (!loadPlayer) { initializePositionManager(); }
 
 		wasGrounded = cc.isGrounded;
 		
@@ -374,25 +374,5 @@ public class Player_Movement_Controller : Pawn
 		pm.updatePlayerPosition(player, nodeNumber);
 	}
 
-	//CONTROLLER STUFF
-	//public void SpawnPlayerPawn()
-	//{
-	//	if (IsOwner)
-	//	{
-	//		InvokeServerRpc(Server_SpawnPlayerPawn);
-	//	}
-	//}
-
-	//[ServerRPC(RequireOwnership = false)]
-	//public void Server_SpawnPlayerPawn()
-	//{
-	//	Vector3 location = Vector3.right * NetworkId;
-	//	GameObject playerPawn = Instantiate(PlayerSpawn, location, Quaternion.identity);
-	//	NetworkedObject netObj = playerPawn.GetComponent<NetworkedObject>();
-	//	netObj.Spawn();
-	//	netObj.ChangeOwnership(OwnerClientId);
-
-
-	//	PossessPawn(playerPawn, netObj.OwnerClientId, netObj.NetworkId);
-	//}
+	
 }

@@ -67,6 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8315cfa41651c9b4084e3c0fc0ecf176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsActive: 1
+  IgnoreDamage: 0
   eyes: {fileID: 3235445508818435331}
   groundAcceleration: 20
   groundDeceleration: 15
@@ -98,7 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 0
-  selectedWeapon: 1
   startingWeaponPrefab: {fileID: 4205752912056178508, guid: 5bcff3bd1819c5042a0cf7570c1704da,
     type: 3}
   altWeaponPrefab: {fileID: 6977513548457193487, guid: 4bb857ebe0f92a64a96ef26c67e75c47,
@@ -119,8 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkedInstanceId: 0
-  PrefabHash: 4420613670956966666
-  PrefabHashGenerator: NewPlayer
+  PrefabHash: 8502830722536682185
+  PrefabHashGenerator: Test
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
 --- !u!114 &-8245679497219693218
