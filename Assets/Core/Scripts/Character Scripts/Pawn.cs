@@ -16,7 +16,7 @@ public class Pawn : Actor
         NetworkedObject netObj = GetComponent<NetworkedObject>();
         if(netObj)
         {
-            netObj.ChangeOwnership(c.NetworkId);
+            netObj.ChangeOwnership(c.OwnerClientId);
         }
     }
 
