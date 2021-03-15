@@ -69,7 +69,7 @@ public class Player_Movement_Controller : Pawn
 
 		//giveItem(startingTest);
 
-		if (IsClient)
+		if (IsLocalPlayer)
 		{
 			setLocalPlayer();
 			setCamera();
