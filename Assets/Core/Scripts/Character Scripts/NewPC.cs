@@ -29,6 +29,7 @@ public class NewPC : Controller
 	[Header("Objects")]
 	public GameObject cameraPrefab;
 	public GameObject UI;
+	public GameObject PlayerSpawn;
 
 
 	[Header("Network Settings")]
@@ -62,7 +63,7 @@ public class NewPC : Controller
 
 	private void Start()
 	{
-;
+		SpawnPlayerPawn();
 
 		//giveItem(startingTest);
 
@@ -101,7 +102,15 @@ public class NewPC : Controller
 
 		//Debug.Log("VELOCITY: " + getVelocity());
 
-        if(!loadPlayer) { initializePositionManager(); }
+
+		if (!IsLocalPlayer)
+		{ return; }
+
+
+		if (!ControlledPawn)
+		{ return; }
+
+		if (!loadPlayer) { initializePositionManager(); }
 
 		wasGrounded = cc.isGrounded;
 		
@@ -361,5 +370,26 @@ public class NewPC : Controller
 		//positionManager.updatePlayerPosition(player, nodeNumber);
 		var pm = GameObject.Find("track").GetComponent<PositionManager>();
 		pm.updatePlayerPosition(player, nodeNumber);
+	}
+
+	public void SpawnPlayerPawn()
+	{
+		if (IsOwner)
+		{
+			InvokeServerRpc(Server_SpawnPlayerPawn);
+		}
+	}
+
+	[ServerRPC(RequireOwnership = false)]
+	public void Server_SpawnPlayerPawn()
+	{
+		Vector3 location = Vector3.right * NetworkId;
+		GameObject playerPawn = Instantiate(PlayerSpawn, location, Quaternion.identity);
+		NetworkedObject netObj = playerPawn.GetComponent<NetworkedObject>();
+		netObj.Spawn();
+		netObj.ChangeOwnership(OwnerClientId);
+
+
+		PossessPawn(playerPawn, netObj.OwnerClientId, netObj.NetworkId);
 	}
 }
