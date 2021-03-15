@@ -7,6 +7,7 @@ using MLAPI.Messaging;
 [RequireComponent(typeof(CharacterController))]
 public class Player_Movement_Controller : Pawn
 {
+	public Player_Controller playerController;
 	public Transform eyes;
 
 	[Header("Character Traits")]
@@ -69,7 +70,7 @@ public class Player_Movement_Controller : Pawn
 
 		//giveItem(startingTest);
 
-		if (IsClient)
+		if (playerController.IsLocalPlayer)
 		{
 			setLocalPlayer();
 			setCamera();

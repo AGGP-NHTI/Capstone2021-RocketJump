@@ -36,6 +36,7 @@ public class Player_Controller : Controller
         Vector3 location = Vector3.right * NetworkId;
         location += Vector3.up * 10;
         GameObject playerPawn = Instantiate(PlayerPawn, location, Quaternion.identity);
+        PlayerPawn.GetComponent<Player_Movement_Controller>().playerController = this;
         NetworkedObject netObj = playerPawn.GetComponent<NetworkedObject>();
         //netObj.Spawn();
         netObj.SpawnWithOwnership(OwnerClientId);
