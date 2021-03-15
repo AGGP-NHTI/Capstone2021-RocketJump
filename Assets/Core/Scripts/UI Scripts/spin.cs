@@ -5,9 +5,17 @@ using UnityEngine;
 public class spin : MonoBehaviour
 {
     public float speed = 60f;
-    
+    public bool worldspace = false;
+
     void FixedUpdate()
     {
-        transform.Rotate(speed * Time.fixedDeltaTime * Vector3.forward);
+        if (!worldspace)
+        {
+            transform.Rotate(speed * Time.fixedDeltaTime * Vector3.forward);
+        }
+        else
+        {
+            transform.Rotate(speed * Time.fixedDeltaTime * transform.forward);
+        }
     }
 }
