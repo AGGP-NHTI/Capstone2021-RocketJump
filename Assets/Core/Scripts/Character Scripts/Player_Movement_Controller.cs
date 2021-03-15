@@ -69,10 +69,16 @@ public class Player_Movement_Controller : Pawn
 
 		//giveItem(startingTest);
 
-
-		setLocalPlayer();
-		setCamera();
-		setUI();
+		if (IsClient)
+		{
+			setLocalPlayer();
+			setCamera();
+			setUI();
+		}
+		else 
+		{
+			this.enabled = false;
+		}
 			
 		Cursor.lockState = CursorLockMode.Locked;
 	
@@ -92,18 +98,21 @@ public class Player_Movement_Controller : Pawn
 
 	void Update()
     {
-		//UI.GetComponent<UIManager>().sendMessage(("Speed: " + getHorizontalVelocity()), new Vector3(0,-100,0), 0.1f);
-
-		//Debug.Log("VELOCITY: " + getVelocity());
-
-
+	
 		
 
+			//UI.GetComponent<UIManager>().sendMessage(("Speed: " + getHorizontalVelocity()), new Vector3(0,-100,0), 0.1f);
 
-		//if (!ControlledPawn)
-		//{ return; }
+			//Debug.Log("VELOCITY: " + getVelocity());
 
-		if (!loadPlayer) { initializePositionManager(); }
+
+
+
+
+			//if (!ControlledPawn)
+			//{ return; }
+
+			if (!loadPlayer) { initializePositionManager(); }
 
 		wasGrounded = cc.isGrounded;
 		
