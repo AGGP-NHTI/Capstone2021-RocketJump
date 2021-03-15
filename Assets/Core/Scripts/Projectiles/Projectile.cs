@@ -5,7 +5,7 @@ using MLAPI;
 using MLAPI.Messaging;
 public abstract class Projectile : Actor
 {
-    protected NewPC player;
+    protected Player_Movement_Controller player;
     protected Rigidbody rb;
     [Range(0f, 10f)]
     public float lifeTime = 3;
@@ -49,7 +49,7 @@ public abstract class Projectile : Actor
         trigger();
     }
 
-    public void setPlayer(NewPC controller)
+    public void setPlayer(Player_Movement_Controller controller)
     {
         player = controller;
     }

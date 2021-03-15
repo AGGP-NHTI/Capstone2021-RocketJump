@@ -11,7 +11,7 @@ public class Weapon : Actor
 {
     protected GameObject UI;
     protected UIManager UIMan;
-    protected NewPC playerReference;
+    protected Player_Movement_Controller playerReference;
     protected Ammo_UI_Script AmmoReference;
 
     protected bool isCooling = false;
@@ -151,7 +151,7 @@ public class Weapon : Actor
 
     void setPlayerReference()
     {
-        NewPC player = transform.root.GetComponent<NewPC>();
+        Player_Movement_Controller player = transform.root.GetComponent<Player_Movement_Controller>();
         if (player)
         {
             if (!player.IsLocalPlayer) { Destroy(this); }

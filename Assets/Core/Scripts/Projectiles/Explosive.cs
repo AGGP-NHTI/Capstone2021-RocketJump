@@ -31,7 +31,7 @@ public class Explosive : Projectile
         foreach (Collider hit in hits)
         {
             Rigidbody rbObj = hit.GetComponent<Rigidbody>();
-            NewPC playerController = hit.GetComponent<NewPC>();
+            Player_Movement_Controller playerController = hit.GetComponent<Player_Movement_Controller>();
 
             //For other projectiles
             if (rbObj)

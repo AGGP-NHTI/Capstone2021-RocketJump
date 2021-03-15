@@ -5,7 +5,7 @@ using MLAPI;
 using MLAPI.Messaging;
 
 [RequireComponent(typeof(CharacterController))]
-public class NewPC : Controller
+public class Player_Movement_Controller : Pawn
 {
 	public Transform eyes;
 
@@ -29,7 +29,7 @@ public class NewPC : Controller
 	[Header("Objects")]
 	public GameObject cameraPrefab;
 	public GameObject UI;
-	public GameObject PlayerSpawn;
+	
 
 
 	[Header("Network Settings")]
@@ -63,7 +63,9 @@ public class NewPC : Controller
 
 	private void Start()
 	{
-		SpawnPlayerPawn();
+
+		//CONTROLLER STUFF
+		//SpawnPlayerPawn();
 
 		//giveItem(startingTest);
 
@@ -107,8 +109,8 @@ public class NewPC : Controller
 		{ return; }
 
 
-		if (!ControlledPawn)
-		{ return; }
+		//if (!ControlledPawn)
+		//{ return; }
 
 		if (!loadPlayer) { initializePositionManager(); }
 
@@ -372,24 +374,25 @@ public class NewPC : Controller
 		pm.updatePlayerPosition(player, nodeNumber);
 	}
 
-	public void SpawnPlayerPawn()
-	{
-		if (IsOwner)
-		{
-			InvokeServerRpc(Server_SpawnPlayerPawn);
-		}
-	}
+	//CONTROLLER STUFF
+	//public void SpawnPlayerPawn()
+	//{
+	//	if (IsOwner)
+	//	{
+	//		InvokeServerRpc(Server_SpawnPlayerPawn);
+	//	}
+	//}
 
-	[ServerRPC(RequireOwnership = false)]
-	public void Server_SpawnPlayerPawn()
-	{
-		Vector3 location = Vector3.right * NetworkId;
-		GameObject playerPawn = Instantiate(PlayerSpawn, location, Quaternion.identity);
-		NetworkedObject netObj = playerPawn.GetComponent<NetworkedObject>();
-		netObj.Spawn();
-		netObj.ChangeOwnership(OwnerClientId);
+	//[ServerRPC(RequireOwnership = false)]
+	//public void Server_SpawnPlayerPawn()
+	//{
+	//	Vector3 location = Vector3.right * NetworkId;
+	//	GameObject playerPawn = Instantiate(PlayerSpawn, location, Quaternion.identity);
+	//	NetworkedObject netObj = playerPawn.GetComponent<NetworkedObject>();
+	//	netObj.Spawn();
+	//	netObj.ChangeOwnership(OwnerClientId);
 
 
-		PossessPawn(playerPawn, netObj.OwnerClientId, netObj.NetworkId);
-	}
+	//	PossessPawn(playerPawn, netObj.OwnerClientId, netObj.NetworkId);
+	//}
 }

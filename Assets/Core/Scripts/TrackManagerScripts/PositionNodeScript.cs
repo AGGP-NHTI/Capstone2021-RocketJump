@@ -9,7 +9,7 @@ public class PositionNodeScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        NewPC obj = other.gameObject.GetComponent<NewPC>();
+        Player_Movement_Controller obj = other.gameObject.GetComponent<Player_Movement_Controller>();
 
         if (obj)
         {

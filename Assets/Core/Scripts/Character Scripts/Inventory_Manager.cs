@@ -6,7 +6,7 @@ using MLAPI.Messaging;
 
 public class Inventory_Manager : Actor
 {
-    NewPC player;
+    Player_Movement_Controller player;
 
 
 
@@ -28,7 +28,7 @@ public class Inventory_Manager : Actor
 
     private void Awake()
     {
-        player = gameObject.GetComponent<NewPC>() ?? gameObject.AddComponent<NewPC>();
+        player = gameObject.GetComponent<Player_Movement_Controller>() ?? gameObject.AddComponent<Player_Movement_Controller>();
     }
 
     private void Start()

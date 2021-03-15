@@ -22,7 +22,7 @@ public class SpeedometerScript : MonoBehaviour
 
     float velocity;
 
-    public NewPC player;
+    public Player_Movement_Controller player;
 
     private bool playerLoaded = false;
 

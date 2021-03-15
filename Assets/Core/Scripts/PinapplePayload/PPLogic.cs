@@ -19,7 +19,7 @@ public class PPLogic : NetworkedBehaviour
     [ServerRPC(RequireOwnership = false)]
     public void BeginGame()
     {
-        foreach (NewPC p in FindObjectsOfType<NewPC>())
+        foreach (Player_Movement_Controller p in FindObjectsOfType<Player_Movement_Controller>())
         {
             players.Add(p.gameObject);
         }

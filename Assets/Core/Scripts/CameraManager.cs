@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     [HideInInspector]
-    public NewPC player;
+    public Player_Movement_Controller player;
 
     [Tooltip("The FOV when the player is close to a speed of zero")]
     [Range(60, 120)]
