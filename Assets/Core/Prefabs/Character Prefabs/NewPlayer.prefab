@@ -69,6 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 0
+  playerController: {fileID: 0}
   eyes: {fileID: 3235445508818435331}
   groundAcceleration: 20
   groundDeceleration: 15
@@ -120,8 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkedInstanceId: 0
-  PrefabHash: 8502830722536682185
-  PrefabHashGenerator: Test
+  PrefabHash: 4420613670956966666
+  PrefabHashGenerator: NewPlayer
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
 --- !u!114 &-8245679497219693218
