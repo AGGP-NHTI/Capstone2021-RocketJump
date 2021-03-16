@@ -65,23 +65,23 @@ public class Player_Movement_Controller : Pawn
 	private void Start()
 	{
 
-		//CONTROLLER STUFF
-		//SpawnPlayerPawn();
+        //CONTROLLER STUFF
+        //SpawnPlayerPawn();
 
-		//giveItem(startingTest);
+        //giveItem(startingTest);
 
-		//if (playerController.IsLocalPlayer)
-		//{
-		setLocalPlayer();
-		setCamera();
-		setUI();
-		//}
-		//else 
-		//{
-		//	this.enabled = false;
-		//}
-			
-		Cursor.lockState = CursorLockMode.Locked;
+        if (controller.IsLocalPlayer)
+        {
+            setLocalPlayer();
+			setCamera();
+			setUI();
+        }
+        else
+        {
+            this.enabled = false;
+        }
+
+        Cursor.lockState = CursorLockMode.Locked;
 	
 
 		if (IsHost)

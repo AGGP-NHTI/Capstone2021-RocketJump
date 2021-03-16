@@ -5,7 +5,7 @@ using MLAPI;
 using MLAPI.Messaging;
 public class Pawn : Actor
 {
-    Controller controller;
+    protected Controller controller;
 
     public void Possesed(Controller c)
     {
