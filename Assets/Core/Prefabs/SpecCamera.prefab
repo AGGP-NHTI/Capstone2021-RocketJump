@@ -13524,6 +13524,18 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 6187004778564048221}
+    - target: {fileID: 6463207314882377419, guid: c1c1502222574da4ab252022bf7e3a93,
+        type: 3}
+      propertyPath: characters.Array.data[0]
+      value: 
+      objectReference: {fileID: 2997457496977761673, guid: ee927375557c1ab47b3a237f627158c3,
+        type: 3}
+    - target: {fileID: 6463207314882377419, guid: c1c1502222574da4ab252022bf7e3a93,
+        type: 3}
+      propertyPath: characters.Array.data[1]
+      value: 
+      objectReference: {fileID: 5219736549171104077, guid: 68dd849f4810f3f49a7fbf3989329151,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1c1502222574da4ab252022bf7e3a93, type: 3}
 --- !u!1 &98131267995913776 stripped
