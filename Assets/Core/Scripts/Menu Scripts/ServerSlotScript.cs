@@ -51,7 +51,7 @@ public class ServerSlotScript : MonoBehaviour
         NetworkingManager.Singleton.gameObject.GetComponent<UnetTransport>().MLAPIRelayPort = l;
 
 
-        //StartCoroutine(TaskStatus(NetworkingManager.Singleton.StartClient()));
+        StartCoroutine(TaskStatus(NetworkingManager.Singleton.StartClient()));
     }
 
     IEnumerator TaskStatus(MLAPI.Transports.Tasks.SocketTasks tasks)
