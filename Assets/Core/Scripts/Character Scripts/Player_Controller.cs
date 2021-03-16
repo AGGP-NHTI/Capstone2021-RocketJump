@@ -15,6 +15,7 @@ public class Player_Controller : Controller
 
     private void Update()
     {
+        Debug.Log("IS LOCAL PLAYER ON CONTROLLER: " + IsLocalPlayer);
         if (!IsLocalPlayer)
         { return; }
 

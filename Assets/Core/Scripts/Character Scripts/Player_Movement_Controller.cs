@@ -70,16 +70,16 @@ public class Player_Movement_Controller : Pawn
 
 		//giveItem(startingTest);
 
-		if (playerController.IsLocalPlayer)
-		{
-			setLocalPlayer();
-			setCamera();
-			setUI();
-		}
-		else 
-		{
-			this.enabled = false;
-		}
+		//if (playerController.IsLocalPlayer)
+		//{
+		setLocalPlayer();
+		setCamera();
+		setUI();
+		//}
+		//else 
+		//{
+		//	this.enabled = false;
+		//}
 			
 		Cursor.lockState = CursorLockMode.Locked;
 	

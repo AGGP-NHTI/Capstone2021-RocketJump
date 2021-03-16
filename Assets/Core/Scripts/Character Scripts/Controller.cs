@@ -24,18 +24,18 @@ public class Controller : NetworkedBehaviour
     }
 
         public void PossessPawn(Pawn p)
-    {
-        if(ControlledPawn)
         {
-            ControlledPawn.OnUnPossess();
-            Debug.Log("ControlledPawn.OnUnpossess called");
-        }
+            if(ControlledPawn)
+            {
+                ControlledPawn.OnUnPossess();
+                Debug.Log("ControlledPawn.OnUnpossess called");
+            }
 
-        ControlledPawn = p;
+            ControlledPawn = p;
       
-        p.Possesed(this);
+            p.Possesed(this);
       
-    }
+        }
 
     public void PossessPawn(GameObject p, ulong clientID, ulong NetID)
     {
