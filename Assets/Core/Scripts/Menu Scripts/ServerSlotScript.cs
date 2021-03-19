@@ -10,7 +10,6 @@ public class ServerSlotScript : MonoBehaviour
 {
     public serverInfo_SO info;
     public TextMeshProUGUI serverName;
-    public TMP_Dropdown selectionDropdown;
 
     public void Start()
     {
@@ -18,7 +17,7 @@ public class ServerSlotScript : MonoBehaviour
         {
             serverName.text = info.serverName;
         }
-
+        
         NetworkingManager.Singleton.OnClientConnectedCallback += (obj) =>
         {
             if (NetworkingManager.Singleton.IsClient)
