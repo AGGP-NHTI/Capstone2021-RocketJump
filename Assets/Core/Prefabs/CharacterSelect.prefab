@@ -192,6 +192,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  worldspace: 0
+  yaxis: 0
+  yspeed: 60
 --- !u!114 &6032752718315555988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +251,7 @@ RectTransform:
   m_GameObject: {fileID: 2218047779969232541}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 12.741677, y: 1.3673, z: 1}
+  m_LocalScale: {x: 4.6145663, y: 1.3673, z: 1}
   m_Children: []
   m_Father: {fileID: 3206436834134206009}
   m_RootOrder: 12
@@ -354,6 +357,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  worldspace: 0
+  yaxis: 0
+  yspeed: 60
 --- !u!114 &6533909287418329978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,6 +448,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  worldspace: 0
+  yaxis: 0
+  yspeed: 60
 --- !u!114 &8080949226575958009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,6 +539,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  worldspace: 0
+  yaxis: 0
+  yspeed: 60
 --- !u!114 &5040264987420215026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -886,6 +898,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  worldspace: 0
+  yaxis: 0
+  yspeed: 60
 --- !u!114 &419772801351721327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -974,6 +989,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  worldspace: 0
+  yaxis: 0
+  yspeed: 60
 --- !u!114 &4519309442803106603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1337,11 +1355,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 3230120133156053458, guid: 6c1ea097a7330644c90b210aa3cacbbc,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -351
-      objectReference: {fileID: 0}
     - target: {fileID: 3230120133212083938, guid: 6c1ea097a7330644c90b210aa3cacbbc,
         type: 3}
       propertyPath: m_Sprite
@@ -1614,11 +1627,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 262
       objectReference: {fileID: 0}
-    - target: {fileID: 3230120133156053458, guid: 6c1ea097a7330644c90b210aa3cacbbc,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -351
-      objectReference: {fileID: 0}
     - target: {fileID: 3230120133212083938, guid: 6c1ea097a7330644c90b210aa3cacbbc,
         type: 3}
       propertyPath: m_Sprite
@@ -1854,11 +1862,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 4.1814
-      objectReference: {fileID: 0}
-    - target: {fileID: 3230120132626429020, guid: 6c1ea097a7330644c90b210aa3cacbbc,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -22
       objectReference: {fileID: 0}
     - target: {fileID: 3230120132702787342, guid: 6c1ea097a7330644c90b210aa3cacbbc,
         type: 3}
@@ -2160,11 +2163,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 519
-      objectReference: {fileID: 0}
-    - target: {fileID: 3230120133156053458, guid: 6c1ea097a7330644c90b210aa3cacbbc,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -351
       objectReference: {fileID: 0}
     - target: {fileID: 3230120133212083938, guid: 6c1ea097a7330644c90b210aa3cacbbc,
         type: 3}
