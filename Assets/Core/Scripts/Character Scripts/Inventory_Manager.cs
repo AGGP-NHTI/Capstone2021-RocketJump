@@ -4,9 +4,9 @@ using UnityEngine;
 using MLAPI;
 using MLAPI.Messaging;
 
-public class Inventory_Manager : Actor
+public class Inventory_Manager : Pawn
 {
-    Player_Movement_Controller player;
+    Player_Movement_Controller player = null;
 
 
 
@@ -20,8 +20,8 @@ public class Inventory_Manager : Actor
     public GameObject altWeaponPrefab;
     public GameObject testPowerUpWeaponPrefab;
 
-    GameObject primeWeapon;
-    GameObject altWeapon;
+    GameObject primeWeapon = null;
+    GameObject altWeapon = null;
 
     //[HideInInspector]
     public GameObject powerUpWeapon;
@@ -33,12 +33,17 @@ public class Inventory_Manager : Actor
 
     private void Start()
     {
-        spawnWeapons();
+        
         
     }
 
     private void Update()
     {
+        if (player.controller)
+        {
+            spawnWeapons();
+        }
+
         checkPowerUpWeapon();
         setSelectedWeapon();
 
@@ -54,21 +59,15 @@ public class Inventory_Manager : Actor
 
     void spawnWeapons()
     {
-        spawnPrimeWeapon(startingWeaponPrefab);
-        spawnAltWeapon(altWeaponPrefab);
+        if(!primeWeapon)
+            spawnPrimeWeapon(startingWeaponPrefab);
+        //spawnAltWeapon(altWeaponPrefab);
     }
 
     void spawnPrimeWeapon(GameObject weaponPrefab)
     {
+        primeWeapon = Instantiate(weaponPrefab, player.eyes);
 
-        if (IsServer)
-        {
-            networkSpawnPrimeWeapon(weaponPrefab);
-        }
-        else
-        {
-            InvokeServerRpc(networkSpawnPrimeWeapon, weaponPrefab);
-        }
     }
     void spawnAltWeapon(GameObject weaponPrefab)
     {
@@ -98,11 +97,14 @@ public class Inventory_Manager : Actor
     [ServerRPC(RequireOwnership = false)]
     void networkSpawnPrimeWeapon(GameObject weaponPrefab)
     {
+        
         primeWeapon = NetSpawn(weaponPrefab, Vector3.zero, Quaternion.identity);
 
         primeWeapon.transform.parent = player.eyes;
         primeWeapon.transform.localPosition = Vector3.zero;
         primeWeapon.transform.rotation = Quaternion.identity;
+
+        
     }
     [ServerRPC(RequireOwnership = false)]
     void networkSpawnAltWeapon(GameObject weaponPrefab)
@@ -162,5 +164,20 @@ public class Inventory_Manager : Actor
     }
 
 
+    [ServerRPC(RequireOwnership = false)]
+    public void Server_SpawnPlayerPrimeWeapon(GameObject weapon, Transform parent)
+    {
+        Vector3 location = Vector3.right * NetworkId;
+        location += Vector3.up * 10;
+        GameObject weaponPawn = Instantiate(weapon, parent);
+        NetworkedObject netObj = weaponPawn.GetComponent<NetworkedObject>();
+        //netObj.Spawn();
 
+
+        netObj.SpawnWithOwnership(OwnerClientId);
+
+
+        player.controller.PossessPawn(weaponPawn, netObj.OwnerClientId, netObj.NetworkId);
+
+    }
 }

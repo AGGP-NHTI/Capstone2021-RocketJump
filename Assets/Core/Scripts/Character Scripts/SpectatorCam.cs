@@ -13,6 +13,8 @@ public class SpectatorCam : Pawn
     public float XRotate = 0f;
     public GameObject CharSel;
     public GameObject text;
+
+    public GameObject characterSelectPrefab;
     
     void Awake()
     {
@@ -59,13 +61,18 @@ public class SpectatorCam : Pawn
             float nRotY = transform.localEulerAngles.x + Input.GetAxis("Mouse Y") * -freeLookSens;
             transform.localEulerAngles = new Vector3(nRotY, nRotX, 0f);
 
-            if (Input.GetKeyDown(KeyCode.Y))
+            if (Input.GetKeyDown(KeyCode.Y) && controller.IsLocalPlayer)
             {
                 GetComponent<AudioListener>().enabled = false;
                 text.SetActive(false);
-                CharSel.SetActive(true);
+
+                GameObject UI =  Instantiate(characterSelectPrefab);
+                CharacterSelection charSelect = UI.GetComponent<CharacterSelection>();
+
+                charSelect.pc = (Player_Controller)controller;
+
                 Cursor.lockState = CursorLockMode.None;
-                //gameObject.SetActive(false);
+                gameObject.SetActive(false);
             }
         }       
     }
