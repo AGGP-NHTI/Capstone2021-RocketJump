@@ -10,12 +10,18 @@ public class ServerSlotScript : MonoBehaviour
 {
     public serverInfo_SO info;
     public TextMeshProUGUI serverName;
+    public GameObject characterSelect;
+    public GameObject lobby;
 
     public void Start()
     {
+
         if(info != null)
         {
             serverName.text = info.serverName;
+
+            lobby = transform.GetComponentInParent<LobbyManager>().gameObject;
+            characterSelect = transform.parent.Find("CharacterSelect").gameObject;
         }
         
         NetworkingManager.Singleton.OnClientConnectedCallback += (obj) =>
@@ -36,6 +42,12 @@ public class ServerSlotScript : MonoBehaviour
     public void confirmSelection()
     {
 
+        characterSelect.SetActive(true);
+        lobby.SetActive(false);
+        
+
+
+        /*
         NetworkingManager.Singleton.gameObject.GetComponent<UnetTransport>().ConnectAddress = info.connectAddress;
 
         int i;
@@ -51,6 +63,7 @@ public class ServerSlotScript : MonoBehaviour
 
 
         StartCoroutine(TaskStatus(NetworkingManager.Singleton.StartClient()));
+        */
     }
 
     IEnumerator TaskStatus(MLAPI.Transports.Tasks.SocketTasks tasks)
