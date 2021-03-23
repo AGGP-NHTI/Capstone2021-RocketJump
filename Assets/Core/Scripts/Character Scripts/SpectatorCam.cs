@@ -69,7 +69,7 @@ public class SpectatorCam : Pawn
                 GameObject UI =  Instantiate(characterSelectPrefab);
                 CharacterSelection charSelect = UI.GetComponent<CharacterSelection>();
 
-                charSelect.pc = (Player_Controller)controller;
+                //charSelect.pc = (Player_Controller)controller;
 
                 Cursor.lockState = CursorLockMode.None;
                 gameObject.SetActive(false);

@@ -21,7 +21,7 @@ public class ServerSlotScript : MonoBehaviour
             serverName.text = info.serverName;
 
             lobby = transform.GetComponentInParent<LobbyManager>().gameObject;
-            characterSelect = transform.parent.Find("CharacterSelect").gameObject;
+            characterSelect = transform.GetComponentInParent<Canvas>().gameObject.GetComponentInChildren<CharacterSelection>(true).gameObject;
         }
         
         NetworkingManager.Singleton.OnClientConnectedCallback += (obj) =>
