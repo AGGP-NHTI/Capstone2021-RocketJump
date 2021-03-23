@@ -40,7 +40,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.GetInt("InvertHorizontal", 1);
         PlayerPrefs.GetInt("Invertvertical", 1);
 
-        volume.value = PlayerPrefs.GetFloat("Volume", 20f);
+        volume.value = PlayerPrefs.GetFloat("Volume", 0.5f);
         MS.value = PlayerPrefs.GetFloat("MouseSensitivity", 20f);
 
         if (main != null)
@@ -134,6 +134,7 @@ public class MainMenu : MonoBehaviour
     public void ChangeVolume()
     {
         PlayerPrefs.SetFloat("Volume", volume.value);
+        source.volume = volume.value;
     }
 
     public void ChangeMS()
