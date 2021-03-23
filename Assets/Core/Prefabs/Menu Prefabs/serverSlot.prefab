@@ -359,7 +359,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info: {fileID: 0}
   serverName: {fileID: 4421714375143603659}
-  selectionDropdown: {fileID: 0}
+  characterSelect: {fileID: 0}
+  lobby: {fileID: 0}
 --- !u!1 &7237776045340787915
 GameObject:
   m_ObjectHideFlags: 0

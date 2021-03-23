@@ -33,6 +33,9 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI SenNum;
     public TextMeshProUGUI VolNum;
 
+    [Header("Player Relevant")]
+    public GameObject playerInformationCarrier;
+
     void Start()
     {       
         PlayerPrefs.GetFloat("Volume", volume.maxValue / 2);
@@ -65,6 +68,15 @@ public class MainMenu : MonoBehaviour
                 vertical.isOn = false;
             }
         }
+
+        if(GameObject.FindGameObjectWithTag("PlayerInformationTag"))
+        {
+            Destroy(GameObject.FindGameObjectWithTag("PlayerInformationTag"));
+        }
+
+        playerInformationCarrier = Instantiate(playerInformationCarrier);
+        playerInformationCarrier.name = "PlayerInformation";
+        DontDestroyOnLoad(playerInformationCarrier);
     }
 
     private void Update()

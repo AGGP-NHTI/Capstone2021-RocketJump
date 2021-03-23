@@ -42,12 +42,17 @@ public class ServerSlotScript : MonoBehaviour
     public void confirmSelection()
     {
 
+        //characterSelect.GetComponent<CharacterSelection>().serverSlotReference = this;
+        characterSelect.GetComponent<CharacterSelection>().connectionInfo = info;
         characterSelect.SetActive(true);
         lobby.SetActive(false);
+
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().enabled = false;
         
+    }
 
-
-        /*
+    public void connectToServer()
+    {
         NetworkingManager.Singleton.gameObject.GetComponent<UnetTransport>().ConnectAddress = info.connectAddress;
 
         int i;
@@ -63,8 +68,8 @@ public class ServerSlotScript : MonoBehaviour
 
 
         StartCoroutine(TaskStatus(NetworkingManager.Singleton.StartClient()));
-        */
     }
+
 
     IEnumerator TaskStatus(MLAPI.Transports.Tasks.SocketTasks tasks)
     {
