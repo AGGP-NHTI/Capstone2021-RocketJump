@@ -6,21 +6,34 @@ using MLAPI.Messaging;
 
 public class Player_Controller : Controller
 {
-    public GameObject PlayerPawn;
 
+    public GameObject SpectatorPawn = null;
+
+    public GameObject PlayerPawn = null;
+    public bool PlayerSpawned = false;
     private void Start()
     {
-        SpawnPlayerPawn();
+        SpawnSpectatorPawn();
+
+        
     }
 
     private void Update()
     {
-        Debug.Log("IS LOCAL PLAYER ON CONTROLLER: " + IsLocalPlayer);
         if (!IsLocalPlayer)
         { return; }
 
         if (!ControlledPawn)
         { return; }
+
+        if (PlayerPawn != null && PlayerSpawned == false)
+        {
+            SpawnPlayerPawn();
+            PlayerSpawned = true;
+
+            SpectatorPawn.SetActive(false);
+        }
+        
     }
 
     public void SpawnPlayerPawn()
@@ -30,19 +43,41 @@ public class Player_Controller : Controller
             InvokeServerRpc(Server_SpawnPlayerPawn);
         }
     }
-    
+
     [ServerRPC(RequireOwnership = false)]
     public void Server_SpawnPlayerPawn()
     {
         Vector3 location = Vector3.right * NetworkId;
         location += Vector3.up * 10;
         GameObject playerPawn = Instantiate(PlayerPawn, location, Quaternion.identity);
-        PlayerPawn.GetComponent<Player_Movement_Controller>().playerController = this;
         NetworkedObject netObj = playerPawn.GetComponent<NetworkedObject>();
-        //netObj.Spawn();
+
         netObj.SpawnWithOwnership(OwnerClientId);
-        
+
 
         PossessPawn(playerPawn, netObj.OwnerClientId, netObj.NetworkId);
     }
+
+    public void SpawnSpectatorPawn()
+    {
+        if (IsOwner)
+        {
+            InvokeServerRpc(Server_SpawnSpectatorPawn);
+        }
+    }
+
+    [ServerRPC(RequireOwnership = false)]
+    public void Server_SpawnSpectatorPawn()
+    {
+        Vector3 location = Vector3.right * NetworkId;
+        location += Vector3.up * 10;
+        GameObject specPawn = Instantiate(SpectatorPawn, location, Quaternion.identity);
+        NetworkedObject netObj = specPawn.GetComponent<NetworkedObject>();
+
+        netObj.SpawnWithOwnership(OwnerClientId);
+
+
+        PossessPawn(specPawn, netObj.OwnerClientId, netObj.NetworkId);
+    }
+
 }

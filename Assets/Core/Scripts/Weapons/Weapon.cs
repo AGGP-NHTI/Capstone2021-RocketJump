@@ -7,7 +7,7 @@ using TMPro;
 using MLAPI;
 using MLAPI.Messaging;
 
-public class Weapon : Actor
+public class Weapon : Pawn
 {
     protected GameObject UI;
     protected UIManager UIMan;
@@ -45,21 +45,21 @@ public class Weapon : Actor
         setUIObj();
         setAmmoReference();
 
-        if (playerReference.IsLocalPlayer)
-        {
-            currentClip = clipSize;
-        }
+        //if (controller.IsLocalPlayer)
+        //{
+        //    currentClip = clipSize;
+        //}
     }
 
     private void OnEnable()
     {
-        if (playerReference && playerReference.IsLocalPlayer)
-        {
-            Debug.Log("SETTING UI-----");
+        //if (controller.IsLocalPlayer)
+        //{
+        //    Debug.Log("SETTING UI-----");
 
-            AmmoReference.SetMagazine(currentClip);
-            AmmoReference.SetReserve(clipSize);
-        }
+        //    AmmoReference.SetMagazine(currentClip);
+        //    AmmoReference.SetReserve(clipSize);
+        //}
     }
     protected virtual void Update()
     {
@@ -86,7 +86,7 @@ public class Weapon : Actor
             InvokeServerRpc(spawnNetworkedProjectile);
         }
 
-        if (playerReference.IsLocalPlayer)
+        if (controller.IsLocalPlayer)
         {
             currentClip--;
             AmmoReference.SetMagazine(currentClip);
@@ -154,7 +154,7 @@ public class Weapon : Actor
         Player_Movement_Controller player = transform.root.GetComponent<Player_Movement_Controller>();
         if (player)
         {
-            if (!player.IsLocalPlayer) { Destroy(this); }
+            //if (!controller.IsLocalPlayer) { Destroy(this); }
             playerReference = player;
         }
         
