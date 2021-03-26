@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
     public GameObject credits;
     public GameObject lobby;
     public GameObject all;
+    public GameObject characterSelect;
 
     [Header("Loading Screen")]
     public GameObject LoadingScreen;
@@ -32,6 +33,9 @@ public class MainMenu : MonoBehaviour
 
     public TextMeshProUGUI SenNum;
     public TextMeshProUGUI VolNum;
+
+    [Header("Player Relevant")]
+    public GameObject playerInformationCarrier;
 
     void Start()
     {       
@@ -65,6 +69,15 @@ public class MainMenu : MonoBehaviour
                 vertical.isOn = false;
             }
         }
+
+        if(GameObject.FindGameObjectWithTag("PlayerInformationTag"))
+        {
+            Destroy(GameObject.FindGameObjectWithTag("PlayerInformationTag"));
+        }
+
+        playerInformationCarrier = Instantiate(playerInformationCarrier);
+        playerInformationCarrier.name = "PlayerInformation";
+        DontDestroyOnLoad(playerInformationCarrier);
     }
 
     private void Update()
@@ -171,9 +184,16 @@ public class MainMenu : MonoBehaviour
 
     }
 
-    public void HostGame()
+    public void HostGame(int mode) // 1 = race, 2 = payload
     {
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
+
+        characterSelect.GetComponent<CharacterSelection>().isStartingAsHost = true;
+
+        games.SetActive(false);
+        characterSelect.SetActive(true);
+
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().enabled = false;
     }
 
     public void ToTutorial()

@@ -17,7 +17,27 @@ public class ButtonPannel : MonoBehaviour
 
     void Start()
     {
-		NetworkingManager.Singleton.OnClientConnectedCallback += (obj) =>
+
+        var getPlayerInfo = GameObject.Find("PlayerInformation");
+        if (getPlayerInfo)
+        {
+
+            print("Player Information Fetched");
+
+            var playerInfo = getPlayerInfo.GetComponent<PlayerInformationCarrier>().playerInfo;
+
+            if(playerInfo.isHosting)
+            {
+                StartasHost();
+            }
+
+        }
+        else
+        {
+            print("Player Information Not Found");
+        }
+
+        NetworkingManager.Singleton.OnClientConnectedCallback += (obj) =>
 		{
 			if (NetworkingManager.Singleton.IsClient)
 			{
