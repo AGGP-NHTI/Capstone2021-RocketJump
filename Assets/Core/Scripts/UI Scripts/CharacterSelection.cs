@@ -13,13 +13,22 @@ public class CharacterSelection : NetworkedBehaviour
     public SpawnPointManager sm;
     public MainMenu mainMenu;
     public serverInfo_SO connectionInfo;
+    public bool isHost = false;
 
     public void choice(int c)
     {
         //cam.SetActive(false);
         //InvokeServerRpc(Selection, c);
         mainMenu.playerInformationCarrier.GetComponent<PlayerInformationCarrier>().playerInfo.playerCharacter = c;
-        connectToServer();
+
+        if(IsHost)
+        {
+            hostServer();
+        }
+        else
+        {
+            connectToServer();
+        }
     }
 
     public void connectToServer()
@@ -39,6 +48,11 @@ public class CharacterSelection : NetworkedBehaviour
 
 
         StartCoroutine(TaskStatus(NetworkingManager.Singleton.StartClient()));
+    }
+
+    public void hostServer()
+    {
+
     }
 
 

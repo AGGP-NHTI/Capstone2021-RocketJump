@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
     public GameObject credits;
     public GameObject lobby;
     public GameObject all;
+    public GameObject characterSelect;
 
     [Header("Loading Screen")]
     public GameObject LoadingScreen;
@@ -183,9 +184,16 @@ public class MainMenu : MonoBehaviour
 
     }
 
-    public void HostGame()
+    public void HostGame(int mode) // 1 = race, 2 = payload
     {
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
+
+        characterSelect.GetComponent<CharacterSelection>().isHost = true;
+
+        games.SetActive(false);
+        characterSelect.SetActive(true);
+
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().enabled = false;
     }
 
     public void ToTutorial()
