@@ -21362,7 +21362,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh74344
+  m_Name: pb_Mesh41148
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21748,6 +21748,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3235445507439764840, guid: 1b4c678489acbda4fafd33fd93b14b86,
         type: 3}
+    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
+        type: 3}
+      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[14].PlayerPrefab
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5214381284232303377, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
       propertyPath: ConnectAddress
@@ -26434,7 +26439,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh73964
+  m_Name: pb_Mesh41120
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
