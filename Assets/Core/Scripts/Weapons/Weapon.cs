@@ -11,7 +11,7 @@ public class Weapon : Pawn
 {
     protected GameObject UI;
     protected UIManager UIMan;
-    protected Player_Movement_Controller playerReference;
+    //protected Player_Movement_Controller playerReference;
     protected Ammo_UI_Script AmmoReference;
 
     protected bool isCooling = false;
@@ -40,10 +40,10 @@ public class Weapon : Pawn
     protected virtual void Start()
     {
         //Debug.Log("Start--");
-        setPlayerReference();
+        //setPlayerReference();
         
-        setUIObj();
-        setAmmoReference();
+        //setUIObj();
+        //setAmmoReference();
 
         //if (controller.IsLocalPlayer)
         //{
@@ -116,7 +116,7 @@ public class Weapon : Pawn
             Projectile projectile = bullet.GetComponent<Projectile>();
             if (projectile)
             {
-                projectile.setPlayer(playerReference);
+                //projectile.setPlayer(playerReference);
             }
         }
     }
@@ -145,18 +145,18 @@ public class Weapon : Pawn
 
     protected void KnockBack(Vector3 direction, float magnitude)
     {
-        playerReference.AddForce(direction.normalized * magnitude);    
+        //playerReference.AddForce(direction.normalized * magnitude);    
     }
 
 
     void setPlayerReference()
     {
-        Player_Movement_Controller player = transform.root.GetComponent<Player_Movement_Controller>();
-        if (player)
-        {
-            //if (!controller.IsLocalPlayer) { Destroy(this); }
-            playerReference = player;
-        }
+        //Player_Movement_Controller player = transform.root.GetComponent<Player_Movement_Controller>();
+        //if (player)
+        //{
+        //    //if (!controller.IsLocalPlayer) { Destroy(this); }
+        //    playerReference = player;
+        //}
         
     }
     void setAmmoReference()
@@ -169,8 +169,8 @@ public class Weapon : Pawn
     }
     void setUIObj()
     {
-        UI = playerReference.UI;
-        if (UI) { UIMan = UI.GetComponent<UIManager>(); }
+        //UI = playerReference.UI;
+        //if (UI) { UIMan = UI.GetComponent<UIManager>(); }
     }
 
 }
