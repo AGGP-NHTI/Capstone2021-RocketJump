@@ -16,7 +16,7 @@ public class Pawn : Actor
         OnPossess();
 
         NetworkedObject netObj = GetComponent<NetworkedObject>();
-        if (netObj)
+        if(netObj)
         {
             netObj.ChangeOwnership(c.OwnerClientId);
         }
@@ -26,8 +26,6 @@ public class Pawn : Actor
             this.enabled = false;
         }
     }
-
-    
 
     public virtual void OnPossess()
     {

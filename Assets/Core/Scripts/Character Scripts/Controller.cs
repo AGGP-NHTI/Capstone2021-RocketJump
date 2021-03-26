@@ -40,10 +40,7 @@ public class Controller : NetworkedBehaviour
     public void PossessPawn(GameObject p, ulong clientID, ulong NetID)
     {
         PossessPawn(p);
-        //InvokeClientRpcOnClient(Client_PossessPawn, clientID, NetID);
-
-
-
+        InvokeClientRpcOnClient(Client_PossessPawn, clientID, NetID);
     }
 
     [ClientRPC]

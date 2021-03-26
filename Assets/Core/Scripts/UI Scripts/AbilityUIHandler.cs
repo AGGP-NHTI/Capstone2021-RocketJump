@@ -21,6 +21,7 @@ public class AbilityUIHandler : MonoBehaviour
     private bool isReady; // ability ready to be used (this will most likely be handled in player script, this is here for testing purposes)
     public bool useAbility; // For testing purposes, trigger to use ability if ready;
     //
+    public GameObject parteffect;
 
     void Start()
     {
@@ -31,7 +32,8 @@ public class AbilityUIHandler : MonoBehaviour
         fade = 0;
         fadeEnd = 1;
         colorSwap = true;
-}
+        parteffect.SetActive(false);
+    }
 
     
     void Update()
@@ -73,6 +75,7 @@ public class AbilityUIHandler : MonoBehaviour
                 charge = 0;
                 isReady = false;
                 Debug.Log("ability would be, in theory, used now");
+                parteffect.SetActive(false);
             }
             else
             {
@@ -91,6 +94,10 @@ public class AbilityUIHandler : MonoBehaviour
         else
         {
             isReady = true;
+            if (!parteffect.activeInHierarchy)
+            {
+                parteffect.SetActive(true);
+            }
         }
 
 
