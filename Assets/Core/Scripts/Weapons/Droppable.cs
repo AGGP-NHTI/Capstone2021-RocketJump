@@ -21,15 +21,16 @@ public class Droppable : Weapon
         
     }
 
-    public override void Fire()
+    public override bool Fire()
     {
         if (isDropped)
         {
-            base.Fire();
+            return base.Fire();
         }
         else 
         {
             dropItem();
+            return true;
         }
     }
 

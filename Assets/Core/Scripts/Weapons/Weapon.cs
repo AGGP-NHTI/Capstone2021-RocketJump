@@ -7,12 +7,12 @@ using TMPro;
 using MLAPI;
 using MLAPI.Messaging;
 
-public class Weapon : Pawn
+public class Weapon : Actor
 {
-    protected GameObject UI;
-    protected UIManager UIMan;
-    //protected Player_Movement_Controller playerReference;
-    protected Ammo_UI_Script AmmoReference;
+    
+
+
+   
 
     protected bool isCooling = false;
 
@@ -63,19 +63,12 @@ public class Weapon : Pawn
     }
     protected virtual void Update()
     {
-        if (isRapidFire)
-        {
-            if (Input.GetMouseButton(0)) { Fire(); }
-        }
-        else
-        {
-            if (Input.GetMouseButtonDown(0)) { Fire(); }
-        }
+        
     }
 
-    public virtual void Fire() 
+    public virtual bool Fire() 
     {
-        if (isCooling) { return; }
+        if (isCooling) { return false; }
 
         if (IsServer)
         {
@@ -85,18 +78,12 @@ public class Weapon : Pawn
         {
             InvokeServerRpc(spawnNetworkedProjectile);
         }
+        currentClip--;
 
-        if (controller.IsLocalPlayer)
-        {
-            currentClip--;
-            AmmoReference.SetMagazine(currentClip);
-        }
+        return true;
     }
 
-    public virtual void AltFire() 
-    { 
-        
-    }
+
 
     [ServerRPC(RequireOwnership = false)]
     public void spawnNetworkedProjectile()
@@ -121,12 +108,6 @@ public class Weapon : Pawn
         }
     }
 
-    
-    
-    
-
-    
-
     protected IEnumerator waitFireRateTimer(float input)
     {
         float delay = 1 / input;
@@ -137,40 +118,8 @@ public class Weapon : Pawn
 
     protected Vector3 BulletSpread(Vector3 input)
     {
-        input += Random.insideUnitSphere * bulletSpread/100;
+        input += Random.insideUnitSphere * bulletSpread / 100;
         return input.normalized;
-    }
-
-
-
-    protected void KnockBack(Vector3 direction, float magnitude)
-    {
-        //playerReference.AddForce(direction.normalized * magnitude);    
-    }
-
-
-    void setPlayerReference()
-    {
-        //Player_Movement_Controller player = transform.root.GetComponent<Player_Movement_Controller>();
-        //if (player)
-        //{
-        //    //if (!controller.IsLocalPlayer) { Destroy(this); }
-        //    playerReference = player;
-        //}
-        
-    }
-    void setAmmoReference()
-    {
-        Ammo_UI_Script ammo = UI.transform.GetComponentInChildren<Ammo_UI_Script>();
-        if (ammo)
-        {
-            AmmoReference = ammo;
-        }
-    }
-    void setUIObj()
-    {
-        //UI = playerReference.UI;
-        //if (UI) { UIMan = UI.GetComponent<UIManager>(); }
     }
 
 }

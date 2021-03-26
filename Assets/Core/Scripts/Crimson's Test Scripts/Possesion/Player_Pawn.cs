@@ -4,37 +4,11 @@ using UnityEngine;
 
 public class Player_Pawn : Pawn
 {
-    Pawn[] pawns;
+    public Player_Movement_Controller movementControl;
+    public Inventory_Manager inventoryMan;
 
-    // Start is called before the first frame update
-    void Start()
+    public bool IsLocal()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public override void OnPossess()
-    {
-        base.OnPossess();
-
-        pawns = GetComponents<Pawn>();
-
-        foreach (Pawn p in pawns)
-        {
-            p.controller = controller;
-        }
-    }
-
-    private void OnDisable()
-    {
-        foreach (Pawn p in pawns)
-        {
-            p.enabled = false;   
-        }
+        return controller.IsLocalPlayer;
     }
 }

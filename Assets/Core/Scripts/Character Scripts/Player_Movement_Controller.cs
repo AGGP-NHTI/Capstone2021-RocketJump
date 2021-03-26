@@ -5,10 +5,10 @@ using MLAPI;
 using MLAPI.Messaging;
 
 [RequireComponent(typeof(CharacterController))]
-public class Player_Movement_Controller : Pawn
+public class Player_Movement_Controller : NetworkedBehaviour
 {
-	public Player_Controller playerController;
-	public Transform eyes;
+	public Player_Pawn playerPawn;
+	
 
 	[Header("Character Traits")]
 	public float groundAcceleration = 20;
@@ -64,46 +64,43 @@ public class Player_Movement_Controller : Pawn
 
 	private void Start()
 	{
-
-        //CONTROLLER STUFF
-        //SpawnPlayerPawn();
-
-        //giveItem(startingTest);
-
-        if (controller.IsLocalPlayer)
+        if (playerPawn.IsLocal())
         {
             setLocalPlayer();
 			setCamera();
 			setUI();
-			
 
 
-        }
+			Cursor.lockState = CursorLockMode.Locked;
+
+
+			if (IsServer)
+			{
+				setTrack();
+				//setPositionManager();
+			}
+			else if (IsClient)
+			{
+				loadPlayer = true;
+				InvokeServerRpc(clientAddPlayer, gameObject);
+			}
+		}
         else
         {
             this.enabled = false;
         }
 
-        Cursor.lockState = CursorLockMode.Locked;
-	
-
-		if (IsHost)
-		{
-			setTrack();
-			//setPositionManager();
-		}
-		else if (IsClient)
-		{
-			loadPlayer = true;
-			InvokeServerRpc(clientAddPlayer, gameObject);
-		}
+        
 
 	}
 
 	void Update()
     {
-	
-		
+
+		if (!playerPawn.IsLocal())
+		{
+			return;
+		}
 
 			//UI.GetComponent<UIManager>().sendMessage(("Speed: " + getHorizontalVelocity()), new Vector3(0,-100,0), 0.1f);
 
@@ -199,7 +196,7 @@ public class Player_Movement_Controller : Pawn
 
 		// apply rotation
 		transform.localEulerAngles = bodyRot;
-		eyes.transform.localEulerAngles = eyeRot;
+		playerPawn.eyes.transform.localEulerAngles = eyeRot;
 
 		// apply motion
 		cc.Move(externalForce * Time.deltaTime + transform.TransformDirection(new Vector3(movement.x, -downForce, movement.y) * Time.deltaTime));
@@ -279,7 +276,7 @@ public class Player_Movement_Controller : Pawn
 	}
 	public float getLocalForwardVelocity()
 	{
-		return Mathf.Abs(eyes.InverseTransformDirection(cc.velocity).z);
+		return Mathf.Abs(playerPawn.eyes.InverseTransformDirection(cc.velocity).z);
 	}
 
 	public void giveItem(GameObject item)
@@ -306,6 +303,7 @@ public class Player_Movement_Controller : Pawn
 		}
 	}
 
+	//Move to player_pawn class
 	public void setCamera()
 	{
 		localCamera = Instantiate(cameraPrefab, localPlayer.transform);
@@ -313,7 +311,7 @@ public class Player_Movement_Controller : Pawn
 		CameraManager manager = localCamera.GetComponent<CameraManager>();
 		if (cameraTransform)
 		{
-			cameraTransform.target = eyes;
+			cameraTransform.target = playerPawn.eyes;
 		}
 		if (manager)
 		{
@@ -321,6 +319,7 @@ public class Player_Movement_Controller : Pawn
 		}
 	}
 
+	//Move to player_Pawn class
 	public void setLocalPlayer()
 	{
 		localPlayer = new GameObject();

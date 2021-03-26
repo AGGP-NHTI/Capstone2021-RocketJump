@@ -4,11 +4,13 @@ using UnityEngine;
 using MLAPI;
 using MLAPI.Messaging;
 
-public class Inventory_Manager : Pawn
+public class Inventory_Manager : NetworkedBehaviour
 {
-    Player_Movement_Controller player = null;
+    public Player_Pawn playerPawn;
 
-
+    protected GameObject UI;
+    protected UIManager UIMan;
+    protected Ammo_UI_Script AmmoReference;
 
 
 
@@ -20,26 +22,28 @@ public class Inventory_Manager : Pawn
     public GameObject altWeaponPrefab;
     public GameObject testPowerUpWeaponPrefab;
 
-    GameObject primeWeapon = null;
-    GameObject altWeapon = null;
+    public Weapon currentWeapon = null;
+
+    Weapon primeWeapon = null;
+    Weapon altWeapon = null;
 
     //[HideInInspector]
-    public GameObject powerUpWeapon;
+    public Weapon powerUpWeapon;
 
     private void Awake()
     {
-        player = gameObject.GetComponent<Player_Movement_Controller>() ?? gameObject.AddComponent<Player_Movement_Controller>();
+        
     }
 
     private void Start()
     {
-        
+ 
         
     }
 
     private void Update()
     {
-        if (player.controller)
+        if (playerPawn.controller)
         {
            spawnWeapons();
         }
@@ -55,8 +59,40 @@ public class Inventory_Manager : Pawn
         {
             isHoldingPrime = !isHoldingPrime;
         }
+
+        if (playerPawn.IsLocal() && currentWeapon)
+        {
+            FireInput();
+        }
     }
 
+    void FireInput()
+    {
+        if (currentWeapon.isRapidFire)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                Fire();
+            }
+        }
+        else
+        {
+            if (Input.GetMouseButtonDown(0)) 
+            {
+                Fire();
+            }
+        }
+    }
+    void Fire()
+    {
+        if (currentWeapon.Fire())
+        {
+            if (currentWeapon is Guns gun)
+            {
+                //playerPawn.movementControl.ApplyKnockback(gun.knockBackForce);
+            }
+        }
+    }
     void spawnWeapons()
     {
         if(!primeWeapon)
@@ -76,6 +112,8 @@ public class Inventory_Manager : Pawn
         {
             InvokeServerRpc(networkSpawnPrimeWeapon, weaponPrefab);
         }
+
+        currentWeapon = primeWeapon;
 
     }
     void spawnAltWeapon(GameObject weaponPrefab)
@@ -107,40 +145,43 @@ public class Inventory_Manager : Pawn
     void networkSpawnPrimeWeapon(GameObject weaponPrefab)
     {
         
-        primeWeapon = NetSpawn(weaponPrefab, Vector3.zero, Quaternion.identity);
+        primeWeapon = playerPawn.NetSpawn(weaponPrefab, Vector3.zero, Quaternion.identity).GetComponent<Weapon>();
 
-        primeWeapon.transform.parent = player.eyes;
+        primeWeapon.transform.parent = playerPawn.eyes;
         primeWeapon.transform.localPosition = Vector3.zero;
         primeWeapon.transform.rotation = Quaternion.identity;
 
-        controller.PossessPawn(primeWeapon);
+        playerPawn.controller.PossessPawn(primeWeapon.gameObject);
         
     }
     [ServerRPC(RequireOwnership = false)]
     void networkSpawnAltWeapon(GameObject weaponPrefab)
     {
-        altWeapon = NetSpawn(weaponPrefab, Vector3.zero, Quaternion.identity);
+        altWeapon = playerPawn.NetSpawn(weaponPrefab, Vector3.zero, Quaternion.identity).GetComponent<Weapon>();
 
-        altWeapon.transform.parent = player.eyes;
+        altWeapon.transform.parent = playerPawn.eyes;
         altWeapon.transform.localPosition = Vector3.zero;
         altWeapon.transform.rotation = Quaternion.identity;
 
-        controller.PossessPawn(altWeapon);
+        playerPawn.controller.PossessPawn(altWeapon.gameObject);
     }
     [ServerRPC(RequireOwnership = false)]
     void networkSpawnPowerWeapon(GameObject weaponPrefab)
     {
-        powerUpWeapon = NetSpawn(weaponPrefab, Vector3.zero, Quaternion.identity);
+        powerUpWeapon = playerPawn.NetSpawn(weaponPrefab, Vector3.zero, Quaternion.identity).GetComponent<Weapon>();
 
-        powerUpWeapon.transform.parent = player.eyes;
+        powerUpWeapon.transform.parent = playerPawn.eyes;
         powerUpWeapon.transform.localPosition = Vector3.zero;
         powerUpWeapon.transform.rotation = Quaternion.identity;
+
+        playerPawn.controller.PossessPawn(powerUpWeapon.gameObject);
+
     }
 
 
     void checkPowerUpWeapon()
     {
-        if (powerUpWeapon && powerUpWeapon.transform.parent != player.eyes)
+        if (powerUpWeapon && powerUpWeapon.transform.parent != playerPawn.eyes)
         {
             powerUpWeapon = null; 
         }
@@ -150,21 +191,27 @@ public class Inventory_Manager : Pawn
 
         if (powerUpWeapon && primeWeapon && altWeapon)
         {
-            powerUpWeapon.SetActive(true);
-            primeWeapon.SetActive(false);
-            altWeapon.SetActive(false);
+            currentWeapon = powerUpWeapon;
+
+            powerUpWeapon.gameObject.SetActive(true);
+            primeWeapon.gameObject.SetActive(false);
+            altWeapon.gameObject.SetActive(false);
         }
         else
         {
             if (isHoldingPrime && primeWeapon && altWeapon)
             {
-                primeWeapon.SetActive(true);
-                altWeapon.SetActive(false);
+                currentWeapon = primeWeapon;
+
+                primeWeapon.gameObject.SetActive(true);
+                altWeapon.gameObject.SetActive(false);
             }
             else if (primeWeapon && altWeapon)
             {
-                altWeapon.SetActive(true);
-                primeWeapon.SetActive(false);
+                currentWeapon = altWeapon;
+
+                altWeapon.gameObject.SetActive(true);
+                primeWeapon.gameObject.SetActive(false);
             }
         }
 
@@ -175,6 +222,14 @@ public class Inventory_Manager : Pawn
         spawnPowerWeapon(item);
     }
 
+    void setAmmoReference()
+    {
+        Ammo_UI_Script ammo = UI.transform.GetComponentInChildren<Ammo_UI_Script>();
+        if (ammo)
+        {
+            AmmoReference = ammo;
+        }
+    }
 
     [ServerRPC(RequireOwnership = false)]
     public void Server_SpawnPlayerPrimeWeapon(GameObject weapon, Transform parent)
@@ -189,7 +244,7 @@ public class Inventory_Manager : Pawn
         netObj.SpawnWithOwnership(OwnerClientId);
 
 
-        player.controller.PossessPawn(weaponPawn, netObj.OwnerClientId, netObj.NetworkId);
+        playerPawn.controller.PossessPawn(weaponPawn, netObj.OwnerClientId, netObj.NetworkId);
 
     }
 }

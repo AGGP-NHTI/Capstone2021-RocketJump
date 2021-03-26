@@ -98,6 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7449abcbd35184747ad26b7c329c2879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsActive: 1
+  IgnoreDamage: 0
+  controller: {fileID: 0}
+  eyes: {fileID: 3298075805582164848}
 --- !u!114 &3298075806896282396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,11 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8315cfa41651c9b4084e3c0fc0ecf176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsActive: 1
-  IgnoreDamage: 0
-  controller: {fileID: 0}
-  playerController: {fileID: 0}
-  eyes: {fileID: 3298075805582164848}
+  playerPawn: {fileID: 8691181184349576725}
   groundAcceleration: 20
   groundDeceleration: 15
   airAcceleration: 5
@@ -143,9 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e13129d35144da54296f299122511cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsActive: 1
-  IgnoreDamage: 0
-  controller: {fileID: 0}
+  playerPawn: {fileID: 8691181184349576725}
   startingWeaponPrefab: {fileID: 4205752912056178508, guid: 5bcff3bd1819c5042a0cf7570c1704da,
     type: 3}
   altWeaponPrefab: {fileID: 6977513548457193487, guid: 4bb857ebe0f92a64a96ef26c67e75c47,

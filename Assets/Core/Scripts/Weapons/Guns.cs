@@ -24,17 +24,18 @@ public class Guns : Weapon
             reload();
         }
     }
-    public override void Fire()
+    public override bool Fire()
     {
-        if (skipFire()) return;
+        if (skipFire()) return false;
         
-        base.Fire();
+        bool fireSuccess = base.Fire();
 
-        //pushes the player back 
-        KnockBack(-transform.parent.forward, knockBackForce);
+        
 
         //pauses for firerate cooldown
         waitForFireRate();
+
+        return fireSuccess;
     }
     public virtual bool clipEmpty()
     {
@@ -62,26 +63,26 @@ public class Guns : Weapon
         yield return new WaitForSeconds(input);
         isReloading = false;
         currentClip = clipSize;
-        AmmoReference.SetMagazine(currentClip);
+        
     }
 
     bool skipFire()
     {
-        if (isReloading) 
-        {
-            UIMan.sendMessage("Reloading...", new Vector3(0, -100, 0));
-            return true;
-        }
-        if (clipEmpty()) 
-        {
-            UIMan.sendMessage("Press \'" + reloadBinding + "\' to reload your weapon.", new Vector3(0, -100, 0));
-            return true;
-        }
-        if (isCooling)
-        {
-            UIMan.sendMessage("Gun is cooling...",new Vector3(0,-100,0));
-            return true;
-        }
+        //if (isReloading) 
+        //{
+        //    UIMan.sendMessage("Reloading...", new Vector3(0, -100, 0));
+        //    return true;
+        //}
+        //if (clipEmpty()) 
+        //{
+        //    UIMan.sendMessage("Press \'" + reloadBinding + "\' to reload your weapon.", new Vector3(0, -100, 0));
+        //    return true;
+        //}
+        //if (isCooling)
+        //{
+        //    UIMan.sendMessage("Gun is cooling...",new Vector3(0,-100,0));
+        //    return true;
+        //}
 
         if (isReloading || clipEmpty() || isCooling) { return true; }
 
