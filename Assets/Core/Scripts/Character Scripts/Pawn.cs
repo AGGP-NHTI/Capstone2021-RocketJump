@@ -7,6 +7,8 @@ public class Pawn : Actor
 {
     public Controller controller;
 
+    
+
     public void Possesed(Controller c)
     {
         controller = c;
@@ -17,6 +19,11 @@ public class Pawn : Actor
         if(netObj)
         {
             netObj.ChangeOwnership(c.OwnerClientId);
+        }
+
+        if (!controller.IsLocalPlayer)
+        {
+            this.enabled = false;
         }
     }
 
