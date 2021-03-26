@@ -124,6 +124,8 @@ public class Inventory_Manager : Pawn
         altWeapon.transform.parent = player.eyes;
         altWeapon.transform.localPosition = Vector3.zero;
         altWeapon.transform.rotation = Quaternion.identity;
+
+        controller.PossessPawn(altWeapon);
     }
     [ServerRPC(RequireOwnership = false)]
     void networkSpawnPowerWeapon(GameObject weaponPrefab)
