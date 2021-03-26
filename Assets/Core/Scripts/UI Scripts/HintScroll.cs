@@ -7,7 +7,7 @@ using TMPro;
 public class HintScroll : MonoBehaviour
 {
     public Hints source;
-    int current = 0;
+    public int current = 0;
     public TextMeshProUGUI hinttext;
     public TextMeshProUGUI count;
 
@@ -22,7 +22,7 @@ public class HintScroll : MonoBehaviour
         {
             current = 0;
         }
-        count.text = "" + (current + 1);
+        count.text = "#" + (current + 1);
         hinttext.text = source.hints[current];
     }
     public void reset()

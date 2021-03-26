@@ -49,7 +49,7 @@ public class MainMenu : MonoBehaviour
         if (main != null)
         {
             Back();
-
+            source.volume = PlayerPrefs.GetFloat("Volume", volume.maxValue / 2);
             if (PlayerPrefs.GetInt("InvertHorizontal", 1) == -1)
             {
                 horizontal.isOn = true;
