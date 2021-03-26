@@ -12910,7 +12910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6187004778564048217
 Transform:
   m_ObjectHideFlags: 0
@@ -13002,6 +13002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 1
+  controller: {fileID: 0}
   speed: 20
   MouseSen: 300
   freeLookSens: 2.5
@@ -13009,6 +13010,7 @@ MonoBehaviour:
   XRotate: 0
   CharSel: {fileID: 98131267995913776}
   text: {fileID: 5764025716267728173}
+  characterSelectPrefab: {fileID: 0}
 --- !u!81 &6187004778564048220
 AudioListener:
   m_ObjectHideFlags: 0

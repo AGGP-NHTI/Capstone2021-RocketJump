@@ -41,7 +41,7 @@ public class Inventory_Manager : Pawn
     {
         if (player.controller)
         {
-            spawnWeapons();
+           spawnWeapons();
         }
 
         checkPowerUpWeapon();
@@ -61,12 +61,21 @@ public class Inventory_Manager : Pawn
     {
         if(!primeWeapon)
             spawnPrimeWeapon(startingWeaponPrefab);
-        //spawnAltWeapon(altWeaponPrefab);
+
     }
 
     void spawnPrimeWeapon(GameObject weaponPrefab)
     {
-        primeWeapon = Instantiate(weaponPrefab, player.eyes);
+        
+
+        if (IsServer)
+        {
+            networkSpawnPrimeWeapon(weaponPrefab);
+        }
+        else
+        {
+            InvokeServerRpc(networkSpawnPrimeWeapon, weaponPrefab);
+        }
 
     }
     void spawnAltWeapon(GameObject weaponPrefab)
@@ -104,6 +113,7 @@ public class Inventory_Manager : Pawn
         primeWeapon.transform.localPosition = Vector3.zero;
         primeWeapon.transform.rotation = Quaternion.identity;
 
+        controller.PossessPawn(primeWeapon);
         
     }
     [ServerRPC(RequireOwnership = false)]
