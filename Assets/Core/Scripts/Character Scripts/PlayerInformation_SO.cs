@@ -6,7 +6,5 @@ using UnityEngine;
 public class PlayerInformation_SO : ScriptableObject
 {
     public int playerCharacter;
-    /*
-     * 
-     */
+    public bool isHosting;
 }

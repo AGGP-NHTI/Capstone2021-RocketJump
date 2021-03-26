@@ -188,7 +188,7 @@ public class MainMenu : MonoBehaviour
     {
         //SceneManager.LoadScene(1);
 
-        characterSelect.GetComponent<CharacterSelection>().isHost = true;
+        characterSelect.GetComponent<CharacterSelection>().isStartingAsHost = true;
 
         games.SetActive(false);
         characterSelect.SetActive(true);

@@ -4,6 +4,7 @@ using UnityEngine;
 using MLAPI;
 using MLAPI.Messaging;
 using MLAPI.Transports.UNET;
+using UnityEngine.SceneManagement;
 
 public class CharacterSelection : NetworkedBehaviour
 {
@@ -13,7 +14,7 @@ public class CharacterSelection : NetworkedBehaviour
     public SpawnPointManager sm;
     public MainMenu mainMenu;
     public serverInfo_SO connectionInfo;
-    public bool isHost = false;
+    public bool isStartingAsHost;
 
     public void choice(int c)
     {
@@ -21,7 +22,7 @@ public class CharacterSelection : NetworkedBehaviour
         //InvokeServerRpc(Selection, c);
         mainMenu.playerInformationCarrier.GetComponent<PlayerInformationCarrier>().playerInfo.playerCharacter = c;
 
-        if(IsHost)
+        if(isStartingAsHost)
         {
             hostServer();
         }
@@ -33,6 +34,9 @@ public class CharacterSelection : NetworkedBehaviour
 
     public void connectToServer()
     {
+
+        mainMenu.playerInformationCarrier.GetComponent<PlayerInformationCarrier>().playerInfo.isHosting = false;
+
         NetworkingManager.Singleton.gameObject.GetComponent<UnetTransport>().ConnectAddress = connectionInfo.connectAddress;
 
         int i;
@@ -52,7 +56,9 @@ public class CharacterSelection : NetworkedBehaviour
 
     public void hostServer()
     {
+        mainMenu.playerInformationCarrier.GetComponent<PlayerInformationCarrier>().playerInfo.isHosting = true;
 
+        SceneManager.LoadScene(1);
     }
 
 
