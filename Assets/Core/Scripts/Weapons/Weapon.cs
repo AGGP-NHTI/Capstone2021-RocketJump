@@ -142,11 +142,11 @@ public class Weapon : Actor
     }
     void setAmmoReference()
     {
-        Ammo_UI_Script ammo = UI.transform.GetComponentInChildren<Ammo_UI_Script>();
-        if (ammo)
-        {
-            AmmoReference = ammo;
-        }
+        //Ammo_UI_Script ammo = UI.transform.GetComponentInChildren<Ammo_UI_Script>();
+        //if (ammo)
+        //{
+        //    AmmoReference = ammo;
+        //}
     }
     void setUIObj()
     {
