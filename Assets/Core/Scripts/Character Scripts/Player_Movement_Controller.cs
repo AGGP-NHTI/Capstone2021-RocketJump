@@ -75,6 +75,9 @@ public class Player_Movement_Controller : Pawn
             setLocalPlayer();
 			setCamera();
 			setUI();
+			
+
+
         }
         else
         {
@@ -87,7 +90,7 @@ public class Player_Movement_Controller : Pawn
 		if (IsHost)
 		{
 			setTrack();
-			setPositionManager();
+			//setPositionManager();
 		}
 		else if (IsClient)
 		{
