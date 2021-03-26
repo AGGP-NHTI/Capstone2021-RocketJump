@@ -13002,13 +13002,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 1
+  controller: {fileID: 0}
   speed: 20
   MouseSen: 300
   freeLookSens: 2.5
   playerBody: {fileID: 6187004777027759585}
   XRotate: 0
-  CharSel: {fileID: 98131267995913776}
-  text: {fileID: 5764025716267728173}
+  CharSel: {fileID: 0}
+  text: {fileID: 0}
+  SpecUI: {fileID: 3422314975974359828}
+  characterSelectPrefab: {fileID: 0}
 --- !u!81 &6187004778564048220
 AudioListener:
   m_ObjectHideFlags: 0
@@ -13538,12 +13541,6 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1c1502222574da4ab252022bf7e3a93, type: 3}
---- !u!1 &98131267995913776 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3206436834134206014, guid: c1c1502222574da4ab252022bf7e3a93,
-    type: 3}
-  m_PrefabInstance: {fileID: 3252492359976183822}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &98131267995913783 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3206436834134206009, guid: c1c1502222574da4ab252022bf7e3a93,

@@ -13,11 +13,15 @@ public class SpectatorCam : Pawn
     public float XRotate = 0f;
     public GameObject CharSel;
     public GameObject text;
+    public Canvas SpecUI;
 
     public GameObject characterSelectPrefab;
     
     void Awake()
     {
+
+        SpecUI.enabled = false;
+
         Debug.Log("awake");
         if (IsLocalPlayer)
         {
@@ -49,6 +53,19 @@ public class SpectatorCam : Pawn
             {
                 this.gameObject.transform.position = s.CamSpawn.transform.position;
             }
+
+            var playerInfo = GameObject.Find("PlayerInformation");
+            if(playerInfo)
+            {
+
+                print("Player Information Fetched");
+
+            }
+            else
+            {
+                print("Player Information Not Found");
+            }
+
         }
         
     }
@@ -66,8 +83,8 @@ public class SpectatorCam : Pawn
                 GetComponent<AudioListener>().enabled = false;
                 text.SetActive(false);
 
-                GameObject UI =  Instantiate(characterSelectPrefab);
-                CharacterSelection charSelect = UI.GetComponent<CharacterSelection>();
+                //GameObject UI =  Instantiate(characterSelectPrefab);
+                //CharacterSelection charSelect = UI.GetComponent<CharacterSelection>();
 
                 //charSelect.pc = (Player_Controller)controller;
 
