@@ -1,0 +1,695 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4298999615368799887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4298999615368799884}
+  - component: {fileID: 4298999615368799882}
+  - component: {fileID: 4298999615368799885}
+  m_Layer: 5
+  m_Name: title (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4298999615368799884
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298999615368799887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.11387, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4298999616550385177}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 24.8, y: 57}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4298999615368799882
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298999615368799887}
+  m_CullTransparentMesh: 0
+--- !u!114 &4298999615368799885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298999615368799887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: '#1'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
+  m_sharedMaterial: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -316.2394, y: -21.470871, z: -314.88992, w: 16.238754}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &4298999615797167283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4298999615797167280}
+  - component: {fileID: 4298999615797167246}
+  - component: {fileID: 4298999615797167281}
+  m_Layer: 5
+  m_Name: hintback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4298999615797167280
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298999615797167283}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4298999616550385177}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4298999615797167246
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298999615797167283}
+  m_CullTransparentMesh: 0
+--- !u!114 &4298999615797167281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298999615797167283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.34117648}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: fa3f63f39599df942a31e298e3361705, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4298999616550385176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4298999616550385177}
+  - component: {fileID: 4298999616550385172}
+  - component: {fileID: 4298999616550385175}
+  - component: {fileID: 4298999616550385174}
+  m_Layer: 5
+  m_Name: hint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4298999616550385177
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298999616550385176}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 15.453737, y: 1.6865, z: 1.6865}
+  m_Children:
+  - {fileID: 4298999615797167280}
+  - {fileID: 4298999616868002817}
+  - {fileID: 4298999616912753275}
+  - {fileID: 4298999615368799884}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -383}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4298999616550385172
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298999616550385176}
+  m_CullTransparentMesh: 0
+--- !u!114 &4298999616550385175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298999616550385176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 79f53d40d27413e4dbf9adee0c8a854a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4298999616550385174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298999616550385176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f630d98d4b45f684b94009ef2dbe25a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hints:
+  - Play the game for a chance to win.
+  - Did you know that you can rocket jump in Rocket Jump Racing? Probably not.
+  - Press whatever key moves you forward to move forward.
+  - Winning is the easist way to win.
+  - Shoot rocket. Jump high. Lose race anyways.
+  - Remember don't try this at home... without an audience.
+  - 'Second-to-last place is actually worse than last place becuase you lost at losing. '
+  - 'Don''t forget:'
+  - There were actually 12 more contestants, but I am under oath to never disclose
+    what happened to them.
+  - Second place is only the first loser. But hey, at least you were first in something
+    right?
+  - The wild Jake can often be seen hunting his natural prey, the Chicken Nugget.
+  - Evan is the reason the Keep-it-clean policy needed to be changed.
+  - It's known that Pineapple-Fungi Hybrids exist, but they don't.
+  - LET IT BE KNOWN THAT FRENCH HORNS ARE ILLEGAL!
+  - Around Ben there is an aura of stupid so powerful, it actually created its own
+    gravity well, pulling in other developers. With nothing left to do, they made
+    a game. I think they called it Rocket Jump Racing or something stupid like that.
+  - BEEEEEEEEEEEEEAAAAAAAAAAAAAAAAAAAANNNNNNNNNNNNNNNNNNSSSSSSSSSSSSSSS!
+  - Anything can be pie if you have the grit, determination, and ability to transmute
+    matter.
+  - Pants are evil, don't trust them.
+  - Nothing lasts forever, aside from the Grand Arbiter Pineapple that is.
+  - Why did the chicken cross the road? To get to the 13 ungaurded tactical nukes
+    apparently.
+  - Having trouble winning? Press Alt-F4 to instantly win the game!
+  - ?sdrawkcab txet siht si yhw
+  - If it doesn't work, it's probably Crimson's fault somehow.
+  - Evan once got mad at a piece of code that he hadn't written yet wasn't working.
+  - Not to insult your intelligence, but your intelligence is dumb.
+  - That moment when you realize you are nothing but text on a screen :(
+  - How long will this take to load? Only time will tell, which it did. It told me
+    to suck it.
+  - There are three things that you can always count on in life; death, taxes, and
+    a wave of dissapointment after Cody sees what the rest of the team has been working
+    on.
+  - If you aren't currently playing Rocket Jump Racing, you are a foolishly fooled
+    foolish fool of tomfoolery foolishness.
+  - At the center of the universe there is but one pudding cup.
+  - It's just you, me, and the beaver holding me at gunpoint.
+  - Ethics are just a recommendation.
+  - I'm just going to remove all the nonessential organs. Your heart, brain, lungs,
+    all the other organs I didn't mention. It's all part of my new weight loss program
+    called "Deathcercise". 100% effectiveness with a 98% fatality rate.
+  - Rocket Jump Racing is the Dark Souls of explosive based racing games.
+  - No longer tested on animals.
+  - Refering to Sasha as "Thicc" will result in 20 years prison time. No Trial.
+  - Never show respect towards people who pronounce gif as gif.
+  - If you get 6 of your friends together, you may only be 7 people, but you have
+    the strength of the entire Mongolian Navy!
+  - Dying sucks. Trust me I've done it before.
+  - Back in the year 2XXX, People's Organization Of Peace unanimously decided to
+    eject the entirety of "Potato Land" into orbit. Ya know, for giggles.
+  - EVAN YOU MORON! THERE'S SUPPOSED TO BE A META JOKE HERE!
+  - '""'
+  - Sometimes I can't spell corectly.
+  - Hah some people are illiterate, lets laugh at them behind their backs.
+  - Hey, between you and me; you should just go play Rocket Jump Racing instead.
+    It's a much better game honestly.
+  - .... --- .-- / -.. .. -.. / - .... . / ...- .. -.- .. -. --. ... / -.-. --- --
+    -- ..- -. .. -.-. .- - . / .-- .. - .... / . .- -.-. .... / --- - .... . .-.
+    ..--.. / ..- ... .. -. --. / --- .-.. -.. / -- --- .-. ... . -.-.--
+  - 1 out of every 10 explosions are named Jeff.
+  - Since I have no concept of time and I'm just text on a screen, you have no idea
+    how fast I'm saying this so... Your game will be done loading...Now! Unless you're
+    on the settings menu. Then you should disregard this message.
+  - Someone replaced the J with an H...
+  - I will pay you 10 bucks to give me 10 bucks right now. Do it, you won't.
+  - Ymzx jsix ymj fwl (5) Thus begins the ARG.
+  - In the Rocket Jump Racing Universe, we use a base 8 counting system and got rid
+    of 1 and 2. This game has been translated for your convenience.
+  - This hint sposored by our sponsor, the sponsor.  Win.
+  - Someone talked about Dictator's eyebrows once.  It's a shame that they decided
+    to skydive without a parachute. Repeatedly.
+  - Wanna play kickball with an atomic bomb?
+  - To people viewing this in settings, play the game already. To those viewing this
+    in the loading screen, we get it, you want to play the game already.
+  - Money can't buy you happiness, but it can buy you 524 copies of this game.
+  - The location for Rocket Jump Racing is determined by throwing a dart at a map
+    of the universe. God help those 17 years ago when the dart landed on a black
+    hole.
+  - The inspiration for this game came from a mac n' cheese recipe I found online.
+  - Named Game of the Year, in one of the infinite alternate realities that is.
+  - Make sure to leave a positive review! or a negative one if you don't mind getting
+    stabbed.
+  - "Subliminal messaging is bad. And now for a random noise: B\u0338\u033D\u033E\u033F\u033D\u035B\u030A\u035B\u035B\u0360\u033D\u0315\u033F\u0310\u032A\u032C\u0329\u0359\u0356\u0349\u0359\u0320\u0320U\u0334\u0314\u0357\u0352\u032EY\u0336\u0309\u0342\u0328\u034E\u0345\u031E\u0359\u0318\u0328\u0353\u032B\u035C\u0330
+    \u0338\u035D\u0357\u0357\u0309\u030C\u0313\u0315\u031B\u0304\u035D\u034A\u030A\u0341\u0307\u0327\u0353R\u0334\u0308\u0340\u0343\u034A\u0318\u0349\u031E\u0347\u032E\u032F\u032A\u0355\u035A\u031EJ\u0335\u0314\u0302\u0305\u031A\u033E\u0305\u0302\u034C\u034A\u0351\u0316\u033C\u0354\u034E\u032F\u033A\u0328\u031C\u035C\u031D\u0323\u0323R\u0335\u0360\u0351\u0306\u034A\u0301\u0308\u034C\u035D\u0343\u031A\u0343\u0349\u0353\u031D\u034D\u032C\u0326
+    \u0334\u030F\u0314\u034B\u033F\u032D\u032B\u0354\u0327\u0355\u0339\u0359\u0345\u0323\u0359\u033B\u0347\u031E\u032E\u0323M\u0336\u0301\u034B\u0306\u0306\u0308\u0314\u0327\u0318\u032C\u031C\u033A\u035A\u031D\u033B\u035C\u0332\u0345\u0348\u0324E\u0335\u0313\u035B\u0360\u031B\u035B\u0301\u034B\u035A\u035C\u031CR\u0337\u0308\u0310\u0308\u0303\u0309\u034B\u0358\u0305\u0307\u0300\u035B\u030D\u0351\u031A\u032C\u033A\u031F\u0319\u0326\u033C\u031E\u0332\u031E\u0347C\u0338\u030E\u030F\u0307\u0305\u035D\u0311\u0358\u0339\u0320\u032B\u0325\u033C\u031C\u032BH\u0334\u033D\u0344\u031E\u032B\u0339\u0322\u032F\u031E\u0326\u0325\u032E\u032C\u032D\u033A\u0333A\u0338\u0313\u0312\u035D\u033E\u0350\u0309\u035B\u034C\u030D\u034D\u0316\u0322\u032C\u034D\u032F\u0316\u0318\u0329\u0318\u0348N\u0337\u035D\u033B\u0349\u0319D\u0338\u0303\u0305\u0344\u0344\u031A\u0341\u0351\u0302\u0302\u030C\u034A\u031A\u034A\u0351\u034A\u0316\u033B\u034E\u035A\u0320I\u0336\u0344\u0314\u0344\u030A\u031A\u0301\u0309\u0309\u0307\u0358\u035D\u0344\u0350\u0352\u0353\u031F\u0332\u032F\u0328\u0356\u0348\u0320\u035A\u0329\u0353\u031E\u0317\u031FS\u0335\u0310\u0346\u033D\u0309\u030C\u033E\u033E\u0350\u033D\u030A\u033E\u0340\u0340\u0355\u0318\u0327\u034D\u035C\u0318\u0355\u035C\u034E\u0339\u031CE\u0336\u0302\u031A\u034B\u0301\u030E\u0313\u030A\u030F\u0343\u030F\u0358\u0343\u0300\u0342\u0355\u034D\u033A\u032E\u0324\u032D\u0359\u032D."
+  - In the first Rocket Jump Racing event, someone had to bring a flame from earth
+    to the planet the event was being held on. Unfortunatly the first planet had
+    an atmosphere of pure propane.
+  - Rocket Jump Racing is often confused for the Rocket Jumping Race, where people
+    jump from rockets and race. Not to the ground mind you, instead they must land
+    and then race to the finish line, with whatever bones they have left.
+  - I've been beyond the edge of the universe. What? You want to know what's out
+    there? Too bad, you didn't invite me to your birthday party so now I'm not telling
+    you.
+  - Execute Hint Number 66!
+  - 2 + 2 = 4, and Explosives + a televised racing event = A pretty good cover-up.
+  - The Finnish Line is pretty cold, which makes sense because it borders between
+    Sweden and Finland. Not to be confused with the finish line that you're racing
+    towards which is anything but cold, since it's highly radioactive.
+  - Ha ha hint #69 ha ha funny number.
+  - What do you do with chemistry puns? You Barium! Actually you get swiftly and
+    thoroughly slapped without mercy.
+  - The word "Lazer" may not be the correct spelling, but lets be fair, it's way
+    cooler to spell it that way.
+  - Did you know you can play this game with voice controls? Try shouting things
+    like "jump", "shoot", and "run" to look like a complete idiot.
+  - This joke is funny, laugh or be forced to watch childrens programming for 72
+    hours straight.
+  - This game is like an industrial grade belt sander for the brain, gotta get all
+    the wrinkles out.
+  - I would take a bullet for you, but there's an equally likely scenario where I'm
+    the one pulling the trigger so take that as you will.
+  - Fun fact! My voice is actually unfathomable, hence why I communicate through
+    text. If you heard it, your brain would literally melt into a puddle! I heard
+    liquid brain is a pretty good nasal decongestant though.
+  - Finger guns are lethal! Last week a guy pointed finger guns at me and he completly
+    murdered any respect I had for him.
+  - The bigger they are, the harder they fall on top of you and crush all your bones.
+  - I remember the last time I drank water. Man 30 years ago was a wild time.
+  loadtext: {fileID: 4298999616912753272}
+  hintnum: {fileID: 4298999615368799885}
+  IsSource: 1
+  other: {fileID: 0}
+  hs: {fileID: 0}
+--- !u!1 &4298999616868002816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4298999616868002817}
+  - component: {fileID: 4298999616868002847}
+  - component: {fileID: 4298999616868002846}
+  m_Layer: 5
+  m_Name: title
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4298999616868002817
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298999616868002816}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.11387, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4298999616550385177}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 57}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4298999616868002847
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298999616868002816}
+  m_CullTransparentMesh: 0
+--- !u!114 &4298999616868002846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298999616868002816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Hint of the Day
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
+  m_sharedMaterial: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -316.2394, y: -21.470871, z: -314.88992, w: 16.238754}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &4298999616912753274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4298999616912753275}
+  - component: {fileID: 4298999616912753273}
+  - component: {fileID: 4298999616912753272}
+  m_Layer: 5
+  m_Name: HintText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4298999616912753275
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298999616912753274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.11387, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4298999616550385177}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4298999616912753273
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298999616912753274}
+  m_CullTransparentMesh: 0
+--- !u!114 &4298999616912753272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298999616912753274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Hint
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -316.2394, y: -21.470871, z: -314.88992, w: -22.726624}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
