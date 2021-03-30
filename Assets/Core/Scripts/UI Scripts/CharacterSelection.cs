@@ -11,6 +11,7 @@ public class CharacterSelection : NetworkedBehaviour
     public List<GameObject> characters = new List<GameObject>();
     public GameObject CSMenu;
     public GameObject cam;
+    public GameObject loadingScreen;
     public SpawnPointManager sm;
     public MainMenu mainMenu;
     public serverInfo_SO connectionInfo;
@@ -35,6 +36,8 @@ public class CharacterSelection : NetworkedBehaviour
     public void connectToServer()
     {
 
+        loadingScreen.SetActive(true);
+
         mainMenu.playerInformationCarrier.GetComponent<PlayerInformationCarrier>().playerInfo.isHosting = false;
 
         NetworkingManager.Singleton.gameObject.GetComponent<UnetTransport>().ConnectAddress = connectionInfo.connectAddress;
@@ -56,6 +59,8 @@ public class CharacterSelection : NetworkedBehaviour
 
     public void hostServer()
     {
+        loadingScreen.SetActive(true);
+
         mainMenu.playerInformationCarrier.GetComponent<PlayerInformationCarrier>().playerInfo.isHosting = true;
 
         SceneManager.LoadScene(1);
