@@ -238,13 +238,9 @@ public class Inventory_Manager : NetworkedBehaviour
         location += Vector3.up * 10;
         GameObject weaponPawn = Instantiate(weapon, parent);
         NetworkedObject netObj = weaponPawn.GetComponent<NetworkedObject>();
-        //netObj.Spawn();
-
-
-        netObj.SpawnWithOwnership(OwnerClientId);
-
 
         playerPawn.controller.PossessPawn(weaponPawn, netObj.OwnerClientId, netObj.NetworkId);
 
+        netObj.SpawnWithOwnership(OwnerClientId);
     }
 }
