@@ -104,6 +104,10 @@ MonoBehaviour:
   eyes: {fileID: 3298075805582164848}
   movementControl: {fileID: 0}
   inventoryMan: {fileID: 0}
+  cameraPrefab: {fileID: 6476323804535610174, guid: 5dfba613b3f5f0546b51dfa729f3e1e1,
+    type: 3}
+  UI: {fileID: 0}
+  loadPlayer: 1
 --- !u!114 &3298075806896282396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,10 +132,6 @@ MonoBehaviour:
   groundingForce: 5
   groundFriction: 3
   airFriction: 0.5
-  cameraPrefab: {fileID: 6476323804535610174, guid: 5dfba613b3f5f0546b51dfa729f3e1e1,
-    type: 3}
-  UI: {fileID: 6645590173705267851, guid: feced328edd1f4f45a8098423dbc2157, type: 3}
-  loadPlayer: 1
   maxVelocity: 15
 --- !u!114 &5436238356648760076
 MonoBehaviour:

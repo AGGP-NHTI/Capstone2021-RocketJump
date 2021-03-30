@@ -63,9 +63,12 @@ public class CameraManager : MonoBehaviour
     }
     private void Update()
     {
-        SetSuperSpeed();
-        SetWantedFOV();
-        UpdateFOV();
+        if (player)
+        {
+            SetSuperSpeed();
+            SetWantedFOV();
+            UpdateFOV();
+        }
     }
 
     void SetWantedFOV()

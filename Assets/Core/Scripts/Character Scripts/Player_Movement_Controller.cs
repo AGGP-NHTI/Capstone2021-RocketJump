@@ -27,15 +27,6 @@ public class Player_Movement_Controller : NetworkedBehaviour
 	public float groundFriction = 10f;
 	public float airFriction = 0.5f;
 
-	[Header("Objects")]
-	public GameObject cameraPrefab;
-	public GameObject UI;
-	
-
-
-	[Header("Network Settings")]
-	public bool loadPlayer = true;
-
 	[Header("Stats")]
 	public float maxVelocity = 20;
 
@@ -48,15 +39,6 @@ public class Player_Movement_Controller : NetworkedBehaviour
 
 	CharacterController cc;
 
-	GameObject localPlayer;
-	GameObject localCamera;
-	GameObject track;
-	
-	PositionManager positionManager;
-	Inventory_Manager inventoryManager;
-
-	//public GameObject startingTest;
-
 	private void Awake()
 	{
 		cc = GetComponent<CharacterController>();
@@ -64,33 +46,6 @@ public class Player_Movement_Controller : NetworkedBehaviour
 
 	private void Start()
 	{
-        if (playerPawn.IsLocal())
-        {
-            setLocalPlayer();
-			setCamera();
-			setUI();
-
-
-			Cursor.lockState = CursorLockMode.Locked;
-
-
-			if (IsServer)
-			{
-				setTrack();
-				//setPositionManager();
-			}
-			else if (IsClient)
-			{
-				loadPlayer = true;
-				InvokeServerRpc(clientAddPlayer, gameObject);
-			}
-		}
-        else
-        {
-            this.enabled = false;
-        }
-
-        
 
 	}
 
@@ -101,20 +56,7 @@ public class Player_Movement_Controller : NetworkedBehaviour
 		{
 			return;
 		}
-
-			//UI.GetComponent<UIManager>().sendMessage(("Speed: " + getHorizontalVelocity()), new Vector3(0,-100,0), 0.1f);
-
-			//Debug.Log("VELOCITY: " + getVelocity());
-
-
-
-
-
-			//if (!ControlledPawn)
-			//{ return; }
-
-			if (!loadPlayer) { initializePositionManager(); }
-
+			
 		wasGrounded = cc.isGrounded;
 		
 		// TODO: handle input via controller, not internally
@@ -290,92 +232,11 @@ public class Player_Movement_Controller : NetworkedBehaviour
 
 
 	//INITIALIZATION FUNCTIONS
-	public void setUI()
-	{
-		UI = Instantiate(UI, localPlayer.transform);
-		if (UI)
-		{
-			SpeedometerScript speedometer = UI.GetComponentInChildren<SpeedometerScript>();
-			if (speedometer)
-			{
-				speedometer.player = this;
-			}
-		}
-	}
-
-	//Move to player_pawn class
-	public void setCamera()
-	{
-		localCamera = Instantiate(cameraPrefab, localPlayer.transform);
-		MimicTransform cameraTransform = localCamera.GetComponent<MimicTransform>();
-		CameraManager manager = localCamera.GetComponent<CameraManager>();
-		if (cameraTransform)
-		{
-			cameraTransform.target = playerPawn.eyes;
-		}
-		if (manager)
-		{
-			manager.player = this;
-		}
-	}
+	
 
 	//Move to player_Pawn class
-	public void setLocalPlayer()
-	{
-		localPlayer = new GameObject();
-		localPlayer.name = "Local Player";
-	}
+	
 
-	public void setPositionManager()
-	{
-		positionManager = track.AddComponent<PositionManager>();
-		if (positionManager && track)
-		{
-			positionManager.track = track;
-		}
-	}
-
-    public void initializePositionManager()
-    {
-        positionManager.updatePlayerList(gameObject);
-        loadPlayer = true;
-    }
-
-	public void setTrack()
-	{
-		track = GameObject.Find("track");
-	}
-
-    //NETWORK FUNCTIONS
-
-    public void updateNodePosition(PositionNodeScript node)
-    {
-        if (IsHost)
-        {
-            positionManager.updatePlayerPosition(gameObject, node.nodeNumber);
-        }
-        else if (IsClient)
-        {
-            //clientUpdateNodePosition(node, gameObject);
-            InvokeServerRpc(clientUpdateNodePosition, node.nodeNumber, gameObject);
-        }
-    }
-
-    [ServerRPC(RequireOwnership = false)]
-	private void clientAddPlayer(GameObject player)
-	{
-		//positionManager.updatePlayerList(player);
-		//var pm = GameObject.Find("track").GetComponent<PositionManager>();
-		//pm.updatePlayerList(player);
-	}
-
-	[ServerRPC(RequireOwnership = false)]
-	private void clientUpdateNodePosition(int nodeNumber, GameObject player)
-	{
-		//positionManager.updatePlayerPosition(player, nodeNumber);
-		var pm = GameObject.Find("track").GetComponent<PositionManager>();
-		pm.updatePlayerPosition(player, nodeNumber);
-	}
 
 	
 }
