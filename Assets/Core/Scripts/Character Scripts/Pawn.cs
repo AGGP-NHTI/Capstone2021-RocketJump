@@ -16,15 +16,16 @@ public class Pawn : Actor
         OnPossess();
 
         NetworkedObject netObj = GetComponent<NetworkedObject>();
-        if(netObj)
+        if (netObj)
         {
             netObj.ChangeOwnership(c.OwnerClientId);
         }
-
-        if (!controller.IsLocalPlayer)
+        else
         {
-            this.enabled = false;
+            Debug.Log($"{c.name} is not a networked object.");
         }
+
+
     }
 
     public virtual void OnPossess()

@@ -63,7 +63,7 @@ public class Controller : NetworkedBehaviour
         {
             Debug.Log(GO.name + " isn't a pawn to me");
         }
-        InvokeClientRpcOnClient(Client_PossessPawn, clientID, NetID);
+        //InvokeClientRpcOnClient(Client_PossessPawn, clientID, NetID);
     }
 
     [ClientRPC]
