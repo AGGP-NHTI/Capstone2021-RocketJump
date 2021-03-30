@@ -6,27 +6,21 @@ using MLAPI.Messaging;
 
 public class Player_Controller : Controller
 {
-
-
     public GameObject PlayerPawn = null;
     public bool PlayerSpawned = false;
     private void Start()
     {
         SpawnPlayerPawn();
-
-
     }
 
-    private void Update()
-    {
-        if (!IsLocalPlayer)
-        { return; }
+    //private void Update()
+    //{
+    //    if (!IsLocalPlayer)
+    //    { return; }
 
-        if (!ControlledPawn)
-        { return; }
-
-
-    }
+    //    if (!ControlledPawn)
+    //    { return; }
+    //}
 
     public void SpawnPlayerPawn()
     {
@@ -49,7 +43,4 @@ public class Player_Controller : Controller
 
         PossessPawn(playerPawn, netObj.OwnerClientId, netObj.NetworkId);
     }
-
-   
-
 }
