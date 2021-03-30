@@ -38,8 +38,9 @@ public class Player_Controller : Controller
         GameObject playerPawn = Instantiate(PlayerPawn, location, Quaternion.identity);
         NetworkedObject netObj = playerPawn.GetComponent<NetworkedObject>();
         Debug.Log($"[1] {netObj.name}'s client ID is {netObj.OwnerClientId}");
+
+        playerPawn.GetComponent<Pawn>().controller = this;
         netObj.Spawn();
-        
 
         PossessPawn(playerPawn, netObj.OwnerClientId, netObj.NetworkId);
 
