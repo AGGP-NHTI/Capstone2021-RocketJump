@@ -63,12 +63,14 @@ public class Controller : NetworkedBehaviour
         {
             Debug.Log(GO.name + " isn't a pawn to me");
         }
-        //InvokeClientRpcOnClient(Client_PossessPawn, clientID, NetID);
+        InvokeClientRpcOnClient(Client_PossessPawn, clientID, NetID);
     }
 
     [ClientRPC]
     public void Client_PossessPawn(ulong netID)
-    {
+    { 
+    
+        Debug.Log($"{netID} is being possessed.");
         GameObject gObj = FindByNetID(netID);
         if(gObj)
         {
