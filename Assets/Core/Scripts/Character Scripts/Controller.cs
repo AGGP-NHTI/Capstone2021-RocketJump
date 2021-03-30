@@ -44,6 +44,7 @@ public class Controller : NetworkedBehaviour
     //}
     public void PossessPawn(GameObject GO, ulong clientID, ulong NetID)
     {
+		Debug.Log($"[{clientID}] Possess pawn on object: {GO.name}");
         Pawn p = GO.GetComponent<Pawn>();
         if (p)
         {
