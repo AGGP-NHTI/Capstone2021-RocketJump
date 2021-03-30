@@ -21362,7 +21362,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh41148
+  m_Name: pb_Mesh23138
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21664,109 +21664,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.size
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.RegisteredScenes.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[6].Prefab
-      value: 
-      objectReference: {fileID: 4205752912056178508, guid: 5bcff3bd1819c5042a0cf7570c1704da,
-        type: 3}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[7].Prefab
-      value: 
-      objectReference: {fileID: 7088709466469962000, guid: 5c9947fe6dc57264a952b638baa0cb24,
-        type: 3}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[8].Prefab
-      value: 
-      objectReference: {fileID: 4352009852908437713, guid: b9a39402626b1574186bfe96e99b8567,
-        type: 3}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[9].Prefab
-      value: 
-      objectReference: {fileID: 2676034995004244623, guid: be0d2d951d9d7b64aab10739be7647aa,
-        type: 3}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[10].Prefab
-      value: 
-      objectReference: {fileID: 1667402405892289827, guid: d1ef4cb717ff95041a579513ccf42b68,
-        type: 3}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[11].Prefab
-      value: 
-      objectReference: {fileID: 2673255171855170882, guid: 7713d27125b7735459e8694d56cd812b,
-        type: 3}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[12].Prefab
-      value: 
-      objectReference: {fileID: 528881964425359842, guid: ecc799829d7ee904599e9cc826a73f5c,
-        type: 3}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[13].Prefab
-      value: 
-      objectReference: {fileID: 6187004778564048221, guid: 40f9758c556299f4694fba35f973fe6b,
-        type: 3}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[0].PlayerPrefab
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.PlayerPrefabHash.Value
-      value: 11374044282181877456
-      objectReference: {fileID: 0}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[13].PlayerPrefab
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.RegisteredScenes.Array.data[2]
-      value: MainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[14].Prefab
-      value: 
-      objectReference: {fileID: 3235445507439764840, guid: 1b4c678489acbda4fafd33fd93b14b86,
-        type: 3}
-    - target: {fileID: 5214381284232303376, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: NetworkConfig.NetworkedPrefabs.Array.data[14].PlayerPrefab
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5214381284232303377, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: ConnectAddress
-      value: 69.161.66.111
-      objectReference: {fileID: 0}
     - target: {fileID: 5214381284232303378, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
       propertyPath: m_Name
       value: Network Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5214381284232303378, guid: 100bde555eb42764eb1d990d260553e5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5214381284232303383, guid: 100bde555eb42764eb1d990d260553e5,
         type: 3}
@@ -26439,7 +26340,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh41120
+  m_Name: pb_Mesh23110
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

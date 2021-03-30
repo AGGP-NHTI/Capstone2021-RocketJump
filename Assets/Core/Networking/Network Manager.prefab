@@ -53,7 +53,6 @@ MonoBehaviour:
     RegisteredScenes:
     - TestPlayerScene
     - RaceTrack
-    - 
     - MainMenu
     AllowRuntimeSceneChanges: 0
     NetworkedPrefabs:
@@ -102,6 +101,9 @@ MonoBehaviour:
     - Prefab: {fileID: 3235445507439764840, guid: 1b4c678489acbda4fafd33fd93b14b86,
         type: 3}
       PlayerPrefab: 0
+    - Prefab: {fileID: 3298075806896282395, guid: 168d1bc0bacc9704e98e63de724c0a6f,
+        type: 3}
+      PlayerPrefab: 0
     PlayerPrefabHash:
       Value: 10460137765650565551
     CreatePlayerPrefab: 1
@@ -144,12 +146,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MessageBufferSize: 5120
   MaxConnections: 100
-  ConnectAddress: 74.75.81.133
+  ConnectAddress: 71.161.210.114
   ConnectPort: 1234
   ServerListenPort: 1234
   ServerWebsocketListenPort: 1234
   SupportWebsocket: 0
   Channels: []
   UseMLAPIRelay: 1
-  MLAPIRelayAddress: ' 54.205.11.127'
+  MLAPIRelayAddress: 54.205.11.127
   MLAPIRelayPort: 8888
