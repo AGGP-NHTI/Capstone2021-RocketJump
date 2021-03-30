@@ -365,8 +365,8 @@ public class Player_Movement_Controller : NetworkedBehaviour
 	private void clientAddPlayer(GameObject player)
 	{
 		//positionManager.updatePlayerList(player);
-		var pm = GameObject.Find("track").GetComponent<PositionManager>();
-		pm.updatePlayerList(player);
+		//var pm = GameObject.Find("track").GetComponent<PositionManager>();
+		//pm.updatePlayerList(player);
 	}
 
 	[ServerRPC(RequireOwnership = false)]
