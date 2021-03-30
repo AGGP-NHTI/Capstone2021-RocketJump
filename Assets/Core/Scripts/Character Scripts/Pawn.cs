@@ -9,7 +9,7 @@ public class Pawn : Actor
     public Transform eyes;
 
 
-    public void Possesed(Controller c)
+    public void Possessed(Controller c)
     {
         controller = c;
 

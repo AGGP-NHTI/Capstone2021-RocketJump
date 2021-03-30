@@ -33,13 +33,35 @@ public class Controller : NetworkedBehaviour
 
             ControlledPawn = p;
       
-            p.Possesed(this);
+            p.Possessed(this);
       
         }
 
-    public void PossessPawn(GameObject p, ulong clientID, ulong NetID)
+    //public void PossessPawn(GameObject p, ulong clientID, ulong NetID)
+    //{
+    //    PossessPawn(p);
+    //    InvokeClientRpcOnClient(Client_PossessPawn, clientID, NetID);
+    //}
+    public void PossessPawn(GameObject GO, ulong clientID, ulong NetID)
     {
-        PossessPawn(p);
+        Pawn p = GO.GetComponent<Pawn>();
+        if (p)
+        {
+
+            if (ControlledPawn)
+            {
+                ControlledPawn.OnUnPossess();
+                Debug.Log("ControlledPawn.OnUnpossess called");
+            }
+
+            ControlledPawn = p;
+
+            p.Possessed(this);
+        }
+        else
+        {
+            Debug.Log(GO.name + " isn't a pawn to me");
+        }
         InvokeClientRpcOnClient(Client_PossessPawn, clientID, NetID);
     }
 
