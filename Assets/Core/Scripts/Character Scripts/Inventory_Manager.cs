@@ -234,13 +234,12 @@ public class Inventory_Manager : NetworkedBehaviour
     [ServerRPC(RequireOwnership = false)]
     public void Server_SpawnPlayerPrimeWeapon(GameObject weapon, Transform parent)
     {
-        Vector3 location = Vector3.right * NetworkId;
-        location += Vector3.up * 10;
+
         GameObject weaponPawn = Instantiate(weapon, parent);
         NetworkedObject netObj = weaponPawn.GetComponent<NetworkedObject>();
         netObj.SpawnWithOwnership(OwnerClientId);
 
-        playerPawn.controller.PossessPawn(weaponPawn, netObj.OwnerClientId, netObj.NetworkId);
+        //playerPawn.controller.PossessPawn(weaponPawn, netObj.OwnerClientId, netObj.NetworkId);
 
     }
 }
