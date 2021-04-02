@@ -39,7 +39,7 @@ public class Player_Controller : Controller
         NetworkedObject netObj = playerPawn.GetComponent<NetworkedObject>();
         Debug.Log($"[1] {netObj.name}'s client ID is {netObj.OwnerClientId}");
 
-        playerPawn.GetComponent<Pawn>().controller = this;
+        //client rpc to set the controller before
         netObj.Spawn();
 
         PossessPawn(playerPawn, netObj.OwnerClientId, netObj.NetworkId);
