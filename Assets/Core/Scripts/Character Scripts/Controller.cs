@@ -29,6 +29,8 @@ public class Controller : NetworkedBehaviour
         {
             Debug.Log(GO.name + " isn't a pawn to me");
         }
+
+        Debug.Log($"Calling Client possess pawn on {clientID}");
         InvokeClientRpcOnClient(Client_PossessPawn, clientID, NetID);
     }
 
