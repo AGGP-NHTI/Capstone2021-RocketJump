@@ -47,11 +47,12 @@ public class PowerupUIScript : MonoBehaviour
 
         if (isActive)
         {
+            
             if (timer.updateTimer())
             {
                 isActive = false;
             }
-
+            
             setUIElements(true, true);
 
             meter.fillAmount = ((timer.time - 0) / (examplePowerupDuration - 0));
