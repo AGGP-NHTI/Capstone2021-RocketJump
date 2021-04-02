@@ -6,7 +6,7 @@ using MLAPI.Messaging;
 
 public class Player_Controller : Controller
 {
-    public GameObject Player = null;
+    public GameObject player = null;
     public Player_Pawn playerPawn = null;
     public bool PlayerSpawned = false;
     public PlayerInformation_SO playerInfo;
@@ -81,11 +81,11 @@ public class Player_Controller : Controller
     {
         Vector3 location = Vector3.right * NetworkId;
         location += Vector3.up * 10;
-        Player = Instantiate(defaultPawn, location, Quaternion.identity);
+        player = Instantiate(defaultPawn, location, Quaternion.identity);
 
-        playerPawn = Player.GetComponent<Player_Pawn>();
+        playerPawn = player.GetComponent<Player_Pawn>();
 
-        NetworkedObject netObj = Player.GetComponent<NetworkedObject>();
+        NetworkedObject netObj = player.GetComponent<NetworkedObject>();
         Debug.Log($"[1] {netObj.name}'s client ID is {netObj.OwnerClientId}");
 
         //client rpc to set the controller before
@@ -93,11 +93,19 @@ public class Player_Controller : Controller
 
         
 
-        PossessPawn(Player, netObj.OwnerClientId, netObj.NetworkId);
+        PossessPawn(player, netObj.OwnerClientId, netObj.NetworkId);
 
         Debug.Log($"[2] {netObj.name}'s client ID is {netObj.OwnerClientId}");
 
-        //playerPawn.controller = this;
+        InvokeClientRpcOnEveryone(setFields, playerPawn.controller, playerPawn, player);
+    }
+
+    [ClientRPC]
+    void setFields(Controller c, Player_Pawn p, GameObject g)
+    {
+        player = g;
+        playerPawn = p;
+        playerPawn.controller = c;
     }
 
 
