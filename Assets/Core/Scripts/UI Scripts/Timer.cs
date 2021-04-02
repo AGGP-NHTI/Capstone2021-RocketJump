@@ -36,11 +36,18 @@ public class Timer
         return false; //  Returns false while the timer is still counting down
 
     }
+    
 
     public void setTimer(float seconds) // Sets the timer in seconds. Make sure you call this before the timer starts updating.
     {
         time = seconds;
         runTimer = true;
     }
+
+    public IEnumerator coroutineTimer(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+    }
+
 
 }
