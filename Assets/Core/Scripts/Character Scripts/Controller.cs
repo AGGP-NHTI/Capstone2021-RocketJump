@@ -79,10 +79,14 @@ public class Controller : NetworkedBehaviour
     public void Client_PossessPawn(ulong netID)
     { 
         GameObject gObj = FindByNetID(netID);
-        if(gObj)
+        if (gObj)
         {
             Debug.Log($"{netID} is being possessed for Client.");
             PossessPawn(gObj);
+        }
+        else
+        {
+            Debug.Log("__________________________DIS BICH_________________________________________________");
         }
     }
 
