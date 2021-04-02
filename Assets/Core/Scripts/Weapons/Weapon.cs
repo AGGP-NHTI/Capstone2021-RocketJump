@@ -9,6 +9,7 @@ using MLAPI.Messaging;
 
 public class Weapon : Actor
 {
+	public int globalIndex = -1;
     protected GameObject UI;
     protected UIManager UIMan;
     protected Player_Movement_Controller playerReference;
