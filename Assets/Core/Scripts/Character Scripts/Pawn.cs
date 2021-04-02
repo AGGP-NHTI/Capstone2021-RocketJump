@@ -16,13 +16,13 @@ public class Pawn : Actor
         OnPossess();
 
         NetworkedObject netObj = GetComponent<NetworkedObject>();
-        if (netObj)
+        if (netObj && IsServer)
         {
             netObj.ChangeOwnership(c.OwnerClientId);
         }
         else
         {
-            Debug.Log($"{c.name} is not a networked object.");
+            Debug.Log($"{c.name} is not a networked object or is a client.");
         }
 
 
@@ -30,6 +30,14 @@ public class Pawn : Actor
 
     public virtual void OnPossess()
     {
+        if (IsServer)
+        {
+            Debug.Log($"SERVER CONTROLLER IS {controller} for GO {name}");
+        }
+        else
+        {
+            Debug.Log($"CLIENT CONTROLLER IS {controller} for GO {name}");
+        }
 
     }
 
