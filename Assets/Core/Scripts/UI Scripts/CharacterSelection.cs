@@ -5,6 +5,7 @@ using MLAPI;
 using MLAPI.Messaging;
 using MLAPI.Transports.UNET;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class CharacterSelection : NetworkedBehaviour
 {
@@ -12,6 +13,9 @@ public class CharacterSelection : NetworkedBehaviour
     public GameObject CSMenu;
     public GameObject cam;
     public GameObject loadingScreen;
+    public GameObject screennameScreen;
+    public ButtonManager buttonManager;
+    public TMP_InputField nameField;
     public SpawnPointManager sm;
     public MainMenu mainMenu;
     public serverInfo_SO connectionInfo;
@@ -23,7 +27,26 @@ public class CharacterSelection : NetworkedBehaviour
         //InvokeServerRpc(Selection, c);
         mainMenu.playerInformationCarrier.GetComponent<PlayerInformationCarrier>().playerInfo.playerCharacter = c;
 
-        if(isStartingAsHost)
+        var buttons = buttonManager.buttons;
+
+        foreach(CustomButton b in buttons)
+        {
+            b.enabled = false;
+        }
+
+        screennameScreen.SetActive(true);
+    }
+
+    public void setName()
+    {
+        mainMenu.playerInformationCarrier.GetComponent<PlayerInformationCarrier>().playerInfo.playerScreenName = nameField.text;
+
+        connectionHandler();
+    }
+
+    public void connectionHandler()
+    {
+        if (isStartingAsHost)
         {
             hostServer();
         }
