@@ -54,6 +54,7 @@ MonoBehaviour:
     - TestPlayerScene
     - RaceTrack
     - MainMenu
+    - TestPossesionScene
     AllowRuntimeSceneChanges: 0
     NetworkedPrefabs:
     - Prefab: {fileID: 5219736549171104077, guid: 68dd849f4810f3f49a7fbf3989329151,
@@ -153,5 +154,5 @@ MonoBehaviour:
   SupportWebsocket: 0
   Channels: []
   UseMLAPIRelay: 1
-  MLAPIRelayAddress: 54.205.11.127
+  MLAPIRelayAddress: 35.174.172.209
   MLAPIRelayPort: 8888

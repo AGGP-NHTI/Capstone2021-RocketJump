@@ -26,7 +26,7 @@ public class Player_Pawn : Pawn
     private void Start()
     {
 
-        if (controller.IsLocalPlayer)
+        if (IsLocal())
         {
             setLocalPlayer();
             setCamera();

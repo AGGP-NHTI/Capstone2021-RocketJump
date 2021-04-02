@@ -82,13 +82,14 @@ public class Player_Controller : Controller
         location += Vector3.up * 10;
         GameObject playerPawn = Instantiate(PlayerPawn, location, Quaternion.identity);
         NetworkedObject netObj = playerPawn.GetComponent<NetworkedObject>();
-        Debug.Log($"{netObj.name}'s client ID is {netObj.OwnerClientId}");
+        Debug.Log($"[1] {netObj.name}'s client ID is {netObj.OwnerClientId}");
+
+        playerPawn.GetComponent<Pawn>().controller = this;
         netObj.Spawn();
-        
 
         PossessPawn(playerPawn, netObj.OwnerClientId, netObj.NetworkId);
 
-        Debug.Log($"{netObj.name}'s client ID is {netObj.OwnerClientId}");
+        Debug.Log($"[2] {netObj.name}'s client ID is {netObj.OwnerClientId}");
 
 
     }
