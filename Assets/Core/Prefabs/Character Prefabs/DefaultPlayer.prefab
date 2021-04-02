@@ -44,8 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05e1244500be774085b350b93e631cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPawn: {fileID: 3298075806896282395, guid: 168d1bc0bacc9704e98e63de724c0a6f,
-    type: 3}
+  PlayerPawn: {fileID: 0}
   PlayerSpawned: 0
   playerInfo: {fileID: 0}
   defaultPawn: {fileID: 3298075806896282395, guid: 168d1bc0bacc9704e98e63de724c0a6f,

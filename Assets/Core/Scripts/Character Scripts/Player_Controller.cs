@@ -6,7 +6,8 @@ using MLAPI.Messaging;
 
 public class Player_Controller : Controller
 {
-    public GameObject PlayerPawn = null;
+    public GameObject Player = null;
+    public Player_Pawn playerPawn = null;
     public bool PlayerSpawned = false;
     public PlayerInformation_SO playerInfo;
 
@@ -18,39 +19,39 @@ public class Player_Controller : Controller
 
     private void Awake()
     {
-        var fetchPlayerInfo = GameObject.Find("PlayerInformation");
-        if (fetchPlayerInfo)
-        {
+        //var fetchPlayerInfo = GameObject.Find("PlayerInformation");
+        //if (fetchPlayerInfo)
+        //{
 
-            print("Player Information Fetched");
+        //    print("Player Information Fetched");
 
-            playerInfo = fetchPlayerInfo.GetComponent<PlayerInformationCarrier>().playerInfo;
+        //    playerInfo = fetchPlayerInfo.GetComponent<PlayerInformationCarrier>().playerInfo;
 
-            switch(playerInfo.playerCharacter)
-            {
-                case 0:
-                    print("spectator spawned");
-                    PlayerPawn = defaultPawn;
-                    break;
-                case 1:
-                    print("dictator spawned");
-                    PlayerPawn = dictatorPawn;
-                    break;
-                case 2:
-                    PlayerPawn = chappiePawn;
-                    print("chappie spawned");
-                    break;
-                case 3:
-                    PlayerPawn = sashaPawn;
-                    print("sasha spawned");
-                    break;
-            }
+        //    switch(playerInfo.playerCharacter)
+        //    {
+        //        case 0:
+        //            print("spectator spawned");
+        //            PlayerPawn = defaultPawn;
+        //            break;
+        //        case 1:
+        //            print("dictator spawned");
+        //            PlayerPawn = dictatorPawn;
+        //            break;
+        //        case 2:
+        //            PlayerPawn = chappiePawn;
+        //            print("chappie spawned");
+        //            break;
+        //        case 3:
+        //            PlayerPawn = sashaPawn;
+        //            print("sasha spawned");
+        //            break;
+        //    }
 
-        }
-        else
-        {
-            print("Player Information Not Found");
-        }
+        //}
+        //else
+        //{
+        //    print("Player Information Not Found");
+        //}
     }
 
     private void Start()
@@ -80,18 +81,23 @@ public class Player_Controller : Controller
     {
         Vector3 location = Vector3.right * NetworkId;
         location += Vector3.up * 10;
-        GameObject playerPawn = Instantiate(PlayerPawn, location, Quaternion.identity);
-        NetworkedObject netObj = playerPawn.GetComponent<NetworkedObject>();
+        Player = Instantiate(defaultPawn, location, Quaternion.identity);
+
+        playerPawn = Player.GetComponent<Player_Pawn>();
+
+        NetworkedObject netObj = Player.GetComponent<NetworkedObject>();
         Debug.Log($"[1] {netObj.name}'s client ID is {netObj.OwnerClientId}");
 
         //client rpc to set the controller before
-        netObj.Spawn();
+        netObj.SpawnWithOwnership(netObj.OwnerClientId);
 
-        PossessPawn(playerPawn, netObj.OwnerClientId, netObj.NetworkId);
+        
+
+        PossessPawn(Player, netObj.OwnerClientId, netObj.NetworkId);
 
         Debug.Log($"[2] {netObj.name}'s client ID is {netObj.OwnerClientId}");
 
-
+        //playerPawn.controller = this;
     }
 
 
