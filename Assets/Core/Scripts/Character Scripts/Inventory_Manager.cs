@@ -43,7 +43,7 @@ public class Inventory_Manager : NetworkedBehaviour
 
     private void Update()
     {
-        if (playerPawn.controller)
+        if (playerPawn.controller && currentWeapon == null)
         {
            spawnWeapons();
         }
@@ -151,8 +151,11 @@ public class Inventory_Manager : NetworkedBehaviour
         primeWeapon.transform.localPosition = Vector3.zero;
         primeWeapon.transform.rotation = Quaternion.identity;
 
-        playerPawn.controller.PossessPawn(primeWeapon.gameObject);
-        
+        NetworkedObject netObj = primeWeapon.GetComponent<NetworkedObject>();
+        netObj.ChangeOwnership(OwnerClientId);
+
+        //playerPawn.controller.PossessPawn(primeWeapon.gameObject);
+
     }
     [ServerRPC(RequireOwnership = false)]
     void networkSpawnAltWeapon(GameObject weaponPrefab)
@@ -174,7 +177,9 @@ public class Inventory_Manager : NetworkedBehaviour
         powerUpWeapon.transform.localPosition = Vector3.zero;
         powerUpWeapon.transform.rotation = Quaternion.identity;
 
-        playerPawn.controller.PossessPawn(powerUpWeapon.gameObject);
+
+
+        //playerPawn.controller.PossessPawn(powerUpWeapon.gameObject);
 
     }
 
