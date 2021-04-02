@@ -54,7 +54,7 @@ public class Player_Movement_Controller : NetworkedBehaviour
 
 		if (!playerPawn.IsLocal())
 		{
-			Debug.Log($"{playerPawn.OwnerClientId} is not a local player.");
+			//Debug.Log($"{playerPawn.OwnerClientId} is not a local player.");
 
 			return;
 		}

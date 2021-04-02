@@ -14,7 +14,6 @@ public class SpectatorCam : Pawn
     public GameObject CharSel;
     public GameObject text;
     public Canvas SpecUI;
-    public PlayerInformation playerInfo;
 
     public GameObject characterSelectPrefab;
     
@@ -55,19 +54,7 @@ public class SpectatorCam : Pawn
                 this.gameObject.transform.position = s.CamSpawn.transform.position;
             }
 
-            var fetchPlayerInfo = GameObject.Find("PlayerInformation");
-            if(fetchPlayerInfo)
-            {
-
-                print("Player Information Fetched");
-
-                playerInfo = fetchPlayerInfo.GetComponent<PlayerInformationCarrier>().playerInfo;
-
-            }
-            else
-            {
-                print("Player Information Not Found");
-            }
+           
 
         }
         

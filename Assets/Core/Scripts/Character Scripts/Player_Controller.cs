@@ -6,10 +6,9 @@ using MLAPI.Messaging;
 
 public class Player_Controller : Controller
 {
-    public GameObject player = null;
-    public Player_Pawn playerPawn = null;
+
+  
     public bool PlayerSpawned = false;
-    public PlayerInformation playerInfo;
 
     [Header("Characters")]
     public GameObject defaultPawn;
@@ -65,34 +64,21 @@ public class Player_Controller : Controller
     {
         Vector3 location = Vector3.right * NetworkId;
         location += Vector3.up * 10;
-        player = Instantiate(defaultPawn, location, Quaternion.identity);
+        GameObject gobj = Instantiate(defaultPawn, location, Quaternion.identity);
 
-        playerPawn = player.GetComponent<Player_Pawn>();
-
-        NetworkedObject netObj = player.GetComponent<NetworkedObject>();
+        NetworkedObject netObj = gobj.GetComponent<NetworkedObject>();
         Debug.Log($"[1] {netObj.name}'s client ID is {netObj.OwnerClientId}");
 
         //client rpc to set the controller before
-        netObj.SpawnWithOwnership(netObj.OwnerClientId);
+        netObj.SpawnWithOwnership(OwnerClientId);
 
         
 
-        PossessPawn(player, netObj.OwnerClientId, netObj.NetworkId);
+        PossessPawn(gobj, netObj.OwnerClientId, netObj.NetworkId);
 
         Debug.Log($"[2] {netObj.name}'s client ID is {netObj.OwnerClientId}");
 
-        //InvokeClientRpcOnEveryone(setFields, playerPawn.controller, playerPawn, player);
+        
     }
-
-    [ClientRPC]
-    void setFields(Controller c, Player_Pawn p, GameObject g)
-    {
-        player = g;
-        playerPawn = p;
-        playerPawn.controller = c;
-    }
-
-
-
 
 }

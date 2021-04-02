@@ -25,7 +25,7 @@ public class CharacterSelection : NetworkedBehaviour
     {
         //cam.SetActive(false);
         //InvokeServerRpc(Selection, c);
-        mainMenu.playerInformationCarrier.GetComponent<PlayerInformationCarrier>().playerInfo.playerCharacter = c;
+        PlayerInformation.playerCharacter = c;
 
         var buttons = buttonManager.buttons;
 
@@ -38,8 +38,8 @@ public class CharacterSelection : NetworkedBehaviour
     }
 
     public void setName()
-    {
-        mainMenu.playerInformationCarrier.GetComponent<PlayerInformationCarrier>().playerInfo.playerScreenName = nameField.text;
+    {   
+        PlayerInformation.playerScreenName = nameField.text;
 
         connectionHandler();
     }
@@ -61,7 +61,7 @@ public class CharacterSelection : NetworkedBehaviour
 
         loadingScreen.SetActive(true);
 
-        mainMenu.playerInformationCarrier.GetComponent<PlayerInformationCarrier>().playerInfo.isHosting = false;
+        PlayerInformation.isHosting = false;
 
         NetworkingManager.Singleton.gameObject.GetComponent<UnetTransport>().ConnectAddress = connectionInfo.connectAddress;
 
@@ -84,7 +84,7 @@ public class CharacterSelection : NetworkedBehaviour
     {
         loadingScreen.SetActive(true);
 
-        mainMenu.playerInformationCarrier.GetComponent<PlayerInformationCarrier>().playerInfo.isHosting = true;
+        PlayerInformation.isHosting = true;
 
         SceneManager.LoadScene(1);
     }
