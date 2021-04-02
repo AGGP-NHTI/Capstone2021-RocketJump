@@ -9,7 +9,7 @@ public class Player_Controller : Controller
     public GameObject player = null;
     public Player_Pawn playerPawn = null;
     public bool PlayerSpawned = false;
-    public PlayerInformation_SO playerInfo;
+    public PlayerInformation playerInfo;
 
     [Header("Characters")]
     public GameObject defaultPawn;
@@ -17,42 +17,26 @@ public class Player_Controller : Controller
     public GameObject chappiePawn;
     public GameObject dictatorPawn;
 
-    private void Awake()
+    public GameObject GetSpawnPrefab(int prefabIndex)
     {
-        //var fetchPlayerInfo = GameObject.Find("PlayerInformation");
-        //if (fetchPlayerInfo)
-        //{
-
-        //    print("Player Information Fetched");
-
-        //    playerInfo = fetchPlayerInfo.GetComponent<PlayerInformationCarrier>().playerInfo;
-
-        //    switch(playerInfo.playerCharacter)
-        //    {
-        //        case 0:
-        //            print("spectator spawned");
-        //            PlayerPawn = defaultPawn;
-        //            break;
-        //        case 1:
-        //            print("dictator spawned");
-        //            PlayerPawn = dictatorPawn;
-        //            break;
-        //        case 2:
-        //            PlayerPawn = chappiePawn;
-        //            print("chappie spawned");
-        //            break;
-        //        case 3:
-        //            PlayerPawn = sashaPawn;
-        //            print("sasha spawned");
-        //            break;
-        //    }
-
-        //}
-        //else
-        //{
-        //    print("Player Information Not Found");
-        //}
-    }
+		switch (prefabIndex)
+		{
+			case 0:
+				Debug.Log("spectator spawned");
+				return defaultPawn;
+			case 1:
+				Debug.Log("dictator spawned");
+				return dictatorPawn;
+			case 2:
+				Debug.Log("chappie spawned");
+				return chappiePawn;
+			case 3:
+				Debug.Log("sasha spawned");
+				return sashaPawn;
+			default:
+				return null;
+		}
+	}
 
     private void Start()
     {

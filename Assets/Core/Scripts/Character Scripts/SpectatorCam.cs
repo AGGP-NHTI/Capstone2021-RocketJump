@@ -14,7 +14,7 @@ public class SpectatorCam : Pawn
     public GameObject CharSel;
     public GameObject text;
     public Canvas SpecUI;
-    public PlayerInformation_SO playerInfo;
+    public PlayerInformation playerInfo;
 
     public GameObject characterSelectPrefab;
     
