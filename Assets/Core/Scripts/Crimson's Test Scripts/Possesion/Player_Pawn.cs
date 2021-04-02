@@ -145,7 +145,10 @@ public class Player_Pawn : Pawn
 
 	public bool IsLocal()
     {
-        return controller.IsLocalPlayer;
+		if (controller)
+			return controller.IsLocalPlayer;
+		else
+			return false;
     }
 
 
