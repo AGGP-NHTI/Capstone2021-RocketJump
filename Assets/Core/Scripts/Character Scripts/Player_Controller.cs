@@ -97,7 +97,7 @@ public class Player_Controller : Controller
 
         Debug.Log($"[2] {netObj.name}'s client ID is {netObj.OwnerClientId}");
 
-        InvokeClientRpcOnEveryone(setFields, playerPawn.controller, playerPawn, player);
+        //InvokeClientRpcOnEveryone(setFields, playerPawn.controller, playerPawn, player);
     }
 
     [ClientRPC]

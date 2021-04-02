@@ -6,7 +6,7 @@ using MLAPI.Messaging;
 public class Pawn : Actor
 {
     public Controller controller;
-    public Transform eyes;
+    
 
 
     public void Possessed(Controller c)

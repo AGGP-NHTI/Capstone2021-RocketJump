@@ -8,47 +8,26 @@ public class Controller : NetworkedBehaviour
 {
     protected Pawn ControlledPawn;
 
-    public void PossessPawn(GameObject GO, ulong clientID, ulong NetID)
+    public void PossessPawn(Pawn pawn)
     {
-        Debug.Log($"[{clientID}] Possess pawn on object: {GO.name}");
-        Pawn p = GO.GetComponent<Pawn>();
-        if (p)
+        if (ControlledPawn)
         {
-
-            if (ControlledPawn)
-            {
-                ControlledPawn.OnUnPossess();
-                Debug.Log("ControlledPawn.OnUnpossess called");
-            }
-
-            ControlledPawn = p;
-
-            p.Possessed(this);
-        }
-        else
-        {
-            Debug.Log(GO.name + " isn't a pawn to me");
+            ControlledPawn.OnUnPossess();
+            Debug.Log("ControlledPawn. OnUnpossess called");
         }
 
-        Debug.Log($"Calling Client possess pawn on {clientID}");
-        InvokeClientRpcOnClient(Client_PossessPawn, clientID, NetID);
+        ControlledPawn = pawn;
+
+        pawn.Possessed(this);
     }
 
     public void PossessPawn(GameObject pawn)
     {
         Pawn p = pawn.GetComponent<Pawn>();
-      
-        if(p)
+
+        if (p)
         {
-            if (ControlledPawn)
-            {
-                ControlledPawn.OnUnPossess();
-                Debug.Log("ControlledPawn. OnUnpossess called");
-            }
-
-            ControlledPawn = p;
-
-            p.Possessed(this);
+            PossessPawn(p);
         }
         else
         {
@@ -56,39 +35,22 @@ public class Controller : NetworkedBehaviour
         }
     }
 
-        //public void PossessPawn(Pawn p)
-        //{
-        //    if(ControlledPawn)
-        //    {
-        //        ControlledPawn.OnUnPossess();
-        //        Debug.Log("ControlledPawn.OnUnpossess called");
-        //    }
+    public void PossessPawn(GameObject p, ulong clientID, ulong NetID)
+    {
+        PossessPawn(p);
+        InvokeClientRpcOnClient(Client_PossessPawn, clientID, NetID);
+    }
 
-        //    ControlledPawn = p;
-      
-        //    p.Possessed(this);
-      
-        //}
-
-    //public void PossessPawn(GameObject p, ulong clientID, ulong NetID)
-    //{
-    //    PossessPawn(p);
-    //    InvokeClientRpcOnClient(Client_PossessPawn, clientID, NetID);
-    //}
-    
 
     [ClientRPC]
     public void Client_PossessPawn(ulong netID)
-    { 
+    {
+        Debug.Log("Inside Client Posses Pawn.");
         GameObject gObj = FindByNetID(netID);
         if (gObj)
         {
             Debug.Log($"{netID} is being possessed for Client.");
             PossessPawn(gObj);
-        }
-        else
-        {
-            Debug.Log("__________________________DIS BICH_________________________________________________");
         }
     }
 

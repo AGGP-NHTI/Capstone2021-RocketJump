@@ -7,6 +7,7 @@ public class Player_Pawn : Pawn
 {
     public Player_Movement_Controller movementControl;
     public Inventory_Manager inventoryMan;
+	public Transform eyes;
 
 	[Header("Objects")]
 	public GameObject cameraPrefab;
