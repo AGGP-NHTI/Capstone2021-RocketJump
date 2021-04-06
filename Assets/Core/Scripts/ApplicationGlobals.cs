@@ -30,6 +30,20 @@ public class ApplicationGlobals : MonoBehaviour
 		return instance.weaponPrefabList[weaponIndex];
 	}
 
+	public static int GetWeaponIndex(GameObject weaponPrefab)
+	{
+		int index = instance.weaponPrefabList.IndexOf(weaponPrefab);
+		if (index != -1)
+		{
+			return index;
+		}
+		else
+		{
+			Debug.LogError($"Could not find the index of weapon {weaponPrefab.name}. Has it been added to ApplicationGlobals?");
+			return -1;
+		}
+	}
+
 	public void AssignGlobalIndices()
 	{
 		int i = 0;
