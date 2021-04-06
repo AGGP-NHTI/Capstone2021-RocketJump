@@ -39,16 +39,16 @@ public class Inventory_Manager : NetworkedBehaviour
 
     private void Start()
     {
- 
-        
+
+        if (playerPawn.controller) 
+        {
+            spawnWeapons();
+        }
     }
 
     private void Update()
     {
-        if (playerPawn.controller && currentWeapon == null)
-        {
-           spawnWeapons();
-        }
+        
 
         checkPowerUpWeapon();
         setSelectedWeapon();
