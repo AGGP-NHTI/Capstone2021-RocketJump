@@ -101,9 +101,9 @@ MonoBehaviour:
   IsActive: 1
   IgnoreDamage: 0
   controller: {fileID: 0}
-  eyes: {fileID: 3298075805582164848}
   movementControl: {fileID: 0}
   inventoryMan: {fileID: 0}
+  eyes: {fileID: 3298075805582164848}
   cameraPrefab: {fileID: 6476323804535610174, guid: 5dfba613b3f5f0546b51dfa729f3e1e1,
     type: 3}
   UI: {fileID: 0}
@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkedInstanceId: 0
-  PrefabHash: 6035864466278247381
-  PrefabHashGenerator: PossessionPawn
+  PrefabHash: 513498681566504680
+  PrefabHashGenerator: Possession_Pawn
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
 --- !u!114 &915062898919201581

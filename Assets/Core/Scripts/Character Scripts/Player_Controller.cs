@@ -12,6 +12,7 @@ public class Player_Controller : Controller
 
     [Header("Characters")]
     public GameObject defaultPawn;
+
     public GameObject sashaPawn;
     public GameObject chappiePawn;
     public GameObject dictatorPawn;
@@ -55,30 +56,21 @@ public class Player_Controller : Controller
     {
         if (IsOwner)
         {
-            InvokeServerRpc(Server_SpawnPlayerPawn);
+            InvokeServerRpc(Server_SpawnPlayerPawn,OwnerClientId);
         }
     }
 
     [ServerRPC(RequireOwnership = false)]
-    public void Server_SpawnPlayerPawn()
+    public void Server_SpawnPlayerPawn(ulong clientID)
     {
         Vector3 location = Vector3.right * NetworkId;
         location += Vector3.up * 10;
         GameObject gobj = Instantiate(defaultPawn, location, Quaternion.identity);
 
         NetworkedObject netObj = gobj.GetComponent<NetworkedObject>();
-        Debug.Log($"[1] {netObj.name}'s client ID is {netObj.OwnerClientId}");
 
-        //client rpc to set the controller before
-        netObj.SpawnWithOwnership(OwnerClientId);
-
-        
-
-        PossessPawn(gobj, netObj.OwnerClientId, netObj.NetworkId);
-
-        Debug.Log($"[2] {netObj.name}'s client ID is {netObj.OwnerClientId}");
-
-        
+        netObj.SpawnWithOwnership(clientID);
+        PossessPawn(gobj, netObj.OwnerClientId, netObj.NetworkId); 
     }
 
 }
