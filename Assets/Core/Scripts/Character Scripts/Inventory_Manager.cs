@@ -32,13 +32,33 @@ public class Inventory_Manager : NetworkedBehaviour
 
         if (playerPawn.controller) 
         {
-            spawnWeapons();
-            
+           //spawnWeapons();
         }
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            spawnWeapons();
+        }
+        Vector2 mouseScroll = Input.mouseScrollDelta;
+        if (mouseScroll.y > 0)
+        {
+            currentWeaponIndex++;
+            if (currentWeaponIndex >= weapons.Count)
+            {
+                currentWeaponIndex = 0;
+            }
+        }
+        else if( mouseScroll.y < 0)
+        {
+            currentWeaponIndex--;
+            if (currentWeaponIndex < 0)
+            {
+                currentWeaponIndex = weapons.Count-1;
+            }
+        }
         setSelectedWeapon();
 
         if (playerPawn.IsLocal() && currentWeaponIndex != -1)
@@ -129,8 +149,17 @@ public class Inventory_Manager : NetworkedBehaviour
 
     void setSelectedWeapon()
     {
-
-        
+        for (int i = 0; i < weapons.Count; i++)
+        {
+            if (currentWeaponIndex == i)
+            {
+                weapons[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                weapons[i].gameObject.SetActive(false);
+            }
+        }
     }
 
 

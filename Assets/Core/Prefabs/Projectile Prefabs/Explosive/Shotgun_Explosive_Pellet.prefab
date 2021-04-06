@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 0
-  lifeTime: 3000
+  lifeTime: 5
   contactLifetime: 0
   projectileLaunchForce: 100
   particles: {fileID: 5507913867735878743, guid: adbbee6e4c1a997479d2da0850529735,
