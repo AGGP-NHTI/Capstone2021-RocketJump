@@ -8,6 +8,7 @@ public class Player_Pawn : Pawn
     public Player_Movement_Controller movementControl;
     public Inventory_Manager inventoryMan;
 	public Transform eyes;
+	public PositionManager positionManager;
 
 	[Header("Objects")]
 	public GameObject cameraPrefab;
@@ -23,8 +24,6 @@ public class Player_Pawn : Pawn
 
 	GameObject localCamera;
 	GameObject track;
-
-	PositionManager positionManager;
 
 	GameObject localPlayer;
     private void Start()
@@ -102,11 +101,14 @@ public class Player_Pawn : Pawn
 
 	public void setPositionManager()
 	{
-		positionManager = track.AddComponent<PositionManager>();
-		if (positionManager && track)
+		if (track)
 		{
-			positionManager.track = track;
-            positionManager.initPositionManager();
+			positionManager = track.AddComponent<PositionManager>();
+			if (positionManager && track)
+			{
+				positionManager.track = track;
+				positionManager.initPositionManager();
+			}
 		}
 	}
 
@@ -115,7 +117,10 @@ public class Player_Pawn : Pawn
         initPlayer = true;
         setTrack();
         setPositionManager();
-		positionManager.updatePlayerList(gameObject);
+		if (positionManager)
+		{
+			positionManager.updatePlayerList(gameObject);
+		}
 	}
 
 	public void setTrack()

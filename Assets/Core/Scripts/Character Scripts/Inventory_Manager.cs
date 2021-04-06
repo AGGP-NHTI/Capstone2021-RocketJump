@@ -117,7 +117,7 @@ public class Inventory_Manager : NetworkedBehaviour
         {
             netWeapon.transform.parent = clientPawn.eyes;
             netWeapon.transform.localPosition = Vector3.zero;
-            netWeapon.transform.rotation = Quaternion.identity;
+            netWeapon.transform.localRotation = Quaternion.identity;
 
             if (netWeapon.gameObject.TryGetComponent(out Weapon clientWeapon))
             {
