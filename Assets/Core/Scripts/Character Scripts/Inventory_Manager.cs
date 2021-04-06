@@ -143,48 +143,38 @@ public class Inventory_Manager : NetworkedBehaviour
         }
     }
 
+    [ClientRPC]
+    void parentWeapon(ulong netID, ulong playerNetID)
+    {
+        NetworkedObject netWeapon = GetNetworkedObject(netID);
+        NetworkedObject netPlayer = GetNetworkedObject(playerNetID);
+
+        if (netWeapon && netPlayer)
+        {
+            netWeapon.transform.parent = netPlayer.transform;
+            //netWeapon.transform.localPosition = Vector3.zero;
+        }
+    }
+
     [ServerRPC(RequireOwnership = false)]
-    void networkSpawnPrimeWeapon(int weaponIndex)
+    void networkSpawnPrimeWeapon(int weaponIndex, ulong requestID)
     {
         
         primeWeapon = playerPawn.NetSpawn(ApplicationGlobals.GetWeaponPrefab(weaponIndex), Vector3.zero, Quaternion.identity).GetComponent<Weapon>();
 
-        primeWeapon.transform.parent = playerPawn.eyes;
-        primeWeapon.transform.localPosition = Vector3.zero;
-        primeWeapon.transform.rotation = Quaternion.identity;
+        NetworkedObject clientObj = GetNetworkedObject(requestID);
+        if (clientObj && clientObj.TryGetComponent(out Player_Pawn clientPawn))
+        {
+            primeWeapon.transform.parent = clientPawn.eyes;
+        }
 
-        NetworkedObject netObj = primeWeapon.GetComponent<NetworkedObject>();
-        netObj.ChangeOwnership(OwnerClientId);
+        if (primeWeapon.TryGetComponent(out NetworkedObject netObj))
+        {
+            netObj.ChangeOwnership(OwnerClientId);
+        }
 
-        //playerPawn.controller.PossessPawn(primeWeapon.gameObject);
-
+        InvokeClientRpcOnEveryone(parentWeapon, netObj.NetworkId, playerPawn.NetworkId);
     }
-    [ServerRPC(RequireOwnership = false)]
-    void networkSpawnAltWeapon(GameObject weaponPrefab)
-    {
-        altWeapon = playerPawn.NetSpawn(weaponPrefab, Vector3.zero, Quaternion.identity).GetComponent<Weapon>();
-
-        altWeapon.transform.parent = playerPawn.eyes;
-        altWeapon.transform.localPosition = Vector3.zero;
-        altWeapon.transform.rotation = Quaternion.identity;
-
-        playerPawn.controller.PossessPawn(altWeapon.gameObject);
-    }
-    [ServerRPC(RequireOwnership = false)]
-    void networkSpawnPowerWeapon(GameObject weaponPrefab)
-    {
-        powerUpWeapon = playerPawn.NetSpawn(weaponPrefab, Vector3.zero, Quaternion.identity).GetComponent<Weapon>();
-
-        powerUpWeapon.transform.parent = playerPawn.eyes;
-        powerUpWeapon.transform.localPosition = Vector3.zero;
-        powerUpWeapon.transform.rotation = Quaternion.identity;
-
-
-
-        //playerPawn.controller.PossessPawn(powerUpWeapon.gameObject);
-
-    }
-
 
     void checkPowerUpWeapon()
     {
