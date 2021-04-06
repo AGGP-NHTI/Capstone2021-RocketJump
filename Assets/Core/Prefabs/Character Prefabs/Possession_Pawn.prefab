@@ -146,14 +146,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPawn: {fileID: 8691181184349576725}
-  startingWeaponPrefab: {fileID: 4205752912056178508, guid: 5bcff3bd1819c5042a0cf7570c1704da,
-    type: 3}
-  altWeaponPrefab: {fileID: 6977513548457193487, guid: 4bb857ebe0f92a64a96ef26c67e75c47,
-    type: 3}
-  testPowerUpWeaponPrefab: {fileID: 1667402405892289827, guid: d1ef4cb717ff95041a579513ccf42b68,
-    type: 3}
-  currentWeapon: {fileID: 0}
-  powerUpWeapon: {fileID: 0}
+  weaponPrefabs:
+  - {fileID: 4205752912056178508, guid: 5bcff3bd1819c5042a0cf7570c1704da, type: 3}
+  weaponObjs: []
+  weapons: []
+  currentWeaponIndex: -1
 --- !u!114 &8868373162051148392
 MonoBehaviour:
   m_ObjectHideFlags: 0
