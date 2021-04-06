@@ -41,6 +41,9 @@ public class CharacterSelection : NetworkedBehaviour
     {   
         PlayerInformation.playerScreenName = nameField.text;
 
+        Debug.Log(nameField.text);
+        Debug.Log(PlayerInformation.playerScreenName);
+
         connectionHandler();
     }
 

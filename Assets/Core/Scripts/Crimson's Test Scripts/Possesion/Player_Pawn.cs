@@ -8,7 +8,7 @@ public class Player_Pawn : Pawn
     public Player_Movement_Controller movementControl;
     public Inventory_Manager inventoryMan;
 	public Transform eyes;
-	public PositionManager positionManager;
+	//public PositionManager positionManager;
 
 	[Header("Objects")]
 	public GameObject cameraPrefab;
@@ -30,6 +30,7 @@ public class Player_Pawn : Pawn
     {
 
         PNC = new PlayerNetworkCenter(this);
+        PNC.enabled = true;
 
         if (IsLocal())
         {
@@ -39,29 +40,48 @@ public class Player_Pawn : Pawn
 
             Cursor.lockState = CursorLockMode.Locked;
         }
+
+        setupPNC();
     }
 
-    private void Update()
+    private void setupPNC()
     {
-		if (IsLocal())
-		{
-			if (IsServer)
-			{
+        if (IsLocal())
+        {
+            if (IsServer)
+            {
+                if (PNC.enabled)
+                {
+                    PNC.initHost();
+                }
+                /*
                 if (!initPlayer)
                 {
                     print("!");
                     initializePositionManager();
                 }
+                */
             }
-			else if (IsClient)
-			{
+            else if (IsClient)
+            {
+                if (PNC.enabled)
+                {
+                    PNC.initClient();
+                }
+                /*
                 if(!initPlayer)
                 {
                     initPlayer = true;
                     InvokeServerRpc(PNC.clientAddPlayer, gameObject);
                 }
-			}
-		}
+                */
+            }
+        }
+    }
+
+    private void Update()
+    {
+		
 	}
 
     public void setUI()
@@ -99,6 +119,7 @@ public class Player_Pawn : Pawn
         localPlayer.name = "Local Player";
     }
 
+    /*
 	public void setPositionManager()
 	{
 		if (track)
@@ -127,6 +148,7 @@ public class Player_Pawn : Pawn
 	{
 		track = GameObject.Find("track");
 	}
+    */
 
     //NETWORK FUNCTIONS
 
@@ -134,7 +156,7 @@ public class Player_Pawn : Pawn
 	{
 		if (IsHost)
 		{
-			positionManager.updatePlayerPosition(gameObject, node.nodeNumber);
+			PNC.positionManager.updatePlayerPosition(gameObject, node.nodeNumber);
 		}
 		else if (IsClient)
 		{

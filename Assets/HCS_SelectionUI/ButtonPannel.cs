@@ -21,6 +21,7 @@ public class ButtonPannel : MonoBehaviour
         
         if(PlayerInformation.isHosting)
         {
+            print("Starting as host...");
             StartasHost();
         }
 
