@@ -101,8 +101,8 @@ MonoBehaviour:
   IsActive: 1
   IgnoreDamage: 0
   controller: {fileID: 0}
-  movementControl: {fileID: 0}
-  inventoryMan: {fileID: 0}
+  movementControl: {fileID: 3298075806896282396}
+  inventoryMan: {fileID: 5436238356648760076}
   eyes: {fileID: 3298075805582164848}
   cameraPrefab: {fileID: 6476323804535610174, guid: 5dfba613b3f5f0546b51dfa729f3e1e1,
     type: 3}
@@ -146,14 +146,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPawn: {fileID: 8691181184349576725}
-  startingWeaponPrefab: {fileID: 4205752912056178508, guid: 5bcff3bd1819c5042a0cf7570c1704da,
-    type: 3}
-  altWeaponPrefab: {fileID: 6977513548457193487, guid: 4bb857ebe0f92a64a96ef26c67e75c47,
-    type: 3}
-  testPowerUpWeaponPrefab: {fileID: 1667402405892289827, guid: d1ef4cb717ff95041a579513ccf42b68,
-    type: 3}
-  currentWeapon: {fileID: 0}
-  powerUpWeapon: {fileID: 0}
+  weaponPrefabs:
+  - {fileID: 4205752912056178508, guid: 5bcff3bd1819c5042a0cf7570c1704da, type: 3}
+  weapons: []
+  currentWeaponIndex: -1
 --- !u!114 &8868373162051148392
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,14 +30,7 @@ public class Pawn : Actor
 
     public virtual void OnPossess()
     {
-        if (IsServer)
-        {
-            Debug.Log($"SERVER CONTROLLER IS {controller} for GO {name}");
-        }
-        else
-        {
-            Debug.Log($"CLIENT CONTROLLER IS {controller} for GO {name}");
-        }
+
 
     }
 

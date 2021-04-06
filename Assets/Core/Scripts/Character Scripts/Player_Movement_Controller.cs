@@ -228,7 +228,7 @@ public class Player_Movement_Controller : NetworkedBehaviour
 		Inventory_Manager inv = gameObject.GetComponent<Inventory_Manager>();
 		if (inv)
 		{
-			inv.GiveExtraWeapon(item);
+			Debug.Log("IMPLEMENTATION NOT YET IMPLEMENTED");
 		}
 	}
 

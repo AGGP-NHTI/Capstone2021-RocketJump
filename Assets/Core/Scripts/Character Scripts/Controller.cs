@@ -13,11 +13,9 @@ public class Controller : NetworkedBehaviour
         if (ControlledPawn)
         {
             ControlledPawn.OnUnPossess();
-            Debug.Log("ControlledPawn. OnUnpossess called");
         }
 
         ControlledPawn = pawn;
-
         pawn.Possessed(this);
     }
 
@@ -45,11 +43,9 @@ public class Controller : NetworkedBehaviour
     [ClientRPC]
     public void Client_PossessPawn(ulong netID)
     {
-        Debug.Log("Inside Client Posses Pawn.");
         GameObject gObj = FindByNetID(netID);
         if (gObj)
         {
-            Debug.Log($"{netID} is being possessed for Client.");
             PossessPawn(gObj);
         }
     }

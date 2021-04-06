@@ -15,22 +15,12 @@ public class Inventory_Manager : NetworkedBehaviour
     protected Ammo_UI_Script AmmoReference;
 
 
-
-
-    bool isHoldingPrime = true;    
-
-    [Header("Weapons")]
-    public GameObject startingWeaponPrefab;
-    public GameObject altWeaponPrefab;
-    public GameObject testPowerUpWeaponPrefab;
-
-    public Weapon currentWeapon = null;
-
-    Weapon primeWeapon = null;
-    Weapon altWeapon = null;
-
-    //[HideInInspector]
-    public Weapon powerUpWeapon;
+    [Header("Stuff")]
+    public List<GameObject> weaponPrefabs = new List<GameObject>();
+    public List<Weapon> weapons = new List<Weapon>();
+    public int currentWeaponIndex = -1;
+    Weapon currentWeapon => weapons[currentWeaponIndex];
+    
 
     private void Awake()
     {
@@ -43,26 +33,15 @@ public class Inventory_Manager : NetworkedBehaviour
         if (playerPawn.controller) 
         {
             spawnWeapons();
+            
         }
     }
 
     private void Update()
     {
-        
-
-        checkPowerUpWeapon();
         setSelectedWeapon();
 
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            spawnPowerWeapon(testPowerUpWeaponPrefab);
-        }
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            isHoldingPrime = !isHoldingPrime;
-        }
-
-        if (playerPawn.IsLocal() && currentWeapon)
+        if (playerPawn.IsLocal() && currentWeaponIndex != -1)
         {
             FireInput();
         }
@@ -97,127 +76,64 @@ public class Inventory_Manager : NetworkedBehaviour
     }
     void spawnWeapons()
     {
-        if(!primeWeapon)
-            spawnPrimeWeapon(startingWeaponPrefab);
+        for (int i = 0; i < weaponPrefabs.Count; i++)
+        {
+            Debug.Log($"Spawn weapon with index {i}.");
 
+            InvokeServerRpc(networkSpawnWeapon, ApplicationGlobals.GetWeaponIndex(weaponPrefabs[i]), OwnerClientId);
+        }
+        currentWeaponIndex = 0;
     }
 
-    void spawnPrimeWeapon(GameObject weaponPrefab)
-    {
-        
-
-        if (IsServer)
-        {
-            networkSpawnPrimeWeapon(ApplicationGlobals.GetWeaponIndex(weaponPrefab));
-        }
-        else
-        {
-            InvokeServerRpc(networkSpawnPrimeWeapon, ApplicationGlobals.GetWeaponIndex(weaponPrefab));
-        }
-
-        currentWeapon = primeWeapon;
-
-    }
-    void spawnAltWeapon(GameObject weaponPrefab)
-    {
-
-        if (IsServer)
-        {
-            networkSpawnAltWeapon(weaponPrefab);
-        }
-        else
-        {
-            InvokeServerRpc(networkSpawnAltWeapon, weaponPrefab);
-        }
-    }
-    void spawnPowerWeapon(GameObject weaponPrefab)
-    {
-
-        if (IsServer)
-        {
-            networkSpawnPowerWeapon(weaponPrefab);
-        }
-        else
-        {
-            InvokeServerRpc(networkSpawnPowerWeapon, weaponPrefab);
-        }
-    }
+    
 
     [ClientRPC]
-    void parentWeapon(ulong netID, ulong playerNetID)
+    void setWeaponParent(ulong netID, ulong playerNetID)
     {
         NetworkedObject netWeapon = GetNetworkedObject(netID);
         NetworkedObject netPlayer = GetNetworkedObject(playerNetID);
 
-        if (netWeapon && netPlayer)
+        if (netWeapon && netPlayer && netPlayer.gameObject.TryGetComponent(out Player_Pawn clientPawn))
         {
-            netWeapon.transform.parent = netPlayer.transform;
-            //netWeapon.transform.localPosition = Vector3.zero;
+            netWeapon.transform.parent = clientPawn.eyes;
+            netWeapon.transform.localPosition = Vector3.zero;
+            netWeapon.transform.rotation = Quaternion.identity;
+
+            if (netWeapon.gameObject.TryGetComponent(out Weapon clientWeapon))
+            {
+                weapons.Add(clientWeapon);
+            }
         }
     }
 
     [ServerRPC(RequireOwnership = false)]
-    void networkSpawnPrimeWeapon(int weaponIndex, ulong requestID)
+    void networkSpawnWeapon(int weaponIndex, ulong requestID)
     {
         
-        primeWeapon = playerPawn.NetSpawn(ApplicationGlobals.GetWeaponPrefab(weaponIndex), Vector3.zero, Quaternion.identity).GetComponent<Weapon>();
+        Weapon weapon = playerPawn.NetSpawn(ApplicationGlobals.GetWeaponPrefab(weaponIndex), Vector3.zero, Quaternion.identity).GetComponent<Weapon>();
 
         NetworkedObject clientObj = GetNetworkedObject(requestID);
         if (clientObj && clientObj.TryGetComponent(out Player_Pawn clientPawn))
         {
-            primeWeapon.transform.parent = clientPawn.eyes;
+            weapon.transform.parent = clientPawn.eyes;
         }
 
-        if (primeWeapon.TryGetComponent(out NetworkedObject netObj))
+        if (weapon.TryGetComponent(out NetworkedObject netObj))
         {
             netObj.ChangeOwnership(OwnerClientId);
         }
 
-        InvokeClientRpcOnEveryone(parentWeapon, netObj.NetworkId, playerPawn.NetworkId);
+        InvokeClientRpcOnEveryone(setWeaponParent, netObj.NetworkId, playerPawn.NetworkId);
     }
 
-    void checkPowerUpWeapon()
-    {
-        if (powerUpWeapon && powerUpWeapon.transform.parent != playerPawn.eyes)
-        {
-            powerUpWeapon = null; 
-        }
-    }
+
     void setSelectedWeapon()
     {
 
-        if (powerUpWeapon && primeWeapon && altWeapon)
-        {
-            currentWeapon = powerUpWeapon;
-
-            powerUpWeapon.gameObject.SetActive(true);
-            primeWeapon.gameObject.SetActive(false);
-            altWeapon.gameObject.SetActive(false);
-        }
-        else
-        {
-            if (isHoldingPrime && primeWeapon && altWeapon)
-            {
-                currentWeapon = primeWeapon;
-
-                primeWeapon.gameObject.SetActive(true);
-                altWeapon.gameObject.SetActive(false);
-            }
-            else if (primeWeapon && altWeapon)
-            {
-                currentWeapon = altWeapon;
-
-                altWeapon.gameObject.SetActive(true);
-                primeWeapon.gameObject.SetActive(false);
-            }
-        }
-
+        
     }
 
-    public void GiveExtraWeapon(GameObject item)
-    {
-        spawnPowerWeapon(item);
-    }
+
 
     void setAmmoReference()
     {
@@ -228,15 +144,5 @@ public class Inventory_Manager : NetworkedBehaviour
         }
     }
 
-    [ServerRPC(RequireOwnership = false)]
-    public void Server_SpawnPlayerPrimeWeapon(GameObject weapon, Transform parent)
-    {
 
-        GameObject weaponPawn = Instantiate(weapon, parent);
-        NetworkedObject netObj = weaponPawn.GetComponent<NetworkedObject>();
-        netObj.SpawnWithOwnership(OwnerClientId);
-
-        //playerPawn.controller.PossessPawn(weaponPawn, netObj.OwnerClientId, netObj.NetworkId);
-
-    }
 }
