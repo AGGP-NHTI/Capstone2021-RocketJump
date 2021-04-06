@@ -20,7 +20,7 @@ public class Player_Pawn : Pawn
     public PlayerNetworkCenter PNC;
 
     [Header("Public Player Info")]
-    public string playerName = PlayerInformation.playerScreenName;
+    public string playerName;
 
 	GameObject localCamera;
 	GameObject track;
@@ -28,6 +28,8 @@ public class Player_Pawn : Pawn
 	GameObject localPlayer;
     private void Start()
     {
+
+        playerName = PlayerInformation.playerScreenName;
 
         PNC = new PlayerNetworkCenter(this);
         PNC.enabled = true;

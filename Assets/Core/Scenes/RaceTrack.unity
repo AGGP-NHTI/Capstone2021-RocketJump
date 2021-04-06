@@ -26548,8 +26548,10 @@ MonoBehaviour:
   countdownActive: 0
   lobbyCanvas: {fileID: 1727368832}
   countdownText: {fileID: 432589488}
-  playerSlot: {fileID: 6090884629094326858, guid: fa3b2ca57d112ea4fa736a289127a10a,
+  playerListPanel: {fileID: 4145814868572634760}
+  playerSlotPrefab: {fileID: 6090884629094326858, guid: fa3b2ca57d112ea4fa736a289127a10a,
     type: 3}
+  playerSlots: []
 --- !u!1001 &1604629128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27351,3 +27353,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a37390f26bd42f42bea99456ebed8a9, type: 3}
+--- !u!1 &4145814868572634760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 519941808287049319, guid: 8a37390f26bd42f42bea99456ebed8a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4145814868572634759}
+  m_PrefabAsset: {fileID: 0}

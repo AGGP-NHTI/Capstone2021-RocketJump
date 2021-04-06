@@ -15,10 +15,12 @@ public class RaceManager : MonoBehaviour
     public bool enableLobby = false;
     public int countdown;
     public bool countdownActive = false;
+    private int oldPlayerListCount = 0;
 
     [Header("Canvas Elements")]
     public Canvas lobbyCanvas;
     public TextMeshProUGUI countdownText;
+    public GameObject playerListPanel;
     public GameObject playerSlotPrefab;
 
     [Header("Lobby Information")]
@@ -54,14 +56,34 @@ public class RaceManager : MonoBehaviour
             countdownText.text = "Game starting in " + Mathf.Round(timer.time);
         } else { countdownText.enabled = false; }
 
-        var playerList = positionManager.players;
+        if(positionManager.players.Count != oldPlayerListCount)
+        {
+            oldPlayerListCount = positionManager.players.Count;
 
-        foreach(GameObject p in playerList)
+            populatePlayerList();
+        }
+    }
+
+    public void populatePlayerList()
+    {
+
+        playerSlots.Clear();
+
+        var playerList = positionManager.players;
+        var offset = 145f;
+
+        foreach (GameObject p in playerList)
         {
             var pawn = p.GetComponent<Player_Pawn>();
-            print(pawn.playerName);
-        }
 
+            var slot = Instantiate(playerSlotPrefab, playerListPanel.transform);
+
+            slot.transform.Find("playerName").GetComponent<TextMeshProUGUI>().text = pawn.playerName;
+            slot.transform.position = new Vector2(slot.transform.position.x, slot.transform.position.y + offset);
+            offset -= 5;
+
+            playerSlots.Add(slot);
+        }
     }
 
     public void hostStartGame()
