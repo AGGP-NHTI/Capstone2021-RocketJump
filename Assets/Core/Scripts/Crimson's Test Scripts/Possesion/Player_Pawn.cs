@@ -15,17 +15,22 @@ public class Player_Pawn : Pawn
 
 	[Header("Network Settings")]
 	public bool loadPlayer = true;
+    public bool initPlayer = false;
+    public PlayerNetworkCenter PNC;
+
+    [Header("Public Player Info")]
+    public string playerName = PlayerInformation.playerScreenName;
 
 	GameObject localCamera;
 	GameObject track;
 
 	PositionManager positionManager;
-	
-
 
 	GameObject localPlayer;
     private void Start()
     {
+
+        PNC = new PlayerNetworkCenter(this);
 
         if (IsLocal())
         {
@@ -41,16 +46,21 @@ public class Player_Pawn : Pawn
     {
 		if (IsLocal())
 		{
-			//if (!loadPlayer) { initializePositionManager(); }
 			if (IsServer)
 			{
-				setTrack();
-				//setPositionManager();
-			}
+                if (!initPlayer)
+                {
+                    print("!");
+                    initializePositionManager();
+                }
+            }
 			else if (IsClient)
 			{
-				loadPlayer = true;
-				InvokeServerRpc(clientAddPlayer, gameObject);
+                if(!initPlayer)
+                {
+                    initPlayer = true;
+                    InvokeServerRpc(PNC.clientAddPlayer, gameObject);
+                }
 			}
 		}
 	}
@@ -96,13 +106,16 @@ public class Player_Pawn : Pawn
 		if (positionManager && track)
 		{
 			positionManager.track = track;
+            positionManager.initPositionManager();
 		}
 	}
 
 	public void initializePositionManager()
 	{
+        initPlayer = true;
+        setTrack();
+        setPositionManager();
 		positionManager.updatePlayerList(gameObject);
-		loadPlayer = true;
 	}
 
 	public void setTrack()
@@ -110,7 +123,7 @@ public class Player_Pawn : Pawn
 		track = GameObject.Find("track");
 	}
 
-	//NETWORK FUNCTIONS
+    //NETWORK FUNCTIONS
 
 	public void updateNodePosition(PositionNodeScript node)
 	{
@@ -121,10 +134,11 @@ public class Player_Pawn : Pawn
 		else if (IsClient)
 		{
 			//clientUpdateNodePosition(node, gameObject);
-			InvokeServerRpc(clientUpdateNodePosition, node.nodeNumber, gameObject);
+			InvokeServerRpc(PNC.clientUpdateNodePosition, node.nodeNumber, gameObject);
 		}
 	}
 
+    /*
 
 	[ServerRPC(RequireOwnership = false)]
 	private void clientAddPlayer(GameObject player)
@@ -142,9 +156,9 @@ public class Player_Pawn : Pawn
 		pm.updatePlayerPosition(player, nodeNumber);
 	}
 
+    */
 
-
-	public bool IsLocal()
+    public bool IsLocal()
     {
 		if (controller)
 			return controller.IsLocalPlayer;
