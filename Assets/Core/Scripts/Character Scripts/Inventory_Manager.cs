@@ -108,11 +108,11 @@ public class Inventory_Manager : NetworkedBehaviour
 
         if (IsServer)
         {
-            networkSpawnPrimeWeapon(weaponPrefab);
+            networkSpawnPrimeWeapon(ApplicationGlobals.GetWeaponIndex(weaponPrefab));
         }
         else
         {
-            InvokeServerRpc(networkSpawnPrimeWeapon, weaponPrefab);
+            InvokeServerRpc(networkSpawnPrimeWeapon, ApplicationGlobals.GetWeaponIndex(weaponPrefab));
         }
 
         currentWeapon = primeWeapon;
@@ -144,10 +144,10 @@ public class Inventory_Manager : NetworkedBehaviour
     }
 
     [ServerRPC(RequireOwnership = false)]
-    void networkSpawnPrimeWeapon(GameObject weaponPrefab)
+    void networkSpawnPrimeWeapon(int weaponIndex)
     {
         
-        primeWeapon = playerPawn.NetSpawn(weaponPrefab, Vector3.zero, Quaternion.identity).GetComponent<Weapon>();
+        primeWeapon = playerPawn.NetSpawn(ApplicationGlobals.GetWeaponPrefab(weaponIndex), Vector3.zero, Quaternion.identity).GetComponent<Weapon>();
 
         primeWeapon.transform.parent = playerPawn.eyes;
         primeWeapon.transform.localPosition = Vector3.zero;
