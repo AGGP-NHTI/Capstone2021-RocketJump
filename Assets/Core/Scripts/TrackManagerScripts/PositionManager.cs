@@ -24,7 +24,7 @@ public class PositionManager : MonoBehaviour
     [SerializeField] List<Transform> positionNodes;
     [SerializeField] List<PlayerPositionManager> playerPositions;
 
-    private void Start()
+    public void initPositionManager()
     {
         if (!track)
         {
@@ -32,6 +32,8 @@ public class PositionManager : MonoBehaviour
         }
         else
         {
+
+            Debug.Log("Track found");
 
             positionNodes = new List<Transform>();
 
@@ -48,16 +50,6 @@ public class PositionManager : MonoBehaviour
             lastNode = positionNodes.Count;
 
         }
-    }
-
-    private void Awake()
-    {
-        
-    }
-
-    void Update()
-    {
-        
     }
 
     public void updatePlayerList(GameObject player)

@@ -75,9 +75,9 @@ public class MainMenu : MonoBehaviour
             Destroy(GameObject.FindGameObjectWithTag("PlayerInformationTag"));
         }
 
-        playerInformationCarrier = Instantiate(playerInformationCarrier);
-        playerInformationCarrier.name = "PlayerInformation";
-        DontDestroyOnLoad(playerInformationCarrier);
+        //playerInformationCarrier = Instantiate(new GameObject());
+        //playerInformationCarrier.name = "PlayerInformation";
+        //DontDestroyOnLoad(playerInformationCarrier);
     }
 
     private void Update()

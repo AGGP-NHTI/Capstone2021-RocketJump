@@ -26542,11 +26542,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51adf8e9b3ada7d4091596c64c6f5629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  track: {fileID: 1536724665}
   enableLobby: 0
   countdown: 0
   countdownActive: 0
   lobbyCanvas: {fileID: 1727368832}
   countdownText: {fileID: 432589488}
+  playerSlot: {fileID: 6090884629094326858, guid: fa3b2ca57d112ea4fa736a289127a10a,
+    type: 3}
 --- !u!1001 &1604629128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27310,6 +27313,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LobbyCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4145814868126626042, guid: 8a37390f26bd42f42bea99456ebed8a9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4791887489637602739, guid: 8a37390f26bd42f42bea99456ebed8a9,
         type: 3}
