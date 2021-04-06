@@ -38,6 +38,12 @@ public class Inventory_Manager : NetworkedBehaviour
 
     private void Update()
     {
+        if (!playerPawn.IsLocal())
+        {
+
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.F1))
         {
             spawnWeapons();
