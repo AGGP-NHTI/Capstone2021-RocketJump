@@ -79,14 +79,8 @@ public class Inventory_Manager : NetworkedBehaviour
         for (int i = 0; i < weaponPrefabs.Count; i++)
         {
             Debug.Log($"Spawn weapon with index {i}.");
-            if (IsServer)
-            {
-                networkSpawnWeapon(ApplicationGlobals.GetWeaponIndex(weaponPrefabs[i]), OwnerClientId);
-            }
-            else
-            {
-                InvokeServerRpc(networkSpawnWeapon, ApplicationGlobals.GetWeaponIndex(weaponPrefabs[i]), OwnerClientId);
-            }
+
+            InvokeServerRpc(networkSpawnWeapon, ApplicationGlobals.GetWeaponIndex(weaponPrefabs[i]), OwnerClientId);
         }
         currentWeaponIndex = 0;
     }

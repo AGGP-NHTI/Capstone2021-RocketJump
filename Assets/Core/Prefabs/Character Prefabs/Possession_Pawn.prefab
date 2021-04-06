@@ -101,8 +101,8 @@ MonoBehaviour:
   IsActive: 1
   IgnoreDamage: 0
   controller: {fileID: 0}
-  movementControl: {fileID: 0}
-  inventoryMan: {fileID: 0}
+  movementControl: {fileID: 3298075806896282396}
+  inventoryMan: {fileID: 5436238356648760076}
   eyes: {fileID: 3298075805582164848}
   cameraPrefab: {fileID: 6476323804535610174, guid: 5dfba613b3f5f0546b51dfa729f3e1e1,
     type: 3}
@@ -148,7 +148,6 @@ MonoBehaviour:
   playerPawn: {fileID: 8691181184349576725}
   weaponPrefabs:
   - {fileID: 4205752912056178508, guid: 5bcff3bd1819c5042a0cf7570c1704da, type: 3}
-  weaponObjs: []
   weapons: []
   currentWeaponIndex: -1
 --- !u!114 &8868373162051148392
