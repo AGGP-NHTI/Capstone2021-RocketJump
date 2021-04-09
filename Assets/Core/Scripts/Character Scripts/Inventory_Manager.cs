@@ -29,7 +29,7 @@ public class Inventory_Manager : NetworkedBehaviour
 
     private void Start()
     {
-
+        //HAVE THE SERVER COMUNICATETHE WEAPON INDEX OF THE CLIENT
         if (playerPawn.controller) 
         {
            //spawnWeapons();
@@ -40,7 +40,7 @@ public class Inventory_Manager : NetworkedBehaviour
     {
         if (!playerPawn.IsLocal())
         {
-
+            setSelectedWeapon();
             return;
         }
 
@@ -65,7 +65,7 @@ public class Inventory_Manager : NetworkedBehaviour
                 currentWeaponIndex = weapons.Count-1;
             }
         }
-        setSelectedWeapon();
+       
 
         if (playerPawn.IsLocal() && currentWeaponIndex != -1)
         {
