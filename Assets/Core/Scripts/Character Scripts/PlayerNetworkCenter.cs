@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using MLAPI;
 using MLAPI.Messaging;
 
 public class PlayerNetworkCenter
@@ -32,7 +33,8 @@ public class PlayerNetworkCenter
 
     public void initClient()
     {
-
+        initPlayer = true;
+        owner.InvokeServerRpc(clientAddPlayer, owner.gameObject);
     }
 
     public void setPositionManager()
