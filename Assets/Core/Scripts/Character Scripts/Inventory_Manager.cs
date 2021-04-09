@@ -129,6 +129,14 @@ public class Inventory_Manager : NetworkedBehaviour
             {
                 weapons.Add(clientWeapon);
             }
+            else
+            {
+                Debug.LogWarning($"{netWeapon.name} does not have client weapon component.");
+            }
+        }
+        else 
+        {
+            Debug.LogWarning($"net weapon: {netWeapon != null}, netplayer {netPlayer != null}, clientPawn: { netPlayer.gameObject.GetComponent<Player_Pawn>() != null} does not exist");
         }
     }
 
