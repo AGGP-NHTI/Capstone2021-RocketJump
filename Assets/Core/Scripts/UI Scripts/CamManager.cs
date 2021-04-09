@@ -14,7 +14,8 @@ public class CamManager : MonoBehaviour
 
     void Start()
     {
-        map = Random.Range(0, 2);
+        //map = Random.Range(0, 2);
+        map = 1;
         //
         
         foreach (CamPan i in cams)
