@@ -108,7 +108,6 @@ public class Inventory_Manager : NetworkedBehaviour
 
             InvokeServerRpc(networkSpawnWeapon, ApplicationGlobals.GetWeaponIndex(weaponPrefabs[i]), OwnerClientId);
         }
-        currentWeaponIndex = 0;
     }
 
     
@@ -128,6 +127,10 @@ public class Inventory_Manager : NetworkedBehaviour
             if (netWeapon.gameObject.TryGetComponent(out Weapon clientWeapon))
             {
                 weapons.Add(clientWeapon);
+                if (currentWeaponIndex == -1)
+                {
+                    currentWeaponIndex = 0;
+                }
             }
             else
             {
