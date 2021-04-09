@@ -108,6 +108,9 @@ MonoBehaviour:
     type: 3}
   UI: {fileID: 0}
   loadPlayer: 1
+  initPlayer: 0
+  PNCEnabled: 0
+  playerName: 
 --- !u!114 &3298075806896282396
 MonoBehaviour:
   m_ObjectHideFlags: 0
