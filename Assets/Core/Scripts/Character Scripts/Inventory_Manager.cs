@@ -54,16 +54,18 @@ public class Inventory_Manager : NetworkedBehaviour
             currentWeaponIndex++;
             if (currentWeaponIndex >= weapons.Count)
             {
-                InvokeServerRpc(setCurrentWeaponIndexOnServer, OwnerClientId, currentWeaponIndex);
+                currentWeaponIndex = 0;
             }
+            InvokeServerRpc(setCurrentWeaponIndexOnServer, NetworkId, currentWeaponIndex);
         }
         else if( mouseScroll.y < 0)
         {
             currentWeaponIndex--;
             if (currentWeaponIndex < 0)
             {
-                InvokeServerRpc(setCurrentWeaponIndexOnServer, OwnerClientId, weapons.Count - 1);
+                currentWeaponIndex = weapons.Count - 1;
             }
+            InvokeServerRpc(setCurrentWeaponIndexOnServer, NetworkId, currentWeaponIndex);
         }
        
 
@@ -130,7 +132,10 @@ public class Inventory_Manager : NetworkedBehaviour
                 if (currentWeaponIndex == -1)
                 {
                     currentWeaponIndex = 0;
+                    
+
                 }
+                setSelectedWeapon();
             }
             else
             {
@@ -166,6 +171,7 @@ public class Inventory_Manager : NetworkedBehaviour
     [ServerRPC]
     void setCurrentWeaponIndexOnServer(ulong pawnID, int index)
     {
+
         NetworkedObject netPlayer = GetNetworkedObject(pawnID);
         if (netPlayer && netPlayer.TryGetComponent(out Player_Pawn clientPawn))
         {
@@ -183,6 +189,11 @@ public class Inventory_Manager : NetworkedBehaviour
         {
             clientPawn.inventoryMan.currentWeaponIndex = index;
             setSelectedWeapon();
+        }
+        else 
+        {
+            Debug.LogWarning($"Net Player: {netPlayer != null}");
+            Debug.LogWarning($"Pawn: {netPlayer.GetComponent<Player_Pawn>() != null}");
         }
     }
 
