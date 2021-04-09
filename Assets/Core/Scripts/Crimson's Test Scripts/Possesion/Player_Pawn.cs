@@ -84,7 +84,10 @@ public class Player_Pawn : Pawn
 
     private void Update()
     {
-		
+		if (IsServer)
+		{
+			testVar++;
+		}
 	}
 
     public void setUI()
@@ -200,5 +203,11 @@ public class Player_Pawn : Pawn
 		}
     }
 
+    public override void OnGainedOwnership()
+    {
+        base.OnGainedOwnership();
+
+		
+    }
 
 }
