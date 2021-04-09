@@ -118,8 +118,7 @@ public class Player_Pawn : Pawn
 
 	public void setLocalPlayer()
     {
-        localPlayer = new GameObject();
-        localPlayer.name = "Local Player";
+        localPlayer = new GameObject("Local Player");
     }
 
     /*
@@ -191,9 +190,14 @@ public class Player_Pawn : Pawn
     public bool IsLocal()
     {
 		if (controller)
+		{
 			return controller.IsLocalPlayer;
+		}
 		else
+		{
+			Debug.LogWarning($"Controller does not exist for the client: {OwnerClientId}");
 			return false;
+		}
     }
 
 
