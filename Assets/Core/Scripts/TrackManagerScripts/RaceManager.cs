@@ -46,6 +46,11 @@ public class RaceManager : MonoBehaviour
     {
         if(!lobbyCanvas.enabled) { lobbyCanvas.enabled = true; }
 
+        if(!countdownActive)
+        {
+            hostStartGame();
+        }
+
         if(timer.updateTimer())
         {
             print("countdown finished");
@@ -88,6 +93,7 @@ public class RaceManager : MonoBehaviour
 
     public void hostStartGame()
     {
-        timer.setTimer(10);
+        timer.setTimer(60);
+        countdownActive = true;
     }
 }
