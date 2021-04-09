@@ -17,6 +17,7 @@ public class Player_Pawn : Pawn
 	[Header("Network Settings")]
 	public bool loadPlayer = true;
     public bool initPlayer = false;
+	public bool PNCEnabled = true;
     public PlayerNetworkCenter PNC;
 
     [Header("Public Player Info")]
@@ -32,7 +33,7 @@ public class Player_Pawn : Pawn
         playerName = PlayerInformation.playerScreenName;
 
         PNC = new PlayerNetworkCenter(this);
-        PNC.enabled = true;
+        PNC.enabled = PNCEnabled;
 
         if (IsLocal())
         {
