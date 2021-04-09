@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using MLAPI;
 using MLAPI.Messaging;
+using UnityEngine.Audio;
 
 public class MainMenu : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI SenNum;
     public TextMeshProUGUI VolNum;
 
+    public AudioMixer mixer;
+
     [Header("Player Relevant")]
     public GameObject playerInformationCarrier;
 
@@ -50,7 +53,7 @@ public class MainMenu : MonoBehaviour
         if (main != null)
         {
             Back();
-            source.volume = PlayerPrefs.GetFloat("Volume", volume.maxValue / 2);
+            //source.volume = PlayerPrefs.GetFloat("Volume", volume.maxValue / 2);
             if (PlayerPrefs.GetInt("InvertHorizontal", 1) == -1)
             {
                 horizontal.isOn = true;
@@ -85,13 +88,13 @@ public class MainMenu : MonoBehaviour
         if (MS != null && volume != null)
         {
             float m = MS.value * 100f;
-            float v = volume.value * 100f;
+            float v = volume.value;
 
             m = Mathf.RoundToInt(m);
             v = Mathf.RoundToInt(v);
 
             SenNum.text = "" + m;
-            VolNum.text = "" + v;
+            VolNum.text = "" + v + " dB";
         }
     }
 
@@ -147,7 +150,8 @@ public class MainMenu : MonoBehaviour
     public void ChangeVolume()
     {
         PlayerPrefs.SetFloat("Volume", volume.value);
-        source.volume = volume.value;
+        //source.volume = volume.value;
+        mixer.SetFloat("MusicVolume", volume.value);
     }
 
     public void ChangeMS()
