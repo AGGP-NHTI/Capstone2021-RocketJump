@@ -200,5 +200,11 @@ public class Player_Pawn : Pawn
 		}
     }
 
+    public override void OnGainedOwnership()
+    {
+        base.OnGainedOwnership();
+
+		
+    }
 
 }
