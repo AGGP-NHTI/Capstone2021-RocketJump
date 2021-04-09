@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 0
+  globalIndex: 1
   projectilePrefab: {fileID: 3434827112916319614, guid: 831b29f1ffb0257458f1a4dca83b352d,
     type: 3}
   projectileSpawn: {fileID: 3340697923363904619}
