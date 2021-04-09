@@ -40,7 +40,7 @@ public class Inventory_Manager : NetworkedBehaviour
     {
         if (!playerPawn.IsLocal())
         {
-            setSelectedWeapon();
+            
             return;
         }
 
@@ -56,14 +56,16 @@ public class Inventory_Manager : NetworkedBehaviour
             {
                 currentWeaponIndex = 0;
             }
+            InvokeServerRpc(setCurrentWeaponIndexOnServer, NetworkId, currentWeaponIndex);
         }
         else if( mouseScroll.y < 0)
         {
             currentWeaponIndex--;
             if (currentWeaponIndex < 0)
             {
-                currentWeaponIndex = weapons.Count-1;
+                currentWeaponIndex = weapons.Count - 1;
             }
+            InvokeServerRpc(setCurrentWeaponIndexOnServer, NetworkId, currentWeaponIndex);
         }
        
 
@@ -113,10 +115,10 @@ public class Inventory_Manager : NetworkedBehaviour
     
 
     [ClientRPC]
-    void setWeaponParent(ulong netID, ulong playerNetID)
+    void setWeaponParent(ulong weaponNetID, ulong clientID)
     {
-        NetworkedObject netWeapon = GetNetworkedObject(netID);
-        NetworkedObject netPlayer = GetNetworkedObject(playerNetID);
+        NetworkedObject netWeapon = GetNetworkedObject(weaponNetID);
+        NetworkedObject netPlayer = GetNetworkedObject(clientID);
 
         if (netWeapon && netPlayer && netPlayer.gameObject.TryGetComponent(out Player_Pawn clientPawn))
         {
@@ -130,7 +132,10 @@ public class Inventory_Manager : NetworkedBehaviour
                 if (currentWeaponIndex == -1)
                 {
                     currentWeaponIndex = 0;
+                    
+
                 }
+                setSelectedWeapon();
             }
             else
             {
@@ -144,12 +149,12 @@ public class Inventory_Manager : NetworkedBehaviour
     }
 
     [ServerRPC(RequireOwnership = false)]
-    void networkSpawnWeapon(int weaponIndex, ulong requestID)
+    void networkSpawnWeapon(int weaponIndex, ulong clientID)
     {
         
         Weapon weapon = playerPawn.NetSpawn(ApplicationGlobals.GetWeaponPrefab(weaponIndex), Vector3.zero, Quaternion.identity).GetComponent<Weapon>();
 
-        NetworkedObject clientObj = GetNetworkedObject(requestID);
+        NetworkedObject clientObj = GetNetworkedObject(clientID);
         if (clientObj && clientObj.TryGetComponent(out Player_Pawn clientPawn))
         {
             weapon.transform.parent = clientPawn.eyes;
@@ -163,6 +168,34 @@ public class Inventory_Manager : NetworkedBehaviour
         InvokeClientRpcOnEveryone(setWeaponParent, netObj.NetworkId, playerPawn.NetworkId);
     }
 
+    [ServerRPC]
+    void setCurrentWeaponIndexOnServer(ulong pawnID, int index)
+    {
+
+        NetworkedObject netPlayer = GetNetworkedObject(pawnID);
+        if (netPlayer && netPlayer.TryGetComponent(out Player_Pawn clientPawn))
+        {
+            clientPawn.inventoryMan.currentWeaponIndex = index;
+            setSelectedWeapon();
+        }
+        InvokeClientRpcOnEveryone(setCurrentWeaponIndexOnClients,pawnID,index);
+    }
+
+    [ClientRPC]
+    void setCurrentWeaponIndexOnClients(ulong pawnID, int index)
+    {
+        NetworkedObject netPlayer = GetNetworkedObject(pawnID);
+        if (netPlayer && netPlayer.TryGetComponent(out Player_Pawn clientPawn))
+        {
+            clientPawn.inventoryMan.currentWeaponIndex = index;
+            setSelectedWeapon();
+        }
+        else 
+        {
+            Debug.LogWarning($"Net Player: {netPlayer != null}");
+            Debug.LogWarning($"Pawn: {netPlayer.GetComponent<Player_Pawn>() != null}");
+        }
+    }
 
     void setSelectedWeapon()
     {
