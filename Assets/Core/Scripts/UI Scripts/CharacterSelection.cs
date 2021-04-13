@@ -89,7 +89,7 @@ public class CharacterSelection : NetworkedBehaviour
 
         PlayerInformation.isHosting = true;
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("RaceTrack");
     }
 
 

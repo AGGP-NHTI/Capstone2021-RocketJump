@@ -25,10 +25,12 @@ public class RaceManager : MonoBehaviour
 
     [Header("Lobby Information")]
     public List<GameObject> playerSlots = new List<GameObject>();
+    public GameObject hostPlayer;
+    public bool isHost = false;
+    private float lastCountdownNumber = 100;
 
     void Update()
     {
-
         if(!track.GetComponent<PositionManager>())
         {
             return;
@@ -46,27 +48,49 @@ public class RaceManager : MonoBehaviour
     {
         if(!lobbyCanvas.enabled) { lobbyCanvas.enabled = true; }
 
-        if(!countdownActive)
+        if(isHost)
         {
-            hostStartGame();
-        }
+            if (!countdownActive)
+            {
+                hostStartGame();
+            }
 
-        if(timer.updateTimer())
-        {
-            print("countdown finished");
-        }
-        if (timer.runTimer)
-        {
-            countdownText.enabled = true;
-            countdownText.text = "Game starting in " + Mathf.Round(timer.time);
-        } else { countdownText.enabled = false; }
+            if (timer.updateTimer())
+            {
+                print("countdown finished");
+            }
+            if (timer.runTimer)
+            {
+                countdownText.enabled = true;
+                countdownText.text = "Game starting in " + Mathf.Round(timer.time);
 
-        if(positionManager.players.Count != oldPlayerListCount)
-        {
-            oldPlayerListCount = positionManager.players.Count;
+                if(Mathf.Round(timer.time) < Mathf.Round(lastCountdownNumber))
+                {
+                    lastCountdownNumber = Mathf.Round(timer.time);
+                    hostPlayer.GetComponent<Player_Pawn>().PNC.updateClientLobbies();
+                }
+            }
+            else { countdownText.enabled = false; }
 
-            populatePlayerList();
+            if (positionManager.players.Count != oldPlayerListCount)
+            {
+                oldPlayerListCount = positionManager.players.Count;
+
+                populatePlayerList();
+
+                hostPlayer.GetComponent<Player_Pawn>().PNC.updateClientLobbies();
+            }
         }
+        
+
+        
+    }
+
+    public void updateLobby(List<GameObject> ps, int c)
+    {
+        playerSlots = ps;
+        countdown = c;
+        populatePlayerList();
     }
 
     public void populatePlayerList()
@@ -85,7 +109,7 @@ public class RaceManager : MonoBehaviour
 
             slot.transform.Find("playerName").GetComponent<TextMeshProUGUI>().text = pawn.playerName;
             slot.transform.position = new Vector2(slot.transform.position.x, slot.transform.position.y + offset);
-            offset -= 5;
+            offset -= 10;
 
             playerSlots.Add(slot);
         }

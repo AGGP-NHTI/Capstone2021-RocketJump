@@ -21243,6 +21243,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawn Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2247085325070338293, guid: 985e70390338c90478bf0707030d5d3f,
+        type: 3}
+      propertyPath: spawnpoints.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2247085325583934114, guid: 985e70390338c90478bf0707030d5d3f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21267,6 +21272,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383333937688435774, guid: 985e70390338c90478bf0707030d5d3f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7290815890066210906, guid: 985e70390338c90478bf0707030d5d3f,
         type: 3}
@@ -26552,6 +26562,7 @@ MonoBehaviour:
   playerSlotPrefab: {fileID: 6090884629094326858, guid: fa3b2ca57d112ea4fa736a289127a10a,
     type: 3}
   playerSlots: []
+  hostPlayer: {fileID: 0}
 --- !u!1001 &1604629128
 PrefabInstance:
   m_ObjectHideFlags: 0

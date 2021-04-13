@@ -12,6 +12,7 @@ public class PlayerNetworkCenter
     private Player_Pawn owner;
     public PositionManager positionManager;
     public GameObject track;
+    public RaceManager raceManager;
     public bool initPlayer = false;
     public bool enabled;
 
@@ -29,6 +30,8 @@ public class PlayerNetworkCenter
         {
             positionManager.updatePlayerList(owner.gameObject);
         }
+
+        initRaceManager();
     }
 
     public void initClient()
@@ -47,6 +50,13 @@ public class PlayerNetworkCenter
         }
     }
 
+    public void initRaceManager()
+    {
+        raceManager.hostPlayer = owner.gameObject;
+        raceManager.enableLobby = true;
+        raceManager.isHost = true;
+    }
+
     public void initializePositionManager()
     {
         initPlayer = true;
@@ -58,12 +68,18 @@ public class PlayerNetworkCenter
     public void setTrack()
     {
         track = GameObject.Find("track");
+        raceManager = track.GetComponent<RaceManager>();
+    }
+
+    public void updateClientLobbies()
+    {
+        owner.InvokeClientRpcOnEveryone(clientUpdateLobby, raceManager.playerSlots, raceManager.countdown);
     }
 
     [ServerRPC(RequireOwnership = false)]
     public void clientAddPlayer(GameObject player)
     {
-        //positionManager.updatePlayerList(player);
+        positionManager.updatePlayerList(player);
         var pm = GameObject.Find("track").GetComponent<PositionManager>();
         pm.updatePlayerList(player);
     }
@@ -74,5 +90,11 @@ public class PlayerNetworkCenter
         //positionManager.updatePlayerPosition(player, nodeNumber);
         var pm = GameObject.Find("track").GetComponent<PositionManager>();
         pm.updatePlayerPosition(player, nodeNumber);
+    }
+
+    [ClientRPC()]
+    public void clientUpdateLobby(List<GameObject> playerSlots, int countdown)
+    {
+        raceManager.updateLobby(playerSlots, countdown);
     }
 }

@@ -12,8 +12,15 @@ public class SpawnPointManager : NetworkedBehaviour
 
     void Start()
     {
-        
+        foreach(Transform child in transform)
+        {
+            if(child.gameObject.activeSelf)
+            {
+                spawnpoints.Add(child.gameObject);
+            }
+        }
     }
+
     [ServerRPC(RequireOwnership = false)]
     public Vector3 RequestSpawn()
     {
