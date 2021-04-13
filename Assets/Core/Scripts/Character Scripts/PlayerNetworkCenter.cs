@@ -68,6 +68,7 @@ public class PlayerNetworkCenter
     public void setTrack()
     {
         track = GameObject.Find("track");
+        if(track)
         raceManager = track.GetComponent<RaceManager>();
     }
 

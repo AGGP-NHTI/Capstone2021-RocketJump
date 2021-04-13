@@ -40,17 +40,24 @@ public class Player_Controller : Controller
 
     private void Start()
     {
-        SpawnPlayerPawn();
+        
     }
 
-    //private void Update()
-    //{
-    //    if (!IsLocalPlayer)
-    //    { return; }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F2) && IsLocalPlayer)
+        {
+            SpawnPlayerPawn();
+        }
 
-    //    if (!ControlledPawn)
-    //    { return; }
-    //}
+        if (!IsLocalPlayer)
+        { return; }
+
+        if (!ControlledPawn)
+        { return; }
+
+ 
+    }
 
     public void SpawnPlayerPawn()
     {
