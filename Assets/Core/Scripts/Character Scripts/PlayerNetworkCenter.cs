@@ -72,9 +72,18 @@ public class PlayerNetworkCenter
         raceManager = track.GetComponent<RaceManager>();
     }
 
-    public void updateClientLobbies()
+    public void updateClientLobbies(int updateType, string name, bool start, bool end)
     {
-        owner.InvokeClientRpcOnEveryone(clientUpdateLobby, raceManager.playerSlots, raceManager.countdown);
+        switch(updateType)
+        {
+            case 0: //Update Countdown
+                owner.InvokeClientRpcOnEveryone(clientUpdateLobbyCountdown, raceManager.countdown);
+                break;
+            case 1: //Update Playerlist
+                owner.InvokeClientRpcOnEveryone(clientUpdateLobby, name, start, end);
+                break;
+        }
+        
     }
 
     [ServerRPC(RequireOwnership = false)]
@@ -94,8 +103,14 @@ public class PlayerNetworkCenter
     }
 
     [ClientRPC()]
-    public void clientUpdateLobby(List<GameObject> playerSlots, int countdown)
+    public void clientUpdateLobby(string name, bool start, bool end)
     {
-        raceManager.updateLobby(playerSlots, countdown);
+        raceManager.clientPopulatePlayerList(name, start, end);
+    }
+
+    [ClientRPC()]
+    public void clientUpdateLobbyCountdown(int countdown)
+    {
+        raceManager.updateLobbyCountdown(countdown);
     }
 }
