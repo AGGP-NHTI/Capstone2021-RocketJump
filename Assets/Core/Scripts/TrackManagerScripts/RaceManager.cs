@@ -28,6 +28,7 @@ public class RaceManager : MonoBehaviour
     public GameObject hostPlayer;
     public bool isHost = false;
     private float lastCountdownNumber = 100;
+    private List<string> clientPlayerNames = new List<string>();
 
     void Update()
     {
@@ -67,7 +68,7 @@ public class RaceManager : MonoBehaviour
                 if(Mathf.Round(timer.time) < Mathf.Round(lastCountdownNumber))
                 {
                     lastCountdownNumber = Mathf.Round(timer.time);
-                    hostPlayer.GetComponent<Player_Pawn>().PNC.updateClientLobbies();
+                    updateClientLobbies(0, null, false, false);
                 }
             }
             else { countdownText.enabled = false; }
@@ -78,41 +79,84 @@ public class RaceManager : MonoBehaviour
 
                 populatePlayerList();
 
-                hostPlayer.GetComponent<Player_Pawn>().PNC.updateClientLobbies();
+                
             }
         }
-        
+        else
+        {
+            countdownText.enabled = true;
+            countdownText.text = "Game starting in " + Mathf.Round(timer.time);
+        }
 
         
     }
 
-    public void updateLobby(List<GameObject> ps, int c)
+    public void updateClientLobbies(int updateType, string name, bool start, bool end)
     {
-        playerSlots = ps;
+        hostPlayer.GetComponent<Player_Pawn>().PNC.updateClientLobbies(updateType, name, start, end);
+    }
+
+    public void updateLobbyCountdown(int c)
+    {
         countdown = c;
-        populatePlayerList();
+        //populatePlayerList();
+    }
+
+    public void clientPopulatePlayerList(string name, bool start, bool end)
+    {
+
+        if(start)
+        {
+            clientPlayerNames.Clear();
+        }
+
+        clientPlayerNames.Add(name);
+
+        if(end)
+        {
+            populatePlayerList();
+        }
     }
 
     public void populatePlayerList()
     {
 
-        playerSlots.Clear();
-
-        var playerList = positionManager.players;
         var offset = 145f;
 
-        foreach (GameObject p in playerList)
+        if(isHost)
         {
-            var pawn = p.GetComponent<Player_Pawn>();
+            playerSlots.Clear();
 
-            var slot = Instantiate(playerSlotPrefab, playerListPanel.transform);
+            var playerList = positionManager.players;
 
-            slot.transform.Find("playerName").GetComponent<TextMeshProUGUI>().text = pawn.playerName;
-            slot.transform.position = new Vector2(slot.transform.position.x, slot.transform.position.y + offset);
-            offset -= 10;
+            foreach (GameObject p in playerList)
+            {
+                var pawn = p.GetComponent<Player_Pawn>();
 
-            playerSlots.Add(slot);
+                var slot = Instantiate(playerSlotPrefab, playerListPanel.transform);
+
+                slot.transform.Find("playerName").GetComponent<TextMeshProUGUI>().text = pawn.playerName;
+                slot.transform.position = new Vector2(slot.transform.position.x, slot.transform.position.y + offset);
+                offset -= 10;
+
+                playerSlots.Add(slot);
+            }
+
         }
+        else
+        {
+            var playerList = clientPlayerNames;
+
+            foreach(string p in playerList)
+            {
+                var slot = Instantiate(playerSlotPrefab, playerListPanel.transform);
+
+                slot.transform.Find("playerName").GetComponent<TextMeshProUGUI>().text = p;
+                slot.transform.position = new Vector2(slot.transform.position.x, slot.transform.position.y + offset);
+                offset -= 10;
+            }
+        }
+        
     }
 
     public void hostStartGame()
