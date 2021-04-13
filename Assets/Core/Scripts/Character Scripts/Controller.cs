@@ -49,6 +49,10 @@ public class Controller : NetworkedBehaviour
         {
             PossessPawn(gObj);
         }
+        else
+        {
+            Debug.LogWarning("GOBJ IS NULL");
+        }
     }
 
     GameObject FindByNetID(ulong netID)
