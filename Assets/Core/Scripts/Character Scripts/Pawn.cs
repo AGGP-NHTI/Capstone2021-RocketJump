@@ -5,7 +5,6 @@ using MLAPI;
 using MLAPI.Messaging;
 public class Pawn : Actor
 {
-
     public Controller controller;
     [MLAPI.NetworkedVar.SyncedVar]
     public float testVar = 0;
@@ -14,17 +13,18 @@ public class Pawn : Actor
     public void Possessed(Controller c)
     {
         controller = c;
-
+        Debug.Log($"{c.name}_{NetworkId} is not happening, whyy?");
         OnPossess();
 
         NetworkedObject netObj = GetComponent<NetworkedObject>();
         if (netObj && IsServer)
         {
             netObj.ChangeOwnership(c.OwnerClientId);
+            
         }
         else
         {
-            Debug.Log($"{c.name} is not a networked object or is a client.");
+            Debug.LogWarning($"{c.name} is not a networked object or is a client.");
         }
 
 
