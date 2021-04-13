@@ -13003,6 +13003,7 @@ MonoBehaviour:
   IsActive: 1
   IgnoreDamage: 1
   controller: {fileID: 0}
+  testVar: 0
   speed: 20
   MouseSen: 300
   freeLookSens: 2.5
@@ -13010,6 +13011,7 @@ MonoBehaviour:
   XRotate: 0
   CharSel: {fileID: 98131267995913776}
   text: {fileID: 5764025716267728173}
+  SpecUI: {fileID: 0}
   characterSelectPrefab: {fileID: 0}
 --- !u!81 &6187004778564048220
 AudioListener:
