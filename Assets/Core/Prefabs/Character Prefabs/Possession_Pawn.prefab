@@ -101,6 +101,7 @@ MonoBehaviour:
   IsActive: 1
   IgnoreDamage: 0
   controller: {fileID: 0}
+  testVar: 0
   movementControl: {fileID: 3298075806896282396}
   inventoryMan: {fileID: 5436238356648760076}
   eyes: {fileID: 3298075805582164848}
@@ -109,7 +110,7 @@ MonoBehaviour:
   UI: {fileID: 0}
   loadPlayer: 1
   initPlayer: 0
-  PNCEnabled: 1
+  PNCEnabled: 0
   playerName: 
 --- !u!114 &3298075806896282396
 MonoBehaviour:
