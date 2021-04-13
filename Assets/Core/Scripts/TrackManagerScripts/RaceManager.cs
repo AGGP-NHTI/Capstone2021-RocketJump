@@ -32,17 +32,23 @@ public class RaceManager : MonoBehaviour
 
     void Update()
     {
-        if(!track.GetComponent<PositionManager>())
+        if(isHost)
         {
-            return;
-        }
-        else
-        {
-            positionManager = track.GetComponent<PositionManager>();
+            if (!track.GetComponent<PositionManager>())
+            {
+                return;
+            }
+            else
+            {
+                positionManager = track.GetComponent<PositionManager>();
+            }
+
+            
         }
 
-        if(enableLobby) { lobbyManager(); }
+        if (enableLobby) { lobbyManager(); }
         else { lobbyCanvas.enabled = false; }
+
     }
 
     public void lobbyManager()
@@ -51,10 +57,12 @@ public class RaceManager : MonoBehaviour
 
         if(isHost)
         {
+            /*
             if (!countdownActive)
             {
                 hostStartGame();
             }
+            */
 
             if (timer.updateTimer())
             {
@@ -98,14 +106,16 @@ public class RaceManager : MonoBehaviour
 
     public void updateLobbyCountdown(int c)
     {
+
+        if (!enableLobby) { enableLobby = true; }
         countdown = c;
-        //populatePlayerList();
     }
 
     public void clientPopulatePlayerList(string name, bool start, bool end)
     {
+        if (!enableLobby) { enableLobby = true; }
 
-        if(start)
+        if (start)
         {
             clientPlayerNames.Clear();
         }
@@ -128,6 +138,7 @@ public class RaceManager : MonoBehaviour
             playerSlots.Clear();
 
             var playerList = positionManager.players;
+            var index = 0;
 
             foreach (GameObject p in playerList)
             {
@@ -140,6 +151,21 @@ public class RaceManager : MonoBehaviour
                 offset -= 10;
 
                 playerSlots.Add(slot);
+
+                if(index == 0)
+                {
+                    updateClientLobbies(1, pawn.playerName, true, false);
+                }
+                else if(index == playerList.Count - 1)
+                {
+                    updateClientLobbies(1, pawn.playerName, false, true);
+                }
+                else
+                {
+                    updateClientLobbies(1, pawn.playerName, false, false);
+                }
+
+                index++;
             }
 
         }
@@ -161,7 +187,7 @@ public class RaceManager : MonoBehaviour
 
     public void hostStartGame()
     {
-        timer.setTimer(60);
+        timer.setTimer(10);
         countdownActive = true;
     }
 }
