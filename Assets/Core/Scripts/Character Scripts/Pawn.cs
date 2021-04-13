@@ -6,14 +6,13 @@ using MLAPI.Messaging;
 public class Pawn : Actor
 {
     public Controller controller;
-    [MLAPI.NetworkedVar.SyncedVar]
+    //[MLAPI.NetworkedVar.SyncedVar]
     public float testVar = 0;
 
 
     public void Possessed(Controller c)
     {
         controller = c;
-        Debug.Log($"{c.name}_{NetworkId} is not happening, whyy?");
         OnPossess();
 
         NetworkedObject netObj = GetComponent<NetworkedObject>();
