@@ -45,16 +45,18 @@ public class Player_Controller : Controller
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F2) && IsLocalPlayer)
+        {
+            SpawnPlayerPawn();
+        }
+
         if (!IsLocalPlayer)
         { return; }
 
         if (!ControlledPawn)
         { return; }
 
-        if (Input.GetKeyDown(KeyCode.F2))
-        {
-            SpawnPlayerPawn();
-        }
+ 
     }
 
     public void SpawnPlayerPawn()
