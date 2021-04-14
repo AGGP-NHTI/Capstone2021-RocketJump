@@ -475,6 +475,8 @@ MonoBehaviour:
   - The power of friendship has lead to the collapse of so many galactic governments
     that it friendship has been banned. If someone says you're their friend, execute
     them immediately.
+  - When I was five I lost my lucky lunch box, so I went back in time and took it
+    back to the present...wait a minute...
   loadtext: {fileID: 4298999616912753272}
   hintnum: {fileID: 4298999615368799885}
   IsSource: 1
