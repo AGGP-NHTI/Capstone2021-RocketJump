@@ -38,7 +38,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     {
         Debug.Log("initClient");
         initPlayer = true;
-        owner.InvokeServerRpc(clientAddPlayer, owner.gameObject);
+        InvokeServerRpc(clientAddPlayer, owner.gameObject);
     }
 
     public void setPositionManager()
