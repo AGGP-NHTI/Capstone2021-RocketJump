@@ -23,7 +23,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         {
             initHost();
         }
-        else
+        else if(IsClient && IsLocalPlayer)
         {
             initClient();
         }
@@ -89,10 +89,10 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         switch(updateType)
         {
             case 0: //Update Countdown
-                owner.InvokeClientRpcOnEveryone(clientUpdateLobbyCountdown, raceManager.countdown);
+                InvokeClientRpcOnEveryone(clientUpdateLobbyCountdown, raceManager.countdown);
                 break;
             case 1: //Update Playerlist
-                owner.InvokeClientRpcOnEveryone(clientUpdateLobby, name, start, end);
+                InvokeClientRpcOnEveryone(clientUpdateLobby, name, start, end);
                 break;
         }
         
@@ -103,8 +103,6 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     {
         Debug.Log("Client add player, " + positionManager + ", " + player.name);
         positionManager.updatePlayerList(player);
-        //var pm = GameObject.Find("track").GetComponent<PositionManager>();
-        //pm.updatePlayerList(player);
     }
 
     [ServerRPC(RequireOwnership = false)]

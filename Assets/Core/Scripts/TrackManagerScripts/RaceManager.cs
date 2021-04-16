@@ -57,12 +57,6 @@ public class RaceManager : MonoBehaviour
 
         if(isHost)
         {
-            /*
-            if (!countdownActive)
-            {
-                hostStartGame();
-            }
-            */
 
             if (timer.updateTimer())
             {
@@ -179,7 +173,7 @@ public class RaceManager : MonoBehaviour
 
                 slot.transform.Find("playerName").GetComponent<TextMeshProUGUI>().text = p;
                 slot.transform.position = new Vector2(slot.transform.position.x, slot.transform.position.y + offset);
-                offset -= 10;
+                offset -= 75;
             }
         }
         

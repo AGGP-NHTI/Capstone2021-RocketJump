@@ -47,16 +47,16 @@ public class Player_Controller : Controller
     private void Start()
     {
         
-        playerName = PlayerInformation.playerScreenName;
+        if(IsLocalPlayer)
+        {
+            playerName = PlayerInformation.playerScreenName;
+        }
 
-        //PNC = gameObject.AddComponent<PlayerNetworkCenter>();
         if (PNCEnabled)
         {
             PNC.initPNC(this);
         }
         PNC.enabled = PNCEnabled;
-
-        //setupPNC();
     }
 
     private void Update()
@@ -74,31 +74,6 @@ public class Player_Controller : Controller
 
  
     }
-
-    /*
-    private void setupPNC()
-    {
-        if (IsLocalPlayer)
-        {
-            if (IsServer)
-            {
-                if (PNC.enabled)
-                {
-                    PNC.initHost();
-                }
-            }
-            else if (IsClient)
-            {
-                Debug.Log("Is Client");
-                if (PNC.enabled)
-                {
-                    Debug.Log("Is Client PNC enabled");
-                    PNC.initClient();
-                }
-            }
-        }
-    }
-    */
 
     public void SpawnPlayerPawn()
     {
