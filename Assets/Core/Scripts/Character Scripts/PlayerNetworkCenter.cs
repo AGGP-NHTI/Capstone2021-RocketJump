@@ -23,6 +23,11 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         {
             initHost();
         }
+        else if(IsServer && !IsLocalPlayer)
+        {
+            setTrack();
+            positionManager = track.GetComponent<PositionManager>();
+        }
         else if(IsClient && IsLocalPlayer)
         {
             initClient();
