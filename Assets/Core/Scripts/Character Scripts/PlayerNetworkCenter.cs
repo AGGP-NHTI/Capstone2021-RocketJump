@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 using MLAPI;
 using MLAPI.Messaging;
 
-public class PlayerNetworkCenter
+public class PlayerNetworkCenter : NetworkedBehaviour
 {
 
     private Player_Controller owner;
