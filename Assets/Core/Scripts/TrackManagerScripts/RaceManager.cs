@@ -101,7 +101,7 @@ public class RaceManager : MonoBehaviour
 
     public void updateClientLobbies(int updateType, string name, bool start, bool end)
     {
-        hostPlayer.GetComponent<Player_Pawn>().PNC.updateClientLobbies(updateType, name, start, end);
+        hostPlayer.GetComponent<Player_Controller>().PNC.updateClientLobbies(updateType, name, start, end);
     }
 
     public void updateLobbyCountdown(int c)
@@ -142,7 +142,7 @@ public class RaceManager : MonoBehaviour
 
             foreach (GameObject p in playerList)
             {
-                var pawn = p.GetComponent<Player_Pawn>();
+                var pawn = p.GetComponent<Player_Controller>();
 
                 var slot = Instantiate(playerSlotPrefab, playerListPanel.transform);
 

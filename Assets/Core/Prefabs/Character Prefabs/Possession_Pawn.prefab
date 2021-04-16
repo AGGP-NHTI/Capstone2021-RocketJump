@@ -110,7 +110,7 @@ MonoBehaviour:
   UI: {fileID: 0}
   loadPlayer: 1
   initPlayer: 0
-  PNCEnabled: 0
+  PNCEnabled: 1
   playerName: 
 --- !u!114 &3298075806896282396
 MonoBehaviour:

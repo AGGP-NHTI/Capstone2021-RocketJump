@@ -7,7 +7,13 @@ using MLAPI.Messaging;
 public class Player_Controller : Controller
 {
 
-  
+    [Header("Network Settings")]
+    public bool PNCEnabled = true;
+    public PlayerNetworkCenter PNC;
+
+    [Header("Public Player Info")]
+    public string playerName;
+
     public bool PlayerSpawned = false;
 
     [Header("Characters")]
@@ -40,7 +46,12 @@ public class Player_Controller : Controller
 
     private void Start()
     {
-        
+        playerName = PlayerInformation.playerScreenName;
+
+        PNC = new PlayerNetworkCenter(this);
+        PNC.enabled = PNCEnabled;
+
+        setupPNC();
     }
 
     private void Update()
@@ -59,11 +70,47 @@ public class Player_Controller : Controller
  
     }
 
+    private void setupPNC()
+    {
+        if (IsLocalPlayer)
+        {
+            if (IsServer)
+            {
+                if (PNC.enabled)
+                {
+                    PNC.initHost();
+                }
+            }
+            else if (IsClient)
+            {
+                if (PNC.enabled)
+                {
+                    PNC.initClient();
+                }
+            }
+        }
+    }
+
     public void SpawnPlayerPawn()
     {
         if (IsOwner)
         {
             InvokeServerRpc(Server_SpawnPlayerPawn,OwnerClientId);
+        }
+    }
+
+    //NETWORK FUNCTIONS
+
+    public void updateNodePosition(PositionNodeScript node)
+    {
+        if (IsHost)
+        {
+            PNC.positionManager.updatePlayerPosition(gameObject, node.nodeNumber);
+        }
+        else if (IsClient)
+        {
+            //clientUpdateNodePosition(node, gameObject);
+            InvokeServerRpc(PNC.clientUpdateNodePosition, node.nodeNumber, gameObject);
         }
     }
 

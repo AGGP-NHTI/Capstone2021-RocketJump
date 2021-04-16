@@ -9,14 +9,14 @@ using MLAPI.Messaging;
 public class PlayerNetworkCenter
 {
 
-    private Player_Pawn owner;
+    private Player_Controller owner;
     public PositionManager positionManager;
     public GameObject track;
     public RaceManager raceManager;
     public bool initPlayer = false;
     public bool enabled;
 
-    public PlayerNetworkCenter(Player_Pawn reference)
+    public PlayerNetworkCenter(Player_Controller reference)
     {
         owner = reference;
     }

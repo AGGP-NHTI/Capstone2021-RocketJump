@@ -9,7 +9,7 @@ public class PositionNodeScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        Player_Pawn obj = other.gameObject.GetComponent<Player_Pawn>();
+        var obj = other.gameObject.GetComponent<Player_Controller>();
 
         if (obj)
         {
