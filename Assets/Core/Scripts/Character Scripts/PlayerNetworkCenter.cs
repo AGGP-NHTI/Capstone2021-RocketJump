@@ -100,6 +100,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
                 InvokeClientRpcOnEveryone(clientUpdateLobbyCountdown, raceManager.countdown);
                 break;
             case 1: //Update Playerlist
+                Debug.Log("Update PlayerList");
                 InvokeClientRpcOnEveryone(clientUpdateLobby, name, start, end);
                 break;
         }
@@ -124,7 +125,8 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     [ClientRPC()]
     public void clientUpdateLobby(string name, bool start, bool end)
     {
-        if(!raceManager)
+        Debug.Log("clientUpdateLobby");
+        if (!raceManager)
         {
             setTrack();
         }

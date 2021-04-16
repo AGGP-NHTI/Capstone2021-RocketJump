@@ -75,9 +75,9 @@ public class RaceManager : MonoBehaviour
             }
             else { countdownText.enabled = false; }
 
-            if (positionManager.players.Count != oldPlayerListCount)
+            if (positionManager.playerPositions.Count != oldPlayerListCount)
             {
-                oldPlayerListCount = positionManager.players.Count;
+                oldPlayerListCount = positionManager.playerPositions.Count;
 
                 populatePlayerList();
 
@@ -95,7 +95,9 @@ public class RaceManager : MonoBehaviour
 
     public void updateClientLobbies(int updateType, string name, bool start, bool end)
     {
-        //hostPlayer.GetComponent<Player_Controller>().PNC.updateClientLobbies(updateType, name, start, end); // THIS CRASHES HOST
+        Debug.Log("start updateClientLobbies");
+        hostPlayer.GetComponent<Player_Controller>().PNC.updateClientLobbies(updateType, name, start, end); // THIS CRASHES HOST
+        Debug.Log("end updateClientLobbies");
     }
 
     public void updateLobbyCountdown(int c)
@@ -144,7 +146,7 @@ public class RaceManager : MonoBehaviour
 
                 slot.transform.Find("playerName").GetComponent<TextMeshProUGUI>().text = name;
                 slot.transform.position = new Vector2(slot.transform.position.x, slot.transform.position.y + offset);
-                offset -= 10;
+                offset -= 75;
 
                 playerSlots.Add(slot);
 
