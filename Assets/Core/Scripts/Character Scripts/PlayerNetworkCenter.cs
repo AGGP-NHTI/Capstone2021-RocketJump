@@ -36,6 +36,7 @@ public class PlayerNetworkCenter
 
     public void initClient()
     {
+        Debug.Log("initClient");
         initPlayer = true;
         owner.InvokeServerRpc(clientAddPlayer, owner.gameObject);
     }

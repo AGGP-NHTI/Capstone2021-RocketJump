@@ -83,8 +83,10 @@ public class Player_Controller : Controller
             }
             else if (IsClient)
             {
+                Debug.Log("Is Client");
                 if (PNC.enabled)
                 {
+                    Debug.Log("Is Client PNC enabled");
                     PNC.initClient();
                 }
             }

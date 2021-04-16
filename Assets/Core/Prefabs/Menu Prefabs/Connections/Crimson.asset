@@ -15,5 +15,5 @@ MonoBehaviour:
   serverName: Crimson's Server 1
   connectAddress: 74.75.81.133
   connectPort: 1234
-  relayAddress: 54.205.11.127
+  relayAddress: 3.82.190.109
   relayPort: 8888
