@@ -19,7 +19,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public void initPNC(Player_Controller reference)
     {
         owner = reference;
-        if(IsServer)
+        if(IsServer && IsLocalPlayer)
         {
             initHost();
         }

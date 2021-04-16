@@ -31,11 +31,6 @@ public class Player_Pawn : Pawn
     private void Start()
     {
 
-        //playerName = PlayerInformation.playerScreenName;
-
-        //PNC = new PlayerNetworkCenter(this);
-        //PNC.enabled = PNCEnabled;
-
         if (IsLocal())
         {
             setLocalPlayer();
@@ -45,33 +40,8 @@ public class Player_Pawn : Pawn
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-        //setupPNC();
     }
 
-    /*
-    private void setupPNC()
-    {
-        if (IsLocal())
-        {
-            if (IsServer)
-            {
-                if (PNC.enabled)
-                {
-                    PNC.initHost();
-                }
-                
-            }
-            else if (IsClient)
-            {
-                if (PNC.enabled)
-                {
-                    PNC.initClient();
-                }
-                
-            }
-        }
-    }
-    */
 
     private void Update()
     {
