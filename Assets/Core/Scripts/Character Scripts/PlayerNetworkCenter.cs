@@ -90,6 +90,7 @@ public class PlayerNetworkCenter
     [ServerRPC(RequireOwnership = false)]
     public void clientAddPlayer(GameObject player)
     {
+        Debug.Log("Client add player");
         positionManager.updatePlayerList(player);
         var pm = GameObject.Find("track").GetComponent<PositionManager>();
         pm.updatePlayerList(player);
