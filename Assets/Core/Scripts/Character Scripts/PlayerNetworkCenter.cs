@@ -52,7 +52,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         Debug.Log("initClient");
         setTrack();
         initPlayer = true;
-        InvokeServerRpc(serverAddPlayer, owner.gameObject);
+        InvokeServerRpc(serverAddPlayer, owner.gameObject, owner.playerName);
     }
 
     public void setPositionManager()
@@ -107,10 +107,10 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     }
 
     [ServerRPC(RequireOwnership = false)]
-    public void serverAddPlayer(GameObject player)
+    public void serverAddPlayer(GameObject player, string name)
     {
         Debug.Log("Client add player, " + positionManager + ", " + player.name);
-        positionManager.updatePlayerList(player, owner.playerName);
+        positionManager.updatePlayerList(player, name);
     }
 
     [ServerRPC(RequireOwnership = false)]

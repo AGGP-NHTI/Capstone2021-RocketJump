@@ -95,7 +95,7 @@ public class RaceManager : MonoBehaviour
 
     public void updateClientLobbies(int updateType, string name, bool start, bool end)
     {
-        //hostPlayer.GetComponent<Player_Controller>().PNC.updateClientLobbies(updateType, name, start, end);
+        //hostPlayer.GetComponent<Player_Controller>().PNC.updateClientLobbies(updateType, name, start, end); // THIS CRASHES HOST
     }
 
     public void updateLobbyCountdown(int c)
