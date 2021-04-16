@@ -90,8 +90,8 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     [ServerRPC(RequireOwnership = false)]
     public void serverAddPlayer(GameObject player)
     {
-        Debug.Log("Client add player");
-        positionManager.updatePlayerList(player);
+        Debug.Log("Client add player, " + positionManager + ", " + player.name);
+        //positionManager.updatePlayerList(player);
         var pm = GameObject.Find("track").GetComponent<PositionManager>();
         pm.updatePlayerList(player);
     }
