@@ -19,6 +19,14 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public void initPNC(Player_Controller reference)
     {
         owner = reference;
+        if(IsServer)
+        {
+            initHost();
+        }
+        else
+        {
+            initClient();
+        }
     }
 
     public void initHost()
@@ -70,7 +78,10 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     {
         track = GameObject.Find("track");
         if(track)
-        raceManager = track.GetComponent<RaceManager>();
+        {
+            raceManager = track.GetComponent<RaceManager>();
+        }
+        
     }
 
     public void updateClientLobbies(int updateType, string name, bool start, bool end)
@@ -91,9 +102,9 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public void serverAddPlayer(GameObject player)
     {
         Debug.Log("Client add player, " + positionManager + ", " + player.name);
-        //positionManager.updatePlayerList(player);
-        var pm = GameObject.Find("track").GetComponent<PositionManager>();
-        pm.updatePlayerList(player);
+        positionManager.updatePlayerList(player);
+        //var pm = GameObject.Find("track").GetComponent<PositionManager>();
+        //pm.updatePlayerList(player);
     }
 
     [ServerRPC(RequireOwnership = false)]

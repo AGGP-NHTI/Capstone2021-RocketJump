@@ -52,7 +52,7 @@ public class Player_Controller : Controller
         PNC.initPNC(this);
         PNC.enabled = PNCEnabled;
 
-        setupPNC();
+        //setupPNC();
     }
 
     private void Update()
@@ -71,6 +71,7 @@ public class Player_Controller : Controller
  
     }
 
+    /*
     private void setupPNC()
     {
         if (IsLocalPlayer)
@@ -93,6 +94,7 @@ public class Player_Controller : Controller
             }
         }
     }
+    */
 
     public void SpawnPlayerPawn()
     {
