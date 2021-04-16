@@ -20,6 +20,8 @@ public class Inventory_Manager : NetworkedBehaviour
     public List<Weapon> weapons = new List<Weapon>();
     public int currentWeaponIndex = -1;
     Weapon currentWeapon => weapons[currentWeaponIndex];
+
+    public Transform projectileSpawn;
     
 
     private void Awake()
@@ -128,6 +130,8 @@ public class Inventory_Manager : NetworkedBehaviour
 
             if (netWeapon.gameObject.TryGetComponent(out Weapon clientWeapon))
             {
+                clientWeapon.playerPawn = playerPawn;
+                clientWeapon.projectileSpawn = projectileSpawn;
                 weapons.Add(clientWeapon);
                 if (currentWeaponIndex == -1)
                 {

@@ -46,12 +46,17 @@ public class Player_Controller : Controller
 
     private void Start()
     {
+        
         playerName = PlayerInformation.playerScreenName;
 
-        PNC = gameObject.AddComponent<PlayerNetworkCenter>();
+        //PNC = gameObject.AddComponent<PlayerNetworkCenter>();
+        if (PNCEnabled)
+        {
+            PNC.initPNC(this);
+        }
         PNC.enabled = PNCEnabled;
 
-        setupPNC();
+        //setupPNC();
     }
 
     private void Update()
@@ -70,6 +75,7 @@ public class Player_Controller : Controller
  
     }
 
+    /*
     private void setupPNC()
     {
         if (IsLocalPlayer)
@@ -92,6 +98,7 @@ public class Player_Controller : Controller
             }
         }
     }
+    */
 
     public void SpawnPlayerPawn()
     {
@@ -112,7 +119,7 @@ public class Player_Controller : Controller
         else if (IsClient)
         {
             //clientUpdateNodePosition(node, gameObject);
-            InvokeServerRpc(PNC.clientUpdateNodePosition, node.nodeNumber, gameObject);
+            InvokeServerRpc(PNC.serverUpdateNodePosition, node.nodeNumber, gameObject);
         }
     }
 

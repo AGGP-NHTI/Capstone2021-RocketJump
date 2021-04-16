@@ -16,9 +16,17 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public bool initPlayer = false;
     public bool enabled;
 
-    public PlayerNetworkCenter(Player_Controller reference)
+    public void initPNC(Player_Controller reference)
     {
         owner = reference;
+        if(IsServer)
+        {
+            initHost();
+        }
+        else
+        {
+            initClient();
+        }
     }
 
     public void initHost()
@@ -38,7 +46,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     {
         Debug.Log("initClient");
         initPlayer = true;
-        owner.InvokeServerRpc(clientAddPlayer, owner.gameObject);
+        InvokeServerRpc(serverAddPlayer, owner.gameObject);
     }
 
     public void setPositionManager()
@@ -70,7 +78,10 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     {
         track = GameObject.Find("track");
         if(track)
-        raceManager = track.GetComponent<RaceManager>();
+        {
+            raceManager = track.GetComponent<RaceManager>();
+        }
+        
     }
 
     public void updateClientLobbies(int updateType, string name, bool start, bool end)
@@ -88,16 +99,16 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     }
 
     [ServerRPC(RequireOwnership = false)]
-    public void clientAddPlayer(GameObject player)
+    public void serverAddPlayer(GameObject player)
     {
-        Debug.Log("Client add player");
+        Debug.Log("Client add player, " + positionManager + ", " + player.name);
         positionManager.updatePlayerList(player);
-        var pm = GameObject.Find("track").GetComponent<PositionManager>();
-        pm.updatePlayerList(player);
+        //var pm = GameObject.Find("track").GetComponent<PositionManager>();
+        //pm.updatePlayerList(player);
     }
 
     [ServerRPC(RequireOwnership = false)]
-    public void clientUpdateNodePosition(int nodeNumber, GameObject player)
+    public void serverUpdateNodePosition(int nodeNumber, GameObject player)
     {
         //positionManager.updatePlayerPosition(player, nodeNumber);
         var pm = GameObject.Find("track").GetComponent<PositionManager>();
