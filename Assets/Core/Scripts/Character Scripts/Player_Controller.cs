@@ -48,7 +48,7 @@ public class Player_Controller : Controller
     {
         playerName = PlayerInformation.playerScreenName;
 
-        PNC = gameObject.AddComponent<PlayerNetworkCenter>();
+        //PNC = gameObject.AddComponent<PlayerNetworkCenter>();
         PNC.initPNC(this);
         PNC.enabled = PNCEnabled;
 
@@ -113,7 +113,7 @@ public class Player_Controller : Controller
         else if (IsClient)
         {
             //clientUpdateNodePosition(node, gameObject);
-            InvokeServerRpc(PNC.clientUpdateNodePosition, node.nodeNumber, gameObject);
+            InvokeServerRpc(PNC.serverUpdateNodePosition, node.nodeNumber, gameObject);
         }
     }
 

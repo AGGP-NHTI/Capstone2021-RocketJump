@@ -38,7 +38,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     {
         Debug.Log("initClient");
         initPlayer = true;
-        InvokeServerRpc(clientAddPlayer, owner.gameObject);
+        InvokeServerRpc(serverAddPlayer, owner.gameObject);
     }
 
     public void setPositionManager()
@@ -88,7 +88,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     }
 
     [ServerRPC(RequireOwnership = false)]
-    public void clientAddPlayer(GameObject player)
+    public void serverAddPlayer(GameObject player)
     {
         Debug.Log("Client add player");
         positionManager.updatePlayerList(player);
@@ -97,7 +97,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     }
 
     [ServerRPC(RequireOwnership = false)]
-    public void clientUpdateNodePosition(int nodeNumber, GameObject player)
+    public void serverUpdateNodePosition(int nodeNumber, GameObject player)
     {
         //positionManager.updatePlayerPosition(player, nodeNumber);
         var pm = GameObject.Find("track").GetComponent<PositionManager>();
