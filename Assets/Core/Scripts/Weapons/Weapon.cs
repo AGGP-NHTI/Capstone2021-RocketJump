@@ -57,7 +57,10 @@ public class Weapon : Actor
     }
     protected virtual void Update()
     {
-        Debug.DrawRay(projectileSpawn.position, projectileSpawn.forward * 100,Color.red);
+        if (playerPawn.IsLocal())
+        {
+            Debug.DrawRay(projectileSpawn.position, projectileSpawn.forward * 100, Color.red);
+        }
     }
 
     public virtual bool Fire() 
