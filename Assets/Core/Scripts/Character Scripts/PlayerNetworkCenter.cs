@@ -52,7 +52,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         Debug.Log("initClient");
         setTrack();
         initPlayer = true;
-        InvokeServerRpc(serverAddPlayer, owner.gameObject);
+        InvokeServerRpc(serverAddPlayer, owner.gameObject, owner.playerName);
     }
 
     public void setPositionManager()
@@ -100,6 +100,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
                 InvokeClientRpcOnEveryone(clientUpdateLobbyCountdown, raceManager.countdown);
                 break;
             case 1: //Update Playerlist
+                Debug.Log("Update PlayerList");
                 InvokeClientRpcOnEveryone(clientUpdateLobby, name, start, end);
                 break;
         }
@@ -107,10 +108,10 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     }
 
     [ServerRPC(RequireOwnership = false)]
-    public void serverAddPlayer(GameObject player)
+    public void serverAddPlayer(GameObject player, string name)
     {
         Debug.Log("Client add player, " + positionManager + ", " + player.name);
-        positionManager.updatePlayerList(player, owner.playerName);
+        positionManager.updatePlayerList(player, name);
     }
 
     [ServerRPC(RequireOwnership = false)]
@@ -124,7 +125,8 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     [ClientRPC()]
     public void clientUpdateLobby(string name, bool start, bool end)
     {
-        if(!raceManager)
+        Debug.Log("clientUpdateLobby");
+        if (!raceManager)
         {
             setTrack();
         }
