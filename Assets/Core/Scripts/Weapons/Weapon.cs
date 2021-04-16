@@ -1,26 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using MLAPI.Messaging;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using MLAPI;
-using MLAPI.Messaging;
 
 public class Weapon : Actor
 {
 	public int globalIndex = -1;
     protected GameObject UI;
     protected UIManager UIMan;
-    protected Player_Movement_Controller playerReference;
     protected Ammo_UI_Script AmmoReference;
 
     protected bool isCooling = false;
 
     [Header("Dependencies")] 
     public GameObject projectilePrefab;
-    public Transform projectileSpawn;
-
+    public Player_Pawn playerPawn;
     [Range(0.5f, 10f)]
     public float    reloadSpeed;
     [Range(1,50)]
@@ -34,7 +27,7 @@ public class Weapon : Actor
 
     [Header("Info")]
     public bool isRapidFire = false;
-
+    public Transform projectileSpawn;
 
 
 
@@ -64,22 +57,28 @@ public class Weapon : Actor
     }
     protected virtual void Update()
     {
-        
+        Debug.DrawRay(projectileSpawn.position, projectileSpawn.forward * 100,Color.red);
     }
 
     public virtual bool Fire() 
     {
         if (isCooling) { return false; }
 
-        if (IsServer)
+        Quaternion fireDirection = Quaternion.LookRotation(BulletSpread(projectileSpawn.forward));
+        Vector3 position = projectileSpawn.position;
+
+        if (IsServer)// && playerPawn.IsLocalPlayer)
         {
-            spawnNetworkedProjectile();
+            spawnNetworkedProjectile(position, fireDirection);
         }
-        else 
+        else //if(playerPawn.IsLocalPlayer)
         {
-            InvokeServerRpc(spawnNetworkedProjectile);
+            InvokeServerRpc(spawnNetworkedProjectile,position, fireDirection);
         }
         currentClip--;
+
+
+        Debug.Log("FIREING FROM WEAPONS");
 
         return true;
     }
@@ -87,7 +86,7 @@ public class Weapon : Actor
 
 
     [ServerRPC(RequireOwnership = false)]
-    public void spawnNetworkedProjectile()
+    public void spawnNetworkedProjectile(Vector3 location, Quaternion dir)
     {
         //CANNOT GET HERE
        // Debug.Log($"I AM SHOOTING A {gameObject.name} AM Server {IsServer}");
@@ -96,15 +95,15 @@ public class Weapon : Actor
         {
             //Debug.Log("---------------Position: " + projectileSpawn.position);
             GameObject bullet = NetSpawn(projectilePrefab,
-                                projectileSpawn.position,
-                                Quaternion.LookRotation(BulletSpread(projectileSpawn.forward))
+                                location,
+                                dir
                                 );
 
-            
+            //Quaternion.LookRotation(BulletSpread(dir))
             Projectile projectile = bullet.GetComponent<Projectile>();
             if (projectile)
             {
-                projectile.setPlayer(playerReference);
+                projectile.setPlayer(playerPawn);
             }
         }
     }

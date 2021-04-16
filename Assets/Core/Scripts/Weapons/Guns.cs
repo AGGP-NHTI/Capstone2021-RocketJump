@@ -30,7 +30,7 @@ public class Guns : Weapon
         
         bool fireSuccess = base.Fire();
 
-        
+        Debug.Log("FIREING FROM GUNS");
 
         //pauses for firerate cooldown
         waitForFireRate();
