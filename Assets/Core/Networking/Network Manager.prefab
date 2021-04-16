@@ -54,7 +54,6 @@ MonoBehaviour:
     - TestPlayerScene
     - RaceTrack
     - MainMenu
-    - TestPossesionScene
     AllowRuntimeSceneChanges: 0
     NetworkedPrefabs:
     - Prefab: {fileID: 5219736549171104077, guid: 68dd849f4810f3f49a7fbf3989329151,
@@ -100,9 +99,6 @@ MonoBehaviour:
         type: 3}
       PlayerPrefab: 0
     - Prefab: {fileID: 3235445507439764840, guid: 1b4c678489acbda4fafd33fd93b14b86,
-        type: 3}
-      PlayerPrefab: 0
-    - Prefab: {fileID: 3298075806896282395, guid: 168d1bc0bacc9704e98e63de724c0a6f,
         type: 3}
       PlayerPrefab: 0
     PlayerPrefabHash:
@@ -154,5 +150,5 @@ MonoBehaviour:
   SupportWebsocket: 0
   Channels: []
   UseMLAPIRelay: 1
-  MLAPIRelayAddress: 3.86.143.141
+  MLAPIRelayAddress: 3.82.190.109
   MLAPIRelayPort: 8888
