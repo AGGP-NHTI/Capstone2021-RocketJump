@@ -8,16 +8,18 @@ public class PlayerPositionManager
     public int nodePosition;
     public int lap;
     public int position;
+    public string name;
     public GameObject player;
     public PositionManager positionManager;
 
-    public PlayerPositionManager(GameObject plr, PositionManager owner)
+    public PlayerPositionManager(GameObject plr, PositionManager owner, string plrname)
     {
         nodePosition = 0;
         lap = 1;
         position = 0;
         player = plr;
         positionManager = owner;
+        name = plrname;
     }
 
     public void updatePosition()

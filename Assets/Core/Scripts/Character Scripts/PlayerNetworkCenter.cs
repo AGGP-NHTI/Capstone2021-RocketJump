@@ -41,7 +41,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         setPositionManager();
         if (positionManager)
         {
-            positionManager.updatePlayerList(owner.gameObject);
+            positionManager.updatePlayerList(owner.gameObject, owner.playerName);
         }
 
         initRaceManager();
@@ -50,6 +50,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public void initClient()
     {
         Debug.Log("initClient");
+        setTrack();
         initPlayer = true;
         InvokeServerRpc(serverAddPlayer, owner.gameObject);
     }
@@ -71,13 +72,15 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         raceManager.isHost = true;
     }
 
+    /*
     public void initializePositionManager()
     {
         initPlayer = true;
         setTrack();
         setPositionManager();
-        positionManager.updatePlayerList(owner.gameObject);
+        positionManager.updatePlayerList(owner.gameObject, owner.playerName);
     }
+    */
 
     public void setTrack()
     {
@@ -107,7 +110,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public void serverAddPlayer(GameObject player)
     {
         Debug.Log("Client add player, " + positionManager + ", " + player.name);
-        positionManager.updatePlayerList(player);
+        positionManager.updatePlayerList(player, owner.playerName);
     }
 
     [ServerRPC(RequireOwnership = false)]
@@ -121,6 +124,10 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     [ClientRPC()]
     public void clientUpdateLobby(string name, bool start, bool end)
     {
+        if(!raceManager)
+        {
+            setTrack();
+        }
         raceManager.clientPopulatePlayerList(name, start, end);
     }
 

@@ -120,7 +120,7 @@ public class PlayerController : Controller
 
         if(!loadPlayer)
         {
-            positionManager.updatePlayerList(gameObject);
+           // positionManager.updatePlayerList(gameObject);
             loadPlayer = true;
         }
 		if (Input.GetKeyDown(KeyCode.Tab)) transform.position = startLocation;
@@ -270,7 +270,7 @@ public class PlayerController : Controller
     {
         //positionManager.updatePlayerList(player);
         var pm = GameObject.Find("track").GetComponent<PositionManager>();
-        pm.updatePlayerList(player);
+        //pm.updatePlayerList(player);
     }
 
 	[ServerRPC(RequireOwnership = false)]

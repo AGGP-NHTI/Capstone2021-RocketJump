@@ -9,7 +9,7 @@ public class PositionManager : MonoBehaviour
     public int lastNode;
     public List<GameObject> players;
     [SerializeField] List<Transform> positionNodes;
-    [SerializeField] List<PlayerPositionManager> playerPositions;
+    public List<PlayerPositionManager> playerPositions;
 
     public void initPositionManager()
     {
@@ -39,9 +39,9 @@ public class PositionManager : MonoBehaviour
         }
     }
 
-    public void updatePlayerList(GameObject player)
+    public void updatePlayerList(GameObject player, string name)
     {
-        playerPositions.Add(new PlayerPositionManager(player, this));
+        playerPositions.Add(new PlayerPositionManager(player, this, name));
         players.Add(player);
 
         updatePlayerPosition(player);

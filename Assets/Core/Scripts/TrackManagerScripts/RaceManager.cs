@@ -127,20 +127,22 @@ public class RaceManager : MonoBehaviour
 
         var offset = 145f;
 
-        if(isHost)
+        if(isHost) //Is host
         {
             playerSlots.Clear();
 
-            var playerList = positionManager.players;
+            var playerList = positionManager.playerPositions;
             var index = 0;
 
-            foreach (GameObject p in playerList)
+            foreach (PlayerPositionManager p in playerList)
             {
-                var pawn = p.GetComponent<Player_Controller>();
+                //var pawn = p.GetComponent<Player_Controller>();
+
+                var name = p.name;
 
                 var slot = Instantiate(playerSlotPrefab, playerListPanel.transform);
 
-                slot.transform.Find("playerName").GetComponent<TextMeshProUGUI>().text = pawn.playerName;
+                slot.transform.Find("playerName").GetComponent<TextMeshProUGUI>().text = name;
                 slot.transform.position = new Vector2(slot.transform.position.x, slot.transform.position.y + offset);
                 offset -= 10;
 
@@ -148,22 +150,22 @@ public class RaceManager : MonoBehaviour
 
                 if(index == 0)
                 {
-                    updateClientLobbies(1, pawn.playerName, true, false);
+                    updateClientLobbies(1, name, true, false);
                 }
                 else if(index == playerList.Count - 1)
                 {
-                    updateClientLobbies(1, pawn.playerName, false, true);
+                    updateClientLobbies(1, name, false, true);
                 }
                 else
                 {
-                    updateClientLobbies(1, pawn.playerName, false, false);
+                    updateClientLobbies(1, name, false, false);
                 }
 
                 index++;
             }
 
         }
-        else
+        else //Is client
         {
             var playerList = clientPlayerNames;
 
