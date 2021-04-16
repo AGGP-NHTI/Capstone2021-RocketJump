@@ -16,7 +16,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public bool initPlayer = false;
     public bool enabled;
 
-    public PlayerNetworkCenter(Player_Controller reference)
+    public void initPNC(Player_Controller reference)
     {
         owner = reference;
     }

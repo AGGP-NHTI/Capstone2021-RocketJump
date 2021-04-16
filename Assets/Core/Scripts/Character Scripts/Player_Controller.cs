@@ -49,6 +49,7 @@ public class Player_Controller : Controller
         playerName = PlayerInformation.playerScreenName;
 
         PNC = gameObject.AddComponent<PlayerNetworkCenter>();
+        PNC.initPNC(this);
         PNC.enabled = PNCEnabled;
 
         setupPNC();
