@@ -126,11 +126,14 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public void clientUpdateLobby(string name, bool start, bool end)
     {
         Debug.Log("clientUpdateLobby");
-        if (!raceManager)
+        if(!IsHost)
         {
-            setTrack();
+            if (!raceManager)
+            {
+                setTrack();
+            }
+            raceManager.clientPopulatePlayerList(name, start, end);
         }
-        raceManager.clientPopulatePlayerList(name, start, end);
     }
 
     [ClientRPC()]

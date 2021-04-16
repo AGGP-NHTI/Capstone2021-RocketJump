@@ -70,7 +70,7 @@ public class RaceManager : MonoBehaviour
                 if(Mathf.Round(timer.time) < Mathf.Round(lastCountdownNumber))
                 {
                     lastCountdownNumber = Mathf.Round(timer.time);
-                    updateClientLobbies(0, null, false, false);
+                    //updateClientLobbies(0, null, false, false);
                 }
             }
             else { countdownText.enabled = false; }
