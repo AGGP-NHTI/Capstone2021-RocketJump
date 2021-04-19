@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3199914314019841107}
   - component: {fileID: 2475513373075130965}
   - component: {fileID: 6607831573208100367}
-  - component: {fileID: -6347311474707527326}
   m_Layer: 0
   m_Name: SawedOffShotgun
   m_TagString: Untagged
@@ -47,12 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f24199370b2e2b44b577e3d0e5cb910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPawn: {fileID: 0}
   IsActive: 1
   IgnoreDamage: 0
   globalIndex: 0
   projectilePrefab: {fileID: 3029368864375060408, guid: 74e5da6a7038e7b4f9275b4df6c83f32,
     type: 3}
-  playerPawn: {fileID: 0}
   reloadSpeed: 5
   bulletsPerShot: 15
   bulletSpread: 10
@@ -79,54 +78,6 @@ MonoBehaviour:
   PrefabHashGenerator: SawedOffShotgun
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
---- !u!114 &-6347311474707527326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4205752912056178508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -410691123, guid: 01701b64234b4d523d8045142cbc73fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FixedSendsPerSecond: 20
-  AssumeSyncedSends: 1
-  InterpolatePosition: 1
-  SnapDistance: 10
-  InterpolateServer: 1
-  MinMeters: 0.15
-  MinDegrees: 1.5
-  ExtrapolatePosition: 0
-  MaxSendsToExtrapolate: 5
-  Channel: 
-  EnableRange: 0
-  EnableNonProvokedResendChecks: 0
-  DistanceSendrate:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 20
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 500
-      value: 20
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &7692931306318810138
 GameObject:
   m_ObjectHideFlags: 0
