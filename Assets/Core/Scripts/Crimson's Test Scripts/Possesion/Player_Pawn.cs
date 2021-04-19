@@ -74,7 +74,7 @@ public class Player_Pawn : Pawn
 		{
 			cameraTransform.target = eyes;
 
-            inventoryMan.projectileSpawn = cameraTransform.transform;
+            //inventoryMan.projectileSpawn = cameraTransform.transform;
 		}
 		if (manager)
 		{
