@@ -109,6 +109,27 @@ public class Weapon : Actor
                 projectile.setPlayer(playerPawn);
             }
         }
+        InvokeClientRpcOnEveryone(spawnClientProjectile, location, dir);
+    }
+
+    [ClientRPC]
+    public void spawnClientProjectile(Vector3 location, Quaternion dir)
+    {
+        for (int i = 0; i < bulletsPerShot; i++)
+        {
+            //Debug.Log("---------------Position: " + projectileSpawn.position);
+            GameObject bullet = NetSpawn(projectilePrefab,
+                                location,
+                                dir
+                                );
+
+            //Quaternion.LookRotation(BulletSpread(dir))
+            Projectile projectile = bullet.GetComponent<Projectile>();
+            if (projectile)
+            {
+                projectile.setPlayer(playerPawn);
+            }
+        }
     }
 
     protected IEnumerator waitFireRateTimer(float input)
