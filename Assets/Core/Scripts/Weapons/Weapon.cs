@@ -94,21 +94,21 @@ public class Weapon : Actor
         //CANNOT GET HERE
        // Debug.Log($"I AM SHOOTING A {gameObject.name} AM Server {IsServer}");
 
-        for (int i = 0; i < bulletsPerShot; i++)
-        {
-            //Debug.Log("---------------Position: " + projectileSpawn.position);
-            GameObject bullet = NetSpawn(projectilePrefab,
-                                location,
-                                dir
-                                );
+        //for (int i = 0; i < bulletsPerShot; i++)
+        //{
+        //    //Debug.Log("---------------Position: " + projectileSpawn.position);
+        //    GameObject bullet = NetSpawn(projectilePrefab,
+        //                        location,
+        //                        dir
+        //                        );
 
-            //Quaternion.LookRotation(BulletSpread(dir))
-            Projectile projectile = bullet.GetComponent<Projectile>();
-            if (projectile)
-            {
-                projectile.setPlayer(playerPawn);
-            }
-        }
+        //    //Quaternion.LookRotation(BulletSpread(dir))
+        //    Projectile projectile = bullet.GetComponent<Projectile>();
+        //    if (projectile)
+        //    {
+        //        projectile.setPlayer(playerPawn);
+        //    }
+        //}
         InvokeClientRpcOnEveryone(spawnClientProjectile, location, dir);
     }
 
