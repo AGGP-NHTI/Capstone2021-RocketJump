@@ -13,7 +13,7 @@ public class Weapon : Actor
 
     [Header("Dependencies")] 
     public GameObject projectilePrefab;
-    public Player_Pawn playerPawn;
+    
     [Range(0.5f, 10f)]
     public float    reloadSpeed;
     [Range(1,50)]

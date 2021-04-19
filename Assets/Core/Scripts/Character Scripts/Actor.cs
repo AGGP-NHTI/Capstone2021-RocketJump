@@ -6,10 +6,50 @@ using MLAPI.Messaging;
 
 public class Actor : NetworkedBehaviour
 {
-
+    public Player_Pawn playerPawn;
     public bool IsActive = true;
     public bool IgnoreDamage = false;
 
+
+    public void FixedUpdate()
+    {
+        if (IsServer)
+        {
+            setNetPosition(transform.position);
+        }
+    }
+
+    public void setNetPosition(Vector3? pos = null)
+    { 
+        if(!pos.HasValue)
+        {
+            pos = Vector3.zero;
+        }
+
+        InvokeServerRpc(updatePos,pos.Value, NetworkId);
+        
+
+    }
+
+    [ServerRPC(RequireOwnership = false)]
+    public void updatePos(Vector3 pos, ulong objID)
+    {
+        InvokeClientRpcOnEveryone(updateClientPosition, pos, objID);
+    }
+
+    [ClientRPC]
+    public void updateClientPosition(Vector3 pos, ulong objID)
+    {
+        NetworkedObject netObj = GetNetworkedObject(objID);
+        if (netObj)
+        {
+            GameObject gObj = netObj.gameObject;
+            if (gObj)
+            {
+                gObj.transform.position = pos;
+            }
+        }
+    }
 
     public void TakeDamage(float value)
     {
