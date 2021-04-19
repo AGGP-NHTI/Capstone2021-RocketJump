@@ -73,7 +73,7 @@ public class Inventory_Manager : NetworkedBehaviour
 
         if (playerPawn.IsLocal() && currentWeaponIndex != -1)
         {
-            FireInput();
+            //FireInput();
         }
     }
 
