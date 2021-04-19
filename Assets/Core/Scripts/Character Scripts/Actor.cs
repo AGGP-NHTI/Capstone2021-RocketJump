@@ -13,7 +13,7 @@ public class Actor : NetworkedBehaviour
 
     public void FixedUpdate()
     {
-        if (IsServer)
+        if (playerPawn && playerPawn.IsLocal())
         {
             setNetPosition(transform.position);
         }
