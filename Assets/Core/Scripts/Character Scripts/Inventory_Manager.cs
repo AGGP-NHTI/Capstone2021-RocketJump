@@ -119,6 +119,7 @@ public class Inventory_Manager : NetworkedBehaviour
     [ClientRPC]
     void setWeaponParent(ulong weaponNetID, ulong clientID)
     {
+        Debug.Log($"THE WEAPON NET ID IS: {weaponNetID} for the CLIENT: {clientID}");
         NetworkedObject netWeapon = GetNetworkedObject(weaponNetID);
         NetworkedObject netPlayer = GetNetworkedObject(clientID);
 
