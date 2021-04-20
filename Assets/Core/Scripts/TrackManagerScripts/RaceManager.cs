@@ -71,7 +71,7 @@ public class RaceManager : MonoBehaviour
                 if(Mathf.Round(timer.time) < Mathf.Round(lastCountdownNumber))
                 {
                     lastCountdownNumber = Mathf.Round(timer.time);
-                    //updateClientLobbies(0, null, false, false);
+                    updateClientLobbies(0, null, false, false);
                 }
             }
             else { countdownText.enabled = false; }
@@ -88,8 +88,7 @@ public class RaceManager : MonoBehaviour
         else
         {
             startGamebutton.SetActive(false);
-            //countdownText.enabled = true;
-            //countdownText.text = "Game starting in " + Mathf.Round(timer.time);
+            countdownText.text = "Game starting in " + Mathf.Round(timer.time);
         }
 
         
