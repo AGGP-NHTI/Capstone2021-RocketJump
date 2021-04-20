@@ -6,17 +6,17 @@ using MLAPI.Messaging;
 
 public class Actor : NetworkedBehaviour
 {
-    public Player_Pawn playerPawn;
+    //
     public bool IsActive = true;
     public bool IgnoreDamage = false;
 
 
     public void FixedUpdate()
     {
-        if (playerPawn)//&& playerPawn.IsLocal())
-        {
-            setNetPosition(transform.position);
-        }
+        //if (playerPawn)//&& playerPawn.IsLocal())
+        //{
+        //    setNetPosition(transform.position);
+        //}
     }
 
     public void setNetPosition(Vector3? pos = null)

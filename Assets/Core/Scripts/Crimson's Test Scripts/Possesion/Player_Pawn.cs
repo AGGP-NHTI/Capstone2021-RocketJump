@@ -95,7 +95,10 @@ public class Player_Pawn : Pawn
 		}
 		else
 		{
-			Debug.LogWarning($"Controller does not exist for the client: {OwnerClientId}");
+			if (OwnerClientId == this.OwnerClientId)
+			{
+				Debug.LogWarning($"Controller does not exist for the client: {OwnerClientId}");
+			}
 			return false;
 		}
     }
