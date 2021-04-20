@@ -15,5 +15,5 @@ MonoBehaviour:
   serverName: Jake's Server
   connectAddress: 209.42.154.227
   connectPort: 1234
-  relayAddress: 3.95.192.167
+  relayAddress: 54.144.231.48
   relayPort: 8888
