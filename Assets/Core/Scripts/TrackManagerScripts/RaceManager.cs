@@ -60,7 +60,7 @@ public class RaceManager : MonoBehaviour
 
             if (timer.updateTimer())
             {
-                print("countdown finished");
+                spawnPlayers();
             }
             if (timer.runTimer)
             {
@@ -96,7 +96,7 @@ public class RaceManager : MonoBehaviour
     public void updateClientLobbies(int updateType, string name, bool start, bool end)
     {
         Debug.Log("start updateClientLobbies");
-        hostPlayer.GetComponent<Player_Controller>().PNC.updateClientLobbies(updateType, name, start, end); // THIS CRASHES HOST
+        hostPlayer.GetComponent<Player_Controller>().PNC.updateClientLobbies(updateType, name, start, end);
         Debug.Log("end updateClientLobbies");
     }
 
@@ -187,5 +187,16 @@ public class RaceManager : MonoBehaviour
     {
         timer.setTimer(10);
         countdownActive = true;
+    }
+
+    public void spawnPlayers()
+    {
+        lobbyCanvas.enabled = false;
+
+        foreach(GameObject p in positionManager.players)
+        {
+            var controller = p.GetComponent<Player_Controller>();
+            controller.SpawnPlayerPawn();
+        }
     }
 }

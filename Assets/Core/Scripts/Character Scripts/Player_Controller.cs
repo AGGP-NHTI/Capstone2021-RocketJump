@@ -124,6 +124,11 @@ public class Player_Controller : Controller
     [ServerRPC(RequireOwnership = false)]
     public void Server_SpawnPlayerPawn_Race(ulong clientID)
     {
+        if(!spawnManager)
+        {
+            spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnPointManager>();
+        }
+
         Vector3 location = spawnManager.getSpawn();
         GameObject gobj = Instantiate(defaultPawn, location, Quaternion.identity);
 
