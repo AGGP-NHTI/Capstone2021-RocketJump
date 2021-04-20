@@ -46,7 +46,7 @@ public class Inventory_Manager : NetworkedBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.F1))
+        if (Input.GetKeyDown(KeyCode.F1) && currentWeaponIndex == -1)
         {
             spawnWeapons();
         }
@@ -71,9 +71,9 @@ public class Inventory_Manager : NetworkedBehaviour
         }
        
 
-        if (playerPawn.IsLocal() && currentWeaponIndex != -1)
+        if (playerPawn && playerPawn.IsLocal() && currentWeaponIndex != -1)
         {
-            //FireInput();
+            FireInput();
         }
     }
 
