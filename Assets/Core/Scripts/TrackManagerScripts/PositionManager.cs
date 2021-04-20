@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PositionManager : MonoBehaviour
 {
@@ -76,26 +77,7 @@ public class PositionManager : MonoBehaviour
     public void comparePlayerPositions()
     {
 
-        //positionNodes.Sort((x, y) => x.GetComponent<PositionNodeScript>().nodeNumber.CompareTo(y.GetComponent<PositionNodeScript>().nodeNumber));
+        playerPositions = (playerPositions.OrderByDescending(p => p.lap).ThenByDescending(p => p.nodePosition)).ToList();
 
-        playerPositions.Sort((x, y) => x.lap.CompareTo(y.lap));
-
-        var prevPlayer = playerPositions[0];
-
-        foreach (PlayerPositionManager p in playerPositions)
-        {
-            if(p == prevPlayer) { break; }
-
-            if(p.lap == prevPlayer.lap)
-            {
-                if(p.nodePosition > prevPlayer.nodePosition)
-                {
-                    p.position = prevPlayer.position;
-                    prevPlayer.position -= 1;
-                }
-            }
-
-            prevPlayer = p;
-        }
     }
 }
