@@ -158,7 +158,7 @@ MonoBehaviour:
   IsActive: 1
   IgnoreDamage: 0
   lifeTime: 5
-  contactLifetime: 0
+  contactLifetime: 10
   projectileLaunchForce: 100
   particles: {fileID: 5507913867735878743, guid: adbbee6e4c1a997479d2da0850529735,
     type: 3}
