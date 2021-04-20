@@ -11,49 +11,6 @@ public class Actor : NetworkedBehaviour
     public bool IgnoreDamage = false;
 
 
-    public void FixedUpdate()
-    {
-        //if (playerPawn)//&& playerPawn.IsLocal())
-        //{
-        //    setNetPosition(transform.position);
-        //}
-    }
-
-    public void setNetPosition(Vector3? pos = null)
-    { 
-        if(!pos.HasValue)
-        {
-            pos = Vector3.zero;
-        }
-
-        InvokeServerRpc(updatePos,pos.Value, NetworkId);
-        
-
-    }
-
-    [ServerRPC(RequireOwnership = false)]
-    public void updatePos(Vector3 pos, ulong objID)
-    {
-        Debug.Log($"TELL CLIENT SET POS: {pos}");
-        InvokeClientRpcOnEveryone(updateClientPosition, pos, objID);
-    }
-
-    [ClientRPC]
-    public void updateClientPosition(Vector3 pos, ulong objID)
-    {
-        NetworkedObject netObj = GetNetworkedObject(objID);
-        if (netObj)
-        {
-            GameObject gObj = netObj.gameObject;
-
-            Debug.Log($"CLIENT SET POS: {pos} of {gObj.name}_{netObj.OwnerClientId}");
-            if (gObj)
-            {
-                gObj.transform.position = pos;
-            }
-        }
-    }
-
     public void TakeDamage(float value)
     {
         if (IgnoreDamage)

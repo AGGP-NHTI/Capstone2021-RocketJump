@@ -42,13 +42,13 @@ public class Player_Pawn : Pawn
 
     }
 
-
-    private void Update()
+	
+    private void FixedUpdate()
     {
 		sendEyeRotation();
 
 		
-		Debug.Log($"LOCAL EYE ROTATION: {eyes.rotation} for {OwnerClientId}");
+		Debug.Log($"EYE ROTATION: {eyes.rotation} for {OwnerClientId}");
 	}
 
     public void setUI()
