@@ -126,10 +126,10 @@ public class Weapon : Actor
 
             //Quaternion.LookRotation(BulletSpread(dir))
             Projectile projectile = bullet.GetComponent<Projectile>();
-            if (projectile)
-            {
-                projectile.setPlayer(playerPawn);
-            }
+            //if (projectile)
+            //{
+            //    projectile.setPlayer(playerPawn);
+            //}
         }
     }
 

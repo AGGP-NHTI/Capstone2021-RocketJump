@@ -20,26 +20,26 @@ public class Movement : Projectile
         base.Update();
 
         
-        if (hasTriggered)
-        {
-            //player.transform.position = Vector3.Lerp(player.transform.position, lerpDestination, moveSpeed * Time.deltaTime);
-            //player.moveTo(lerpDestination);
+        //if (hasTriggered)
+        //{
+        //    //player.transform.position = Vector3.Lerp(player.transform.position, lerpDestination, moveSpeed * Time.deltaTime);
+        //    //player.moveTo(lerpDestination);
 
-            if (Vector3.Distance(player.transform.position, lerpDestination) < distanceBuffer)
-            {
-                Destroy(gameObject);
-            }
-        }
+        //    if (Vector3.Distance(player.transform.position, lerpDestination) < distanceBuffer)
+        //    {
+        //        Destroy(gameObject);
+        //    }
+        //}
         
     }
     
     protected override void trigger()
     {
-        if (player)
-        {
-            lerpDestination = transform.position;
-            hasTriggered = true;
-        }
+        //if (player)
+        //{
+        //    lerpDestination = transform.position;
+        //    hasTriggered = true;
+        //}
     }
 
  
