@@ -103,7 +103,7 @@ public class RaceManager : MonoBehaviour
 
     public void updateLobbyCountdown(int c)
     {
-
+        print("update countdown");
         if (!enableLobby) { enableLobby = true; }
         countdown = c;
     }

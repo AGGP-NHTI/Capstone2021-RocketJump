@@ -97,6 +97,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         switch(updateType)
         {
             case 0: //Update Countdown
+                Debug.Log("Update Countdown");
                 InvokeClientRpcOnEveryone(clientUpdateLobbyCountdown, raceManager.countdown);
                 break;
             case 1: //Update Playerlist
@@ -139,6 +140,14 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     [ClientRPC()]
     public void clientUpdateLobbyCountdown(int countdown)
     {
-        raceManager.updateLobbyCountdown(countdown);
+        Debug.Log("Client Update Countdown");
+        if (!IsHost)
+        {
+            if (!raceManager)
+            {
+                setTrack();
+            }
+            raceManager.updateLobbyCountdown(countdown);
+        }
     }
 }
