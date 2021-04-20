@@ -21,6 +21,11 @@ public class SpawnPointManager : NetworkedBehaviour
         }
     }
 
+    public Vector3 getSpawn()
+    {
+        return spawnpoints[0].transform.position;
+    }
+
     [ServerRPC(RequireOwnership = false)]
     public Vector3 RequestSpawn()
     {

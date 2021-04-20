@@ -7,6 +7,8 @@ using MLAPI.Messaging;
 public class Player_Controller : Controller
 {
 
+    public SpawnPointManager spawnManager;
+
     [Header("Network Settings")]
     public bool PNCEnabled = true;
     public PlayerNetworkCenter PNC;
@@ -79,7 +81,14 @@ public class Player_Controller : Controller
     {
         if (IsOwner)
         {
-            InvokeServerRpc(Server_SpawnPlayerPawn,OwnerClientId);
+            if(PNCEnabled)
+            {
+                InvokeServerRpc(Server_SpawnPlayerPawn_Race, OwnerClientId);
+            }
+            else
+            {
+                InvokeServerRpc(Server_SpawnPlayerPawn, OwnerClientId);
+            }
         }
     }
 
@@ -111,4 +120,16 @@ public class Player_Controller : Controller
         PossessPawn(gobj, netObj.OwnerClientId, netObj.NetworkId); 
     }
 
+
+    [ServerRPC(RequireOwnership = false)]
+    public void Server_SpawnPlayerPawn_Race(ulong clientID)
+    {
+        Vector3 location = spawnManager.getSpawn();
+        GameObject gobj = Instantiate(defaultPawn, location, Quaternion.identity);
+
+        NetworkedObject netObj = gobj.GetComponent<NetworkedObject>();
+
+        netObj.SpawnWithOwnership(clientID);
+        PossessPawn(gobj, netObj.OwnerClientId, netObj.NetworkId);
+    }
 }
