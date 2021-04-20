@@ -67,6 +67,7 @@ public class RaceManager : MonoBehaviour
             {
                 countdownText.enabled = true;
                 countdownText.text = "Game starting in " + Mathf.Round(timer.time);
+                countdown = (int)Mathf.Round(timer.time);
 
                 if(Mathf.Round(timer.time) < Mathf.Round(lastCountdownNumber))
                 {
@@ -88,7 +89,7 @@ public class RaceManager : MonoBehaviour
         else
         {
             startGamebutton.SetActive(false);
-            countdownText.text = "Game starting in " + Mathf.Round(timer.time);
+            countdownText.text = "Game starting in " + countdown;
         }
 
         
@@ -106,10 +107,13 @@ public class RaceManager : MonoBehaviour
         print("update countdown");
         if (!enableLobby) { enableLobby = true; }
         countdown = c;
+        print(countdown);
     }
 
     public void clientPopulatePlayerList(string name, bool start, bool end)
     {
+        Debug.Log("clientPopulatePlayerList");
+
         if (!enableLobby) { enableLobby = true; }
 
         if (start)
