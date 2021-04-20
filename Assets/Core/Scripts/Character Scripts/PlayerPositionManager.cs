@@ -16,7 +16,7 @@ public class PlayerPositionManager
     {
         nodePosition = 0;
         lap = 1;
-        position = 0;
+        position = 1;
         player = plr;
         positionManager = owner;
         name = plrname;

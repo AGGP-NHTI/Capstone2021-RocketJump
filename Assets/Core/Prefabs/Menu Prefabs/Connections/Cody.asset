@@ -15,5 +15,5 @@ MonoBehaviour:
   serverName: Codyz Server
   connectAddress: 65.96.203.138
   connectPort: 1234
-  relayAddress: 3.82.190.109
+  relayAddress: 3.95.192.167
   relayPort: 8888
