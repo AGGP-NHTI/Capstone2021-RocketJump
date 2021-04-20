@@ -58,32 +58,31 @@ public class Weapon : Actor
     }
     protected virtual void Update()
     {
-        if (playerPawn && playerPawn.IsLocal())
+        if (playerPawn)
         {
+            Color col = Color.red;
+            if(playerPawn.IsLocal())
+            {
+                col = Color.green;
+            }
             Debug.DrawRay(projectileSpawn.position, projectileSpawn.forward * 100, Color.red);
         }
     }
 
     public virtual bool Fire() 
     {
+        Debug.Log("FIREING FROM WEAPONS");
         if (isCooling) { return false; }
 
         Quaternion fireDirection = Quaternion.LookRotation(BulletSpread(projectileSpawn.forward));
         Vector3 position = projectileSpawn.position;
+        InvokeServerRpc(spawnNetworkedProjectile,position, fireDirection);
 
-        if (IsServer)// && playerPawn.IsLocalPlayer)
-        {
-            spawnNetworkedProjectile(position, fireDirection);
-        }
-        else //if(playerPawn.IsLocalPlayer)
-        {
-            InvokeServerRpc(spawnNetworkedProjectile,position, fireDirection);
-        }
+        
+
+
+        
         currentClip--;
-
-
-        Debug.Log("FIREING FROM WEAPONS");
-
         return true;
     }
 
@@ -92,24 +91,6 @@ public class Weapon : Actor
     [ServerRPC(RequireOwnership = false)]
     public void spawnNetworkedProjectile(Vector3 location, Quaternion dir)
     {
-        //CANNOT GET HERE
-       // Debug.Log($"I AM SHOOTING A {gameObject.name} AM Server {IsServer}");
-
-        //for (int i = 0; i < bulletsPerShot; i++)
-        //{
-        //    //Debug.Log("---------------Position: " + projectileSpawn.position);
-        //    GameObject bullet = NetSpawn(projectilePrefab,
-        //                        location,
-        //                        dir
-        //                        );
-
-        //    //Quaternion.LookRotation(BulletSpread(dir))
-        //    Projectile projectile = bullet.GetComponent<Projectile>();
-        //    if (projectile)
-        //    {
-        //        projectile.setPlayer(playerPawn);
-        //    }
-        //}
         InvokeClientRpcOnEveryone(spawnClientProjectile, location, dir);
     }
 
@@ -118,18 +99,10 @@ public class Weapon : Actor
     {
         for (int i = 0; i < bulletsPerShot; i++)
         {
-            //Debug.Log("---------------Position: " + projectileSpawn.position);
             GameObject bullet = NetSpawn(projectilePrefab,
                                 location,
                                 dir
                                 );
-
-            //Quaternion.LookRotation(BulletSpread(dir))
-            Projectile projectile = bullet.GetComponent<Projectile>();
-            //if (projectile)
-            //{
-            //    projectile.setPlayer(playerPawn);
-            //}
         }
     }
 

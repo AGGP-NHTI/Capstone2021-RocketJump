@@ -50,9 +50,9 @@ public class Actor : NetworkedBehaviour
         GameObject obj = Instantiate(prefab, location, rotation);
 
         Debug.Log(obj.name);
-        if (obj)
+        if (obj && obj.TryGetComponent(out NetworkedObject netObj))
         { 
-            obj.GetComponent<NetworkedObject>().Spawn();
+            netObj.Spawn();
 
             return obj;
         }
