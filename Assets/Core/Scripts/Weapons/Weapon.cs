@@ -96,11 +96,12 @@ public class Weapon : Actor
         Debug.Log("REQUEST PROJECTILE SPAWN");
         InvokeClientRpcOnEveryone(spawnClientProjectile, location, dir);
     }
-
+    int projectileCounter = 0;
     [ClientRPC]
     public void spawnClientProjectile(Vector3 location, Quaternion dir)
     {
-        Debug.Log("CLIENT PROJECTILE SPAWN");
+        projectileCounter++;
+        Debug.Log("CLIENT PROJECTILE SPAWN-------------------" + projectileCounter);
         //for (int i = 0; i < bulletsPerShot; i++)
         //{
         GameObject bullet = NetSpawn(projectilePrefab,
