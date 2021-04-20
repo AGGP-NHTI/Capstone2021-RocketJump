@@ -1182,13 +1182,13 @@ MonoBehaviour:
   MessageBufferSize: 5120
   MaxConnections: 100
   ConnectAddress: 72.73.82.217
-  ConnectPort: 8888
-  ServerListenPort: 8888
-  ServerWebsocketListenPort: 8888
+  ConnectPort: 1234
+  ServerListenPort: 1234
+  ServerWebsocketListenPort: 1234
   SupportWebsocket: 0
   Channels: []
   UseMLAPIRelay: 1
-  MLAPIRelayAddress: 18.221.90.202
+  MLAPIRelayAddress: 54.144.231.48
   MLAPIRelayPort: 8888
 --- !u!114 &5214381284933555429
 MonoBehaviour:
