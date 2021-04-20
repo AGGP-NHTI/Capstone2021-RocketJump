@@ -108,6 +108,11 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         
     }
 
+    public void spawnPlayerForRace()
+    {
+        InvokeClientRpcOnEveryone(spawnPlayer);
+    }
+
     [ServerRPC(RequireOwnership = false)]
     public void serverAddPlayer(GameObject player, string name)
     {
@@ -149,5 +154,11 @@ public class PlayerNetworkCenter : NetworkedBehaviour
             }
             raceManager.updateLobbyCountdown(countdown);
         }
+    }
+
+    [ClientRPC()]
+    public void spawnPlayer()
+    {
+        owner.SpawnPlayerPawn();
     }
 }
