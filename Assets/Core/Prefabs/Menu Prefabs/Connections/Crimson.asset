@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Crimson
   m_EditorClassIdentifier: 
   serverName: Crimson's Server 1
-  connectAddress: 74.75.81.133
+  connectAddress: 72.73.82.217
   connectPort: 1234
-  relayAddress: 3.82.190.109
+  relayAddress: 3.95.192.167
   relayPort: 8888
