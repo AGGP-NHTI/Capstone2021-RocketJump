@@ -22,6 +22,7 @@ public class RaceManager : MonoBehaviour
     public TextMeshProUGUI countdownText;
     public GameObject playerListPanel;
     public GameObject playerSlotPrefab;
+    public Button startGamebutton;
 
     [Header("Lobby Information")]
     public List<GameObject> playerSlots = new List<GameObject>();
@@ -86,8 +87,9 @@ public class RaceManager : MonoBehaviour
         }
         else
         {
-            countdownText.enabled = true;
-            countdownText.text = "Game starting in " + Mathf.Round(timer.time);
+            startGamebutton.enabled = false;
+            //countdownText.enabled = true;
+            //countdownText.text = "Game starting in " + Mathf.Round(timer.time);
         }
 
         
@@ -191,7 +193,7 @@ public class RaceManager : MonoBehaviour
 
     public void spawnPlayers()
     {
-        lobbyCanvas.enabled = false;
+        enableLobby = false;
 
         foreach(GameObject p in positionManager.players)
         {
