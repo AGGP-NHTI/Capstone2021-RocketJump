@@ -49,14 +49,14 @@ public class Actor : NetworkedBehaviour
     {
         GameObject obj = Instantiate(prefab, location, rotation);
 
-        Debug.Log(obj.name);
-        if (obj && obj.TryGetComponent(out NetworkedObject netObj))
-        {
-            Debug.Log(netObj.name + " _ " + netObj.OwnerClientId);
-            netObj.Spawn();
-            Debug.Log(netObj.name + " _AFTER_ " + netObj.OwnerClientId);
-            return obj;
-        }
+        //Debug.Log(obj.name);
+        //if (obj && obj.TryGetComponent(out NetworkedObject netObj))
+        //{
+        //    Debug.Log(netObj.name + " _ " + netObj.OwnerClientId);
+        //    netObj.Spawn();
+        //    Debug.Log(netObj.name + " _AFTER_ " + netObj.OwnerClientId);
+        //    return obj;
+        //}
 
         
         return null;
