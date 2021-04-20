@@ -41,16 +41,6 @@ public class Player_Pawn : Pawn
         }
 
     }
-
-	
-    private void FixedUpdate()
-    {
-		sendEyeRotation();
-
-		
-		Debug.Log($"EYE ROTATION: {eyes.rotation} for {OwnerClientId}");
-	}
-
     public void setUI()
 	{
 		UI = Instantiate(UI, localPlayer.transform);
