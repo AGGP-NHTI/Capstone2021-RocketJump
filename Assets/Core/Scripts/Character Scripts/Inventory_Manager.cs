@@ -83,14 +83,14 @@ public class Inventory_Manager : NetworkedBehaviour
         {
             if (Input.GetMouseButton(0))
             {
-                //Fire();
+                Fire();
             }
         }
         else
         {
             if (Input.GetMouseButtonDown(0)) 
             {
-                //Fire();
+                Fire();
             }
         }
     }
@@ -119,7 +119,6 @@ public class Inventory_Manager : NetworkedBehaviour
     [ClientRPC]
     void setWeaponParent(ulong weaponNetID, ulong clientID)
     {
-        Debug.Log($"THE WEAPON NET ID IS: {weaponNetID} for the CLIENT: {clientID}");
         NetworkedObject netWeapon = GetNetworkedObject(weaponNetID);
         NetworkedObject netPlayer = GetNetworkedObject(clientID);
 
