@@ -102,14 +102,10 @@ public class Weapon : Actor
     {
         projectileCounter++;
         Debug.Log("CLIENT PROJECTILE SPAWN-------------------" + projectileCounter);
-        //for (int i = 0; i < bulletsPerShot; i++)
-        //{
-        GameObject bullet = Instantiate(projectilePrefab, location, dir);
-        //NetSpawn(projectilePrefab,
-        //                    location,
-        //                    dir
-        //                    );
-        // }
+        for (int i = 0; i < bulletsPerShot; i++)
+        {
+            GameObject bullet = Instantiate(projectilePrefab, location, dir);
+        }
     }
 
     protected IEnumerator waitFireRateTimer(float input)
