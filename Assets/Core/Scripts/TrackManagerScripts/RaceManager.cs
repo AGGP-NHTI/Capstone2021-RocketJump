@@ -198,10 +198,6 @@ public class RaceManager : MonoBehaviour
     {
         enableLobby = false;
 
-        foreach(GameObject p in positionManager.players)
-        {
-            var controller = p.GetComponent<Player_Controller>();
-            controller.SpawnPlayerPawn();
-        }
+        hostPlayer.GetComponent<Player_Controller>().PNC.spawnPlayerForRace();
     }
 }
