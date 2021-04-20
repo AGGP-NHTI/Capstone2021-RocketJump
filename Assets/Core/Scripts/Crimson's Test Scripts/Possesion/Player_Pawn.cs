@@ -45,10 +45,10 @@ public class Player_Pawn : Pawn
 
     private void Update()
     {
-		if (IsServer)
-		{
-			testVar++;
-		}
+		sendEyeRotation();
+
+		
+		Debug.Log($"LOCAL EYE ROTATION: {eyes.rotation} for {OwnerClientId}");
 	}
 
     public void setUI()
@@ -110,4 +110,28 @@ public class Player_Pawn : Pawn
 		
     }
 
+
+	void sendEyeRotation()
+	{
+		InvokeServerRpc(serverSetEyeRotation,eyes.transform.rotation, this.NetworkId);
+	}
+	[ServerRPC(RequireOwnership = false)]
+	public void serverSetEyeRotation(Quaternion rot, ulong pawnID)
+	{
+		InvokeClientRpcOnEveryone(clientUpdateEyeRotation, rot, pawnID);
+	}
+
+	[ClientRPC]
+	public void clientUpdateEyeRotation(Quaternion rot, ulong pawnID)
+	{
+		NetworkedObject netObj = GetNetworkedObject(pawnID);
+		if(netObj && netObj.gameObject.TryGetComponent(out Player_Pawn pawn))
+		{
+			if (!pawn.IsLocal())
+			{
+				pawn.eyes.rotation = rot;
+			}
+		}
+
+	}
 }

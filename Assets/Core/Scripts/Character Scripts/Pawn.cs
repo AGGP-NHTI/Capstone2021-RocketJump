@@ -6,9 +6,6 @@ using MLAPI.Messaging;
 public class Pawn : Actor
 {
     public Controller controller;
-    //[MLAPI.NetworkedVar.SyncedVar]
-    public float testVar = 0;
-
 
     public void Possessed(Controller c)
     {
