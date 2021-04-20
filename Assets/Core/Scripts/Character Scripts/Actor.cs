@@ -13,7 +13,7 @@ public class Actor : NetworkedBehaviour
 
     public void FixedUpdate()
     {
-        if (playerPawn && playerPawn.IsLocal())
+        if (playerPawn)//&& playerPawn.IsLocal())
         {
             setNetPosition(transform.position);
         }
@@ -34,6 +34,7 @@ public class Actor : NetworkedBehaviour
     [ServerRPC(RequireOwnership = false)]
     public void updatePos(Vector3 pos, ulong objID)
     {
+        Debug.Log($"TELL CLIENT SET POS: {pos}");
         InvokeClientRpcOnEveryone(updateClientPosition, pos, objID);
     }
 
@@ -44,6 +45,8 @@ public class Actor : NetworkedBehaviour
         if (netObj)
         {
             GameObject gObj = netObj.gameObject;
+
+            Debug.Log($"CLIENT SET POS: {pos} of {gObj.name}_{netObj.OwnerClientId}");
             if (gObj)
             {
                 gObj.transform.position = pos;
