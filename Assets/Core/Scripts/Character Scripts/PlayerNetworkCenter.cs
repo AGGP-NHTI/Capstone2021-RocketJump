@@ -159,6 +159,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     [ClientRPC()]
     public void spawnPlayer()
     {
+        Debug.Log("Spawn player");
         owner.SpawnPlayerPawn();
     }
 }
