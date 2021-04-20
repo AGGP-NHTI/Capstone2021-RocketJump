@@ -18,11 +18,11 @@ public class RaceManager : MonoBehaviour
     private int oldPlayerListCount = 0;
 
     [Header("Canvas Elements")]
-    public Canvas lobbyCanvas;
+    public GameObject lobbyCanvas;
     public TextMeshProUGUI countdownText;
     public GameObject playerListPanel;
     public GameObject playerSlotPrefab;
-    public Button startGamebutton;
+    public GameObject startGamebutton;
 
     [Header("Lobby Information")]
     public List<GameObject> playerSlots = new List<GameObject>();
@@ -48,13 +48,13 @@ public class RaceManager : MonoBehaviour
         }
 
         if (enableLobby) { lobbyManager(); }
-        else { lobbyCanvas.enabled = false; }
+        else { lobbyCanvas.SetActive(false); }
 
     }
 
     public void lobbyManager()
     {
-        if(!lobbyCanvas.enabled) { lobbyCanvas.enabled = true; }
+        if(!lobbyCanvas.activeSelf) { lobbyCanvas.SetActive(true); }
 
         if(isHost)
         {
@@ -87,7 +87,7 @@ public class RaceManager : MonoBehaviour
         }
         else
         {
-            startGamebutton.enabled = false;
+            startGamebutton.SetActive(false);
             //countdownText.enabled = true;
             //countdownText.text = "Game starting in " + Mathf.Round(timer.time);
         }
