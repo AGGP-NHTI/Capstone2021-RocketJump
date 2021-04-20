@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Weapon : Actor
 {
-	public int globalIndex = -1;
+    public Player_Pawn playerPawn;
+    public int globalIndex = -1;
     protected GameObject UI;
     protected UIManager UIMan;
     protected Ammo_UI_Script AmmoReference;
