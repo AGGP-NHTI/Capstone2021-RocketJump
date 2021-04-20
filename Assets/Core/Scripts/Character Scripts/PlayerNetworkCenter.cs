@@ -9,7 +9,7 @@ using MLAPI.Messaging;
 public class PlayerNetworkCenter : NetworkedBehaviour
 {
 
-    private Player_Controller owner;
+    public Player_Controller owner;
     public PositionManager positionManager;
     public GameObject track;
     public RaceManager raceManager;
@@ -159,7 +159,10 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     [ClientRPC()]
     public void spawnPlayer()
     {
-        Debug.Log("Spawn player");
-        owner.SpawnPlayerPawn();
+        if(IsLocalPlayer)
+        {
+            Debug.Log("Spawn player");
+            owner.SpawnPlayerPawn();
+        }
     }
 }

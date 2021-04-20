@@ -81,6 +81,7 @@ public class Player_Controller : Controller
     {
         if (IsOwner)
         {
+            Debug.Log("Is owner, Spawn Player Pawn");
             if(PNCEnabled)
             {
                 InvokeServerRpc(Server_SpawnPlayerPawn_Race, OwnerClientId);
@@ -128,6 +129,8 @@ public class Player_Controller : Controller
         {
             spawnManager = GameObject.Find("Spawn Manager").GetComponent<SpawnPointManager>();
         }
+
+        Debug.Log("Spawning Player...");
 
         Vector3 location = spawnManager.getSpawn();
         GameObject gobj = Instantiate(defaultPawn, location, Quaternion.identity);
