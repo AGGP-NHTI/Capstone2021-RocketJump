@@ -52,13 +52,15 @@ public class Player_Controller : Controller
         if(IsLocalPlayer)
         {
             playerName = PlayerInformation.playerScreenName;
+
+            if (PNCEnabled)
+            {
+                PNC.initPNC(this);
+            }
+            PNC.enabled = PNCEnabled;
         }
 
-        if (PNCEnabled)
-        {
-            PNC.initPNC(this);
-        }
-        PNC.enabled = PNCEnabled;
+        
     }
 
     private void Update()
