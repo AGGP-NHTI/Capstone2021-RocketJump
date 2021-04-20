@@ -76,6 +76,8 @@ public class Weapon : Actor
 
         Quaternion fireDirection = Quaternion.LookRotation(BulletSpread(projectileSpawn.forward));
         Vector3 position = projectileSpawn.position;
+
+        
         InvokeServerRpc(spawnNetworkedProjectile,position, fireDirection);
 
         
@@ -91,19 +93,22 @@ public class Weapon : Actor
     [ServerRPC(RequireOwnership = false)]
     public void spawnNetworkedProjectile(Vector3 location, Quaternion dir)
     {
+        Debug.Log("REQUEST PROJECTILE SPAWN");
         InvokeClientRpcOnEveryone(spawnClientProjectile, location, dir);
     }
-
+    int projectileCounter = 0;
     [ClientRPC]
     public void spawnClientProjectile(Vector3 location, Quaternion dir)
     {
-        for (int i = 0; i < bulletsPerShot; i++)
-        {
-            GameObject bullet = NetSpawn(projectilePrefab,
+        projectileCounter++;
+        Debug.Log("CLIENT PROJECTILE SPAWN-------------------" + projectileCounter);
+        //for (int i = 0; i < bulletsPerShot; i++)
+        //{
+        GameObject bullet = NetSpawn(projectilePrefab,
                                 location,
                                 dir
                                 );
-        }
+       // }
     }
 
     protected IEnumerator waitFireRateTimer(float input)
