@@ -62,20 +62,20 @@ public class Actor : NetworkedBehaviour
         return null;
     }
 
-    public GameObject NetSpawn(GameObject prefab, Transform parent)
-    {
-        GameObject projectile = Instantiate(prefab, parent);
+    //public GameObject NetSpawn(GameObject prefab, Transform parent)
+    //{
+    //    GameObject projectile = Instantiate(prefab, parent);
 
-        Debug.Log(projectile.name);
-        if (projectile)
-        {
-            projectile.GetComponent<NetworkedObject>().Spawn();
+    //    Debug.Log(projectile.name);
+    //    if (projectile)
+    //    {
+    //        projectile.GetComponent<NetworkedObject>().Spawn();
 
-            return projectile;
-        }
+    //        return projectile;
+    //    }
 
 
-        return null;
-    }
+    //    return null;
+    //}
 }
 

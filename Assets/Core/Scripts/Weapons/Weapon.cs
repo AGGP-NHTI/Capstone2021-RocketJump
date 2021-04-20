@@ -97,13 +97,13 @@ public class Weapon : Actor
     [ClientRPC]
     public void spawnClientProjectile(Vector3 location, Quaternion dir)
     {
-        for (int i = 0; i < bulletsPerShot; i++)
-        {
+        //for (int i = 0; i < bulletsPerShot; i++)
+        //{
             GameObject bullet = NetSpawn(projectilePrefab,
                                 location,
                                 dir
                                 );
-        }
+       // }
     }
 
     protected IEnumerator waitFireRateTimer(float input)
