@@ -83,14 +83,14 @@ public class Inventory_Manager : NetworkedBehaviour
         {
             if (Input.GetMouseButton(0))
             {
-                Fire();
+                //Fire();
             }
         }
         else
         {
             if (Input.GetMouseButtonDown(0)) 
             {
-                Fire();
+                //Fire();
             }
         }
     }
