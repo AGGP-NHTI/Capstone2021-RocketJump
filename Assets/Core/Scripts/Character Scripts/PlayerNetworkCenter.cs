@@ -110,6 +110,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
 
     public void spawnPlayerForRace()
     {
+        owner.SpawnPlayerPawn();
         InvokeClientRpcOnEveryone(spawnPlayer);
     }
 
@@ -159,7 +160,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     [ClientRPC()]
     public void spawnPlayer()
     {
-        if(IsLocalPlayer)
+        if(!IsHost)
         {
             Debug.Log("Spawn player");
             owner.SpawnPlayerPawn();
