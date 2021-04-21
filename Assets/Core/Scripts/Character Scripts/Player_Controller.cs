@@ -74,7 +74,11 @@ public class Player_Controller : Controller
         if (!ControlledPawn)
         { return; }
 
- 
+        if(!IsLocalPlayer)
+        {
+            PNC.owner = PlayerInformation.controller;
+        }
+
     }
 
     public void SpawnPlayerPawn()
