@@ -142,6 +142,19 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         InvokeClientRpcOnEveryone(spawnPlayer);
     }
 
+    public void updateNodePosition(PositionNodeScript node)
+    {
+        if (IsHost)
+        {
+            positionManager.updatePlayerPosition(gameObject, node.nodeNumber);
+        }
+        else if (IsClient)
+        {
+            //clientUpdateNodePosition(node, gameObject);
+            InvokeServerRpc(serverUpdateNodePosition, node.nodeNumber, gameObject);
+        }
+    }
+
     [ServerRPC(RequireOwnership = false)]
     public void serverAddPlayer(GameObject player, string name)
     {
@@ -152,9 +165,8 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     [ServerRPC(RequireOwnership = false)]
     public void serverUpdateNodePosition(int nodeNumber, GameObject player)
     {
-        //positionManager.updatePlayerPosition(player, nodeNumber);
-        var pm = GameObject.Find("track").GetComponent<PositionManager>();
-        pm.updatePlayerPosition(player, nodeNumber);
+        //var pm = GameObject.Find("track").GetComponent<PositionManager>();
+        positionManager.updatePlayerPosition(player, nodeNumber);
     }
 
     [ClientRPC()]
@@ -191,6 +203,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         if(!IsHost)
         {
             Debug.Log("Spawn player");
+            raceManager.enableLobby = false;
             owner.SpawnPlayerPawn();
         }
     }

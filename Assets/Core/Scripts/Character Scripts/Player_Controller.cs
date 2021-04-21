@@ -51,6 +51,7 @@ public class Player_Controller : Controller
         if(IsLocalPlayer)
         {
             playerName = PlayerInformation.playerScreenName;
+            plrCntrl = this;
         }
 
         if (PNCEnabled)
@@ -98,19 +99,6 @@ public class Player_Controller : Controller
     }
 
     //NETWORK FUNCTIONS
-
-    public void updateNodePosition(PositionNodeScript node)
-    {
-        if (IsHost)
-        {
-            PNC.positionManager.updatePlayerPosition(gameObject, node.nodeNumber);
-        }
-        else if (IsClient)
-        {
-            //clientUpdateNodePosition(node, gameObject);
-            InvokeServerRpc(PNC.serverUpdateNodePosition, node.nodeNumber, gameObject);
-        }
-    }
 
     [ServerRPC(RequireOwnership = false)]
     public void Server_SpawnPlayerPawn(ulong clientID)
