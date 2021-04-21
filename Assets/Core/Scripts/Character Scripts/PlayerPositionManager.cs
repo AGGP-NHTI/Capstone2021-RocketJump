@@ -29,8 +29,13 @@ public class PlayerPositionManager
 
     public void updatePosition(int nodeNum)
     {
-        if(nodeNum > nodePosition) { nodePosition = nodeNum; }
+        if(nodeNum == nodePosition + 1) { nodePosition = nodeNum; }
         else if(nodeNum == 0 && nodePosition == positionManager.lastNode - 1) { nodePosition = nodeNum; lap++; }
+
+        if(lap > 1)
+        {
+            Debug.Log(name + " WINS");
+        }
 
         Debug.Log(nodePosition + ", " + lap);
 
