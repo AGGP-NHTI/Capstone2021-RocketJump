@@ -23,7 +23,8 @@ public class SpawnPointManager : NetworkedBehaviour
 
     public Vector3 getSpawn()
     {
-        return spawnpoints[0].transform.position;
+        currentspawn++;
+        return spawnpoints[currentspawn - 1].transform.position;
     }
 
     [ServerRPC(RequireOwnership = false)]

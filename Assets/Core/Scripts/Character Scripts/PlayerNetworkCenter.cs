@@ -147,6 +147,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         if (IsHost)
         {
             positionManager.updatePlayerPosition(gameObject, node.nodeNumber);
+            positionManager.comparePlayerPositions();
         }
         else if (IsClient)
         {
@@ -167,6 +168,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     {
         //var pm = GameObject.Find("track").GetComponent<PositionManager>();
         positionManager.updatePlayerPosition(player, nodeNumber);
+        positionManager.comparePlayerPositions();
     }
 
     [ClientRPC()]

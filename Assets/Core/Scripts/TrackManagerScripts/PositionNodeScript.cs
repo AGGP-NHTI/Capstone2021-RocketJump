@@ -15,7 +15,7 @@ public class PositionNodeScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         print(other);
-        var obj = other.gameObject.GetComponent<Player_Pawn>().controller.plrCntrl.PNC;
+        var obj = other.gameObject.GetComponent<Player_Pawn>().controller.plrCntrl;
 
         if (obj)
         {
@@ -25,7 +25,7 @@ public class PositionNodeScript : MonoBehaviour
             }
 
 
-            obj.updateNodePosition(this);
+            obj.plrCntrl.PNC.updateNodePosition(this);
         }
 
         /*
