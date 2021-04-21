@@ -15,7 +15,6 @@ public class Player_Controller : Controller
 
     [Header("Public Player Info")]
     public string playerName;
-
     public bool PlayerSpawned = false;
 
     [Header("Characters")]
@@ -52,7 +51,7 @@ public class Player_Controller : Controller
         if(IsLocalPlayer)
         {
             playerName = PlayerInformation.playerScreenName;
-
+            PlayerInformation.controller = this;
             
         }
 

@@ -7,4 +7,5 @@ public static class PlayerInformation
     public static int playerCharacter = 0; // 0 = spectator, 1 = dictator, 2 = chappie, 3 = sasha
     public static bool isHosting = false;
     public static string playerScreenName = "Player";
+    public static Player_Controller controller;
 }

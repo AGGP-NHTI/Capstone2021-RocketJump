@@ -190,7 +190,7 @@ public class RaceManager : MonoBehaviour
 
     public void hostStartGame()
     {
-        timer.setTimer(10);
+        timer.setTimer(3);
         countdownActive = true;
     }
 
