@@ -82,7 +82,7 @@ public class Player_Controller : Controller
 
     public void SpawnPlayerPawn()
     {
-        if (IsOwner)
+        if (IsLocalPlayer)
         {
             Debug.Log("Is owner, Spawn Player Pawn");
             if(PNCEnabled)
