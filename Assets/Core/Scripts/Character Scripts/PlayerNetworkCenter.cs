@@ -25,6 +25,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         else
         {
             owner = PlayerInformation.controller;
+            print("owner: " + PlayerInformation.controller);
         }
         
         if(IsServer && IsLocalPlayer)

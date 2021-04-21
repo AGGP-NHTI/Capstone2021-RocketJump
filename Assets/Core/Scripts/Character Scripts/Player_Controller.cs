@@ -52,7 +52,6 @@ public class Player_Controller : Controller
         {
             playerName = PlayerInformation.playerScreenName;
             PlayerInformation.controller = this;
-            
         }
 
         if (PNCEnabled)
