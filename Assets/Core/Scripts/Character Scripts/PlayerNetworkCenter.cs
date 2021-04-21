@@ -16,6 +16,19 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public bool initPlayer = false;
     public bool enabled;
 
+    private void Update()
+    {
+        if(!IsLocalPlayer | !IsOwner)
+        {
+            print("not me update");
+            if(!owner)
+            {
+                print("owner: " + PlayerInformation.controller);
+                owner = PlayerInformation.controller;
+            }
+        }
+    }
+
     public void initPNC(Player_Controller reference)
     {
         if(IsLocalPlayer)
@@ -25,6 +38,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
             if(!PlayerInformation.controller)
             {
                 PlayerInformation.controller = owner;
+                print("owner: " + PlayerInformation.controller);
             }
         }
         else
