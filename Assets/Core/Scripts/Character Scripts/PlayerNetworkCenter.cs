@@ -21,6 +21,11 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         if(IsLocalPlayer)
         {
             owner = reference;
+
+            if(!PlayerInformation.controller)
+            {
+                PlayerInformation.controller = owner;
+            }
         }
         else
         {

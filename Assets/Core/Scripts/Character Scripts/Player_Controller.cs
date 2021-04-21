@@ -45,14 +45,6 @@ public class Player_Controller : Controller
 		}
 	}
 
-    private void Awake()
-    {
-        if(IsLocalPlayer)
-        {
-            PlayerInformation.controller = this;
-        }
-    }
-
     private void Start()
     {
         
