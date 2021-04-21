@@ -45,14 +45,20 @@ public class Player_Controller : Controller
 		}
 	}
 
+    private void Awake()
+    {
+        if(IsLocalPlayer)
+        {
+            PlayerInformation.controller = this;
+        }
+    }
+
     private void Start()
     {
         
         if(IsLocalPlayer)
         {
             playerName = PlayerInformation.playerScreenName;
-            PlayerInformation.controller = this;
-            print("owner: " + PlayerInformation.controller);
         }
 
         if (PNCEnabled)
