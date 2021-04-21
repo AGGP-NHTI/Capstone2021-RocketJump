@@ -53,14 +53,15 @@ public class Player_Controller : Controller
         {
             playerName = PlayerInformation.playerScreenName;
 
-            if (PNCEnabled)
-            {
-                PNC.initPNC(this);
-            }
-            PNC.enabled = PNCEnabled;
+            
         }
 
-        
+        if (PNCEnabled)
+        {
+            PNC.initPNC(this);
+        }
+        PNC.enabled = PNCEnabled;
+
     }
 
     private void Update()
