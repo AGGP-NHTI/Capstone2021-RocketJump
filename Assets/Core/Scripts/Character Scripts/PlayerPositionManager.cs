@@ -11,8 +11,9 @@ public class PlayerPositionManager
     public string name;
     public GameObject player;
     public PositionManager positionManager;
+    public ulong clientID;
 
-    public PlayerPositionManager(GameObject plr, PositionManager owner, string plrname)
+    public PlayerPositionManager(GameObject plr, PositionManager owner, string plrname, ulong id)
     {
         nodePosition = 0;
         lap = 1;
@@ -20,6 +21,7 @@ public class PlayerPositionManager
         player = plr;
         positionManager = owner;
         name = plrname;
+        clientID = id;
     }
 
     public void updatePosition(int nodeNum)

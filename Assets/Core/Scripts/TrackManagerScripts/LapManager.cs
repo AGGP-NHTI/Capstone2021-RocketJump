@@ -14,9 +14,9 @@ public class LapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerPositions.Add(new PlayerPositionManager(new GameObject(), new PositionManager(), "test1"));
-        playerPositions.Add(new PlayerPositionManager(new GameObject(), new PositionManager(), "test2"));
-        playerPositions.Add(new PlayerPositionManager(new GameObject(), new PositionManager(), "test3"));
+        //playerPositions.Add(new PlayerPositionManager(new GameObject(), new PositionManager(), "test1"));
+        //playerPositions.Add(new PlayerPositionManager(new GameObject(), new PositionManager(), "test2"));
+        //playerPositions.Add(new PlayerPositionManager(new GameObject(), new PositionManager(), "test3"));
     }
 
     // Update is called once per frame

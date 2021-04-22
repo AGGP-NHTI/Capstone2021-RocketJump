@@ -40,9 +40,9 @@ public class PositionManager : MonoBehaviour
         }
     }
 
-    public void updatePlayerList(GameObject player, string name)
+    public void updatePlayerList(GameObject player, string name, ulong clientID)
     {
-        playerPositions.Add(new PlayerPositionManager(player, this, name));
+        playerPositions.Add(new PlayerPositionManager(player, this, name, clientID));
         players.Add(player);
 
         updatePlayerPosition(player);
@@ -94,7 +94,7 @@ public class PositionManager : MonoBehaviour
                 Debug.Log("player node");
                 node = p.nodePosition;
                 print(positionNodes[node]);
-                player.GetComponent<Player_Controller>().ControlledPawn.gameObject.transform.position = new Vector3(positionNodes[node].position.x, positionNodes[node].position.y, positionNodes[node].position.z);
+                player.GetComponent<Player_Controller>().ControlledPawn.gameObject.transform.position = positionNodes[node].position;
             }
         }
 
