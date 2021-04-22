@@ -147,7 +147,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         if (IsHost)
         {
             positionManager.updatePlayerPosition(gameObject, node.nodeNumber);
-            positionManager.comparePlayerPositions();
+            positionManager.comparePlayerPositions(this);
         }
         else if (IsClient)
         {
