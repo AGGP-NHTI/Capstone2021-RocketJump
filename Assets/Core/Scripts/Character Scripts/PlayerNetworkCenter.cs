@@ -165,6 +165,11 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         }
     }
 
+    public void hostSendClientPositionUpdate(int pos, ulong id)
+    {
+        InvokeClientRpcOnClient(updateClientPosition, id, pos);
+    }
+
     [ServerRPC(RequireOwnership = false)]
     public void serverAddPlayer(GameObject player, string name, ulong clientID)
     {
@@ -177,7 +182,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     {
         //var pm = GameObject.Find("track").GetComponent<PositionManager>();
         positionManager.updatePlayerPosition(player, nodeNumber);
-        positionManager.comparePlayerPositions();
+        positionManager.comparePlayerPositions(this);
     }
 
     [ClientRPC()]
@@ -217,5 +222,11 @@ public class PlayerNetworkCenter : NetworkedBehaviour
             raceManager.enableLobby = false;
             owner.SpawnPlayerPawn();
         }
+    }
+
+    [ClientRPC()]
+    public void updateClientPosition(int pos)
+    {
+        Debug.Log("I am in position " + pos);
     }
 }

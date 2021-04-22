@@ -74,10 +74,15 @@ public class PositionManager : MonoBehaviour
         //comparePlayerPositions();
     }
 
-    public void comparePlayerPositions()
+    public void comparePlayerPositions(PlayerNetworkCenter sender)
     {
 
         playerPositions = (playerPositions.OrderByDescending(p => p.lap).ThenByDescending(p => p.nodePosition)).ToList();
+
+        foreach(PlayerPositionManager p in playerPositions)
+        {
+            sender.hostSendClientPositionUpdate(p.position, p.clientID);
+        }
 
     }
 
