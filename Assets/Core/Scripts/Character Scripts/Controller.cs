@@ -6,7 +6,7 @@ using MLAPI.Messaging;
 
 public class Controller : NetworkedBehaviour
 {
-    protected Pawn ControlledPawn;
+    public Pawn ControlledPawn;
     public Player_Controller plrCntrl;
 
     public void PossessPawn(Pawn pawn)

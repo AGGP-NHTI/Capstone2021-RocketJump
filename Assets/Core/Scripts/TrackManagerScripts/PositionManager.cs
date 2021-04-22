@@ -55,7 +55,7 @@ public class PositionManager : MonoBehaviour
         {
             if (p.player == player)
             {
-                p.updatePosition();
+               // p.updatePosition();
             }
         }
     }
@@ -80,4 +80,25 @@ public class PositionManager : MonoBehaviour
         playerPositions = (playerPositions.OrderByDescending(p => p.lap).ThenByDescending(p => p.nodePosition)).ToList();
 
     }
+
+    public void respawnPlayer(GameObject player)
+    {
+        Debug.Log("respawn player");
+
+        var node = 0;
+
+        foreach(PlayerPositionManager p in playerPositions)
+        {
+            if(p.player == player)
+            {
+                Debug.Log("player node");
+                node = p.nodePosition;
+                print(positionNodes[node]);
+                player.GetComponent<Player_Controller>().ControlledPawn.gameObject.transform.position = new Vector3(positionNodes[node].position.x, positionNodes[node].position.y, positionNodes[node].position.z);
+            }
+        }
+
+        
+    }
+
 }

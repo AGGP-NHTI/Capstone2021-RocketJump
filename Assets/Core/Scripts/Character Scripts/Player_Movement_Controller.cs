@@ -58,7 +58,9 @@ public class Player_Movement_Controller : NetworkedBehaviour
 
 			return;
 		}
-			
+
+        //checkFallOutOfMap();
+
 		wasGrounded = cc.isGrounded;
 		
 		// TODO: handle input via controller, not internally
@@ -232,6 +234,14 @@ public class Player_Movement_Controller : NetworkedBehaviour
 		}
 	}
 
+    public void checkFallOutOfMap()
+    {
+        if(transform.position.y < 0)
+        {
+            print("Fell out of map");
+            playerPawn.controller.plrCntrl.PNC.requestRespawn();
+        }
+    }
 
 	//INITIALIZATION FUNCTIONS
 	

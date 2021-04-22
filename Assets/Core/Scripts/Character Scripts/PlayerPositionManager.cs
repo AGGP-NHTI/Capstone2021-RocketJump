@@ -22,11 +22,6 @@ public class PlayerPositionManager
         name = plrname;
     }
 
-    public void updatePosition()
-    {
-        //player.GetComponent<PlayerController>().updateLap(lap);
-    }
-
     public void updatePosition(int nodeNum)
     {
         if(nodeNum == nodePosition + 1) { nodePosition = nodeNum; }

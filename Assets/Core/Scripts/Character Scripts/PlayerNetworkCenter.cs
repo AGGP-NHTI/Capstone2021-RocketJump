@@ -156,6 +156,15 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         }
     }
 
+    public void requestRespawn()
+    {
+        if(IsHost)
+        {
+            Debug.Log("request spawn");
+            positionManager.respawnPlayer(gameObject);
+        }
+    }
+
     [ServerRPC(RequireOwnership = false)]
     public void serverAddPlayer(GameObject player, string name)
     {
