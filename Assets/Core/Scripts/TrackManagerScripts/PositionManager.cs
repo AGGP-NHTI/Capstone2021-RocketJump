@@ -79,9 +79,9 @@ public class PositionManager : MonoBehaviour
 
         playerPositions = (playerPositions.OrderByDescending(p => p.lap).ThenByDescending(p => p.nodePosition)).ToList();
 
-        foreach(PlayerPositionManager p in playerPositions)
+        for(int i = 0; i < playerPositions.Count; i++)
         {
-            sender.hostSendClientPositionUpdate(p.position, p.clientID);
+            sender.hostSendClientPositionUpdate(i, playerPositions[i].clientID);
         }
 
     }
