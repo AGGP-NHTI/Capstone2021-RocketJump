@@ -81,7 +81,7 @@ public class PositionManager : MonoBehaviour
 
         for(int i = 0; i < playerPositions.Count; i++)
         {
-            sender.hostSendClientPositionUpdate(i, playerPositions[i].clientID);
+            sender.hostSendClientPositionUpdate(i + 1, playerPositions[i].clientID);
         }
 
     }
