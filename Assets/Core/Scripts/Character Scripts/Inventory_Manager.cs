@@ -19,7 +19,7 @@ public class Inventory_Manager : NetworkedBehaviour
     public List<GameObject> weaponPrefabs = new List<GameObject>();
     public List<Weapon> weapons = new List<Weapon>();
     public int currentWeaponIndex = -1;
-    Weapon currentWeapon => weapons[currentWeaponIndex];
+    Weapon CurrentWeapon => currentWeaponIndex > -1 ? weapons[currentWeaponIndex] : null;
 
     //public Transform projectileSpawn;
     
@@ -79,7 +79,7 @@ public class Inventory_Manager : NetworkedBehaviour
 
     void FireInput()
     {
-        if (currentWeapon.isRapidFire)
+        if (CurrentWeapon.isRapidFire)
         {
             if (Input.GetMouseButton(0))
             {
@@ -96,9 +96,9 @@ public class Inventory_Manager : NetworkedBehaviour
     }
     void Fire()
     {
-        if (currentWeapon.Fire())
+        if (CurrentWeapon && CurrentWeapon.Fire())
         {
-            if (currentWeapon is Guns gun)
+            if (CurrentWeapon is Guns gun)
             {
                 //playerPawn.movementControl.ApplyKnockback(gun.knockBackForce);
             }
@@ -136,8 +136,6 @@ public class Inventory_Manager : NetworkedBehaviour
                 if (currentWeaponIndex == -1)
                 {
                     currentWeaponIndex = 0;
-                    
-
                 }
                 setSelectedWeapon();
             }
