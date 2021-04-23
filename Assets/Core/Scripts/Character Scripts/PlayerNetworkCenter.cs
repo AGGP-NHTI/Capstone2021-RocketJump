@@ -97,9 +97,12 @@ public class PlayerNetworkCenter : NetworkedBehaviour
 
     public void initRaceManager()
     {
-        raceManager.hostPlayer = owner.gameObject;
-        raceManager.enableLobby = true;
-        raceManager.isHost = true;
+        if (raceManager && owner)
+        {
+            raceManager.hostPlayer = owner.gameObject;
+            raceManager.enableLobby = true;
+            raceManager.isHost = true;
+        }
     }
 
     /*
