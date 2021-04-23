@@ -77,7 +77,7 @@ public class Weapon : Actor
 
         if (playerPawn)
         {
-            playerPawn.AudioManager.PlayAudio(playerPawn.AudioManager.testClip, transform.position);
+            playerPawn.AudioManager.PlayAudio(playerPawn.AudioManager.YEET.name, transform.position);
         }
 
         currentClip--;

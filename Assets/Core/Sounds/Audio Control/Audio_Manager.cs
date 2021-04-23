@@ -69,5 +69,22 @@ public class Audio_Manager : NetworkedBehaviour
         }
     }
 
+    public void PlayAudio(string clipName, Vector3 loc)
+    {
+        GameObject audioObj = Instantiate(audioObjectPrefab, loc, Quaternion.identity);
+
+        if (audioObj.TryGetComponent(out AudioSource source))
+        {
+            AudioClip clip = ApplicationGlobals.GetAudioClipByName(clipName);
+            if (clip)
+            {
+                source.clip = clip;
+                source.Play();
+
+                Destroy(audioObj, clip.length);
+            }
+        }
+    }
+
 
 }
