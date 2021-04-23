@@ -32,6 +32,7 @@ public class PlayerPositionManager
         if(lap > 1)
         {
             Debug.Log(name + " WINS");
+            positionManager.playerFinished();
         }
 
         Debug.Log(nodePosition + ", " + lap);

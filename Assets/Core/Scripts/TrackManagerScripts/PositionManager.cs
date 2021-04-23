@@ -86,6 +86,11 @@ public class PositionManager : MonoBehaviour
 
     }
 
+    public void playerFinished()
+    {
+
+    }
+
     public void respawnPlayer(GameObject player)
     {
         Debug.Log("respawn player");

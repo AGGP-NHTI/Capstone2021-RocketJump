@@ -175,6 +175,11 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         InvokeClientRpcOnClient(updateClientPosition, id, pos);
     }
 
+    public void hostSendPlayerFinished()
+    {
+
+    }
+
     [ServerRPC(RequireOwnership = false)]
     public void serverAddPlayer(GameObject player, string name, ulong clientID)
     {
@@ -233,5 +238,14 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public void updateClientPosition(int pos)
     {
         Debug.Log("I am in position " + pos);
+    }
+
+    [ClientRPC()]
+    public void playerFinishedRace()
+    {
+        if(!IsHost)
+        {
+
+        }
     }
 }
