@@ -5,40 +5,30 @@ using UnityEngine;
 public class PositionNodeScript : MonoBehaviour
 {
     public int nodeNumber;
+    public bool showNode;
 
     private void Start()
     {
-        gameObject.transform.localScale = new Vector3(35, 50, .25f);
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + (gameObject.transform.localScale.y / 2), gameObject.transform.position.z);
+        gameObject.transform.localScale = new Vector3(50, 50, .25f); // resize node to fill track once game has started
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + (gameObject.transform.localScale.y / 2), gameObject.transform.position.z); // adjust nodes height based on resize
+        gameObject.GetComponent<Renderer>().enabled = showNode; //Disable renderer to hide node in game. Set showNode to true if visible ingame nodes are needed for debugging purposes;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other);
-        var obj = other.gameObject.GetComponent<Player_Pawn>().controller;
+        var obj = other.gameObject.GetComponent<Player_Pawn>().controller; // get the players controller
 
-        if (obj)
+        if (obj) // if the controller exists (mean a player made contact)
         {
-            if (!obj.IsLocalPlayer)
+            if (!obj.IsLocalPlayer) // Make sure the contacting player is the local player (preventing from local instances of other players from triggering)
             {
-                return;
+                return; // If it isn't the local player, break function
             }
 
 
-            obj.plrCntrl.PNC.updateNodePosition(this);
+            obj.plrCntrl.PNC.updateNodePosition(this); // If it is the local player, start the node updating process 
         }
 
-        /*
-
-        foreach(GameObject player in positionManager.players)
-        {
-            if(other.gameObject.name == player.gameObject.name)
-            {
-                positionManager.updatePlayerPosition(player, nodeNumber);
-            }
-        }
-
-        */
     }
 
 }
