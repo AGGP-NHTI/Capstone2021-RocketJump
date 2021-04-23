@@ -14,16 +14,16 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public GameObject track;
     public RaceManager raceManager;
     public bool initPlayer = false;
-    public bool enabled;
+    public bool isEnabled;
 
     private void Update()
     {
-        if(!IsLocalPlayer | !IsOwner)
+        if(!IsLocalPlayer || !IsOwner)
         {
-            print("not me update");
+            //Debug.Log("not me update");
             if(!owner)
             {
-                print("owner: " + PlayerInformation.controller);
+                Debug.Log("owner: " + PlayerInformation.controller);
                 owner = PlayerInformation.controller;
             }
         }
@@ -38,13 +38,13 @@ public class PlayerNetworkCenter : NetworkedBehaviour
             if(!PlayerInformation.controller)
             {
                 PlayerInformation.controller = owner;
-                print("owner: " + PlayerInformation.controller);
+                Debug.Log("owner: " + PlayerInformation.controller);
             }
         }
         else
         {
             owner = PlayerInformation.controller;
-            print("owner: " + PlayerInformation.controller);
+            Debug.Log("owner: " + PlayerInformation.controller);
         }
         
         if(IsServer && IsLocalPlayer)

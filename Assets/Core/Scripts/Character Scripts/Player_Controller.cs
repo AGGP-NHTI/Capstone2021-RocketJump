@@ -58,7 +58,7 @@ public class Player_Controller : Controller
         {
             PNC.initPNC(this);
         }
-        PNC.enabled = PNCEnabled;
+        PNC.isEnabled = PNCEnabled;
 
     }
 
