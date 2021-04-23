@@ -48,7 +48,7 @@ public class Player_Pawn : Pawn
 		gameObject.name = gameObject.name + "_Local_" + OwnerClientId;
 		setLocalPlayer();
 		setCamera();
-		setAudioManager();
+		//setAudioManager();
 		setUI();
 		Cursor.lockState = CursorLockMode.Locked;
 	}
