@@ -145,16 +145,32 @@ public class Player_Movement_Controller : NetworkedBehaviour
 		playerPawn.eyes.transform.localEulerAngles = eyeRot;
 
 		// apply motion
-		cc.Move(externalForce * Time.deltaTime + transform.TransformDirection(new Vector3(movement.x, -downForce, movement.y) * Time.deltaTime));
+		Vector3 movementVector = transform.TransformDirection(new Vector3(movement.x, -downForce, movement.y)) * Time.deltaTime;
+		cc.Move(externalForce * Time.deltaTime + movementVector);
 
 		// degrade external forces
 		float friction = (cc.isGrounded ? groundFriction : airFriction) * Time.deltaTime;
 		int sign;
 
+		float tempVelocity;
+		int tempVelocitySign;
+
 		if (externalForce.x != 0)
 		{
 			sign = externalForce.x < 0 ? -1 : 1;
 			externalForce.x *= sign;
+
+			tempVelocitySign = (int)Mathf.Sign(cc.velocity.x);
+			tempVelocity = cc.velocity.x * tempVelocitySign;
+
+			if (sign == tempVelocitySign)
+			{
+				if (externalForce.x > tempVelocity)
+				{
+					externalForce.x -= externalForce.x - tempVelocity;
+				}
+			}
+
 			externalForce.x -= friction;
 			if (externalForce.x < 0) { externalForce.x = 0; }
 			else { externalForce.x *= sign; }
@@ -164,6 +180,18 @@ public class Player_Movement_Controller : NetworkedBehaviour
 		{
 			sign = externalForce.y < 0 ? -1 : 1;
 			externalForce.y *= sign;
+
+			tempVelocitySign = (int)Mathf.Sign(cc.velocity.y);
+			tempVelocity = cc.velocity.y * tempVelocitySign;
+
+			if (sign == tempVelocitySign)
+			{
+				if (externalForce.y > tempVelocity)
+				{
+					externalForce.y -= externalForce.y - tempVelocity;
+				}
+			}
+
 			externalForce.y -= friction;
 			if (externalForce.y < 0) { externalForce.y = 0; }
 			else { externalForce.y *= sign; }
@@ -173,6 +201,18 @@ public class Player_Movement_Controller : NetworkedBehaviour
 		{
 			sign = externalForce.z < 0 ? -1 : 1;
 			externalForce.z *= sign;
+
+			tempVelocitySign = (int)Mathf.Sign(cc.velocity.z);
+			tempVelocity = cc.velocity.z * tempVelocitySign;
+
+			if (sign == tempVelocitySign)
+			{
+				if (externalForce.z > tempVelocity)
+				{
+					externalForce.z -= externalForce.z - tempVelocity;
+				}
+			}
+
 			externalForce.z -= friction;
 			if (externalForce.z < 0) { externalForce.z = 0; }
 			else { externalForce.z *= sign; }
@@ -208,6 +248,10 @@ public class Player_Movement_Controller : NetworkedBehaviour
 
 	public void AddForce(Vector3 force)
 	{
+		if (force.sqrMagnitude > 100)
+		{
+			playerPawn.AudioManager.PlayAudio(playerPawn.AudioManager.YEET,transform.position);
+		}
 		externalForce += force;
 	}
 

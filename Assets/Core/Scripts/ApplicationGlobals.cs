@@ -6,6 +6,8 @@ public class ApplicationGlobals : MonoBehaviour
 {
 	public static ApplicationGlobals instance;
 	public List<GameObject> weaponPrefabList;
+	public List<AudioClip> audioClips;
+	public GameObject AudioManagerPrefab;
 
 	private void Awake()
 	{
@@ -17,7 +19,7 @@ public class ApplicationGlobals : MonoBehaviour
 
 		DontDestroyOnLoad(gameObject);
 		instance = this;
-		AssignGlobalIndices();
+		AssignWeaponGlobalIndices();
 	}
 
 	public static GameObject GetWeaponPrefab(int weaponIndex)
@@ -44,7 +46,7 @@ public class ApplicationGlobals : MonoBehaviour
 		}
 	}
 
-	public void AssignGlobalIndices()
+	public void AssignWeaponGlobalIndices()
 	{
 		int i = 0;
 		foreach(GameObject g in weaponPrefabList)
@@ -60,4 +62,58 @@ public class ApplicationGlobals : MonoBehaviour
 			i++;
 		}
 	}
+
+	public static AudioClip GetAudioClipByName(string name)
+	{
+		foreach (AudioClip clip in instance.audioClips)
+		{
+			if(clip.name == name)
+            {
+				return clip;
+            }
+		}
+
+		return null;
+	}
+
+	//public static int GetAudioClipIndex(AudioClip clip)
+	//{
+	//	int index = instance.audioClips.IndexOf(clip);
+	//	if (index != -1)
+	//	{
+	//		return index;
+	//	}
+	//	else
+	//	{
+	//		Debug.LogError($"Could not find the index of weapon {weaponPrefab.name}. Has it been added to ApplicationGlobals?");
+	//		return -1;
+	//	}
+	//}
+
+	//public void AssignAudioClipGlobalIndices()
+	//{
+	//	int i = 0;
+	//	foreach (AudioClip c in weaponPrefabList)
+	//	{
+	//		if (c.TryGetComponent(out  w))
+	//		{
+	//			w.globalIndex = i;
+	//		}
+	//		else
+	//		{
+	//			Debug.LogError("Non-weapon found in global weapons list");
+	//		}
+	//		i++;
+	//	}
+	//}
+
+	//public static GameObject GetAudioClip(int AudioIndex)
+	//{
+	//	if (AudioIndex < 0 || AudioIndex >= instance.weaponPrefabList.Count)
+	//	{
+	//		Debug.LogError("Weapon index out of bounds");
+	//		return null;
+	//	}
+	//	return instance.weaponPrefabList[AudioIndex];
+	//}
 }

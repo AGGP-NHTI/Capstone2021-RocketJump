@@ -165,11 +165,13 @@ MonoBehaviour:
   IgnoreDamage: 0
   controller: {fileID: 0}
   movementControl: {fileID: 3298075806896282396}
+  AudioManager: {fileID: 0}
   inventoryMan: {fileID: 5436238356648760076}
+  UIMan: {fileID: 0}
   eyes: {fileID: 3298075805582164848}
   cameraPrefab: {fileID: 6476323804535610174, guid: 5dfba613b3f5f0546b51dfa729f3e1e1,
     type: 3}
-  UI: {fileID: 0}
+  UI: {fileID: 6645590173705267851, guid: feced328edd1f4f45a8098423dbc2157, type: 3}
   loadPlayer: 1
 --- !u!114 &3298075806896282396
 MonoBehaviour:

@@ -121,7 +121,7 @@ public class Inventory_Manager : NetworkedBehaviour
             if (netWeapon.gameObject.TryGetComponent(out Weapon clientWeapon))
             {
                 clientWeapon.playerPawn = playerPawn;
-                //clientWeapon.projectileSpawn = projectileSpawn;
+                
                 weapons.Add(clientWeapon);
                 if (currentWeaponIndex == -1)
                 {
