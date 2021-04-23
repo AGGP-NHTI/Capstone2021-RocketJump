@@ -20,56 +20,45 @@ public class Inventory_Manager : NetworkedBehaviour
     public List<Weapon> weapons = new List<Weapon>();
     public int currentWeaponIndex = -1;
     Weapon CurrentWeapon => currentWeaponIndex > -1 ? weapons[currentWeaponIndex] : null;
-
-    //public Transform projectileSpawn;
-    
-
-    private void Awake()
-    {
-        
-    }
+   
 
     private void Start()
     {
-        //HAVE THE SERVER COMUNICATETHE WEAPON INDEX OF THE CLIENT
         if (playerPawn.controller) 
         {
-           //spawnWeapons();
         }
     }
 
     private void Update()
     {
-        if (!playerPawn.IsLocal())
+        if (!playerPawn.IsLocal()){ return; }
+
+        if (Input.GetKeyDown(KeyCode.F1) && currentWeaponIndex == -1){ spawnWeapons(); }
+
+        Vector2 mouseScroll = Input.mouseScrollDelta;
+
+        if (currentWeaponIndex != -1)
         {
-            
-            return;
+            if (mouseScroll.y > 0)
+            {
+                currentWeaponIndex++;
+                if (currentWeaponIndex >= weapons.Count)
+                {
+                    currentWeaponIndex = 0;
+                }
+                InvokeServerRpc(setCurrentWeaponIndexOnServer, NetworkId, currentWeaponIndex);
+            }
+            else if (mouseScroll.y < 0)
+            {
+                currentWeaponIndex--;
+                if (currentWeaponIndex < 0)
+                {
+                    currentWeaponIndex = weapons.Count - 1;
+                }
+                InvokeServerRpc(setCurrentWeaponIndexOnServer, NetworkId, currentWeaponIndex);
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.F1) && currentWeaponIndex == -1)
-        {
-            spawnWeapons();
-        }
-        Vector2 mouseScroll = Input.mouseScrollDelta;
-        if (mouseScroll.y > 0)
-        {
-            currentWeaponIndex++;
-            if (currentWeaponIndex >= weapons.Count)
-            {
-                currentWeaponIndex = 0;
-            }
-            InvokeServerRpc(setCurrentWeaponIndexOnServer, NetworkId, currentWeaponIndex);
-        }
-        else if( mouseScroll.y < 0)
-        {
-            currentWeaponIndex--;
-            if (currentWeaponIndex < 0)
-            {
-                currentWeaponIndex = weapons.Count - 1;
-            }
-            InvokeServerRpc(setCurrentWeaponIndexOnServer, NetworkId, currentWeaponIndex);
-        }
-       
 
         if (playerPawn && playerPawn.IsLocal() && currentWeaponIndex != -1)
         {
@@ -100,7 +89,8 @@ public class Inventory_Manager : NetworkedBehaviour
         {
             if (CurrentWeapon is Guns gun)
             {
-                //playerPawn.movementControl.ApplyKnockback(gun.knockBackForce);
+                
+                playerPawn.movementControl.AddForce(-playerPawn.eyes.transform.forward * gun.knockBackForce);
             }
         }
     }

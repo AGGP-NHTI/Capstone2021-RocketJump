@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f24199370b2e2b44b577e3d0e5cb910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPawn: {fileID: 0}
   IsActive: 1
   IgnoreDamage: 0
+  playerPawn: {fileID: 0}
   globalIndex: 1
   projectilePrefab: {fileID: 3434827112916319614, guid: 831b29f1ffb0257458f1a4dca83b352d,
     type: 3}
@@ -59,7 +59,7 @@ MonoBehaviour:
   clipSize: 2
   isRapidFire: 0
   projectileSpawn: {fileID: 3340697923363904619}
-  knockBackForce: 1
+  knockBackForce: 15
   fireRate: 2
 --- !u!114 &-3777178072735125179
 MonoBehaviour:
