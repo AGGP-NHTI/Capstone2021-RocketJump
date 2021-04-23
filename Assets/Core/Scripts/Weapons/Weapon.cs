@@ -34,27 +34,23 @@ public class Weapon : Actor
 
     protected virtual void Start()
     {
-        //Debug.Log("Start--");
-        setPlayerReference();
-        
         setUIObj();
-        setAmmoReference();
-
-        //if (controller.IsLocalPlayer)
-        //{
-        //    currentClip = clipSize;
-        //}
+        setAmmo();
+        StartCoroutine(waitForPawn());
     }
 
     private void OnEnable()
     {
-        //if (controller.IsLocalPlayer)
-        //{
-        //    Debug.Log("SETTING UI-----");
+        StartCoroutine(waitForPawn());
+    }
 
-        //    AmmoReference.SetMagazine(currentClip);
-        //    AmmoReference.SetReserve(clipSize);
-        //}
+    IEnumerator waitForPawn()
+    {
+        yield return new WaitUntil(() => (playerPawn != null));
+        if (playerPawn.IsLocal())
+        {
+            setAmmo();
+        }
     }
     protected virtual void Update()
     {
@@ -77,14 +73,15 @@ public class Weapon : Actor
         Quaternion fireDirection = Quaternion.LookRotation(BulletSpread(projectileSpawn.forward));
         Vector3 position = projectileSpawn.position;
 
-        
         InvokeServerRpc(spawnNetworkedProjectile,position, fireDirection);
 
-        
+        if (playerPawn)
+        {
+            playerPawn.AudioManager.PlayAudio(playerPawn.AudioManager.testClip, transform.position);
+        }
 
-
-        
         currentClip--;
+        setAmmo();
         return true;
     }
 
@@ -122,36 +119,14 @@ public class Weapon : Actor
         return input.normalized;
     }
 
-
-
-    protected void KnockBack(Vector3 direction, float magnitude)
+    void setAmmo()
     {
-        //playerReference.AddForce(direction.normalized * magnitude);    
-    }
-
-
-    void setPlayerReference()
-    {
-        //Player_Movement_Controller player = transform.root.GetComponent<Player_Movement_Controller>();
-        //if (player)
-        //{
-        //    //if (!controller.IsLocalPlayer) { Destroy(this); }
-        //    playerReference = player;
-        //}
-        
-    }
-    void setAmmoReference()
-    {
-        //Ammo_UI_Script ammo = UI.transform.GetComponentInChildren<Ammo_UI_Script>();
-        //if (ammo)
-        //{
-        //    AmmoReference = ammo;
-        //}
+        UIMan.setAmmo(currentClip,clipSize);
     }
     void setUIObj()
     {
-        //UI = playerReference.UI;
-        //if (UI) { UIMan = UI.GetComponent<UIManager>(); }
+        UI = playerPawn.UI;
+        if (UI) { UIMan = UI.GetComponent<UIManager>(); }
     }
 
 }

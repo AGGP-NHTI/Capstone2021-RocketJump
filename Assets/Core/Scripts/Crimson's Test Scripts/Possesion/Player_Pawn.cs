@@ -7,7 +7,9 @@ using MLAPI.Messaging;
 public class Player_Pawn : Pawn
 {
     public Player_Movement_Controller movementControl;
+	public Audio_Manager AudioManager;
     public Inventory_Manager inventoryMan;
+	public UIManager UIMan;
 	public Transform eyes;
 	//public PositionManager positionManager;
 
@@ -26,7 +28,6 @@ public class Player_Pawn : Pawn
 
 	GameObject localCamera;
 	GameObject track;
-
 	GameObject localPlayer;
     private void Start()
     {
@@ -47,7 +48,8 @@ public class Player_Pawn : Pawn
 		gameObject.name = gameObject.name + "_Local_" + OwnerClientId;
 		setLocalPlayer();
 		setCamera();
-		//setUI();
+		setAudioManager();
+		setUI();
 		Cursor.lockState = CursorLockMode.Locked;
 	}
 
@@ -55,14 +57,12 @@ public class Player_Pawn : Pawn
     public void setUI()
 	{
 		UI = Instantiate(UI, localPlayer.transform);
-		if (UI)
+		if (UI.TryGetComponent(out UIManager manager))
 		{
-			SpeedometerScript speedometer = UI.GetComponentInChildren<SpeedometerScript>();
-			if (speedometer)
-			{
-				speedometer.player = movementControl;
-			}
+			UIMan = manager;
+			UIMan.playerMovement = movementControl;
 		}
+		
 	}
 
 	//Move to player_pawn class
@@ -87,7 +87,17 @@ public class Player_Pawn : Pawn
     {
         localPlayer = new GameObject("Local Player");
     }
+	public void setAudioManager()
+	{
+		if (!localPlayer) { return; }
+		GameObject audioManObj = Instantiate(ApplicationGlobals.instance.AudioManagerPrefab, localPlayer.transform);
 
+		if (audioManObj.TryGetComponent(out Audio_Manager audioMan))
+		{
+			AudioManager = audioMan;
+			AudioManager.player = this;
+		}
+	}
     public bool IsLocal()
     {
 		if (controller)
@@ -135,4 +145,7 @@ public class Player_Pawn : Pawn
 		}
 
 	}
+
+
+
 }

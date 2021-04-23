@@ -208,6 +208,10 @@ public class Player_Movement_Controller : NetworkedBehaviour
 
 	public void AddForce(Vector3 force)
 	{
+		if (force.sqrMagnitude > 100)
+		{
+			playerPawn.AudioManager.PlayAudio(playerPawn.AudioManager.YEET,transform.position);
+		}
 		externalForce += force;
 	}
 

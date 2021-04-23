@@ -6,8 +6,24 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public TextMeshProUGUI lapText;
-    public TextMeshProUGUI captionText;
+    public Player_Movement_Controller playerMovement;
+
+    
+    
+
+    [Header("Player Info")]
+    public TMP_Text playerPlacementText;
+    public TMP_Text playerPlacementSuffix;
+    public TMP_Text lapText;
+    public TMP_Text maxLapText;
+
+    [Header("Weapon Info")]
+    public TMP_Text clipText;
+    public TMP_Text clipSizeText;
+
+    [Header("Extra")]
+    public TMP_Text captionText;
+
 
     [Range(0.01f, 5)]
     public float captionFadeRate = 1;
@@ -24,6 +40,15 @@ public class UIManager : MonoBehaviour
         captionText.color = new Color(255,255,255, 0);
 
         captionStartingPosition = captionText.rectTransform.position;
+
+        if (gameObject)
+        {
+            SpeedometerScript speedometer = gameObject.GetComponentInChildren<SpeedometerScript>();
+            if (speedometer)
+            {
+                speedometer.player = playerMovement;
+            }
+        }
     }
 
     private void Update()
@@ -67,5 +92,19 @@ public class UIManager : MonoBehaviour
         captionWait = false;
     }
 
-
+    public void setAmmo(int clip, int clipSize)
+    {
+        clipText.text = clip.ToString();
+        clipSizeText.text = clipSize.ToString();
+    }
+    public void setPlace(int place)
+    {
+        playerPlacementText.text = place.ToString();
+        playerPlacementSuffix.text = "st";
+    }
+    public void setLapText(int lap, int maxLap)
+    {
+        lapText.text = lap.ToString();
+        maxLapText.text = ("/" + maxLap);
+    }
 }

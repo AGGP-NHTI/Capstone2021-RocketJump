@@ -876,7 +876,7 @@ GameObject:
   - component: {fileID: 4212185120364054900}
   - component: {fileID: 9117131016108059329}
   m_Layer: 5
-  m_Name: suffix
+  m_Name: maxLaps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1345,7 +1345,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd9b4af7abf8c1459fd018a1c44b289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMovement: {fileID: 0}
+  playerPlacementText: {fileID: 6645590173353099928}
+  playerPlacementSuffix: {fileID: 6645590175009626424}
   lapText: {fileID: 7757557734242735317}
+  maxLapText: {fileID: 9117131016108059329}
+  clipText: {fileID: 6645590175108750998}
+  clipSizeText: {fileID: 6645590174921157287}
   captionText: {fileID: 3571226131097688632}
   captionFadeRate: 1.4
   captionMoveRate: 1.64
@@ -1510,7 +1516,6 @@ GameObject:
   - component: {fileID: 6645590174547090286}
   - component: {fileID: 6645590174547090284}
   - component: {fileID: 6645590174547090287}
-  - component: {fileID: 4225260972515257994}
   m_Layer: 5
   m_Name: Ammo
   m_TagString: Untagged
@@ -1577,20 +1582,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4225260972515257994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6645590174547090281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf144c43003d0204686c4e2c51205866, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magazine: {fileID: 6645590175108750998}
-  reserve: {fileID: 6645590174921157287}
 --- !u!1 &6645590174619903127
 GameObject:
   m_ObjectHideFlags: 0
@@ -2289,7 +2280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1942117463718044264
 RectTransform:
   m_ObjectHideFlags: 0

@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2241553279964839519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7583856374735673002}
+  - component: {fileID: -7004981773969700698}
+  - component: {fileID: -3364267672649852566}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7583856374735673002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241553279964839519}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 26.48941, y: 76.97464, z: -7.3229218}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7004981773969700698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241553279964839519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45d00f8443327124ca4211966a3cefb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioObjectPrefab: {fileID: 1440106626616296996, guid: bff2f82ecd137c44bb59751051ac2c98,
+    type: 3}
+  player: {fileID: 0}
+  testClip: {fileID: 8300000, guid: a6de182fe19a5c1408d1110a39412bcc, type: 3}
+  smallExplosion: {fileID: 0}
+  largeExplosion: {fileID: 0}
+  ShotgunFire: {fileID: 0}
+  RPGFire: {fileID: 0}
+  NoisyCricket: {fileID: 0}
+  YEET: {fileID: 8300000, guid: 521738b1be4bf2f48a2ab85b749d3528, type: 3}
+--- !u!114 &-3364267672649852566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241553279964839519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 209037615, guid: 01701b64234b4d523d8045142cbc73fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkedInstanceId: 0
+  PrefabHash: 11329289427721026110
+  PrefabHashGenerator: AudioManager
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
