@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05e1244500be774085b350b93e631cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ControlledPawn: {fileID: 0}
+  plrCntrl: {fileID: 0}
   spawnManager: {fileID: 0}
-  PNCEnabled: 1
+  PNCEnabled: 0
   PNC: {fileID: 3633047326876911673}
   playerName: 
   PlayerSpawned: 0
@@ -92,4 +94,4 @@ MonoBehaviour:
   track: {fileID: 0}
   raceManager: {fileID: 0}
   initPlayer: 0
-  enabled: 0
+  isEnabled: 0
