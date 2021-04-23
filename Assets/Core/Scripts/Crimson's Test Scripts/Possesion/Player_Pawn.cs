@@ -30,17 +30,28 @@ public class Player_Pawn : Pawn
 	GameObject localPlayer;
     private void Start()
     {
-
-        if (IsLocal())
-        {
-            setLocalPlayer();
-            setCamera();
-            //setUI();
-
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-
+		if (IsOwner)
+		{
+			StartCoroutine(waitForSetupLocalPlayer());
+		}
+		else
+		{ 
+			
+		}
     }
+
+	IEnumerator waitForSetupLocalPlayer()
+	{
+
+		yield return new WaitUntil(() => IsLocal());
+		gameObject.name = gameObject.name + "_Local_" + OwnerClientId;
+		setLocalPlayer();
+		setCamera();
+		//setUI();
+		Cursor.lockState = CursorLockMode.Locked;
+	}
+
+	
     public void setUI()
 	{
 		UI = Instantiate(UI, localPlayer.transform);

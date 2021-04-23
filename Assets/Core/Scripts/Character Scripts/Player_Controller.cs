@@ -47,8 +47,8 @@ public class Player_Controller : Controller
 
     private void Start()
     {
-        
-        if(IsLocalPlayer)
+        gameObject.name = gameObject.name + "_Local_" + OwnerClientId;
+        if (IsLocalPlayer)
         {
             playerName = PlayerInformation.playerScreenName;
             plrCntrl = this;
