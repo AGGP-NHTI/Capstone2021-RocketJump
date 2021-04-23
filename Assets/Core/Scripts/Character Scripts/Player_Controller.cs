@@ -54,7 +54,7 @@ public class Player_Controller : Controller
             plrCntrl = this;
         }
 
-        if (PNCEnabled)
+        if (PNC && PNCEnabled)
         {
             PNC.initPNC(this);
         }
