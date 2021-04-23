@@ -85,6 +85,8 @@ public class PlayerNetworkCenter : NetworkedBehaviour
 
     public void setPositionManager()
     {
+        if(!track) { return; }
+
         positionManager = track.AddComponent<PositionManager>();
         if (positionManager && track)
         {
