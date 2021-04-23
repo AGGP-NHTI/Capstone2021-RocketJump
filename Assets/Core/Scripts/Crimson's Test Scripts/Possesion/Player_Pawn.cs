@@ -35,8 +35,8 @@ public class Player_Pawn : Pawn
 			StartCoroutine(waitForSetupLocalPlayer());
 		}
 		else
-		{ 
-			
+		{
+			gameObject.name = gameObject.name + "_Remote_" + OwnerClientId;
 		}
     }
 

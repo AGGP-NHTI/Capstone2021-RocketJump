@@ -47,11 +47,16 @@ public class Player_Controller : Controller
 
     private void Start()
     {
-        gameObject.name = gameObject.name + "_Local_" + OwnerClientId;
+
         if (IsLocalPlayer)
         {
+            gameObject.name = gameObject.name + "_Local_" + OwnerClientId;
             playerName = PlayerInformation.playerScreenName;
             plrCntrl = this;
+        }
+        else
+        {
+            gameObject.name = gameObject.name + "_Remote_" + OwnerClientId;
         }
 
         if (PNC && PNCEnabled)
