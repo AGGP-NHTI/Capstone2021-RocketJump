@@ -24,7 +24,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
             if(!owner)
             {
                 owner = PlayerInformation.controller;
-                setUIManager();
+                //setUIManager();
             }
         }
     }
@@ -247,6 +247,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
             Debug.Log("Spawn player");
             raceManager.enableLobby = false;
             owner.SpawnPlayerPawn(PlayerInformation.playerCharacter);
+            setUIManager();
         }
     }
 
