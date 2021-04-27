@@ -13,6 +13,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public PositionManager positionManager;
     public GameObject track;
     public RaceManager raceManager;
+    public positionDisplay UI_posDisplay;
     public bool initPlayer = false;
     public bool isEnabled;
 
@@ -238,6 +239,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public void updateClientPosition(int pos)
     {
         Debug.Log("I am in position " + pos);
+        UI_posDisplay.updatePositionText(pos);
     }
 
     [ClientRPC()]

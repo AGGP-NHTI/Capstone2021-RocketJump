@@ -250,7 +250,7 @@ public class Player_Movement_Controller : NetworkedBehaviour
 	{
 		if (force.sqrMagnitude > 100)
 		{
-			playerPawn.AudioManager.PlayAudio(playerPawn.AudioManager.YEET,transform.position);
+			//playerPawn.AudioManager.PlayAudio(playerPawn.AudioManager.YEET,transform.position);
 		}
 		externalForce += force;
 	}

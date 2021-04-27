@@ -33,7 +33,7 @@ public class Inventory_Manager : NetworkedBehaviour
     {
         if (!playerPawn.IsLocal()){ return; }
 
-        if (Input.GetKeyDown(KeyCode.F1) && currentWeaponIndex == -1){ spawnWeapons(); }
+        if (currentWeaponIndex == -1){ spawnWeapons(); }
 
         Vector2 mouseScroll = Input.mouseScrollDelta;
 

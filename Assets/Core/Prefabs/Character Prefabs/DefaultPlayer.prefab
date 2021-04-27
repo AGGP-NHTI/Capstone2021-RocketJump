@@ -48,11 +48,11 @@ MonoBehaviour:
   ControlledPawn: {fileID: 0}
   plrCntrl: {fileID: 0}
   spawnManager: {fileID: 0}
-  PNCEnabled: 0
+  PNCEnabled: 1
   PNC: {fileID: 3633047326876911673}
   playerName: 
   PlayerSpawned: 0
-  defaultPawn: {fileID: 8569480716151036836, guid: 5bfbc5b1a480afe48a80db59dbc4d556,
+  defaultPawn: {fileID: 3298075806896282395, guid: 168d1bc0bacc9704e98e63de724c0a6f,
     type: 3}
   sashaPawn: {fileID: 2904461096098380868, guid: 84db24c41fd9c404e924abde0aa1a8a9,
     type: 3}

@@ -9,7 +9,7 @@ public class PositionNodeScript : MonoBehaviour
 
     private void Start()
     {
-        gameObject.transform.localScale = new Vector3(50, 50, .25f); // resize node to fill track once game has started
+        gameObject.transform.localScale = new Vector3(50, 500, 3f); // resize node to fill track once game has started
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + (gameObject.transform.localScale.y / 2), gameObject.transform.position.z); // adjust nodes height based on resize
         gameObject.GetComponent<Renderer>().enabled = showNode; //Disable renderer to hide node in game. Set showNode to true if visible ingame nodes are needed for debugging purposes;
     }
