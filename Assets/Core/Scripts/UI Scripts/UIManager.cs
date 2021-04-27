@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
 
     [Header("Extra")]
     public TMP_Text captionText;
+    public GameObject PauseMenu;
+    bool paused = false;
 
 
     [Range(0.01f, 5)]
@@ -106,5 +108,19 @@ public class UIManager : MonoBehaviour
     {
         lapText.text = lap.ToString();
         maxLapText.text = ("/" + maxLap);
+    }
+
+    public void pause()
+    {
+        if (!paused)
+        {
+            PauseMenu.SetActive(true);
+            paused = true;
+        }
+        else
+        {
+            PauseMenu.SetActive(false);
+            paused = false;
+        }
     }
 }
