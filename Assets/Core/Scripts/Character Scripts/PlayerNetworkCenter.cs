@@ -24,7 +24,10 @@ public class PlayerNetworkCenter : NetworkedBehaviour
             if(!owner)
             {
                 owner = PlayerInformation.controller;
-                //setUIManager();
+            }
+            if(!UI_manager && PlayerInformation.controller.PNC.UI_manager)
+            {
+                UI_manager = PlayerInformation.controller.PNC.UI_manager;
             }
         }
     }
@@ -86,12 +89,6 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         setTrack();
         initPlayer = true;
         InvokeServerRpc(serverAddPlayer, owner.gameObject, owner.playerName, owner.OwnerClientId);
-    }
-
-    public void setUIManager()
-    {
-        print(PlayerInformation.controller.PNC.UI_manager);
-        UI_manager = PlayerInformation.controller.PNC.UI_manager;
     }
 
     public void setPositionManager()
@@ -247,7 +244,6 @@ public class PlayerNetworkCenter : NetworkedBehaviour
             Debug.Log("Spawn player");
             raceManager.enableLobby = false;
             owner.SpawnPlayerPawn(PlayerInformation.playerCharacter);
-            setUIManager();
         }
     }
 
