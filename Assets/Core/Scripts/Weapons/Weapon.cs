@@ -50,7 +50,10 @@ public class Weapon : Actor
 
     private void OnEnable()
     {
-        StartCoroutine(waitForPawn());
+        if (IsOwner)
+        {
+            StartCoroutine(waitForPawn());
+        }
     }
 
     IEnumerator waitForPawn()
