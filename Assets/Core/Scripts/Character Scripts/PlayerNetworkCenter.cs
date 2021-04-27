@@ -24,6 +24,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
             if(!owner)
             {
                 owner = PlayerInformation.controller;
+                setUIManager();
             }
         }
     }
@@ -62,7 +63,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         else if(IsClient && !IsLocalPlayer)
         {
             print("is client and not is local player");
-            setUIManager();
+            //setUIManager();
         }
     }
 
