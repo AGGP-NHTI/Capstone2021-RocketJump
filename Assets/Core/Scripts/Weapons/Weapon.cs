@@ -34,6 +34,15 @@ public class Weapon : Actor
 
     protected virtual void Start()
     {
+        if (IsOwner)
+        {
+            StartCoroutine(setup());
+        }
+    }
+
+    IEnumerator setup()
+    {
+        yield return new WaitUntil(() => playerPawn != null);
         setUIObj();
         setAmmo();
         StartCoroutine(waitForPawn());
