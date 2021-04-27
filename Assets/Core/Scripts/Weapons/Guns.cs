@@ -7,7 +7,7 @@ public class Guns : Weapon
     private bool isReloading = false;
     
 
-    [Range(0f, 100f)]
+    [Range(-100f, 100f)]
     public float knockBackForce;
     [Range(1f, 50f)]
     public float fireRate;
