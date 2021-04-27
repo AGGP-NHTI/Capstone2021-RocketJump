@@ -53,12 +53,15 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         else if(IsServer && !IsLocalPlayer)
         {
             setTrack();
-            setUIManager();
             positionManager = track.GetComponent<PositionManager>();
         }
         else if(IsClient && IsLocalPlayer)
         {
             initClient();
+        }
+        else if(IsClient && !IsLocalPlayer)
+        {
+            setUIManager();
         }
     }
 
