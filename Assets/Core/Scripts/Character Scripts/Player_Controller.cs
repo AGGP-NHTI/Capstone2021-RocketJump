@@ -68,13 +68,23 @@ public class Player_Controller : Controller
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F2) && IsLocalPlayer)
+        if (!PlayerSpawned)
         {
-            SpawnPlayerPawn(1);
-        }
-        if (Input.GetKeyDown(KeyCode.F3) && IsLocalPlayer)
-        {
-            SpawnPlayerPawn(2);
+            if (Input.GetKeyDown(KeyCode.F2) && IsLocalPlayer)
+            {
+                SpawnPlayerPawn(1);
+                PlayerSpawned = true;
+            }
+            if (Input.GetKeyDown(KeyCode.F3) && IsLocalPlayer)
+            {
+                SpawnPlayerPawn(2);
+                PlayerSpawned = true;
+            }
+            if (Input.GetKeyDown(KeyCode.F4) && IsLocalPlayer)
+            {
+                SpawnPlayerPawn(3);
+                PlayerSpawned = true;
+            }
         }
 
         if (!IsLocalPlayer)
