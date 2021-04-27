@@ -243,8 +243,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPawn: {fileID: 6756021069044198306}
   weaponPrefabs:
+  - {fileID: 6977513548457193487, guid: 4bb857ebe0f92a64a96ef26c67e75c47, type: 3}
   - {fileID: 4205752912056178508, guid: 5bcff3bd1819c5042a0cf7570c1704da, type: 3}
-  - {fileID: 2673255171855170882, guid: 7713d27125b7735459e8694d56cd812b, type: 3}
   weapons: []
   currentWeaponIndex: -1
 --- !u!114 &3155268346701349408

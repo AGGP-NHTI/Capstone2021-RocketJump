@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3660118078805843819}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,8 +243,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPawn: {fileID: 2572874849908547242}
   weaponPrefabs:
-  - {fileID: 4205752912056178508, guid: 5bcff3bd1819c5042a0cf7570c1704da, type: 3}
-  - {fileID: 2673255171855170882, guid: 7713d27125b7735459e8694d56cd812b, type: 3}
+  - {fileID: 7088709466469962000, guid: 5c9947fe6dc57264a952b638baa0cb24, type: 3}
+  - {fileID: 7088709466469962000, guid: 5c9947fe6dc57264a952b638baa0cb24, type: 3}
   weapons: []
   currentWeaponIndex: -1
 --- !u!114 &2322517452556622551
