@@ -179,9 +179,9 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         InvokeClientRpcOnEveryone(playerFinishedRace, name);
     }
 
-    public void hostSendPlayerLap(int lap, int maxLap)
+    public void hostSendPlayerLap(int lap, int maxLap, ulong id)
     {
-        InvokeClientRpcOnEveryone(clientUpdateLap, lap, maxLap);
+        InvokeClientRpcOnClient(clientUpdateLap, id, lap, maxLap);
     }
 
     [ServerRPC(RequireOwnership = false)]
