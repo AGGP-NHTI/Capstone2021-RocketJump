@@ -107,13 +107,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 0
+  playerPawn: {fileID: 0}
+  globalIndex: -1
   projectilePrefab: {fileID: 0}
-  projectileSpawn: {fileID: 0}
   reloadSpeed: 0
-  fireRate: 0
   bulletsPerShot: 1
   bulletSpread: 0
-  knockBackForce: 0
   currentClip: 0
   clipSize: 0
   isRapidFire: 0
+  projectileSpawn: {fileID: 0}
