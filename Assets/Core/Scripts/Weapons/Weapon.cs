@@ -34,6 +34,15 @@ public class Weapon : Actor
 
     protected virtual void Start()
     {
+        if (IsOwner)
+        {
+            StartCoroutine(setup());
+        }
+    }
+
+    IEnumerator setup()
+    {
+        yield return new WaitUntil(() => playerPawn != null);
         setUIObj();
         setAmmo();
         StartCoroutine(waitForPawn());
@@ -41,7 +50,10 @@ public class Weapon : Actor
 
     private void OnEnable()
     {
-        StartCoroutine(waitForPawn());
+        if (IsOwner)
+        {
+            StartCoroutine(waitForPawn());
+        }
     }
 
     IEnumerator waitForPawn()
@@ -77,7 +89,7 @@ public class Weapon : Actor
 
         if (playerPawn)
         {
-            playerPawn.AudioManager.PlayAudio(playerPawn.AudioManager.YEET.name, transform.position);
+            //playerPawn.AudioManager.PlayAudio(playerPawn.AudioManager.YEET.name, transform.position);
         }
 
         currentClip--;
@@ -121,12 +133,15 @@ public class Weapon : Actor
 
     void setAmmo()
     {
-        UIMan.setAmmo(currentClip,clipSize);
+        if (UIMan) { UIMan.setAmmo(currentClip, clipSize); }
     }
     void setUIObj()
     {
-        UI = playerPawn.UI;
-        if (UI) { UIMan = UI.GetComponent<UIManager>(); }
+        if (playerPawn.UI)
+        {
+            UI = playerPawn.UI;
+            if (UI) { UIMan = UI.GetComponent<UIManager>(); }
+        }
     }
 
 }

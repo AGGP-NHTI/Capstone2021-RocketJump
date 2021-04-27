@@ -50,10 +50,7 @@ public class UIManager : MonoBehaviour
             {
                 speedometer.player = playerMovement;
             }
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                pause();
-            }
+            
 
         }
     }
@@ -73,6 +70,10 @@ public class UIManager : MonoBehaviour
             {
                 Vector3 dir = captionTargetPosition - captionText.rectTransform.position;
                 captionText.rectTransform.Translate(dir * captionMoveRate * Time.deltaTime);
+            }
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                pause();
             }
         }
 
@@ -121,11 +122,33 @@ public class UIManager : MonoBehaviour
         {
             PauseMenu.SetActive(true);
             paused = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {
             PauseMenu.SetActive(false);
             paused = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    public void updatePositionText(int position)
+    {
+        playerPlacementText.text = position.ToString();
+        switch (position)
+        {
+            case 1:
+                playerPlacementSuffix.text = "st";
+                break;
+            case 2:
+                playerPlacementSuffix.text = "nd";
+                break;
+            case 3:
+                playerPlacementSuffix.text = "rd";
+                break;
+            default:
+                playerPlacementSuffix.text = "th";
+                break;
         }
     }
 }

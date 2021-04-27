@@ -59,18 +59,6 @@ MonoBehaviour:
     - Prefab: {fileID: 5219736549171104077, guid: 68dd849f4810f3f49a7fbf3989329151,
         type: 3}
       PlayerPrefab: 1
-    - Prefab: {fileID: 3434827112916319614, guid: 831b29f1ffb0257458f1a4dca83b352d,
-        type: 3}
-      PlayerPrefab: 0
-    - Prefab: {fileID: 6819187397120872736, guid: 2c38d2b355f57cc408786bfce346410c,
-        type: 3}
-      PlayerPrefab: 0
-    - Prefab: {fileID: 3029368864375060408, guid: 74e5da6a7038e7b4f9275b4df6c83f32,
-        type: 3}
-      PlayerPrefab: 0
-    - Prefab: {fileID: 6439842749649940268, guid: 63d62362a1b63114589e3fb91e5e903b,
-        type: 3}
-      PlayerPrefab: 0
     - Prefab: {fileID: 6977513548457193487, guid: 4bb857ebe0f92a64a96ef26c67e75c47,
         type: 3}
       PlayerPrefab: 0
@@ -80,25 +68,22 @@ MonoBehaviour:
     - Prefab: {fileID: 7088709466469962000, guid: 5c9947fe6dc57264a952b638baa0cb24,
         type: 3}
       PlayerPrefab: 0
-    - Prefab: {fileID: 4352009852908437713, guid: b9a39402626b1574186bfe96e99b8567,
-        type: 3}
-      PlayerPrefab: 0
     - Prefab: {fileID: 2676034995004244623, guid: be0d2d951d9d7b64aab10739be7647aa,
-        type: 3}
-      PlayerPrefab: 0
-    - Prefab: {fileID: 1667402405892289827, guid: d1ef4cb717ff95041a579513ccf42b68,
         type: 3}
       PlayerPrefab: 0
     - Prefab: {fileID: 2673255171855170882, guid: 7713d27125b7735459e8694d56cd812b,
         type: 3}
       PlayerPrefab: 0
-    - Prefab: {fileID: 528881964425359842, guid: ecc799829d7ee904599e9cc826a73f5c,
+    - Prefab: {fileID: 3298075806896282395, guid: 168d1bc0bacc9704e98e63de724c0a6f,
         type: 3}
       PlayerPrefab: 0
-    - Prefab: {fileID: 6187004778564048221, guid: 40f9758c556299f4694fba35f973fe6b,
+    - Prefab: {fileID: 2904461096098380868, guid: 84db24c41fd9c404e924abde0aa1a8a9,
         type: 3}
       PlayerPrefab: 0
-    - Prefab: {fileID: 3235445507439764840, guid: 1b4c678489acbda4fafd33fd93b14b86,
+    - Prefab: {fileID: 5548612184292225838, guid: 1ebb3383f2abbd84483bfdc178f8745c,
+        type: 3}
+      PlayerPrefab: 0
+    - Prefab: {fileID: 8569480716151036836, guid: 5bfbc5b1a480afe48a80db59dbc4d556,
         type: 3}
       PlayerPrefab: 0
     PlayerPrefabHash:
@@ -150,5 +135,5 @@ MonoBehaviour:
   SupportWebsocket: 0
   Channels: []
   UseMLAPIRelay: 1
-  MLAPIRelayAddress: 3.95.192.167
+  MLAPIRelayAddress: 54.144.231.48
   MLAPIRelayPort: 8888

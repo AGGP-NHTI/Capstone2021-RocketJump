@@ -11,6 +11,7 @@ public class PositionManager : MonoBehaviour
     public List<GameObject> players;
     [SerializeField] List<Transform> positionNodes;
     public List<PlayerPositionManager> playerPositions;
+    public int maxLap = 3;
 
     public void initPositionManager()
     {
@@ -83,11 +84,6 @@ public class PositionManager : MonoBehaviour
         {
             sender.hostSendClientPositionUpdate(i + 1, playerPositions[i].clientID);
         }
-
-    }
-
-    public void playerFinished(string name)
-    {
 
     }
 
