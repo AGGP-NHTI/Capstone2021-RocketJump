@@ -19,7 +19,6 @@ public class Player_Controller : Controller
 
     [Header("Characters")]
     public GameObject defaultPawn;
-
     public GameObject sashaPawn;
     public GameObject chappiePawn;
     public GameObject dictatorPawn;
@@ -71,7 +70,11 @@ public class Player_Controller : Controller
     {
         if (Input.GetKeyDown(KeyCode.F2) && IsLocalPlayer)
         {
-            SpawnPlayerPawn();
+            SpawnPlayerPawn(1);
+        }
+        if (Input.GetKeyDown(KeyCode.F3) && IsLocalPlayer)
+        {
+            SpawnPlayerPawn(2);
         }
 
         if (!IsLocalPlayer)
@@ -87,18 +90,18 @@ public class Player_Controller : Controller
 
     }
 
-    public void SpawnPlayerPawn()
+    public void SpawnPlayerPawn(int whichPlayer)
     {
         if (IsLocalPlayer)
         {
             Debug.Log("Is owner, Spawn Player Pawn");
             if(PNCEnabled)
             {
-                InvokeServerRpc(Server_SpawnPlayerPawn_Race, OwnerClientId);
+                InvokeServerRpc(Server_SpawnPlayerPawn_Race, whichPlayer ,OwnerClientId);
             }
             else
             {
-                InvokeServerRpc(Server_SpawnPlayerPawn, OwnerClientId);
+                InvokeServerRpc(Server_SpawnPlayerPawn, whichPlayer ,OwnerClientId);
             }
         }
     }
@@ -106,11 +109,11 @@ public class Player_Controller : Controller
     //NETWORK FUNCTIONS
 
     [ServerRPC(RequireOwnership = false)]
-    public void Server_SpawnPlayerPawn(ulong clientID)
+    public void Server_SpawnPlayerPawn(int whichPawn, ulong clientID)
     {
         Vector3 location = Vector3.right * NetworkId;
         location += Vector3.up * 10;
-        GameObject gobj = Instantiate(defaultPawn, location, Quaternion.identity);
+        GameObject gobj = Instantiate(GetSpawnPrefab(whichPawn), location, Quaternion.identity);
 
         NetworkedObject netObj = gobj.GetComponent<NetworkedObject>();
 
@@ -120,7 +123,7 @@ public class Player_Controller : Controller
 
 
     [ServerRPC(RequireOwnership = false)]
-    public void Server_SpawnPlayerPawn_Race(ulong clientID)
+    public void Server_SpawnPlayerPawn_Race(int whichPawn, ulong clientID)
     {
         if(!spawnManager)
         {
@@ -130,7 +133,7 @@ public class Player_Controller : Controller
         Debug.Log("Spawning Player...");
 
         Vector3 location = spawnManager.getSpawn();
-        GameObject gobj = Instantiate(defaultPawn, location, Quaternion.identity);
+        GameObject gobj = Instantiate(GetSpawnPrefab(whichPawn), location, Quaternion.identity);
 
         NetworkedObject netObj = gobj.GetComponent<NetworkedObject>();
 
