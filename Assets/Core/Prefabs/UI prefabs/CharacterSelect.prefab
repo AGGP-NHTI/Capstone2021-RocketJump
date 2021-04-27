@@ -1756,6 +1756,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterSelectPrefab (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3230120133472165453, guid: 6c1ea097a7330644c90b210aa3cacbbc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3230120134154651439, guid: 6c1ea097a7330644c90b210aa3cacbbc,
         type: 3}
       propertyPath: m_AnchoredPosition.x
