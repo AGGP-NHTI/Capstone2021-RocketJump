@@ -87,6 +87,15 @@ public class PositionManager : MonoBehaviour
 
     }
 
+    public void updatePlayerLaps(int lap, ulong id)
+    {
+
+        for (int i = 0; i < playerPositions.Count; i++)
+        {
+            PlayerInformation.controller.PNC.hostSendPlayerLap(lap, maxLap, id); ;
+        }
+    }
+
     public void respawnPlayer(GameObject player)
     {
         Debug.Log("respawn player");
