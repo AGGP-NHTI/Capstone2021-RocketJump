@@ -48,7 +48,7 @@ MonoBehaviour:
   ControlledPawn: {fileID: 0}
   plrCntrl: {fileID: 0}
   spawnManager: {fileID: 0}
-  PNCEnabled: 1
+  PNCEnabled: 0
   PNC: {fileID: 3633047326876911673}
   playerName: 
   PlayerSpawned: 0
@@ -93,5 +93,6 @@ MonoBehaviour:
   positionManager: {fileID: 0}
   track: {fileID: 0}
   raceManager: {fileID: 0}
+  UI_posDisplay: {fileID: 0}
   initPlayer: 0
   isEnabled: 0
