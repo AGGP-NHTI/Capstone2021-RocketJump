@@ -125,8 +125,11 @@ public class Weapon : Actor
     }
     void setUIObj()
     {
-        UI = playerPawn.UI;
-        if (UI) { UIMan = UI.GetComponent<UIManager>(); }
+        if (playerPawn.UI)
+        {
+            UI = playerPawn.UI;
+            if (UI) { UIMan = UI.GetComponent<UIManager>(); }
+        }
     }
 
 }
