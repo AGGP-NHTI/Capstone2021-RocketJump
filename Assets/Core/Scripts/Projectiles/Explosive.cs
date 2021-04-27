@@ -13,6 +13,9 @@ public class Explosive : Projectile
     [Range(0f, 20f)]
     public float explosiveDistance = 10;
 
+    [Range(0f,360f)]
+    public float explosionAngle = 360;
+
     
     protected override void OnDrawGizmos()
     {
