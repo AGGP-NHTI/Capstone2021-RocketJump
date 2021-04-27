@@ -24,7 +24,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
             //Debug.Log("not me update");
             if(!owner)
             {
-                Debug.Log("owner: " + PlayerInformation.controller);
+                //Debug.Log("owner: " + PlayerInformation.controller);
                 owner = PlayerInformation.controller;
             }
         }

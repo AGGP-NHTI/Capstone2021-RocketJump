@@ -1354,6 +1354,7 @@ MonoBehaviour:
   clipText: {fileID: 6645590175108750998}
   clipSizeText: {fileID: 6645590174921157287}
   captionText: {fileID: 3571226131097688632}
+  PauseMenu: {fileID: 7041138679852008111}
   captionFadeRate: 1.4
   captionMoveRate: 1.64
 --- !u!1 &6645590173726143341
@@ -2572,6 +2573,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: pause
       objectReference: {fileID: 0}
+    - target: {fileID: 6027436113639947586, guid: 033c54f66b3c3914aa78a3f68de100ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6027436113639947587, guid: 033c54f66b3c3914aa78a3f68de100ee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2680,10 +2686,26 @@ PrefabInstance:
     - target: {fileID: 6027436113639947587, guid: 033c54f66b3c3914aa78a3f68de100ee,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6376
+      value: 2.52174
+      objectReference: {fileID: 0}
+    - target: {fileID: 6027436113639947587, guid: 033c54f66b3c3914aa78a3f68de100ee,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5399
+      objectReference: {fileID: 0}
+    - target: {fileID: 6027436113639947587, guid: 033c54f66b3c3914aa78a3f68de100ee,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5399
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 033c54f66b3c3914aa78a3f68de100ee, type: 3}
+--- !u!1 &7041138679852008111 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6027436113639947586, guid: 033c54f66b3c3914aa78a3f68de100ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 3608200681196437485}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7041138679852008110 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6027436113639947587, guid: 033c54f66b3c3914aa78a3f68de100ee,
