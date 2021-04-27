@@ -47,6 +47,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.GetInt("InvertHorizontal", 1);
         PlayerPrefs.GetInt("Invertvertical", 1);
 
+        
         volume.value = PlayerPrefs.GetFloat("Volume", 0.5f);
         MS.value = PlayerPrefs.GetFloat("MouseSensitivity", 20f);
 
@@ -111,9 +112,13 @@ public class MainMenu : MonoBehaviour
     {
         main.SetActive(true);
         settings.SetActive(false);
+        if (games != null)
         games.SetActive(false);
+        if (credits != null)
         credits.SetActive(false);
+        if (lobby != null)
         lobby.SetActive(false);
+        if (LoadingScreen != null)
         LoadingScreen.SetActive(false);
     }
 
@@ -151,7 +156,10 @@ public class MainMenu : MonoBehaviour
     {
         PlayerPrefs.SetFloat("Volume", volume.value);
         //source.volume = volume.value;
-        mixer.SetFloat("MusicVolume", volume.value);
+        if (mixer)
+        {
+            mixer.SetFloat("MusicVolume", volume.value);
+        }
     }
 
     public void ChangeMS()
@@ -222,6 +230,7 @@ public class MainMenu : MonoBehaviour
 
     public void ToScene(int num)
     {
+        if (LoadingScreen)
         LoadingScreen.SetActive(true);
         source.Stop();
         StartCoroutine(Loader(num));

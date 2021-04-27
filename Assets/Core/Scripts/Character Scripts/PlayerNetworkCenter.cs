@@ -23,7 +23,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
             //Debug.Log("not me update");
             if(!owner)
             {
-                Debug.Log("owner: " + PlayerInformation.controller);
+                //Debug.Log("owner: " + PlayerInformation.controller);
                 owner = PlayerInformation.controller;
             }
         }
@@ -143,7 +143,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
 
     public void spawnPlayerForRace()
     {
-        owner.SpawnPlayerPawn();
+        owner.SpawnPlayerPawn(PlayerInformation.playerCharacter);
         InvokeClientRpcOnEveryone(spawnPlayer);
     }
 
@@ -230,7 +230,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         {
             Debug.Log("Spawn player");
             raceManager.enableLobby = false;
-            owner.SpawnPlayerPawn();
+            owner.SpawnPlayerPawn(PlayerInformation.playerCharacter);
         }
     }
 

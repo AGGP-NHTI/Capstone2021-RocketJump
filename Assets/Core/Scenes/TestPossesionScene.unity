@@ -1181,7 +1181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MessageBufferSize: 5120
   MaxConnections: 100
-  ConnectAddress: 72.71.227.77
+  ConnectAddress: 74.75.81.133
   ConnectPort: 1234
   ServerListenPort: 1234
   ServerWebsocketListenPort: 1234
@@ -1218,10 +1218,13 @@ MonoBehaviour:
     - Prefab: {fileID: 3298075806896282395, guid: 168d1bc0bacc9704e98e63de724c0a6f,
         type: 3}
       PlayerPrefab: 0
-    - Prefab: {fileID: 4205752912056178508, guid: 5bcff3bd1819c5042a0cf7570c1704da,
+    - Prefab: {fileID: 2904461096098380868, guid: 84db24c41fd9c404e924abde0aa1a8a9,
         type: 3}
       PlayerPrefab: 0
-    - Prefab: {fileID: 2673255171855170882, guid: 7713d27125b7735459e8694d56cd812b,
+    - Prefab: {fileID: 5548612184292225838, guid: 1ebb3383f2abbd84483bfdc178f8745c,
+        type: 3}
+      PlayerPrefab: 0
+    - Prefab: {fileID: 8569480716151036836, guid: 5bfbc5b1a480afe48a80db59dbc4d556,
         type: 3}
       PlayerPrefab: 0
     PlayerPrefabHash:
