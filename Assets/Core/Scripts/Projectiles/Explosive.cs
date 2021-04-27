@@ -13,8 +13,8 @@ public class Explosive : Projectile
     [Range(0f, 20f)]
     public float explosiveDistance = 10;
 
-    [Range(0f,360f)]
-    public float explosionAngle = 360;
+
+    public bool forwardExplosion = false;
 
     
     protected override void OnDrawGizmos()
@@ -35,13 +35,12 @@ public class Explosive : Projectile
         {
             Rigidbody rbObj = hit.GetComponent<Rigidbody>();
             Player_Movement_Controller playerController = hit.GetComponent<Player_Movement_Controller>();
+            
+            
 
             //For other projectiles
             if (rbObj)
             {
-
-                Debug.Log("BAM on " + hit.gameObject.name);
-
                 rbObj.AddExplosionForce(explosiveForce,
                                      origin,
                                      explosiveDistance
@@ -50,12 +49,14 @@ public class Explosive : Projectile
             //forplayers
             else if (playerController)
             {
-
-                Debug.Log("BAM on " + hit.gameObject.name);
- 
                 Vector3 dir = hit.transform.position - origin;
 
-                playerController.AddForce(dir.normalized * explosiveForce);
+                float kindaAngle = Vector3.Dot(transform.forward, dir.normalized);
+
+                if (kindaAngle > 0 || !forwardExplosion) 
+                {
+                    playerController.AddForce(dir.normalized * explosiveForce);
+                }
             }
         }
 

@@ -49,6 +49,7 @@ MonoBehaviour:
   - {fileID: 7088709466469962000, guid: 5c9947fe6dc57264a952b638baa0cb24, type: 3}
   - {fileID: 2676034995004244623, guid: be0d2d951d9d7b64aab10739be7647aa, type: 3}
   - {fileID: 6977513548457193487, guid: 4bb857ebe0f92a64a96ef26c67e75c47, type: 3}
+  - {fileID: 3725961979492142571, guid: a1dc2e6479115b4409f6a41a58bdc569, type: 3}
   audioClips:
   - {fileID: 8300000, guid: 521738b1be4bf2f48a2ab85b749d3528, type: 3}
   - {fileID: 8300000, guid: faef3beef713af14999569ecde378490, type: 3}

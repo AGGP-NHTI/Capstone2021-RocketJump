@@ -35,7 +35,7 @@ public class PlayerPositionManager
         }
         else
         {
-            PlayerInformation.controller.PNC.hostSendPlayerLap(lap, positionManager.maxLap);
+            positionManager.updatePlayerLaps(lap, clientID);
         }
     }
 }
