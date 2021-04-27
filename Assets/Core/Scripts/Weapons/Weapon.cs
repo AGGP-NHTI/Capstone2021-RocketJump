@@ -133,7 +133,7 @@ public class Weapon : Actor
 
     void setAmmo()
     {
-        UIMan.setAmmo(currentClip,clipSize);
+        if (UIMan) { UIMan.setAmmo(currentClip, clipSize); }
     }
     void setUIObj()
     {
