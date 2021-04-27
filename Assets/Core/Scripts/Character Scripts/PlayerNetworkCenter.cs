@@ -13,7 +13,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public PositionManager positionManager;
     public GameObject track;
     public RaceManager raceManager;
-    public positionDisplay UI_posDisplay;
+    public UIManager UI_manager;
     public bool initPlayer = false;
     public bool isEnabled;
 
@@ -21,10 +21,8 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     {
         if(!IsLocalPlayer || !IsOwner)
         {
-            //Debug.Log("not me update");
             if(!owner)
             {
-                //Debug.Log("owner: " + PlayerInformation.controller);
                 owner = PlayerInformation.controller;
             }
         }
@@ -181,6 +179,11 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         InvokeClientRpcOnEveryone(playerFinishedRace, name);
     }
 
+    public void hostSendPlayerLap(int lap, int maxLap)
+    {
+        InvokeClientRpcOnEveryone(clientUpdateLap, lap, maxLap);
+    }
+
     [ServerRPC(RequireOwnership = false)]
     public void serverAddPlayer(GameObject player, string name, ulong clientID)
     {
@@ -239,12 +242,24 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public void updateClientPosition(int pos)
     {
         Debug.Log("I am in position " + pos);
-        UI_posDisplay.updatePositionText(pos);
+        if(UI_manager)
+        {
+            UI_manager.updatePositionText(pos);
+        }
     }
 
     [ClientRPC()]
     public void playerFinishedRace(string name)
     {
         Debug.Log(name + "WINS");
+    }
+
+    [ClientRPC()]
+    public void clientUpdateLap(int lap, int maxLap)
+    {
+        if(UI_manager)
+        {
+            UI_manager.setLapText(lap, maxLap);
+        }
     }
 }

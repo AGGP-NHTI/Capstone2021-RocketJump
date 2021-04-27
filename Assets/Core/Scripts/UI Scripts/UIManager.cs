@@ -128,4 +128,24 @@ public class UIManager : MonoBehaviour
             paused = false;
         }
     }
+
+    public void updatePositionText(int position)
+    {
+        playerPlacementText.text = position.ToString();
+        switch (position)
+        {
+            case 1:
+                playerPlacementSuffix.text = "st";
+                break;
+            case 2:
+                playerPlacementSuffix.text = "nd";
+                break;
+            case 3:
+                playerPlacementSuffix.text = "rd";
+                break;
+            default:
+                playerPlacementSuffix.text = "th";
+                break;
+        }
+    }
 }

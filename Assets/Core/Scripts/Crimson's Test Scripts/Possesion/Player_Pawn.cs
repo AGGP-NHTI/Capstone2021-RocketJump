@@ -61,6 +61,7 @@ public class Player_Pawn : Pawn
 		{
 			UIMan = manager;
 			UIMan.playerMovement = movementControl;
+            controller.plrCntrl.PNC.UI_manager = manager;
 		}
 		
 	}
