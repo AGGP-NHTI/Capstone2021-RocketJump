@@ -122,13 +122,13 @@ public class UIManager : MonoBehaviour
         {
             PauseMenu.SetActive(true);
             paused = true;
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {
             PauseMenu.SetActive(false);
             paused = false;
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
