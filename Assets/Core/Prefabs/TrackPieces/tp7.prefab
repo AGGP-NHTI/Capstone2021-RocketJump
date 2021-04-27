@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 6967365359912596908}
   - component: {fileID: 2095877750516351597}
   - component: {fileID: 4907459098175885302}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2577,7 +2577,7 @@ GameObject:
   - component: {fileID: 4367806954279351389}
   - component: {fileID: 5025908279423595083}
   - component: {fileID: 8393337813817892171}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
