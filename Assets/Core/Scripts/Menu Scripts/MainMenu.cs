@@ -156,7 +156,10 @@ public class MainMenu : MonoBehaviour
     {
         PlayerPrefs.SetFloat("Volume", volume.value);
         //source.volume = volume.value;
-        mixer.SetFloat("MusicVolume", volume.value);
+        if (mixer)
+        {
+            mixer.SetFloat("MusicVolume", volume.value);
+        }
     }
 
     public void ChangeMS()
