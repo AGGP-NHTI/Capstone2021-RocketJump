@@ -128,7 +128,7 @@ MonoBehaviour:
   IsActive: 1
   IgnoreDamage: 0
   playerPawn: {fileID: 0}
-  globalIndex: 4
+  globalIndex: 5
   projectilePrefab: {fileID: 9088708820832914891, guid: 34671062af1b0ff4fbdcdbebbfdc36e5,
     type: 3}
   reloadSpeed: 8
@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NetworkedInstanceId: 0
-  PrefabHash: 3105618469258670159
-  PrefabHashGenerator: SpudGun
+  PrefabHash: 11721918197109145802
+  PrefabHashGenerator: sasha_Bash
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
 --- !u!1 &6636691528816233655
