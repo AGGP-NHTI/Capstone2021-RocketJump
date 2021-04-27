@@ -138,7 +138,7 @@ MonoBehaviour:
   clipSize: 12
   isRapidFire: 0
   projectileSpawn: {fileID: 4102923056134433986}
-  knockBackForce: 0
+  knockBackForce: -50
   fireRate: 1
 --- !u!114 &8839575163620137387
 MonoBehaviour:
