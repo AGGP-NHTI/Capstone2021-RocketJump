@@ -50,6 +50,11 @@ public class UIManager : MonoBehaviour
             {
                 speedometer.player = playerMovement;
             }
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                pause();
+            }
+
         }
     }
 
