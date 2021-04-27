@@ -131,15 +131,15 @@ MonoBehaviour:
   globalIndex: 5
   projectilePrefab: {fileID: 9088708820832914891, guid: 34671062af1b0ff4fbdcdbebbfdc36e5,
     type: 3}
-  reloadSpeed: 8
+  reloadSpeed: 0.5
   bulletsPerShot: 1
-  bulletSpread: 1
-  currentClip: 12
-  clipSize: 12
+  bulletSpread: 0
+  currentClip: 1000
+  clipSize: 1000
   isRapidFire: 0
   projectileSpawn: {fileID: 4102923056134433986}
-  knockBackForce: -50
-  fireRate: 1
+  knockBackForce: -25
+  fireRate: 5
 --- !u!114 &8839575163620137387
 MonoBehaviour:
   m_ObjectHideFlags: 0
