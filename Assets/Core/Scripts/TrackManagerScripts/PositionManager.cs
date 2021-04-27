@@ -72,17 +72,17 @@ public class PositionManager : MonoBehaviour
             }
         }
 
-        //comparePlayerPositions();
+        comparePlayerPositions();
     }
 
-    public void comparePlayerPositions(PlayerNetworkCenter sender)
+    public void comparePlayerPositions()
     {
 
         playerPositions = (playerPositions.OrderByDescending(p => p.lap).ThenByDescending(p => p.nodePosition)).ToList();
 
         for(int i = 0; i < playerPositions.Count; i++)
         {
-            sender.hostSendClientPositionUpdate(i + 1, playerPositions[i].clientID);
+            PlayerInformation.controller.PNC.hostSendClientPositionUpdate(i + 1, playerPositions[i].clientID);
         }
 
     }
