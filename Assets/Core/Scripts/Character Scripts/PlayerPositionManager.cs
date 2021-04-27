@@ -29,15 +29,13 @@ public class PlayerPositionManager
         if(nodeNum == nodePosition + 1) { nodePosition = nodeNum; }
         else if(nodeNum == 0 && nodePosition == positionManager.lastNode - 1) { nodePosition = nodeNum; lap++; }
 
-        if(lap > 1)
+        if(lap > positionManager.maxLap)
         {
-            //Debug.Log(name + " WINS");
-            //positionManager.playerFinished();
             PlayerInformation.controller.PNC.hostSendPlayerFinished(name);
         }
-
-        Debug.Log(nodePosition + ", " + lap);
-
-        //player.GetComponent<PlayerController>().updateLap(lap);
+        else
+        {
+            PlayerInformation.controller.PNC.hostSendPlayerLap(lap, positionManager.maxLap);
+        }
     }
 }
