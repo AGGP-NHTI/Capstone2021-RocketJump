@@ -86,7 +86,7 @@ public class PositionManager : MonoBehaviour
 
     }
 
-    public void playerFinished()
+    public void playerFinished(string name)
     {
 
     }
