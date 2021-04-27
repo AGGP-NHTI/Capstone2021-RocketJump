@@ -175,9 +175,9 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         InvokeClientRpcOnClient(updateClientPosition, id, pos);
     }
 
-    public void hostSendPlayerFinished()
+    public void hostSendPlayerFinished(string name)
     {
-
+        InvokeClientRpcOnEveryone(playerFinishedRace, name);
     }
 
     [ServerRPC(RequireOwnership = false)]
@@ -241,11 +241,8 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     }
 
     [ClientRPC()]
-    public void playerFinishedRace()
+    public void playerFinishedRace(string name)
     {
-        if(!IsHost)
-        {
-
-        }
+        Debug.Log(name + "WINS");
     }
 }

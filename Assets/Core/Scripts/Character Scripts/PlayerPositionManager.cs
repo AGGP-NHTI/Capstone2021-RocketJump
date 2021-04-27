@@ -31,8 +31,9 @@ public class PlayerPositionManager
 
         if(lap > 1)
         {
-            Debug.Log(name + " WINS");
-            positionManager.playerFinished();
+            //Debug.Log(name + " WINS");
+            //positionManager.playerFinished();
+            PlayerInformation.controller.PNC.hostSendPlayerFinished(name);
         }
 
         Debug.Log(nodePosition + ", " + lap);
