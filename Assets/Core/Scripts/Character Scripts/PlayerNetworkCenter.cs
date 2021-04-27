@@ -61,6 +61,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         }
         else if(IsClient && !IsLocalPlayer)
         {
+            print("is client and not is local player");
             setUIManager();
         }
     }
@@ -88,6 +89,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
 
     public void setUIManager()
     {
+        print(PlayerInformation.controller.PNC.UI_manager);
         UI_manager = PlayerInformation.controller.PNC.UI_manager;
     }
 
