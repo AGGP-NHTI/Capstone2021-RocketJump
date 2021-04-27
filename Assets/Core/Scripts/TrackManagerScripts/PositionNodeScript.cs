@@ -16,19 +16,20 @@ public class PositionNodeScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var obj = other.gameObject.GetComponent<Player_Pawn>().controller; // get the players controller
 
-        if (obj) // if the controller exists (mean a player made contact)
+        if (other && other.TryGetComponent(out Player_Pawn pawn))
         {
-            if (!obj.IsLocalPlayer) // Make sure the contacting player is the local player (preventing from local instances of other players from triggering)
+            if (pawn) // if the controller exists (mean a player made contact)
             {
-                return; // If it isn't the local player, break function
+                if (!pawn.IsLocal()) // Make sure the contacting player is the local player (preventing from local instances of other players from triggering)
+                {
+                    return; // If it isn't the local player, break function
+                }
+                pawn.controller.plrCntrl.PNC.updateNodePosition(this); // If it is the local player, start the node updating process 
             }
-
-
-            obj.plrCntrl.PNC.updateNodePosition(this); // If it is the local player, start the node updating process 
         }
-
+           
     }
+    
 
 }
