@@ -50,10 +50,7 @@ public class UIManager : MonoBehaviour
             {
                 speedometer.player = playerMovement;
             }
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                pause();
-            }
+            
 
         }
     }
@@ -73,6 +70,10 @@ public class UIManager : MonoBehaviour
             {
                 Vector3 dir = captionTargetPosition - captionText.rectTransform.position;
                 captionText.rectTransform.Translate(dir * captionMoveRate * Time.deltaTime);
+            }
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                pause();
             }
         }
 
