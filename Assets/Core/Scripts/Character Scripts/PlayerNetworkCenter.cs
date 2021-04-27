@@ -53,6 +53,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         else if(IsServer && !IsLocalPlayer)
         {
             setTrack();
+            setUIManager();
             positionManager = track.GetComponent<PositionManager>();
         }
         else if(IsClient && IsLocalPlayer)
@@ -80,6 +81,11 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         setTrack();
         initPlayer = true;
         InvokeServerRpc(serverAddPlayer, owner.gameObject, owner.playerName, owner.OwnerClientId);
+    }
+
+    public void setUIManager()
+    {
+        UI_manager = PlayerInformation.controller.PNC.UI_manager;
     }
 
     public void setPositionManager()
