@@ -149,6 +149,11 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         
     }
 
+    public void updateFinishCountdown(int c)
+    {
+        InvokeClientRpcOnEveryone(clientUpdateFinishCountdown, c);
+    }
+
     public void spawnPlayerForRace()
     {
         owner.SpawnPlayerPawn(PlayerInformation.playerCharacter);
@@ -211,7 +216,6 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     [ClientRPC()]
     public void clientUpdateLobby(string name, bool start, bool end)
     {
-        Debug.Log("clientUpdateLobby");
         if(!IsHost)
         {
             if (!raceManager)
@@ -225,7 +229,6 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     [ClientRPC()]
     public void clientUpdateLobbyCountdown(int countdown)
     {
-        Debug.Log("Client Update Countdown");
         if (!IsHost)
         {
             if (!raceManager)
@@ -233,6 +236,19 @@ public class PlayerNetworkCenter : NetworkedBehaviour
                 setTrack();
             }
             raceManager.updateLobbyCountdown(countdown);
+        }
+    }
+
+    [ClientRPC()]
+    public void clientUpdateFinishCountdown(int countdown)
+    {
+        if (!IsHost)
+        {
+            if (!UI_manager)
+            {
+                return;
+            }
+            UI_manager.updateFinishCountdown(countdown);
         }
     }
 

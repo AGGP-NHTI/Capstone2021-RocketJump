@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text third_text;
     public GameObject participationTitle_text;
     public TMP_Text participation_text;
+    public TMP_Text countdown_text;
 
     [Header("Player Info")]
     public TMP_Text playerPlacementText;
@@ -30,6 +31,10 @@ public class UIManager : MonoBehaviour
     public TMP_Text captionText;
     public GameObject PauseMenu;
     bool paused = false;
+    public bool isHost;
+    Timer timer = new Timer();
+    public int countdown;
+    private float lastCountdownNumber = 100;
 
 
     [Range(0.01f, 5)]
@@ -82,6 +87,30 @@ public class UIManager : MonoBehaviour
             }
         }
 
+        if (isHost)
+        {
+
+            if (timer.updateTimer())
+            {
+                
+            }
+            if (timer.runTimer)
+            {
+                countdown_text.text = "returning to menu in " + Mathf.Round(timer.time);
+                //countdown = (int)Mathf.Round(timer.time);
+
+                if (Mathf.Round(timer.time) < Mathf.Round(lastCountdownNumber))
+                {
+                    lastCountdownNumber = Mathf.Round(timer.time);
+                    updateClientFinishScreens(countdown);
+                }
+            }
+        }
+        else
+        {
+            countdown_text.text = "returning to menu in " + countdown;
+        }
+
     }
 
     public void sendMessage(string messsage, Vector3? startPositionChange = null, float duration = 3)
@@ -121,6 +150,16 @@ public class UIManager : MonoBehaviour
         maxLapText.text = ("/" + maxLap);
     }
 
+    public void updateClientFinishScreens(int countdown)
+    {
+        PlayerInformation.controller.PNC.updateFinishCountdown(countdown);
+    }
+
+    public void updateFinishCountdown(int c)
+    {
+        countdown = c;
+    }
+
     public void displayFinishScreen(string[] players)
     {
 
@@ -137,6 +176,11 @@ public class UIManager : MonoBehaviour
 
         }
 
+        winner_text.text = "";
+        second_text.text = "";
+        third_text.text = "";
+        participation_text.text = "";
+
         for(int i = 0; i < players.Length; i++)
         {
             if (i == 0) winner_text.text = players[i];
@@ -147,6 +191,11 @@ public class UIManager : MonoBehaviour
                 participationTitle_text.SetActive(true);
                 participation_text.text += players[i] + "\n";
             }
+        }
+
+        if(isHost)
+        {
+            timer.setTimer(10);
         }
     }
 
