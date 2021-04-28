@@ -219,6 +219,12 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         //positionManager.comparePlayerPositions(this);
     }
 
+    [ServerRPC(RequireOwnership = false)]
+    public void serverRemoveClient(ulong clientID)
+    {
+        positionManager.removeClient(clientID);
+    }
+
     [ClientRPC()]
     public void clientUpdateLobby(string name, bool start, bool end)
     {
@@ -302,14 +308,15 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     [ClientRPC()]
     public void disconnectClientsFromServer()
     {
-        if(IsHost)
-        {
-            NetworkingManager.Singleton.StopHost();
-        }
-        else
+
+        InvokeServerRpc(serverRemoveClient, PlayerInformation.controller.OwnerClientId);
+
+        if(!IsHost)
         {
             NetworkingManager.Singleton.StopClient();
         }
         SceneManager.LoadScene("MainMenu");
     }
+
+    
 }

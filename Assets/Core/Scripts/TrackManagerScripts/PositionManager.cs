@@ -87,6 +87,18 @@ public class PositionManager : MonoBehaviour
 
     }
 
+    public void removeClient(ulong id)
+    {
+        for(int i = 0; i < playerPositions.Count; i++)
+        {
+            if(playerPositions[i].clientID == id)
+            {
+                playerPositions.RemoveAt(i);
+                print("player removed");
+            }
+        }
+    }
+
     public void playerFinishedRace()
     {
         comparePlayerPositions();
