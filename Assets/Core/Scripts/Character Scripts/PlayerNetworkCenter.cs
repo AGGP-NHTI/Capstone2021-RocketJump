@@ -260,14 +260,10 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     [ClientRPC()]
     public void playerFinishedRace(string[] name)
     {
-        string display = "";
-
         for(int i = 0; i < name.Length; i++)
         {
-            display += name[i] + "\n";
+            print(name[i]);
         }
-
-        print(display);
     }
 
     [ClientRPC()]
