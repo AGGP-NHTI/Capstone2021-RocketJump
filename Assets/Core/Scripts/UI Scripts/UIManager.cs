@@ -8,8 +8,13 @@ public class UIManager : MonoBehaviour
 {
     public Player_Movement_Controller playerMovement;
 
-    
-    
+
+    [Header("Finish Screen")]
+    public TMP_Text winner_text;
+    public TMP_Text second_text;
+    public TMP_Text third_text;
+    public GameObject participationTitle_text;
+    public TMP_Text participation_text;
 
     [Header("Player Info")]
     public TMP_Text playerPlacementText;
@@ -114,6 +119,35 @@ public class UIManager : MonoBehaviour
     {
         lapText.text = lap.ToString();
         maxLapText.text = ("/" + maxLap);
+    }
+
+    public void displayFinishScreen(string[] players)
+    {
+
+        foreach(Transform child in transform)
+        {
+            if (child.gameObject.name == "victoryScreen")
+            {
+                child.gameObject.SetActive(true);
+            }
+            else
+            {
+                child.gameObject.SetActive(false);
+            }
+
+        }
+
+        for(int i = 0; i < players.Length; i++)
+        {
+            if (i == 0) winner_text.text = players[i];
+            else if (i == 1) second_text.text = players[i];
+            else if (i == 2) third_text.text = players[i];
+            else
+            {
+                participationTitle_text.SetActive(true);
+                participation_text.text += players[i] + "\n";
+            }
+        }
     }
 
     public void pause()

@@ -2031,6 +2031,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
+  winner_text: {fileID: 4228432445428577396}
+  second_text: {fileID: 7218780489367914442}
+  third_text: {fileID: 8819202436285257476}
+  participationTitle_text: {fileID: 5101841141265962879}
+  participation_text: {fileID: 5932747246378076204}
   playerPlacementText: {fileID: 6645590173353099928}
   playerPlacementSuffix: {fileID: 6645590175009626424}
   lapText: {fileID: 7757557734242735317}

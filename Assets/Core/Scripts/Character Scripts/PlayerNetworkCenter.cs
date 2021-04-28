@@ -264,6 +264,8 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         {
             print(name[i]);
         }
+
+        UI_manager.displayFinishScreen(name);
     }
 
     [ClientRPC()]
