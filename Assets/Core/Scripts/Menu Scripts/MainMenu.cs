@@ -47,7 +47,8 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.GetInt("InvertHorizontal", 1);
         PlayerPrefs.GetInt("Invertvertical", 1);
 
-        
+        Cursor.lockState = CursorLockMode.None;
+
         volume.value = PlayerPrefs.GetFloat("Volume", 0.5f);
         MS.value = PlayerPrefs.GetFloat("MouseSensitivity", 20f);
 

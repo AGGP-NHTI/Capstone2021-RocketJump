@@ -17,6 +17,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public UIManager UI_manager;
     public bool initPlayer = false;
     public bool isEnabled;
+    public bool checkForClientsDisconnect;
 
     private void Update()
     {
@@ -29,6 +30,18 @@ public class PlayerNetworkCenter : NetworkedBehaviour
             if(!UI_manager && PlayerInformation.controller.PNC.UI_manager)
             {
                 UI_manager = PlayerInformation.controller.PNC.UI_manager;
+            }
+        }
+
+        if(IsHost)
+        {
+            if(checkForClientsDisconnect)
+            {
+                if(positionManager.playerPositions.Count == 1)
+                {
+                    NetworkingManager.Singleton.StopHost();
+                    SceneManager.LoadScene("MainMenu");
+                }
             }
         }
     }
@@ -202,6 +215,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public void shutdownServer()
     {
         InvokeClientRpcOnEveryone(disconnectClientsFromServer);
+        checkForClientsDisconnect = true;
     }
 
     [ServerRPC(RequireOwnership = false)]
@@ -314,8 +328,9 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         if(!IsHost)
         {
             NetworkingManager.Singleton.StopClient();
+            SceneManager.LoadScene("MainMenu");
         }
-        SceneManager.LoadScene("MainMenu");
+        
     }
 
     
