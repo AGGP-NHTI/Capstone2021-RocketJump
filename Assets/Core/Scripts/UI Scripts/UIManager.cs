@@ -97,7 +97,7 @@ public class UIManager : MonoBehaviour
             if (timer.runTimer)
             {
                 countdown_text.text = "returning to menu in " + Mathf.Round(timer.time);
-                //countdown = (int)Mathf.Round(timer.time);
+                countdown = (int)Mathf.Round(timer.time);
 
                 if (Mathf.Round(timer.time) < Mathf.Round(lastCountdownNumber))
                 {
