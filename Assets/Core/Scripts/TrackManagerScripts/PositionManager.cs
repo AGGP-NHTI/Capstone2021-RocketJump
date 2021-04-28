@@ -87,6 +87,20 @@ public class PositionManager : MonoBehaviour
 
     }
 
+    public void playerFinishedRace()
+    {
+        comparePlayerPositions();
+
+        string[] playerNames = new string[playerPositions.Count];
+
+        for(int i = 0; i < playerPositions.Count; i++)
+        {
+            playerNames[i] = playerPositions[i].name;
+        }
+
+        PlayerInformation.controller.PNC.hostSendPlayerFinished(playerNames);
+    }
+
     public void updatePlayerLaps(int lap, ulong id)
     {
 

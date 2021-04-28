@@ -183,7 +183,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         InvokeClientRpcOnClient(updateClientPosition, id, pos);
     }
 
-    public void hostSendPlayerFinished(string name)
+    public void hostSendPlayerFinished(string[] name)
     {
         InvokeClientRpcOnEveryone(playerFinishedRace, name);
     }
@@ -258,9 +258,16 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     }
 
     [ClientRPC()]
-    public void playerFinishedRace(string name)
+    public void playerFinishedRace(string[] name)
     {
-        Debug.Log(name + "WINS");
+        string display = "";
+
+        for(int i = 0; i < name.Length; i++)
+        {
+            display += name[i] + "\n";
+        }
+
+        print(display);
     }
 
     [ClientRPC()]
