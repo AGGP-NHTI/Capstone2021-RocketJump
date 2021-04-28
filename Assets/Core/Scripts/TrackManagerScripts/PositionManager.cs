@@ -98,11 +98,6 @@ public class PositionManager : MonoBehaviour
             playerNames[i] = playerPositions[i].name;
         }
 
-        for(int i = 0; i < playerNames.Length; i++)
-        {
-            print(playerNames[i]);
-        }
-
         PlayerInformation.controller.PNC.hostSendPlayerFinished(playerNames);
     }
 
