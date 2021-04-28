@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using MLAPI;
 using MLAPI.Messaging;
+using UnityEngine.SceneManagement;
 
 public class PlayerNetworkCenter : NetworkedBehaviour
 {
@@ -198,6 +199,11 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         InvokeClientRpcOnClient(clientUpdateLap, id, lap, maxLap);
     }
 
+    public void shutdownServer()
+    {
+        InvokeClientRpcOnEveryone(disconnectClientsFromServer);
+    }
+
     [ServerRPC(RequireOwnership = false)]
     public void serverAddPlayer(GameObject player, string name, ulong clientID)
     {
@@ -291,5 +297,19 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         {
             UI_manager.setLapText(lap, maxLap);
         }
+    }
+
+    [ClientRPC()]
+    public void disconnectClientsFromServer()
+    {
+        if(IsHost)
+        {
+            NetworkingManager.Singleton.StopHost();
+        }
+        else
+        {
+            NetworkingManager.Singleton.StopClient();
+        }
+        SceneManager.LoadScene("MainMenu");
     }
 }

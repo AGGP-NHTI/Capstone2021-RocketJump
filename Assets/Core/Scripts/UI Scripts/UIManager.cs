@@ -92,7 +92,7 @@ public class UIManager : MonoBehaviour
 
             if (timer.updateTimer())
             {
-                
+                PlayerInformation.controller.PNC.shutdownServer();
             }
             if (timer.runTimer)
             {
