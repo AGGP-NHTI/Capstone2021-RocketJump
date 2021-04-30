@@ -77,8 +77,8 @@ public class RaceManager : MonoBehaviour
                 if(Mathf.Round(timer.time) < Mathf.Round(lastCountdownNumber))
                 {
                     lastCountdownNumber = Mathf.Round(timer.time);
-                    //updateClientLobbies(0, null, false, false);
-                    updateClientLobbiesNew(0, null, null);
+                    updateClientLobbies(0, null, false, false);
+                    //updateClientLobbiesNew(0, null, null);
                 }
             }
             else { countdownText.enabled = false; }
@@ -212,7 +212,7 @@ public class RaceManager : MonoBehaviour
 
                 playerSlots.Add(slot);
 
-                /*
+                
                 if(index == 0)
                 {
                     updateClientLobbies(1, name, true, false);
@@ -225,20 +225,20 @@ public class RaceManager : MonoBehaviour
                 {
                     updateClientLobbies(1, name, false, false);
                 }
-                */
+                
 
-                tempPlayerNames[index] = p.name;
-                tempPlayerCharacters[index] = p.character;
+                //tempPlayerNames[index] = p.name;
+                //tempPlayerCharacters[index] = p.character;
 
                 index++;
             }
 
-            updateClientLobbiesNew(1, tempPlayerNames, tempPlayerCharacters);
+            //updateClientLobbiesNew(1, tempPlayerNames, tempPlayerCharacters);
 
         }
         else //Is client
         {
-            /*
+            
             var playerList = clientPlayerNames;
 
             foreach(string p in playerList)
@@ -249,7 +249,7 @@ public class RaceManager : MonoBehaviour
                 slot.transform.position = new Vector2(slot.transform.position.x, slot.transform.position.y + offset);
                 offset -= 50;
             }
-            */
+            
         }
         
     }
