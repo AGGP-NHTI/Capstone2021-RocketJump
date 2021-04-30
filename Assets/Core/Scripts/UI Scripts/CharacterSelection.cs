@@ -125,7 +125,7 @@ public class CharacterSelection : NetworkedBehaviour
     }
     public void Rand()
     {
-        int i = Random.Range(0, characters.Capacity);
+        int i = Random.Range(0, characters.Count-1);
         
         choice(i);
     }
