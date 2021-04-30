@@ -140,6 +140,8 @@ public class RaceManager : MonoBehaviour
 
     public void clientPopulatePlayerListNew(string[] playerNames, int[] playerCharacters)
     {
+        if (!enableLobby) { enableLobby = true; }
+
         float offset = 145f;
 
         for(int i = 0; i < playerNames.Length; i++)
