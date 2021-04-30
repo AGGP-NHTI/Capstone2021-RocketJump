@@ -31,11 +31,6 @@ public class RaceManager : MonoBehaviour
     private float lastCountdownNumber = 100;
     private List<string> clientPlayerNames = new List<string>();
 
-    [Header("Icons")]
-    public Sprite dictatorIcon;
-    public Sprite chappieIcon;
-    public Sprite sashaIcon;
-
     void Update()
     {
         if(isHost)
@@ -153,23 +148,6 @@ public class RaceManager : MonoBehaviour
                 var slot = Instantiate(playerSlotPrefab, playerListPanel.transform);
 
                 slot.transform.Find("playerName").GetComponent<TextMeshProUGUI>().text = name;
-                var icon = slot.transform.Find("playerCharacter").GetComponent<Image>().sprite;
-
-                switch(p.character)
-                {
-                    case 1:
-                        icon = dictatorIcon;
-                        break;
-                    case 2:
-                        icon = chappieIcon;
-                        break;
-                    case 3:
-                        icon = sashaIcon;
-                        break;
-                    default:
-                        break;
-                }
-
                 slot.transform.position = new Vector2(slot.transform.position.x, slot.transform.position.y + offset);
                 offset -= 75;
 
@@ -201,9 +179,6 @@ public class RaceManager : MonoBehaviour
                 var slot = Instantiate(playerSlotPrefab, playerListPanel.transform);
 
                 slot.transform.Find("playerName").GetComponent<TextMeshProUGUI>().text = p;
-                var icon = slot.transform.Find("playerCharacter").GetComponent<Image>().sprite;
-
-
                 slot.transform.position = new Vector2(slot.transform.position.x, slot.transform.position.y + offset);
                 offset -= 75;
             }
