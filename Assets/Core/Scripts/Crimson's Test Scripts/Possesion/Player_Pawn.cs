@@ -10,6 +10,7 @@ public class Player_Pawn : Pawn
 	public Audio_Manager AudioManager;
     public Inventory_Manager inventoryMan;
 	public UIManager UIMan;
+	public Renderer playerRenderer;
 	public Transform eyeStabilizer;
 	public Transform eyes;
 	public Transform handRight;
@@ -37,6 +38,7 @@ public class Player_Pawn : Pawn
 		if (IsOwner)
 		{
 			StartCoroutine(waitForSetupLocalPlayer());
+
 		}
 		else
 		{
@@ -52,6 +54,7 @@ public class Player_Pawn : Pawn
 		setLocalPlayer();
 		setCamera();
         setUI();
+		playerRenderer.enabled = false;
         Cursor.lockState = CursorLockMode.Locked;
         //setAudioManager();
 	}
