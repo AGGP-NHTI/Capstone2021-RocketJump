@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2475513373075130965}
   - component: {fileID: 6607831573208100367}
   m_Layer: 0
-  m_Name: SawedOffShotgun
+  m_Name: Mass_Shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3029368864375060408, guid: 74e5da6a7038e7b4f9275b4df6c83f32,
     type: 3}
   reloadSpeed: 5
-  bulletsPerShot: 1
+  bulletsPerShot: 10
   bulletSpread: 10
   currentClip: 2
   clipSize: 2

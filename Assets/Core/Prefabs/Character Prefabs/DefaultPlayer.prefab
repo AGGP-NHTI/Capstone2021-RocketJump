@@ -48,7 +48,7 @@ MonoBehaviour:
   ControlledPawn: {fileID: 0}
   plrCntrl: {fileID: 0}
   spawnManager: {fileID: 0}
-  PNCEnabled: 1
+  PNCEnabled: 0
   PNC: {fileID: 3633047326876911673}
   playerName: 
   PlayerSpawned: 0
@@ -96,3 +96,4 @@ MonoBehaviour:
   UI_manager: {fileID: 0}
   initPlayer: 0
   isEnabled: 0
+  checkForClientsDisconnect: 0
