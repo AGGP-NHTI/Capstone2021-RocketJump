@@ -35,6 +35,8 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI SenNum;
     public TextMeshProUGUI VolNum;
 
+    public InputField PN;
+
     public AudioMixer mixer;
 
     [Header("Player Relevant")]
@@ -46,11 +48,13 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.GetFloat("MouseSensitivity", MS.maxValue / 2);
         PlayerPrefs.GetInt("InvertHorizontal", 1);
         PlayerPrefs.GetInt("Invertvertical", 1);
+        
 
         Cursor.lockState = CursorLockMode.None;
 
         volume.value = PlayerPrefs.GetFloat("Volume", 0.5f);
         MS.value = PlayerPrefs.GetFloat("MouseSensitivity", 20f);
+        PN.text = PlayerPrefs.GetString("PlayerName", "Jeff");
 
         if (main != null)
         {
@@ -98,6 +102,7 @@ public class MainMenu : MonoBehaviour
             SenNum.text = "" + m;
             VolNum.text = "" + v + " dB";
         }
+        
     }
 
     public void QuitGame()

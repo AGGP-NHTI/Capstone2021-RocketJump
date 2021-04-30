@@ -40,6 +40,7 @@ public class CharacterSelection : NetworkedBehaviour
     public void setName()
     {   
         PlayerInformation.playerScreenName = nameField.text;
+        PlayerPrefs.SetString("Playername", nameField.text);
 
         Debug.Log(nameField.text);
         Debug.Log(PlayerInformation.playerScreenName);
