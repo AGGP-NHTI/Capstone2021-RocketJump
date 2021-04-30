@@ -13,6 +13,7 @@ public class PlayerPositionManager
     public GameObject player;
     public PositionManager positionManager;
     public ulong clientID;
+    public bool finishedRace;
 
     public PlayerPositionManager(GameObject plr, PositionManager owner, string plrname, ulong id, int character)
     {
@@ -33,7 +34,11 @@ public class PlayerPositionManager
         if(lap > positionManager.maxLap)
         {
             //PlayerInformation.controller.PNC.hostSendPlayerFinished(name);
-            positionManager.playerFinishedRace();
+            if(!finishedRace)
+            {
+                finishedRace = true;
+                positionManager.playerFinishedRace();
+            }
         }
         else
         {

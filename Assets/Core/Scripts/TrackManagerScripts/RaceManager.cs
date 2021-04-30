@@ -108,6 +108,11 @@ public class RaceManager : MonoBehaviour
         print(countdown);
     }
 
+    public void updateClientIcons()
+    {
+
+    }
+
     public void clientPopulatePlayerList(string name, bool start, bool end)
     {
         Debug.Log("clientPopulatePlayerList");
@@ -141,7 +146,6 @@ public class RaceManager : MonoBehaviour
 
             foreach (PlayerPositionManager p in playerList)
             {
-                //var pawn = p.GetComponent<Player_Controller>();
 
                 var name = p.name;
 
