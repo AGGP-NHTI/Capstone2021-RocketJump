@@ -8,12 +8,13 @@ public class PlayerPositionManager
     public int nodePosition;
     public int lap;
     public int position;
+    public int character;
     public string name;
     public GameObject player;
     public PositionManager positionManager;
     public ulong clientID;
 
-    public PlayerPositionManager(GameObject plr, PositionManager owner, string plrname, ulong id)
+    public PlayerPositionManager(GameObject plr, PositionManager owner, string plrname, ulong id, int character)
     {
         nodePosition = 0;
         lap = 1;

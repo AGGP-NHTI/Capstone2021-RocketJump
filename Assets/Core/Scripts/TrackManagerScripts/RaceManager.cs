@@ -130,7 +130,7 @@ public class RaceManager : MonoBehaviour
     public void populatePlayerList()
     {
 
-        var offset = 145f;
+        var offset = 115f;
 
         if(isHost) //Is host
         {
