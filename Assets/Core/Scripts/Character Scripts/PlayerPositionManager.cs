@@ -15,7 +15,7 @@ public class PlayerPositionManager
     public ulong clientID;
     public bool finishedRace;
 
-    public PlayerPositionManager(GameObject plr, PositionManager owner, string plrname, ulong id, int character)
+    public PlayerPositionManager(GameObject plr, PositionManager owner, string plrname, ulong id, int chr)
     {
         nodePosition = 0;
         lap = 1;
@@ -24,6 +24,7 @@ public class PlayerPositionManager
         positionManager = owner;
         name = plrname;
         clientID = id;
+        character = chr;
     }
 
     public void updatePosition(int nodeNum)

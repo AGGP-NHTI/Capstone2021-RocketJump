@@ -91,7 +91,8 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         setPositionManager();
         if (positionManager)
         {
-            positionManager.updatePlayerList(owner.gameObject, owner.playerName, owner.OwnerClientId, PlayerInformation.playerCharacter);
+            print(owner.playerCharacter);
+            positionManager.updatePlayerList(owner.gameObject, owner.playerName, owner.OwnerClientId, owner.playerCharacter);
         }
 
         initRaceManager();
