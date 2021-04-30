@@ -19,7 +19,7 @@ public class Guns : Weapon
     {
         base.Update();
 
-        if (Input.GetKeyDown(reloadBinding))
+        if (Input.GetKeyDown(reloadBinding) || isReloading)
         {
             reload();
         }
@@ -52,10 +52,51 @@ public class Guns : Weapon
     {
         StartCoroutine(waitFireRateTimer(fireRate));
     }
+
+
+    float reloadingTime = 0;
+    float percentGoingDown = 0.1f;
+    float percentGoingUp = 0.85f;
+    Vector3 reloadAngle = new Vector3(25, -50, 0);
     public virtual void reload()
     {
-        StartCoroutine(reloadTimer(reloadSpeed));
+        //dropDown logic
+        float progress = reloadingTime / reloadSpeed;
+        float goingDownProgress = reloadingTime / reloadSpeed * (1/percentGoingDown);
+        float goingUpProgress = (progress-percentGoingUp)/(1-percentGoingUp);
+        if (progress <= percentGoingDown)//portion where the gun should slerp down
+        {
+            //Debug.Log($"Progress: {progress},  Progress going up: {goingDownProgress}");
+            transform.localRotation = Quaternion.Euler(Vector3.Lerp(Vector3.zero,reloadAngle,goingDownProgress));
+        }
+        else if (progress >= percentGoingUp)//portion where the gun should slerp back up
+        {
+            Debug.Log($"Progress: {progress},  Progress going up: {goingUpProgress}");
+            transform.localRotation = Quaternion.Euler(Vector3.Lerp(reloadAngle, Vector3.zero, goingUpProgress));
+        }
+
+        //reloading logic
+        if (!isReloading)
+        {
+            isReloading = true;
+        }
+        else
+        {
+            reloadingTime += Time.deltaTime;
+
+            if (reloadingTime > reloadSpeed)
+            {
+                reloadingTime = 0;
+                isReloading = false;
+                currentClip = clipSize;
+                resetRotation();
+                setAmmo();
+            }
+        }
+        
     }
+
+
 
     IEnumerator reloadTimer(float input)
     {
@@ -68,19 +109,19 @@ public class Guns : Weapon
 
     bool skipFire()
     {
-        //if (isReloading) 
-        //{
-        //    UIMan.sendMessage("Reloading...", new Vector3(0, -100, 0));
-        //    return true;
-        //}
-        //if (clipEmpty()) 
-        //{
-        //    UIMan.sendMessage("Press \'" + reloadBinding + "\' to reload your weapon.", new Vector3(0, -100, 0));
-        //    return true;
-        //}
+        if (isReloading)
+        {
+            UIMan.sendMessage("Reloading...", new Vector3(0, -100, 0));
+            return true;
+        }
+        if (clipEmpty())
+        {
+            reload();
+            return true;
+        }
         //if (isCooling)
         //{
-        //    UIMan.sendMessage("Gun is cooling...",new Vector3(0,-100,0));
+        //    UIMan.sendMessage("Gun is cooling...", new Vector3(0, -100, 0));
         //    return true;
         //}
 
