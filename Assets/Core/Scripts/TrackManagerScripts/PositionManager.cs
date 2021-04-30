@@ -11,7 +11,7 @@ public class PositionManager : MonoBehaviour
     public List<GameObject> players;
     [SerializeField] List<Transform> positionNodes;
     public List<PlayerPositionManager> playerPositions;
-    public int maxLap = 3;
+    public int maxLap = 1;
 
     public void initPositionManager()
     {
@@ -85,6 +85,32 @@ public class PositionManager : MonoBehaviour
             PlayerInformation.controller.PNC.hostSendClientPositionUpdate(i + 1, playerPositions[i].clientID);
         }
 
+    }
+
+    public void removeClient(ulong id)
+    {
+        for(int i = 0; i < playerPositions.Count; i++)
+        {
+            if(playerPositions[i].clientID == id)
+            {
+                playerPositions.RemoveAt(i);
+                print("player removed");
+            }
+        }
+    }
+
+    public void playerFinishedRace()
+    {
+        comparePlayerPositions();
+
+        string[] playerNames = new string[playerPositions.Count];
+
+        for(int i = 0; i < playerPositions.Count; i++)
+        {
+            playerNames[i] = playerPositions[i].name;
+        }
+
+        PlayerInformation.controller.PNC.hostSendPlayerFinished(playerNames);
     }
 
     public void updatePlayerLaps(int lap, ulong id)

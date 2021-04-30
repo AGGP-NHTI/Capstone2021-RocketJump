@@ -31,7 +31,8 @@ public class PlayerPositionManager
 
         if(lap > positionManager.maxLap)
         {
-            PlayerInformation.controller.PNC.hostSendPlayerFinished(name);
+            //PlayerInformation.controller.PNC.hostSendPlayerFinished(name);
+            positionManager.playerFinishedRace();
         }
         else
         {

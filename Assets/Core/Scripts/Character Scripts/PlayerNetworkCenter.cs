@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using MLAPI;
 using MLAPI.Messaging;
+using UnityEngine.SceneManagement;
 
 public class PlayerNetworkCenter : NetworkedBehaviour
 {
@@ -16,6 +17,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public UIManager UI_manager;
     public bool initPlayer = false;
     public bool isEnabled;
+    public bool checkForClientsDisconnect;
 
     private void Update()
     {
@@ -24,6 +26,22 @@ public class PlayerNetworkCenter : NetworkedBehaviour
             if(!owner)
             {
                 owner = PlayerInformation.controller;
+            }
+            if(!UI_manager && PlayerInformation.controller.PNC.UI_manager)
+            {
+                UI_manager = PlayerInformation.controller.PNC.UI_manager;
+            }
+        }
+
+        if(IsHost)
+        {
+            if(checkForClientsDisconnect)
+            {
+                if(positionManager.playerPositions.Count == 1)
+                {
+                    NetworkingManager.Singleton.StopHost();
+                    SceneManager.LoadScene("MainMenu");
+                }
             }
         }
     }
@@ -58,6 +76,11 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         else if(IsClient && IsLocalPlayer)
         {
             initClient();
+        }
+        else if(IsClient && !IsLocalPlayer)
+        {
+            print("is client and not is local player");
+            //setUIManager();
         }
     }
 
@@ -140,6 +163,11 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         
     }
 
+    public void updateFinishCountdown(int c)
+    {
+        InvokeClientRpcOnEveryone(clientUpdateFinishCountdown, c);
+    }
+
     public void spawnPlayerForRace()
     {
         owner.SpawnPlayerPawn(PlayerInformation.playerCharacter);
@@ -174,7 +202,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         InvokeClientRpcOnClient(updateClientPosition, id, pos);
     }
 
-    public void hostSendPlayerFinished(string name)
+    public void hostSendPlayerFinished(string[] name)
     {
         InvokeClientRpcOnEveryone(playerFinishedRace, name);
     }
@@ -182,6 +210,12 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public void hostSendPlayerLap(int lap, int maxLap, ulong id)
     {
         InvokeClientRpcOnClient(clientUpdateLap, id, lap, maxLap);
+    }
+
+    public void shutdownServer()
+    {
+        InvokeClientRpcOnEveryone(disconnectClientsFromServer);
+        checkForClientsDisconnect = true;
     }
 
     [ServerRPC(RequireOwnership = false)]
@@ -199,10 +233,15 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         //positionManager.comparePlayerPositions(this);
     }
 
+    [ServerRPC(RequireOwnership = false)]
+    public void serverRemoveClient(ulong clientID)
+    {
+        positionManager.removeClient(clientID);
+    }
+
     [ClientRPC()]
     public void clientUpdateLobby(string name, bool start, bool end)
     {
-        Debug.Log("clientUpdateLobby");
         if(!IsHost)
         {
             if (!raceManager)
@@ -216,7 +255,6 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     [ClientRPC()]
     public void clientUpdateLobbyCountdown(int countdown)
     {
-        Debug.Log("Client Update Countdown");
         if (!IsHost)
         {
             if (!raceManager)
@@ -224,6 +262,19 @@ public class PlayerNetworkCenter : NetworkedBehaviour
                 setTrack();
             }
             raceManager.updateLobbyCountdown(countdown);
+        }
+    }
+
+    [ClientRPC()]
+    public void clientUpdateFinishCountdown(int countdown)
+    {
+        if (!IsHost)
+        {
+            if (!UI_manager)
+            {
+                return;
+            }
+            UI_manager.updateFinishCountdown(countdown);
         }
     }
 
@@ -249,9 +300,14 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     }
 
     [ClientRPC()]
-    public void playerFinishedRace(string name)
+    public void playerFinishedRace(string[] name)
     {
-        Debug.Log(name + "WINS");
+        for(int i = 0; i < name.Length; i++)
+        {
+            print(name[i]);
+        }
+
+        UI_manager.displayFinishScreen(name);
     }
 
     [ClientRPC()]
@@ -262,4 +318,20 @@ public class PlayerNetworkCenter : NetworkedBehaviour
             UI_manager.setLapText(lap, maxLap);
         }
     }
+
+    [ClientRPC()]
+    public void disconnectClientsFromServer()
+    {
+
+        InvokeServerRpc(serverRemoveClient, PlayerInformation.controller.OwnerClientId);
+
+        if(!IsHost)
+        {
+            NetworkingManager.Singleton.StopClient();
+            SceneManager.LoadScene("MainMenu");
+        }
+        
+    }
+
+    
 }

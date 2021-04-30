@@ -8,8 +8,14 @@ public class UIManager : MonoBehaviour
 {
     public Player_Movement_Controller playerMovement;
 
-    
-    
+
+    [Header("Finish Screen")]
+    public TMP_Text winner_text;
+    public TMP_Text second_text;
+    public TMP_Text third_text;
+    public GameObject participationTitle_text;
+    public TMP_Text participation_text;
+    public TMP_Text countdown_text;
 
     [Header("Player Info")]
     public TMP_Text playerPlacementText;
@@ -25,6 +31,10 @@ public class UIManager : MonoBehaviour
     public TMP_Text captionText;
     public GameObject PauseMenu;
     bool paused = false;
+    public bool isHost;
+    Timer timer = new Timer();
+    public int countdown;
+    private float lastCountdownNumber = 100;
 
 
     [Range(0.01f, 5)]
@@ -77,6 +87,30 @@ public class UIManager : MonoBehaviour
             }
         }
 
+        if (isHost)
+        {
+
+            if (timer.updateTimer())
+            {
+                PlayerInformation.controller.PNC.shutdownServer();
+            }
+            if (timer.runTimer)
+            {
+                countdown_text.text = "returning to menu in " + Mathf.Round(timer.time);
+                countdown = (int)Mathf.Round(timer.time);
+
+                if (Mathf.Round(timer.time) < Mathf.Round(lastCountdownNumber))
+                {
+                    lastCountdownNumber = Mathf.Round(timer.time);
+                    updateClientFinishScreens(countdown);
+                }
+            }
+        }
+        else
+        {
+            countdown_text.text = "returning to menu in " + countdown;
+        }
+
     }
 
     public void sendMessage(string messsage, Vector3? startPositionChange = null, float duration = 3)
@@ -114,6 +148,55 @@ public class UIManager : MonoBehaviour
     {
         lapText.text = lap.ToString();
         maxLapText.text = ("/" + maxLap);
+    }
+
+    public void updateClientFinishScreens(int countdown)
+    {
+        PlayerInformation.controller.PNC.updateFinishCountdown(countdown);
+    }
+
+    public void updateFinishCountdown(int c)
+    {
+        countdown = c;
+    }
+
+    public void displayFinishScreen(string[] players)
+    {
+
+        foreach(Transform child in transform)
+        {
+            if (child.gameObject.name == "victoryScreen")
+            {
+                child.gameObject.SetActive(true);
+            }
+            else
+            {
+                child.gameObject.SetActive(false);
+            }
+
+        }
+
+        winner_text.text = "";
+        second_text.text = "";
+        third_text.text = "";
+        participation_text.text = "";
+
+        for(int i = 0; i < players.Length; i++)
+        {
+            if (i == 0) winner_text.text = players[i];
+            else if (i == 1) second_text.text = players[i];
+            else if (i == 2) third_text.text = players[i];
+            else
+            {
+                participationTitle_text.SetActive(true);
+                participation_text.text += players[i] + "\n";
+            }
+        }
+
+        if(isHost)
+        {
+            timer.setTimer(10);
+        }
     }
 
     public void pause()
