@@ -45,9 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 0
-  lifeTime: 0
+  lifeTime: 0.1
   contactLifetime: 0
-  projectileLaunchForce: 0
+  projectileLaunchForce: 10
   particles: {fileID: 0}
   explosiveForce: 30
   explosiveDistance: 10

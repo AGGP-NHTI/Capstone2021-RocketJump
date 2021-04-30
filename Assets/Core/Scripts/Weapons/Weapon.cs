@@ -77,13 +77,15 @@ public class Weapon : Actor
 
     public virtual bool Fire() 
     {
-        Debug.Log("FIREING FROM WEAPONS");
         if (isCooling) { return false; }
 
+        for(int i = 0; i < bulletsPerShot; i++)
+        { 
         Quaternion fireDirection = Quaternion.LookRotation(BulletSpread(projectileSpawn.forward));
         Vector3 position = projectileSpawn.position;
 
         InvokeServerRpc(spawnNetworkedProjectile,position, fireDirection);
+        }
 
         if (playerPawn)
         {
@@ -100,19 +102,13 @@ public class Weapon : Actor
     [ServerRPC(RequireOwnership = false)]
     public void spawnNetworkedProjectile(Vector3 location, Quaternion dir)
     {
-        Debug.Log("REQUEST PROJECTILE SPAWN");
         InvokeClientRpcOnEveryone(spawnClientProjectile, location, dir);
     }
     int projectileCounter = 0;
     [ClientRPC]
     public void spawnClientProjectile(Vector3 location, Quaternion dir)
     {
-        projectileCounter++;
-        Debug.Log("CLIENT PROJECTILE SPAWN-------------------" + projectileCounter);
-        for (int i = 0; i < bulletsPerShot; i++)
-        {
-            GameObject bullet = Instantiate(projectilePrefab, location, dir);
-        }
+        GameObject bullet = Instantiate(projectilePrefab, location, dir);
     }
 
     protected IEnumerator waitFireRateTimer(float input)
@@ -125,7 +121,9 @@ public class Weapon : Actor
 
     protected Vector3 BulletSpread(Vector3 input)
     {
-        input += Random.insideUnitSphere * bulletSpread / 100;
+        Debug.Log("initial Input: " + input);
+        input += Random.insideUnitSphere * bulletSpread/50;
+        Debug.Log("after Input: " + input);
         return input.normalized;
     }
 
