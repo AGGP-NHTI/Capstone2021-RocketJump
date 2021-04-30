@@ -9,7 +9,7 @@ public class Guns : Weapon
 
     [Range(-100f, 100f)]
     public float knockBackForce;
-    [Range(1f, 50f)]
+    [Range(0.01f, 50f)]
     public float fireRate;
 
     

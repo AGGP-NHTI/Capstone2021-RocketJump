@@ -25,7 +25,10 @@ public class Explosive : Projectile
     }
     protected override void trigger()
     {
-        GameObject part = Instantiate(particles, transform.position, Quaternion.identity);
+        if (particles)
+        {
+            GameObject part = Instantiate(particles, transform.position, Quaternion.identity);
+        }
         //Destroy(part, 3f);
         Vector3 origin = transform.position;
 
