@@ -15,6 +15,7 @@ public class Player_Controller : Controller
 
     [Header("Public Player Info")]
     public string playerName;
+    public int playerCharacter;
     public bool PlayerSpawned = false;
 
     [Header("Characters")]
@@ -51,6 +52,7 @@ public class Player_Controller : Controller
         {
             gameObject.name = gameObject.name + "_Local_" + OwnerClientId;
             playerName = PlayerInformation.playerScreenName;
+            playerCharacter = PlayerInformation.playerCharacter;
             plrCntrl = this;
         }
         else
