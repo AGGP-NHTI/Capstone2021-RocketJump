@@ -97,9 +97,7 @@ public class RaceManager : MonoBehaviour
 
     public void updateClientLobbies(int updateType, string name, bool start, bool end)
     {
-        Debug.Log("start updateClientLobbies");
         hostPlayer.GetComponent<Player_Controller>().PNC.updateClientLobbies(updateType, name, start, end);
-        Debug.Log("end updateClientLobbies");
     }
 
     public void updateLobbyCountdown(int c)
@@ -132,7 +130,7 @@ public class RaceManager : MonoBehaviour
     public void populatePlayerList()
     {
 
-        var offset = 145f;
+        var offset = 115f;
 
         if(isHost) //Is host
         {
