@@ -153,6 +153,19 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         
     }
 
+    public void updateClientLobbiesNew(int updateType, string[] playerNames, int[] playerCharacters)
+    {
+        switch(updateType)
+        {
+            case 0:
+                InvokeClientRpcOnEveryone(clientUpdateLobbyCountdown, raceManager.countdown);
+                break;
+            case 1:
+                InvokeClientRpcOnEveryone(clientUpdateLobbyNew, playerNames, playerCharacters);
+                break;
+        }
+    }
+
     public void updateFinishCountdown(int c)
     {
         InvokeClientRpcOnEveryone(clientUpdateFinishCountdown, c);
@@ -239,6 +252,19 @@ public class PlayerNetworkCenter : NetworkedBehaviour
                 setTrack();
             }
             raceManager.clientPopulatePlayerList(name, start, end);
+        }
+    }
+
+    [ClientRPC()]
+    public void clientUpdateLobbyNew(string[] playerNames, int[] playerCharacters)
+    {
+        if (!IsHost)
+        {
+            if (!raceManager)
+            {
+                setTrack();
+            }
+            raceManager.clientPopulatePlayerListNew(playerNames, playerCharacters);
         }
     }
 

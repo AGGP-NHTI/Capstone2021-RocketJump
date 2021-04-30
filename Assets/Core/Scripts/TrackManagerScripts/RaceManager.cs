@@ -31,6 +31,11 @@ public class RaceManager : MonoBehaviour
     private float lastCountdownNumber = 100;
     private List<string> clientPlayerNames = new List<string>();
 
+    [Header("Character Icons")]
+    public Sprite dictatorIcon;
+    public Sprite chappieIcon;
+    public Sprite sashaIcon;
+
     void Update()
     {
         if(isHost)
@@ -72,7 +77,8 @@ public class RaceManager : MonoBehaviour
                 if(Mathf.Round(timer.time) < Mathf.Round(lastCountdownNumber))
                 {
                     lastCountdownNumber = Mathf.Round(timer.time);
-                    updateClientLobbies(0, null, false, false);
+                    //updateClientLobbies(0, null, false, false);
+                    updateClientLobbiesNew(0, null, null);
                 }
             }
             else { countdownText.enabled = false; }
@@ -100,17 +106,17 @@ public class RaceManager : MonoBehaviour
         hostPlayer.GetComponent<Player_Controller>().PNC.updateClientLobbies(updateType, name, start, end);
     }
 
+    public void updateClientLobbiesNew(int updateType, string[] playerNames, int[] playerCharacters)
+    {
+        PlayerInformation.controller.PNC.updateClientLobbiesNew(updateType, playerNames, playerCharacters);
+    }
+
     public void updateLobbyCountdown(int c)
     {
         print("update countdown");
         if (!enableLobby) { enableLobby = true; }
         countdown = c;
         print(countdown);
-    }
-
-    public void updateClientIcons()
-    {
-
     }
 
     public void clientPopulatePlayerList(string name, bool start, bool end)
@@ -132,10 +138,41 @@ public class RaceManager : MonoBehaviour
         }
     }
 
+    public void clientPopulatePlayerListNew(string[] playerNames, int[] playerCharacters)
+    {
+        float offset = 145f;
+
+        for(int i = 0; i < playerNames.Length; i++)
+        {
+            var slot = Instantiate(playerSlotPrefab, playerListPanel.transform);
+
+            slot.transform.Find("playerName").GetComponent<TextMeshProUGUI>().text = playerNames[i];
+            Sprite icon = slot.transform.Find("playerCharacter").GetComponent<Image>().sprite;
+
+            switch (playerCharacters[i])
+            {
+                case 1:
+                    icon = dictatorIcon;
+                    break;
+                case 2:
+                    icon = chappieIcon;
+                    break;
+                case 3:
+                    icon = sashaIcon;
+                    break;
+                default:
+                    break;
+            }
+
+            slot.transform.position = new Vector2(slot.transform.position.x, slot.transform.position.y + offset);
+            offset -= 50;
+        }
+    }
+
     public void populatePlayerList()
     {
 
-        var offset = 115f;
+        var offset = 145f;
 
         if(isHost) //Is host
         {
@@ -143,6 +180,8 @@ public class RaceManager : MonoBehaviour
 
             var playerList = positionManager.playerPositions;
             var index = 0;
+            string[] tempPlayerNames = new string[playerList.Count];
+            int[] tempPlayerCharacters = new int[playerList.Count];
 
             foreach (PlayerPositionManager p in playerList)
             {
@@ -152,11 +191,28 @@ public class RaceManager : MonoBehaviour
                 var slot = Instantiate(playerSlotPrefab, playerListPanel.transform);
 
                 slot.transform.Find("playerName").GetComponent<TextMeshProUGUI>().text = name;
+                Sprite icon = slot.transform.Find("playerCharacter").GetComponent<Image>().sprite;
+
+                switch (p.character)
+                {
+                    case 1:
+                        icon = dictatorIcon;
+                        break;
+                    case 2:
+                        icon = chappieIcon;
+                        break;
+                    case 3:
+                        icon = sashaIcon;
+                        break;
+                    default:
+                        break;
+                }
                 slot.transform.position = new Vector2(slot.transform.position.x, slot.transform.position.y + offset);
-                offset -= 75;
+                offset -= 50;
 
                 playerSlots.Add(slot);
 
+                /*
                 if(index == 0)
                 {
                     updateClientLobbies(1, name, true, false);
@@ -169,13 +225,20 @@ public class RaceManager : MonoBehaviour
                 {
                     updateClientLobbies(1, name, false, false);
                 }
+                */
+
+                tempPlayerNames[index] = p.name;
+                tempPlayerCharacters[index] = p.character;
 
                 index++;
             }
 
+            updateClientLobbiesNew(1, tempPlayerNames, tempPlayerCharacters);
+
         }
         else //Is client
         {
+            /*
             var playerList = clientPlayerNames;
 
             foreach(string p in playerList)
@@ -184,8 +247,9 @@ public class RaceManager : MonoBehaviour
 
                 slot.transform.Find("playerName").GetComponent<TextMeshProUGUI>().text = p;
                 slot.transform.position = new Vector2(slot.transform.position.x, slot.transform.position.y + offset);
-                offset -= 75;
+                offset -= 50;
             }
+            */
         }
         
     }
