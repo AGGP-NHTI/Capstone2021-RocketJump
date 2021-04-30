@@ -10,7 +10,10 @@ public class Player_Pawn : Pawn
 	public Audio_Manager AudioManager;
     public Inventory_Manager inventoryMan;
 	public UIManager UIMan;
+	public Transform eyeStabilizer;
 	public Transform eyes;
+	public Transform handRight;
+	public Transform handLeft;
 	//public PositionManager positionManager;
 
 	[Header("Objects")]

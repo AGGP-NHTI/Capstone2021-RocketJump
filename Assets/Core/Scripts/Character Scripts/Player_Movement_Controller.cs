@@ -38,10 +38,12 @@ public class Player_Movement_Controller : NetworkedBehaviour
 	bool wasGrounded = false;
 
 	CharacterController cc;
+	Animator anim;
 
 	private void Awake()
 	{
 		cc = GetComponent<CharacterController>();
+		anim = GetComponentInChildren<Animator>();
 	}
 
 	private void Start()
@@ -142,11 +144,23 @@ public class Player_Movement_Controller : NetworkedBehaviour
 
 		// apply rotation
 		transform.localEulerAngles = bodyRot;
+		playerPawn.eyeStabilizer.rotation = transform.rotation;
+		//playerPawn.eyes.LookAt(playerPawn.eyes.position +
+		//	transform.forward * Mathf.Cos(eyePitch * Mathf.Deg2Rad) +
+		//	transform.up * Mathf.Sin(-eyePitch * Mathf.Deg2Rad),
+		//	Vector3.up);
 		playerPawn.eyes.transform.localEulerAngles = eyeRot;
 
 		// apply motion
 		Vector3 movementVector = transform.TransformDirection(new Vector3(movement.x, -downForce, movement.y)) * Time.deltaTime;
 		cc.Move(externalForce * Time.deltaTime + movementVector);
+
+		if (anim)
+		{
+			anim.SetFloat("Horizontal", movement.x / maxVelocity);
+			anim.SetFloat("Vertical", movement.y / maxVelocity);
+		}
+		
 
 		// degrade external forces
 		float friction = (cc.isGrounded ? groundFriction : airFriction) * Time.deltaTime;
@@ -222,10 +236,12 @@ public class Player_Movement_Controller : NetworkedBehaviour
 		{
 			// left the ground
 			if (downForce > 0) downForce = 0;
+			if (anim) anim.SetBool("IsGrounded", false);
 		}
 		else if (wasGrounded == false && cc.isGrounded == true)
 		{
 			// landed
+			if (anim) anim.SetBool("IsGrounded", true);
 		}
 	}
 
