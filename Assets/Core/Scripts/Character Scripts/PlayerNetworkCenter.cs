@@ -127,16 +127,6 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         }
     }
 
-    /*
-    public void initializePositionManager()
-    {
-        initPlayer = true;
-        setTrack();
-        setPositionManager();
-        positionManager.updatePlayerList(owner.gameObject, owner.playerName);
-    }
-    */
-
     public void setTrack()
     {
         track = GameObject.Find("track");
