@@ -35,7 +35,7 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI SenNum;
     public TextMeshProUGUI VolNum;
 
-    public InputField PN;
+    public TMP_InputField PN;
 
     public AudioMixer mixer;
 
