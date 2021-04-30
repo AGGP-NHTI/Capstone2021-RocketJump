@@ -149,7 +149,7 @@ public class RaceManager : MonoBehaviour
             var slot = Instantiate(playerSlotPrefab, playerListPanel.transform);
 
             slot.transform.Find("playerName").GetComponent<TextMeshProUGUI>().text = playerNames[i];
-            Sprite icon = slot.transform.Find("playerCharacter").GetComponent<Image>().sprite;
+            Sprite icon = null;
 
             switch (playerCharacters[i])
             {
@@ -165,6 +165,8 @@ public class RaceManager : MonoBehaviour
                 default:
                     break;
             }
+
+            slot.transform.Find("playerCharacter").GetComponent<Image>().sprite = icon;
 
             slot.transform.position = new Vector2(slot.transform.position.x, slot.transform.position.y + offset);
             offset -= 50;
