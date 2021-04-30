@@ -29,9 +29,6 @@ public class Weapon : Actor
     [Header("Info")]
     public bool isRapidFire = false;
     public Transform projectileSpawn;
-
-
-
     protected virtual void Start()
     {
         if (IsOwner)
@@ -53,6 +50,7 @@ public class Weapon : Actor
         if (IsOwner)
         {
             StartCoroutine(waitForPawn());
+            resetRotation();
         }
     }
 
@@ -131,9 +129,13 @@ public class Weapon : Actor
         return input.normalized;
     }
 
-    void setAmmo()
+    public void setAmmo()
     {
         if (UIMan) { UIMan.setAmmo(currentClip, clipSize); }
+    }
+    public void resetRotation()
+    {
+        transform.localRotation = Quaternion.identity;
     }
     void setUIObj()
     {
