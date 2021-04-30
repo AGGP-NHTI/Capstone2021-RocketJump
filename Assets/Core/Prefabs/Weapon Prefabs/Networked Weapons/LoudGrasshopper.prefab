@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -2839028136581770509}
   - component: {fileID: -7961704689611357775}
   m_Layer: 0
-  m_Name: NoisyCricket
+  m_Name: LoudGrasshopper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,16 +48,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 0
+  playerPawn: {fileID: 0}
+  globalIndex: 3
   projectilePrefab: {fileID: 8208262432346140861, guid: b42c3f996d2fc4d4f83669f53d1538d5,
     type: 3}
-  projectileSpawn: {fileID: 3343618999276839846}
   reloadSpeed: 5
   bulletsPerShot: 1
   bulletSpread: 1
   currentClip: 1
   clipSize: 1
   isRapidFire: 0
-  knockBackForce: 7
+  projectileSpawn: {fileID: 3343618999276839846}
+  knockBackForce: 10
   fireRate: 10
 --- !u!114 &-7961704689611357775
 MonoBehaviour:

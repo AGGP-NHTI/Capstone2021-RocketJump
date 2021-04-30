@@ -40,6 +40,7 @@ public class CharacterSelection : NetworkedBehaviour
     public void setName()
     {   
         PlayerInformation.playerScreenName = nameField.text;
+        PlayerPrefs.SetString("PlayerName", nameField.text);
 
         Debug.Log(nameField.text);
         Debug.Log(PlayerInformation.playerScreenName);
@@ -125,7 +126,7 @@ public class CharacterSelection : NetworkedBehaviour
     }
     public void Rand()
     {
-        int i = Random.Range(0, characters.Capacity);
+        int i = Random.Range(0, characters.Count-1);
         
         choice(i);
     }

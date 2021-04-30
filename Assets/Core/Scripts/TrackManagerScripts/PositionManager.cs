@@ -41,9 +41,9 @@ public class PositionManager : MonoBehaviour
         }
     }
 
-    public void updatePlayerList(GameObject player, string name, ulong clientID)
+    public void updatePlayerList(GameObject player, string name, ulong clientID, int character)
     {
-        playerPositions.Add(new PlayerPositionManager(player, this, name, clientID));
+        playerPositions.Add(new PlayerPositionManager(player, this, name, clientID, character));
         players.Add(player);
 
         updatePlayerPosition(player);

@@ -91,7 +91,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         setPositionManager();
         if (positionManager)
         {
-            positionManager.updatePlayerList(owner.gameObject, owner.playerName, owner.OwnerClientId);
+            positionManager.updatePlayerList(owner.gameObject, owner.playerName, owner.OwnerClientId, PlayerInformation.playerCharacter);
         }
 
         initRaceManager();
@@ -102,7 +102,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         Debug.Log("initClient");
         setTrack();
         initPlayer = true;
-        InvokeServerRpc(serverAddPlayer, owner.gameObject, owner.playerName, owner.OwnerClientId);
+        InvokeServerRpc(serverAddPlayer, owner.gameObject, owner.playerName, owner.OwnerClientId, PlayerInformation.playerCharacter);
     }
 
     public void setPositionManager()
@@ -126,16 +126,6 @@ public class PlayerNetworkCenter : NetworkedBehaviour
             raceManager.isHost = true;
         }
     }
-
-    /*
-    public void initializePositionManager()
-    {
-        initPlayer = true;
-        setTrack();
-        setPositionManager();
-        positionManager.updatePlayerList(owner.gameObject, owner.playerName);
-    }
-    */
 
     public void setTrack()
     {
@@ -219,10 +209,10 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     }
 
     [ServerRPC(RequireOwnership = false)]
-    public void serverAddPlayer(GameObject player, string name, ulong clientID)
+    public void serverAddPlayer(GameObject player, string name, ulong clientID, int character)
     {
         Debug.Log("Client add player, " + positionManager + ", " + player.name);
-        positionManager.updatePlayerList(player, name, clientID);
+        positionManager.updatePlayerList(player, name, clientID, character);
     }
 
     [ServerRPC(RequireOwnership = false)]
