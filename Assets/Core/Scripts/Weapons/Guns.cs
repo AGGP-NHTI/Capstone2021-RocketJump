@@ -27,14 +27,8 @@ public class Guns : Weapon
     public override bool Fire()
     {
         if (skipFire()) return false;
-        
         bool fireSuccess = base.Fire();
-
-        Debug.Log("FIREING FROM GUNS");
-
-        //pauses for firerate cooldown
         waitForFireRate();
-
         return fireSuccess;
     }
     public virtual bool clipEmpty()
