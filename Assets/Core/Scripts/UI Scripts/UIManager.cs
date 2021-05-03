@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     public GameObject participationTitle_text;
     public TMP_Text participation_text;
     public TMP_Text countdown_text;
+    public GameObject failsafe_button;
 
     [Header("Player Info")]
     public TMP_Text playerPlacementText;
@@ -92,6 +93,7 @@ public class UIManager : MonoBehaviour
 
             if (timer.updateTimer())
             {
+                failsafe_button.SetActive(true);
                 PlayerInformation.controller.PNC.shutdownServer();
             }
             if (timer.runTimer)
@@ -111,6 +113,11 @@ public class UIManager : MonoBehaviour
             countdown_text.text = "returning to menu in " + countdown;
         }
 
+    }
+
+    public void failsafeReturnToMenu()
+    {
+        PlayerInformation.controller.PNC.failsafeDisconnectHost();
     }
 
     public void sendMessage(string messsage, Vector3? startPositionChange = null, float duration = 3)
