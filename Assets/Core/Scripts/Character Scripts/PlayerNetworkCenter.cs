@@ -37,7 +37,7 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         {
             if(checkForClientsDisconnect)
             {
-                if(positionManager.playerPositions.Count <= 1)
+                if(positionManager.playerPositions.Count == 1)
                 {
                     NetworkingManager.Singleton.StopHost();
                     SceneManager.LoadScene("MainMenu");
