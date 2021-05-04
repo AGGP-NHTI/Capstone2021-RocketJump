@@ -6,7 +6,7 @@ public class CameraManager : MonoBehaviour
 {
     [HideInInspector]
     public Player_Movement_Controller player;
-
+    public AudioListener listener;
     [Tooltip("The FOV when the player is close to a speed of zero")]
     [Range(60, 120)]
     public float minFOV;
