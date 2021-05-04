@@ -8,26 +8,8 @@ public class Audio_Manager : NetworkedBehaviour
 {
     public static Audio_Manager instance;
 
-    //[Header("Prefabs")]
-    //public GameObject audioObjectPrefab;
-
-    //[Header("Dependancies")]
-    //public Player_Pawn player;
-
-    //[Header("Testing")]
-    //public AudioClip testClip;
-
-    //[Header("Explosion Clips")]
-    //public AudioClip smallExplosion;
-    //public AudioClip largeExplosion;
-
-    //[Header("Gun Clips")]
-    //public AudioClip ShotgunFire;
-    //public AudioClip RPGFire;
-    //public AudioClip NoisyCricket;
-
-    //[Header("Extra")]
-    //public AudioClip YEET;
+    [Header("Prefabs")]
+    public GameObject audioObjectPrefab;
 
     private void Awake()
     {
