@@ -46,7 +46,7 @@ public class Audio_Manager : NetworkedBehaviour
     {
         //Debug.Log();
 
-        if (clip && loc != null && IsOwner)
+        if (clip && loc != null)
         {
             Debug.Log("CLIP: " + clip.name + ", LOC: " + loc);
             InvokeServerRpc(RequestServerSpawnAudio, clip.name , loc);
