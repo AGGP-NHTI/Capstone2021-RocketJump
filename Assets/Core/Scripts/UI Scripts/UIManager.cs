@@ -93,7 +93,6 @@ public class UIManager : MonoBehaviour
 
             if (timer.updateTimer())
             {
-                Cursor.lockState = CursorLockMode.None;
                 failsafe_button.SetActive(true);
                 PlayerInformation.controller.PNC.shutdownServer();
             }

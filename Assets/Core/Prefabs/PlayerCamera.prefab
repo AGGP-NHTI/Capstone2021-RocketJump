@@ -112,7 +112,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  listener: {fileID: 6476323804535610175}
   minFOV: 70
   minVelocityThreshhold: 0
   maxFOV: 80
