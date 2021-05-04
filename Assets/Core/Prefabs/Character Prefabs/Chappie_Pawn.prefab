@@ -241,7 +241,6 @@ MonoBehaviour:
   IgnoreDamage: 0
   controller: {fileID: 0}
   movementControl: {fileID: 8569480716151036835}
-  AudioManager: {fileID: 0}
   inventoryMan: {fileID: 1177852714835891123}
   UIMan: {fileID: 0}
   playerRenderer: {fileID: 1852754502469776941}
@@ -462,7 +461,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: d1884ea5a35b3e04795afc25e9c9bace, type: 2}
+      objectReference: {fileID: 2100000, guid: 5d2edd3bc0d976d4ab071cd76ed73e2b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00c542e566a1f824f85ae9eba946f76f, type: 3}
 --- !u!4 &7704689833467581528 stripped
