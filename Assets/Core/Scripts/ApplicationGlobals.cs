@@ -7,7 +7,6 @@ public class ApplicationGlobals : MonoBehaviour
 	public static ApplicationGlobals instance;
 	public List<GameObject> weaponPrefabList;
 	public List<AudioClip> audioClips;
-	public GameObject AudioManagerPrefab;
 
 	private void Awake()
 	{
