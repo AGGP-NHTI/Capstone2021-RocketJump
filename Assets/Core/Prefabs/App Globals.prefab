@@ -54,5 +54,4 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: 521738b1be4bf2f48a2ab85b749d3528, type: 3}
   - {fileID: 8300000, guid: faef3beef713af14999569ecde378490, type: 3}
-  AudioManagerPrefab: {fileID: 2241553279964839519, guid: 1ccbbf4304ff7d445bb73dd0212b3172,
-    type: 3}
+  - {fileID: 8300000, guid: 0cc006fa18627054295fe48d6375e8a0, type: 3}
