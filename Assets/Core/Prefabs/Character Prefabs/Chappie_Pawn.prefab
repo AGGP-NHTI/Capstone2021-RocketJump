@@ -458,6 +458,11 @@ PrefabInstance:
       propertyPath: m_SkinnedMotionVectors
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8417361359673230750, guid: 00c542e566a1f824f85ae9eba946f76f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d1884ea5a35b3e04795afc25e9c9bace, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00c542e566a1f824f85ae9eba946f76f, type: 3}
 --- !u!4 &7704689833467581528 stripped
