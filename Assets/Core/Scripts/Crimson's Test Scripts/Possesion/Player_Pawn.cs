@@ -55,7 +55,6 @@ public class Player_Pawn : Pawn
         setUI();
 		playerRenderer.enabled = false;
         Cursor.lockState = CursorLockMode.Locked;
-        setAudioManager();
 	}
 
 	
@@ -91,6 +90,7 @@ public class Player_Pawn : Pawn
 		if (manager)
 		{
 			manager.player = movementControl;
+			manager.listener.enabled = true;
 		}
 	}
 
@@ -98,10 +98,6 @@ public class Player_Pawn : Pawn
     {
         localPlayer = new GameObject("Local Player");
     }
-	public void setAudioManager()
-	{
-		if (!localPlayer) { return; }
-	}
     public bool IsLocal()
     {
 		if (controller)
