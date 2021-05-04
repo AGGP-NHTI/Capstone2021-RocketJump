@@ -6,6 +6,7 @@ public class Weapon : Actor
 {
     public Player_Pawn playerPawn;
     public int globalIndex = -1;
+    public AudioClip fireSound;
     protected GameObject UI;
     protected UIManager UIMan;
     protected Ammo_UI_Script AmmoReference;
@@ -75,21 +76,25 @@ public class Weapon : Actor
         }
     }
 
-    public virtual bool Fire() 
+    public virtual bool Fire()
     {
         if (isCooling) { return false; }
 
-        for(int i = 0; i < bulletsPerShot; i++)
-        { 
-        Quaternion fireDirection = Quaternion.LookRotation(BulletSpread(projectileSpawn.forward));
-        Vector3 position = projectileSpawn.position;
+        for (int i = 0; i < bulletsPerShot; i++)
+        {
+            Quaternion fireDirection = Quaternion.LookRotation(BulletSpread(projectileSpawn.forward));
+            Vector3 position = projectileSpawn.position;
 
-        InvokeServerRpc(spawnNetworkedProjectile,position, fireDirection);
+            InvokeServerRpc(spawnNetworkedProjectile, position, fireDirection);
         }
 
-        if (playerPawn)
+        if (fireSound)
         {
-            //playerPawn.AudioManager.PlayAudio(playerPawn.AudioManager.YEET.name, transform.position);
+            Audio_Manager.instance.PlayAudio(fireSound, transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("FIRE SOUND NOT POPULATED");
         }
 
         currentClip--;
@@ -121,9 +126,7 @@ public class Weapon : Actor
 
     protected Vector3 BulletSpread(Vector3 input)
     {
-        Debug.Log("initial Input: " + input);
         input += Random.insideUnitSphere * bulletSpread/50;
-        Debug.Log("after Input: " + input);
         return input.normalized;
     }
 

@@ -75,10 +75,10 @@ public class ButtonPannel : MonoBehaviour
 
 	IEnumerator TaskStatus(MLAPI.Transports.Tasks.SocketTasks tasks)
 	{
-		Debug.Log($"Listening to {tasks.Tasks.Length} tasks . . .");
+		//Debug.Log($"Listening to {tasks.Tasks.Length} tasks . . .");
 		yield return new WaitUntil(() => tasks.IsDone);
 
-		Debug.Log(tasks.Tasks[0].SocketError);
+		//Debug.Log(tasks.Tasks[0].SocketError);
 
 		if (tasks.Success) Pannel.SetActive(false);
 	}

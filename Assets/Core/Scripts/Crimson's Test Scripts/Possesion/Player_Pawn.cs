@@ -7,7 +7,6 @@ using MLAPI.Messaging;
 public class Player_Pawn : Pawn
 {
     public Player_Movement_Controller movementControl;
-	public Audio_Manager AudioManager;
     public Inventory_Manager inventoryMan;
 	public UIManager UIMan;
 	public Renderer playerRenderer;
@@ -102,13 +101,6 @@ public class Player_Pawn : Pawn
 	public void setAudioManager()
 	{
 		if (!localPlayer) { return; }
-		GameObject audioManObj = Instantiate(ApplicationGlobals.instance.AudioManagerPrefab, localPlayer.transform);
-
-		if (audioManObj.TryGetComponent(out Audio_Manager audioMan))
-		{
-			AudioManager = audioMan;
-			AudioManager.player = this;
-		}
 	}
     public bool IsLocal()
     {

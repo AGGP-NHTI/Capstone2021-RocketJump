@@ -17,7 +17,7 @@ public class Controller : NetworkedBehaviour
         }
 
         ControlledPawn = pawn;
-        Debug.Log($"PAWN: {pawn.name}_{NetworkId}");
+        //Debug.Log($"PAWN: {pawn.name}_{NetworkId}");
         pawn.Possessed(this);
     }
 

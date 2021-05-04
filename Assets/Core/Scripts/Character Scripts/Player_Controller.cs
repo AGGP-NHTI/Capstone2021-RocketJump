@@ -29,16 +29,16 @@ public class Player_Controller : Controller
 		switch (prefabIndex)
 		{
 			case 0:
-				Debug.Log("spectator spawned");
+				//Debug.Log("spectator spawned");
 				return defaultPawn;
 			case 1:
-				Debug.Log("dictator spawned");
+				//Debug.Log("dictator spawned");
 				return dictatorPawn;
 			case 2:
-				Debug.Log("chappie spawned");
+				//Debug.Log("chappie spawned");
 				return chappiePawn;
 			case 3:
-				Debug.Log("sasha spawned");
+				//Debug.Log("sasha spawned");
 				return sashaPawn;
 			default:
 				return null;
@@ -106,7 +106,7 @@ public class Player_Controller : Controller
     {
         if (IsLocalPlayer)
         {
-            Debug.Log("Is owner, Spawn Player Pawn");
+            //Debug.Log("Is owner, Spawn Player Pawn");
             if(PNCEnabled)
             {
                 InvokeServerRpc(Server_SpawnPlayerPawn_Race, whichPlayer ,OwnerClientId);

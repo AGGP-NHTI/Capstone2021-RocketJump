@@ -6,6 +6,8 @@ using MLAPI.Messaging;
 
 public class Audio_Manager : NetworkedBehaviour
 {
+    public static Audio_Manager instance;
+
     [Header("Prefabs")]
     public GameObject audioObjectPrefab;
 
@@ -27,9 +29,24 @@ public class Audio_Manager : NetworkedBehaviour
     [Header("Extra")]
     public AudioClip YEET;
 
+    private void Awake()
+    {
+        if (instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+        instance = this;
+    }
+
+
     public void PlayAudio(AudioClip clip, Vector3 loc)
     {
-        if (clip && loc != null && player && player.IsLocal())
+        //Debug.Log();
+
+        if (clip && loc != null && IsOwner)
         {
             Debug.Log("CLIP: " + clip.name + ", LOC: " + loc);
             InvokeServerRpc(RequestServerSpawnAudio, clip.name , loc);

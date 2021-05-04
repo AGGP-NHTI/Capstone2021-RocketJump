@@ -346,10 +346,9 @@ public class PlayerNetworkCenter : NetworkedBehaviour
     public void disconnectClientsFromServer()
     {
 
-        InvokeServerRpc(serverRemoveClient, PlayerInformation.controller.OwnerClientId);
-
         if(!IsHost)
         {
+            InvokeServerRpc(serverRemoveClient, PlayerInformation.controller.OwnerClientId);
             NetworkingManager.Singleton.StopClient();
             SceneManager.LoadScene("MainMenu");
         }
