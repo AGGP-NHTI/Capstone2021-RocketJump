@@ -60,12 +60,10 @@ public class Guns : Weapon
         float goingUpProgress = (progress-percentGoingUp)/(1-percentGoingUp);
         if (progress <= percentGoingDown)//portion where the gun should slerp down
         {
-            //Debug.Log($"Progress: {progress},  Progress going up: {goingDownProgress}");
             transform.localRotation = Quaternion.Euler(Vector3.Lerp(Vector3.zero,reloadAngle,goingDownProgress));
         }
         else if (progress >= percentGoingUp)//portion where the gun should slerp back up
         {
-            Debug.Log($"Progress: {progress},  Progress going up: {goingUpProgress}");
             transform.localRotation = Quaternion.Euler(Vector3.Lerp(reloadAngle, Vector3.zero, goingUpProgress));
         }
 

@@ -48,8 +48,6 @@ public class Actor : NetworkedBehaviour
     public GameObject NetSpawn(GameObject prefab, Vector3 location, Quaternion rotation)
     {
         GameObject obj = Instantiate(prefab, location, rotation);
-
-        Debug.Log(obj.name);
         if (obj && obj.TryGetComponent(out NetworkedObject netObj))
         {
             netObj.Spawn();

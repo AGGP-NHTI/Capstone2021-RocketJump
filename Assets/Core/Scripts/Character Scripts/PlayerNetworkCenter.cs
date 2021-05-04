@@ -138,6 +138,12 @@ public class PlayerNetworkCenter : NetworkedBehaviour
         
     }
 
+    public void failsafeDisconnectHost()
+    {
+        NetworkingManager.Singleton.StopHost();
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void updateClientLobbies(int updateType, string name, bool start, bool end)
     {
         switch(updateType)

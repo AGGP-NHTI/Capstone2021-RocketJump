@@ -29,10 +29,11 @@ public class Audio_Manager : NetworkedBehaviour
 
     public void PlayAudio(AudioClip clip, Vector3 loc)
     {
-        //if (clip && loc != null && player && player.IsLocal())
-        //{
-        //    InvokeServerRpc(RequestServerSpawnAudio, clip.name , loc);
-        //}
+        if (clip && loc != null && player && player.IsLocal())
+        {
+            Debug.Log("CLIP: " + clip.name + ", LOC: " + loc);
+            InvokeServerRpc(RequestServerSpawnAudio, clip.name , loc);
+        }
     }
 
     [ServerRPC(RequireOwnership = false)]

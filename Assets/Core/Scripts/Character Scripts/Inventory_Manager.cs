@@ -89,7 +89,8 @@ public class Inventory_Manager : NetworkedBehaviour
         {
             if (CurrentWeapon is Guns gun)
             {
-                
+                //playerPawn.AudioManager.PlayAudio(playerPawn.AudioManager.YEET, transform.position);
+                playerPawn.AudioManager.PlayAudio("YEET",transform.position);
                 playerPawn.movementControl.AddForce(-playerPawn.eyes.transform.forward * gun.knockBackForce);
             }
         }
@@ -98,8 +99,6 @@ public class Inventory_Manager : NetworkedBehaviour
     {
         for (int i = 0; i < weaponPrefabs.Count; i++)
         {
-            Debug.Log($"Spawn weapon with index {i}.");
-
             InvokeServerRpc(networkSpawnWeapon, ApplicationGlobals.GetWeaponIndex(weaponPrefabs[i]), OwnerClientId);
         }
     }

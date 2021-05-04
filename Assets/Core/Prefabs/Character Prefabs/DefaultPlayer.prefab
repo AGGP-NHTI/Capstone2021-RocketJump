@@ -51,6 +51,7 @@ MonoBehaviour:
   PNCEnabled: 1
   PNC: {fileID: 3633047326876911673}
   playerName: 
+  playerCharacter: 0
   PlayerSpawned: 0
   defaultPawn: {fileID: 3298075806896282395, guid: 168d1bc0bacc9704e98e63de724c0a6f,
     type: 3}
