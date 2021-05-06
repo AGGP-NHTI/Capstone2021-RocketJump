@@ -73,7 +73,7 @@ public class Guns : Weapon
             isReloading = true;
             if (reloadSound)
             {
-                playSoundEffect(reloadSound);
+                playLocalSoundEffect(reloadSound);
             }
         }
         else
