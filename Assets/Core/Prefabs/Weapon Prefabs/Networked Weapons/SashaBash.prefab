@@ -50,7 +50,7 @@ MonoBehaviour:
   IgnoreDamage: 0
   playerPawn: {fileID: 0}
   globalIndex: 5
-  fireSound: {fileID: 8300000, guid: 0cc006fa18627054295fe48d6375e8a0, type: 3}
+  fireSound: {fileID: 8300000, guid: ef6feab02f69bd74885b95003355e13a, type: 3}
   projectilePrefab: {fileID: 4390468213887647831, guid: 2cc7c5f965d08644eb21d065402ee26a,
     type: 3}
   reloadSpeed: 0.5
