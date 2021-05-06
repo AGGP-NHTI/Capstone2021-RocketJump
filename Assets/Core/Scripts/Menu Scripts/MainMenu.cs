@@ -57,6 +57,9 @@ public class MainMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         volume.value = PlayerPrefs.GetFloat("Volume", 0.5f);
+        musicvolume.value = PlayerPrefs.GetFloat("Volumemusic", 0.5f);
+        sevolume.value = PlayerPrefs.GetFloat("VolumeSE", 0.5f);
+
         MS.value = PlayerPrefs.GetFloat("MouseSensitivity", 20f);
         PN.text = PlayerPrefs.GetString("PlayerName", "Jeff");
 
