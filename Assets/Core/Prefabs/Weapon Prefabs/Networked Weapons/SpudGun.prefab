@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &-9209205071621312949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 4982185832430278416}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4804840779513674935}
+  m_Layer: 0
+  m_Name: Spud Gun (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4804840779513674935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 4982185832430278416}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: -9209205071621312949}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4805058104775471355}
+  m_Father: {fileID: 264992299809566222}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2526118903184219518
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,8 +88,39 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4805058104775471355}
+  - {fileID: 4804840779513674935}
   m_Father: {fileID: 8566039431285261072}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6546923916990955624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 4982185832430278416}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4805058104775471355}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4805058104775471355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5c7ca7376657f634b979e29c01caa245,
+    type: 3}
+  m_PrefabInstance: {fileID: 4982185832430278416}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6546923916990955624}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4804840779513674935}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6977513548457193487
@@ -109,9 +171,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 0
+  objSoundEffect: {fileID: 8300000, guid: ce9e46d7640f7e040b0ff48abf94b857, type: 3}
   playerPawn: {fileID: 0}
   globalIndex: 4
-  fireSound: {fileID: 0}
   projectilePrefab: {fileID: 6819187397120872736, guid: 2c38d2b355f57cc408786bfce346410c,
     type: 3}
   reloadSpeed: 8
@@ -121,6 +183,7 @@ MonoBehaviour:
   clipSize: 12
   isRapidFire: 0
   projectileSpawn: {fileID: 7750941247042130214}
+  reloadSound: {fileID: 8300000, guid: 5837579d4a6a07a4fa1e76fb4e358137, type: 3}
   knockBackForce: 10
   fireRate: 4
 --- !u!114 &3011826169084912719
@@ -224,9 +287,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c7ca7376657f634b979e29c01caa245, type: 3}
---- !u!4 &4805058104775471355 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5c7ca7376657f634b979e29c01caa245,
-    type: 3}
-  m_PrefabInstance: {fileID: 4982185832430278416}
-  m_PrefabAsset: {fileID: 0}
