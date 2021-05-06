@@ -5,7 +5,7 @@ using UnityEngine;
 public class Guns : Weapon
 {
     private bool isReloading = false;
-    
+    public AudioClip reloadSound;
 
     [Range(-100f, 100f)]
     public float knockBackForce;
@@ -21,7 +21,7 @@ public class Guns : Weapon
 
         if (Input.GetKeyDown(reloadBinding) || isReloading)
         {
-            reload();
+            Reload();
         }
     }
     public override bool Fire()
@@ -52,7 +52,7 @@ public class Guns : Weapon
     float percentGoingDown = 0.1f;
     float percentGoingUp = 0.85f;
     Vector3 reloadAngle = new Vector3(25, -50, 0);
-    public virtual void reload()
+    public virtual void Reload()
     {
         //dropDown logic
         float progress = reloadingTime / reloadSpeed;
@@ -71,6 +71,10 @@ public class Guns : Weapon
         if (!isReloading)
         {
             isReloading = true;
+            if (reloadSound)
+            {
+                playSoundEffect(reloadSound);
+            }
         }
         else
         {
@@ -108,7 +112,7 @@ public class Guns : Weapon
         }
         if (clipEmpty())
         {
-            reload();
+            Reload();
             return true;
         }
         //if (isCooling)

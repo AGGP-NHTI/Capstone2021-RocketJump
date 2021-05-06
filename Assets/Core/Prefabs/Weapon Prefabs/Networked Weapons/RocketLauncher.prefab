@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 0
+  objSoundEffect: {fileID: 8300000, guid: ce9e46d7640f7e040b0ff48abf94b857, type: 3}
   playerPawn: {fileID: 0}
   globalIndex: 1
   projectilePrefab: {fileID: 3434827112916319614, guid: 831b29f1ffb0257458f1a4dca83b352d,
@@ -59,6 +60,7 @@ MonoBehaviour:
   clipSize: 2
   isRapidFire: 0
   projectileSpawn: {fileID: 3340697923363904619}
+  reloadSound: {fileID: 8300000, guid: 5837579d4a6a07a4fa1e76fb4e358137, type: 3}
   knockBackForce: 15
   fireRate: 2
 --- !u!114 &-3777178072735125179
