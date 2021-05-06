@@ -87,7 +87,7 @@ public class Weapon : Actor
             InvokeServerRpc(spawnNetworkedProjectile, position, fireDirection);
         }
 
-        
+        playObjSoundEffect();
 
         currentClip--;
         setAmmo();
