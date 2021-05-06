@@ -18,6 +18,7 @@ public class MainMenu : MonoBehaviour
     public GameObject lobby;
     public GameObject all;
     public GameObject characterSelect;
+    public GameObject VolumeSettings;
 
     [Header("Loading Screen")]
     public GameObject LoadingScreen;
@@ -26,7 +27,7 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI percent;
 
     [Header("Settings")]
-    public Slider volume;
+    public Slider volume, musicvolume, sevolume;
     public Slider MS;
 
     public Toggle horizontal;
@@ -45,6 +46,9 @@ public class MainMenu : MonoBehaviour
     void Start()
     {       
         PlayerPrefs.GetFloat("Volume", volume.maxValue / 2);
+        PlayerPrefs.GetFloat("Volumemusic", musicvolume.maxValue / 2);
+        PlayerPrefs.GetFloat("VolumeSE", sevolume.maxValue / 2);
+
         PlayerPrefs.GetFloat("MouseSensitivity", MS.maxValue / 2);
         PlayerPrefs.GetInt("InvertHorizontal", 1);
         PlayerPrefs.GetInt("Invertvertical", 1);
@@ -105,6 +109,12 @@ public class MainMenu : MonoBehaviour
         
     }
 
+    public void ToVolume()
+    {
+        VolumeSettings.SetActive(true);
+        settings.SetActive(false);
+    }
+
     public void QuitGame()
     {
 #if UNITY_EDITOR
@@ -126,6 +136,8 @@ public class MainMenu : MonoBehaviour
         lobby.SetActive(false);
         if (LoadingScreen != null)
         LoadingScreen.SetActive(false);
+        if (VolumeSettings)
+            VolumeSettings.SetActive(false);
     }
 
     public void BackFromLobby()
@@ -164,7 +176,27 @@ public class MainMenu : MonoBehaviour
         //source.volume = volume.value;
         if (mixer)
         {
-            mixer.SetFloat("MusicVolume", volume.value);
+            mixer.SetFloat("Master", volume.value);
+        }
+    }
+
+    public void ChangeMusicVolume()
+    {
+        PlayerPrefs.SetFloat("Volumemusic", musicvolume.value);
+        //source.volume = volume.value;
+        if (mixer)
+        {
+            mixer.SetFloat("Music", musicvolume.value);
+        }
+    }
+
+    public void ChangeSEVolume()
+    {
+        PlayerPrefs.SetFloat("VolumeSE", sevolume.value);
+        //source.volume = volume.value;
+        if (mixer)
+        {
+            mixer.SetFloat("SoundEffects", sevolume.value);
         }
     }
 

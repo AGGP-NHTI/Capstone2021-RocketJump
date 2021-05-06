@@ -118,7 +118,9 @@ AudioMixerController:
   - guid: 482b2bd6bacb7f74c91049cbc4801e32
     name: Ambient
   - guid: e4bafef6097f06d4c99e390d6f783f66
-    name: MusicVolume
+    name: Master
+  - guid: 3a09e5c6d985a244080e00b163d8d9f0
+    name: Music
   - guid: 3b176908e6ecbe54c8f715d9ed0b3c72
     name: SoundEffects
   - guid: 21d9917f805afb04a9b1f80a44728d3b
