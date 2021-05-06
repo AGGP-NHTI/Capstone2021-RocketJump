@@ -30,7 +30,6 @@ public class Audio_Manager : NetworkedBehaviour
 
         if (clip && loc != null)
         {
-            Debug.Log("CLIP: " + clip.name + ", LOC: " + loc);
             InvokeServerRpc(RequestServerSpawnAudio, clip.name , loc);
         }
     }
@@ -71,8 +70,8 @@ public class Audio_Manager : NetworkedBehaviour
 
     public void PlayAudio(string clipName, Vector3 loc)
     {
+        Debug.Log(OwnerClientId + "    CLIP: " + clipName + ", LOC: " + loc);
         GameObject audioObj = Instantiate(audioObjectPrefab, loc, Quaternion.identity);
-
         if (audioObj.TryGetComponent(out AudioSource source))
         {
             AudioClip clip = ApplicationGlobals.GetAudioClipByName(clipName);
