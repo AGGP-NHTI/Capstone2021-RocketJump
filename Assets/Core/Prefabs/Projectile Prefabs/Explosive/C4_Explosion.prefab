@@ -79,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 0
+  objSoundEffect: {fileID: 8300000, guid: 5ffaedfc4d8d8664ebb3feffdc96e101, type: 3}
   lifeTime: 0.1
   contactLifetime: 0
   projectileLaunchForce: 0
@@ -86,6 +87,7 @@ MonoBehaviour:
     type: 3}
   explosiveForce: 10
   explosiveDistance: 8.8
+  forwardExplosion: 0
 --- !u!114 &6935349554714223525
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,7 +6,6 @@ public class Weapon : Actor
 {
     public Player_Pawn playerPawn;
     public int globalIndex = -1;
-    public AudioClip fireSound;
     protected GameObject UI;
     protected UIManager UIMan;
     protected Ammo_UI_Script AmmoReference;
@@ -88,14 +87,7 @@ public class Weapon : Actor
             InvokeServerRpc(spawnNetworkedProjectile, position, fireDirection);
         }
 
-        if (fireSound)
-        {
-            Audio_Manager.instance.PlayAudio(fireSound, transform.position);
-        }
-        else
-        {
-            Debug.LogWarning("FIRE SOUND NOT POPULATED");
-        }
+        playObjSoundEffect();
 
         currentClip--;
         setAmmo();
