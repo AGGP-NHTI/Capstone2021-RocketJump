@@ -26,8 +26,6 @@ public class Audio_Manager : NetworkedBehaviour
 
     public void PlayAudio(AudioClip clip, Vector3 loc)
     {
-        //Debug.Log();
-
         if (clip && loc != null)
         {
             InvokeServerRpc(RequestServerSpawnAudio, clip.name , loc);
@@ -37,14 +35,12 @@ public class Audio_Manager : NetworkedBehaviour
     [ServerRPC(RequireOwnership = false)]
     void RequestServerSpawnAudio(string clipName, Vector3 loc)
     {
-        Debug.Log("SERVER SPAWN AUDIO");
         InvokeClientRpcOnEveryone(SpawnClientAudioObj, clipName, loc);
     }
 
     [ClientRPC]
     void SpawnClientAudioObj(string clipName, Vector3 loc)
     {
-        Debug.Log("CLIENT SPAWN AUDIO");
         GameObject audioObj = Instantiate(audioObjectPrefab, loc, Quaternion.identity);
 
         StartCoroutine(playAudio(audioObj, clipName));
@@ -57,6 +53,7 @@ public class Audio_Manager : NetworkedBehaviour
 
         if (audioObj.TryGetComponent(out AudioSource source))
         {
+            Debug.Log(OwnerClientId + "    CLIP: " + clipName + ", LOC: " + audioObj.transform.position);
             AudioClip clip = ApplicationGlobals.GetAudioClipByName(clipName);
             if (clip)
             {
@@ -70,7 +67,6 @@ public class Audio_Manager : NetworkedBehaviour
 
     public void PlayAudio(string clipName, Vector3 loc)
     {
-        Debug.Log(OwnerClientId + "    CLIP: " + clipName + ", LOC: " + loc);
         GameObject audioObj = Instantiate(audioObjectPrefab, loc, Quaternion.identity);
         if (audioObj.TryGetComponent(out AudioSource source))
         {

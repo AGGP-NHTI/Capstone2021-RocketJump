@@ -46,6 +46,7 @@ public abstract class Projectile : Actor
     protected virtual IEnumerator waitForTrigger() 
     {
         yield return new WaitForSeconds(contactLifetime);
+        playObjSoundEffect();
         trigger();
     }
 

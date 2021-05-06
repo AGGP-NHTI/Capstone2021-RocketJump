@@ -9,7 +9,7 @@ public class Actor : NetworkedBehaviour
     //
     public bool IsActive = true;
     public bool IgnoreDamage = false;
-
+    public AudioClip objSoundEffect;
 
     public void TakeDamage(float value)
     {
@@ -56,6 +56,18 @@ public class Actor : NetworkedBehaviour
 
 
         return null;
+    }
+
+    protected void playObjSoundEffect()
+    {
+        if (objSoundEffect)
+        {
+            Audio_Manager.instance.PlayAudio(objSoundEffect, transform.position);
+        }
+        else
+        {
+            Debug.LogWarning("Sound effect not populated for: " + name);
+        }
     }
 
     //public GameObject NetSpawn(GameObject prefab, Transform parent)
