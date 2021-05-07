@@ -60,7 +60,7 @@ MonoBehaviour:
   isRapidFire: 0
   projectileSpawn: {fileID: 3343618999276839846}
   reloadSound: {fileID: 8300000, guid: 5837579d4a6a07a4fa1e76fb4e358137, type: 3}
-  knockBackForce: 50
+  knockBackForce: 100
   fireRate: 10
 --- !u!114 &-7961704689611357775
 MonoBehaviour:

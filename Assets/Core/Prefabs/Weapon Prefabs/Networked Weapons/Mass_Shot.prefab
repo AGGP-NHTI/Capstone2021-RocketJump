@@ -56,8 +56,8 @@ MonoBehaviour:
   reloadSpeed: 5
   bulletsPerShot: 10
   bulletSpread: 10
-  currentClip: 2
-  clipSize: 2
+  currentClip: 6
+  clipSize: 6
   isRapidFire: 0
   projectileSpawn: {fileID: 3537596853974922853}
   reloadSound: {fileID: 8300000, guid: 5837579d4a6a07a4fa1e76fb4e358137, type: 3}
