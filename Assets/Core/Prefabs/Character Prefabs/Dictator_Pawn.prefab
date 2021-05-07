@@ -1232,6 +1232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 0
+  objSoundEffect: {fileID: 0}
   controller: {fileID: 0}
   movementControl: {fileID: 585792408759172508}
   inventoryMan: {fileID: 6345926474617409562}
@@ -1864,7 +1865,7 @@ Transform:
   m_GameObject: {fileID: 7145816412004626547}
   m_LocalRotation: {x: 0.000000108887534, y: -0.0000013215434, z: -0.000013318471,
     w: 1}
-  m_LocalPosition: {x: 0.000006419731, y: 5.3207045, z: -0.15717909}
+  m_LocalPosition: {x: 0.000006419731, y: 10, z: -0.15717909}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5740508837523869818}
