@@ -55,6 +55,7 @@ public class Player_Pawn : Pawn
         setUI();
 		playerRenderer.enabled = false;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         setAudioManager();
 	}
 
