@@ -52,7 +52,7 @@ MonoBehaviour:
   globalIndex: 3
   projectilePrefab: {fileID: 8208262432346140861, guid: b42c3f996d2fc4d4f83669f53d1538d5,
     type: 3}
-  reloadSpeed: 5
+  reloadSpeed: 2
   bulletsPerShot: 1
   bulletSpread: 1
   currentClip: 1
@@ -60,7 +60,7 @@ MonoBehaviour:
   isRapidFire: 0
   projectileSpawn: {fileID: 3343618999276839846}
   reloadSound: {fileID: 8300000, guid: 5837579d4a6a07a4fa1e76fb4e358137, type: 3}
-  knockBackForce: 100
+  knockBackForce: 50
   fireRate: 10
 --- !u!114 &-7961704689611357775
 MonoBehaviour:

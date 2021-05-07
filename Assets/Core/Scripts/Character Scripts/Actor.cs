@@ -82,12 +82,13 @@ public class Actor : NetworkedBehaviour
         }
     }
 
-    protected void playLocalSoundEffect(AudioClip clip)
+    protected void playLocalSoundEffect(AudioClip clip, float time = -1)
     {
         if (clip)
         {
             GameObject obj = Audio_Manager.instance.PlayAudio(clip.name, transform.position);
             if (obj) { obj.transform.parent = gameObject.transform; }
+            if (time != -1) { Destroy(obj,time); }
         }
         else
         {

@@ -12,20 +12,15 @@ public class Droppable : Weapon
         {
             base.Update();
         }
-        else if(Input.GetKeyDown(UseDropBinding))// && IsLocalPlayer
-        {
-            //Debug.Log("EXPLODE THE: " + transform.name);
-            Fire();
-            Destroy(gameObject);
-        }
-        
     }
 
     public override bool Fire()
     {
         if (isDropped)
         {
-            return base.Fire();
+            bool fired = base.Fire();
+            Destroy(gameObject);
+            return fired;
         }
         else 
         {

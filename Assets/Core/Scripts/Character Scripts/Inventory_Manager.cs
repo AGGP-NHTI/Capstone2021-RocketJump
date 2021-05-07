@@ -190,8 +190,15 @@ public class Inventory_Manager : NetworkedBehaviour
 
     void setSelectedWeapon()
     {
+
+
         for (int i = 0; i < weapons.Count; i++)
         {
+            if (weapons[i] == null) 
+            {
+                weapons.RemoveAt(i);
+                i--;
+            }
             if (currentWeaponIndex == i)
             {
                 weapons[i].gameObject.SetActive(true);
