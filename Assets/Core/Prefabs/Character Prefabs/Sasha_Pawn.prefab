@@ -388,7 +388,7 @@ Transform:
   m_GameObject: {fileID: 2904461096098380868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 5}
   m_Children:
   - {fileID: 6244504373906772559}
   m_Father: {fileID: 0}
@@ -426,6 +426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 0
+  objSoundEffect: {fileID: 0}
   controller: {fileID: 0}
   movementControl: {fileID: 7315341905922669858}
   inventoryMan: {fileID: 8068916048360664244}
