@@ -113,7 +113,7 @@ MonoBehaviour:
   globalIndex: 4
   projectilePrefab: {fileID: 6819187397120872736, guid: 2c38d2b355f57cc408786bfce346410c,
     type: 3}
-  reloadSpeed: 8
+  reloadSpeed: 4
   bulletsPerShot: 1
   bulletSpread: 1
   currentClip: 12
@@ -122,7 +122,7 @@ MonoBehaviour:
   projectileSpawn: {fileID: 7750941247042130214}
   reloadSound: {fileID: 0}
   knockBackForce: 10
-  fireRate: 4
+  fireRate: 12
 --- !u!114 &3011826169084912719
 MonoBehaviour:
   m_ObjectHideFlags: 0
