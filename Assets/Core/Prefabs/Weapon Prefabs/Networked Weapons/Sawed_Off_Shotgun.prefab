@@ -53,7 +53,7 @@ MonoBehaviour:
   globalIndex: 6
   projectilePrefab: {fileID: 3029368864375060408, guid: 74e5da6a7038e7b4f9275b4df6c83f32,
     type: 3}
-  reloadSpeed: 5
+  reloadSpeed: 3
   bulletsPerShot: 5
   bulletSpread: 6.37
   currentClip: 2
