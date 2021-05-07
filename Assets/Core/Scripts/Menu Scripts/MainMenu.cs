@@ -55,6 +55,7 @@ public class MainMenu : MonoBehaviour
         
 
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         volume.value = PlayerPrefs.GetFloat("Volume", 0.5f);
         musicvolume.value = PlayerPrefs.GetFloat("Volumemusic", 0.5f);
