@@ -42,6 +42,32 @@ public class PlayerNetworkCenter : NetworkedBehaviour
                     NetworkingManager.Singleton.StopHost();
                     SceneManager.LoadScene("MainMenu");
                 }
+                else
+                {
+
+                    bool playersHaveLeft = true;
+
+                    if(playersHaveLeft)
+                    {
+                        for (int i = 0; i < positionManager.playerPositions.Count; i++)
+                        {
+                            if (positionManager.playerPositions[i].clientID == 0) continue;
+
+                            if (positionManager.playerPositions[i].player == null)
+                            {
+                                continue;
+                            }
+
+                            playersHaveLeft = false;
+                        }
+
+                        if(playersHaveLeft)
+                        {
+                            NetworkingManager.Singleton.StopHost();
+                            SceneManager.LoadScene("MainMenu");
+                        }
+                    }
+                }
             }
         }
     }
