@@ -215,12 +215,14 @@ public class UIManager : MonoBehaviour
             PauseMenu.SetActive(true);
             paused = true;
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         else
         {
             PauseMenu.SetActive(false);
             paused = false;
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 
