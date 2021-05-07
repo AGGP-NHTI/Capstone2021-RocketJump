@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4205752912056178508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6423750934445459789}
   - {fileID: 3537596853974922853}
@@ -61,7 +61,7 @@ MonoBehaviour:
   isRapidFire: 0
   projectileSpawn: {fileID: 3537596853974922853}
   reloadSound: {fileID: 8300000, guid: 5837579d4a6a07a4fa1e76fb4e358137, type: 3}
-  knockBackForce: 25
+  knockBackForce: 15
   fireRate: 6
 --- !u!114 &6607831573208100367
 MonoBehaviour:
