@@ -34,7 +34,7 @@ public class MainMenu : MonoBehaviour
     public Toggle vertical;
 
     public TextMeshProUGUI SenNum;
-    public TextMeshProUGUI VolNum;
+    public TextMeshProUGUI VolNum, sevolnum, musicvolnum;
 
     public TMP_InputField PN;
 
@@ -108,6 +108,8 @@ public class MainMenu : MonoBehaviour
 
             SenNum.text = "" + m;
             VolNum.text = "" + v + " dB";
+            sevolnum.text = "" + Mathf.RoundToInt(sevolume.value) + " db";
+            musicvolnum.text = "" + Mathf.RoundToInt(musicvolume.value) + " db";
         }
         
     }
