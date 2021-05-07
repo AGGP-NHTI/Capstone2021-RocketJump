@@ -65,7 +65,7 @@ public class Audio_Manager : NetworkedBehaviour
         }
     }
 
-    public void PlayAudio(string clipName, Vector3 loc)
+    public GameObject PlayAudio(string clipName, Vector3 loc)
     {
         GameObject audioObj = Instantiate(audioObjectPrefab, loc, Quaternion.identity);
         if (audioObj.TryGetComponent(out AudioSource source))
@@ -77,8 +77,11 @@ public class Audio_Manager : NetworkedBehaviour
                 source.Play();
 
                 Destroy(audioObj, clip.length);
+                return audioObj;
             }
         }
+
+        return null;
     }
 
 

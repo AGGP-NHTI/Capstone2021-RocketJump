@@ -82,6 +82,18 @@ public class Actor : NetworkedBehaviour
         }
     }
 
+    protected void playLocalSoundEffect(AudioClip clip)
+    {
+        if (clip)
+        {
+            GameObject obj = Audio_Manager.instance.PlayAudio(clip.name, transform.position);
+            if (obj) { obj.transform.parent = gameObject.transform; }
+        }
+        else
+        {
+            Debug.LogWarning("Sound effect not populated for: " + name);
+        }
+    }
     //public GameObject NetSpawn(GameObject prefab, Transform parent)
     //{
     //    GameObject projectile = Instantiate(prefab, parent);
