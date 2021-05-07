@@ -29,7 +29,8 @@ Transform:
   m_LocalRotation: {x: 0.18014096, y: 0.71598333, z: 0.27825245, w: 0.6144043}
   m_LocalPosition: {x: 1.07, y: -0.72, z: 1.12}
   m_LocalScale: {x: 0.3, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7576712457180065849}
   m_Father: {fileID: 78897926155063057}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -10.200001, y: 95.256004, z: 37.554}
@@ -116,12 +117,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2430729849813466209}
-  m_LocalRotation: {x: 0.18014096, y: 0.71598333, z: 0.27825245, w: 0.6144043}
-  m_LocalPosition: {x: 0.59166145, y: -0.36998892, z: 1.1562375}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.2066581, y: 0.7140017, z: 0}
+  m_LocalScale: {x: 6.6666665, y: 2, z: 2}
   m_Children: []
-  m_Father: {fileID: 8382768266348552719}
-  m_RootOrder: 1
+  m_Father: {fileID: 2581124832584470403}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -10.200001, y: 95.256004, z: 37.554}
 --- !u!1 &3674719652532259398
 GameObject:
@@ -184,7 +185,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 78897926155063057}
-  - {fileID: 7576712457180065849}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -202,15 +202,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsActive: 1
   IgnoreDamage: 0
+  objSoundEffect: {fileID: 0}
+  playerPawn: {fileID: 0}
+  globalIndex: -1
   projectilePrefab: {fileID: 590431952125483076, guid: d5372ce0c0f42c14796aeb0becd2d3ec,
     type: 3}
-  projectileSpawn: {fileID: 7576712457180065849}
   reloadSpeed: 10
   bulletsPerShot: 1
   bulletSpread: 0
   currentClip: 1
   clipSize: 1
   isRapidFire: 0
+  projectileSpawn: {fileID: 7576712457180065849}
 --- !u!114 &-5478174374968705947
 MonoBehaviour:
   m_ObjectHideFlags: 0
