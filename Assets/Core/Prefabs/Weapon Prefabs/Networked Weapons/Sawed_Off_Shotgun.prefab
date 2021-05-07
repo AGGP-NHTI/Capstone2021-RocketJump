@@ -54,8 +54,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3029368864375060408, guid: 74e5da6a7038e7b4f9275b4df6c83f32,
     type: 3}
   reloadSpeed: 5
-  bulletsPerShot: 3
-  bulletSpread: 5
+  bulletsPerShot: 5
+  bulletSpread: 6.37
   currentClip: 2
   clipSize: 2
   isRapidFire: 0
@@ -105,7 +105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864470502693557651}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.039998055, y: 0.21500087, z: 8.42}
+  m_LocalPosition: {x: 0.039998055, y: 0.21500087, z: 10.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8093567399743868752}
@@ -151,17 +151,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ad48b65905fcb5847abf65b08f9de839,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.68
+      value: 0.408
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ad48b65905fcb5847abf65b08f9de839,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.96
+      value: -0.18
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ad48b65905fcb5847abf65b08f9de839,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.1
+      value: 0.742
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ad48b65905fcb5847abf65b08f9de839,
         type: 3}
