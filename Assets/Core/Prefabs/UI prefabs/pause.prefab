@@ -844,7 +844,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6027436112032966493
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3661,13 +3661,26 @@ MonoBehaviour:
   main: {fileID: 6027436112392350211}
   settings: {fileID: 6027436112733992472}
   games: {fileID: 6027436112408484667}
+  credits: {fileID: 0}
+  lobby: {fileID: 0}
   all: {fileID: 6027436113002215437}
+  characterSelect: {fileID: 0}
+  VolumeSettings: {fileID: 0}
+  LoadingScreen: {fileID: 0}
+  source: {fileID: 0}
+  progress: {fileID: 0}
+  percent: {fileID: 0}
   volume: {fileID: 6027436113508959650}
+  musicvolume: {fileID: 0}
+  sevolume: {fileID: 0}
   MS: {fileID: 6027436112603775984}
   horizontal: {fileID: 6027436112572001528}
   vertical: {fileID: 6027436113663180472}
   SenNum: {fileID: 8383879736266714927}
   VolNum: {fileID: 7891631595752132280}
+  PN: {fileID: 0}
+  mixer: {fileID: 0}
+  playerInformationCarrier: {fileID: 0}
 --- !u!1 &6027436113663180455
 GameObject:
   m_ObjectHideFlags: 0
